@@ -1,0 +1,67 @@
+body{
+    height: 100vh;
+    background: url('lgImg/gym.jpg') no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    text-align: center;
+    align-items: center;
+}
+h2{
+    font-family: sans-serif;
+}
+.login{
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(2px);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+    color: white;
+    border-radius: 5px;
+    width: 300px;
+    height: 300px;
+    text-align: center;
+    align-items: center;
+    margin: auto;
+}
+input{
+    width: 200px;
+    height: 40px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+}
+.login input::placeholder {
+    padding-left: 5px;
+    color: rgba(255,255,255,0.7);
+}
+.links{
+    width: 100%;
+    overflow: hidden;
+    font-size: 10px;
+}
+.links .left a{
+    color: #F5E779;
+    float: left;
+    margin-left: 50px;
+}
+.links .right a{
+    color: #F5E779;
+    float: right;
+    margin-right: 50px;
+}
+button{
+    background: rgba(255, 255, 255, 0.2);
+    color: rgba(255,255,255,0.7);
+    width: 200px;
+    height: 40px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 5px;
+}
+.home a{
+    color: #F5E779;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 10px;
+    margin-top: 15px;
+}
