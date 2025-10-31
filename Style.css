@@ -73,6 +73,7 @@ input{
 /*MAIN MENU BAR*/
 .MainMenuBar {
     height: 40px;
+    width: 100%;
     display: flex;
     align-items: center;
     padding-top:10px;
@@ -83,72 +84,90 @@ input{
     font-size: 20px;
 
 }
-
-.NewProduct,
-.ListProduct,
-.Brand,
-.Sale{
-    height:60px;
-    width: 150px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: 0.2s;
-    border-radius: 5px;
-}
 .Logo{
-    height: 50px;
-    width: 50px;
+    width:50px;
+    height:50px;
 }
 .NameWebsite{
+    color: deepskyblue;
+    font-weight: bold;
+    font-size: 20px;
+}
+.SearchBox {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+    height: 25px;
+    width: 230px;
+    padding: 0 10px;
+    transition: background 0.3s ease;
+}.SearchBox:hover {
+     background: rgba(255, 255, 255, 0.25);
+ }
+
+.SearchBox i {
+    color: rgba(255,255,255,0.8);
+    margin-right: 8px;
+    font-size: 14px;
+}
+
+.SearchBar {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    font-size: 14px;
+    margin: 0;
+}
+
+.SearchBar::placeholder {
+    color: rgba(255,255,255,0.6);
+}
+
+.GroupLeft{
+    display: flex;
+    flex-direction:row;
+    align-items: center;
+    margin-right: 75px;
+}
+.GroupCenter{
+    display: flex;
+    flex-direction:row;
+    align-items: center;
+    font-size: 17px;
+    margin-right: 470px;
+}
+.GroupCenter>div{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height:60px;
+    width:115px;
+    border-radius:3px;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+
+}
+.GroupCenter>div:hover{
+    background-color: lightgray;
+    cursor: pointer;
     color:deepskyblue;
-    margin-right: 55px;
 }
-.NewProduct{
+.GroupRight{
+    display: flex;
+    flex-direction:row;
+    align-items: center;
 
-    margin-right: 25px;
 }
-.ListProduct{
-    margin-right: 25px;
-}
-.Brand{
-    margin-right: 25px;
-}
-.Sale{
-    margin-right: 630px;
-}
-
-.SearchBar{
-    margin-top: 10px;
-    background: rgba(255, 255, 255, 0.2);
-    height: 20px;
-    width:150px;
-}
-.User{
+.GroupRight>div{
+    height:100%;
     margin-right: 20px;
-    margin-left: 25px;
 }
-.ShoppingCart{
-    margin-right: 20px;
 
-}
-.NewProduct:hover{
-    color: deepskyblue;
-    background-color:white;
-}
-.ListProduct:hover{
-    background-color: White;
-    color: deepskyblue;
-}
-.Brand:hover{
-    color: deepskyblue;
-    background-color:White;
-}
-.Sale:hover{
-    color: deepskyblue;
-    background-color:White;
-}
+
 /*MAIN BANNER*/
 .banner {
     width: 1200px;
