@@ -72,10 +72,83 @@ input{
 }
 /*MAIN MENU BAR*/
 .MainMenuBar {
-    height: 60px;
-    background: darkmagenta;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    padding-top:10px;
+    padding-bottom: 10px;
+    background-color: #001A2D;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+
 }
 
+.NewProduct,
+.ListProduct,
+.Brand,
+.Sale{
+    height:60px;
+    width: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: 0.2s;
+    border-radius: 5px;
+}
+.Logo{
+    height: 50px;
+    width: 50px;
+}
+.NameWebsite{
+    color:deepskyblue;
+    margin-right: 55px;
+}
+.NewProduct{
+
+    margin-right: 25px;
+}
+.ListProduct{
+    margin-right: 25px;
+}
+.Brand{
+    margin-right: 25px;
+}
+.Sale{
+    margin-right: 630px;
+}
+
+.SearchBar{
+    margin-top: 10px;
+    background: rgba(255, 255, 255, 0.2);
+    height: 20px;
+    width:150px;
+}
+.User{
+    margin-right: 20px;
+    margin-left: 25px;
+}
+.ShoppingCart{
+    margin-right: 20px;
+
+}
+.NewProduct:hover{
+    color: deepskyblue;
+    background-color:white;
+}
+.ListProduct:hover{
+    background-color: White;
+    color: deepskyblue;
+}
+.Brand:hover{
+    color: deepskyblue;
+    background-color:White;
+}
+.Sale:hover{
+    color: deepskyblue;
+    background-color:White;
+}
 /*MAIN BANNER*/
 .banner {
     width: 1200px;
