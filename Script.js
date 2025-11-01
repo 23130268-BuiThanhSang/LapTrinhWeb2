@@ -1,7 +1,7 @@
 const slides = document.getElementById("BannerSlides");
 const total = slides.children.length - 1;
 let index = 0;
-const bannerWidth = 600;
+const bannerWidth = 800;
 
 let autoSlide = setInterval(nextSlide, 5000);
 
