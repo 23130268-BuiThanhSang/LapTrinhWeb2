@@ -258,7 +258,7 @@ h2{
 
 /*MAIN BANNER*/
 .banner {
-    width: 1200px;
+    width: 100%;
     height: 400px;
     overflow: hidden;
     position: relative;
@@ -274,7 +274,7 @@ h2{
 }
 
 .BannerSlides img {
-    width: 600px;
+    width: 800px;
     height: 400px;
     object-fit: fill;
 }
@@ -306,39 +306,72 @@ h2{
 
 /*PRODUCT CATEGORIES*/
 .ProductCategories {
-    height: 300px;
-    background: darkred;
+    height: 350px;
+    padding-top: 10px;
+    font-weight: bolder;
+    background: white;
+    color: #2E4192;
+    text-align: center;
+    font-size: 40px;
+    /*background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("lgImg/gb-botanica-gym-link-spaces-slough.jpg");*/
 }
 .ProductCategoriesButtonContainer {
+    width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    gap: 100px;
     align-items: center;
-    width: 80%;
-    margin: 50px auto;
+    padding: 20px 0;
+    margin: auto;
 }
 
 .ProductCategoriesButton {
-    background-color: #2E4192;
+    opacity: 0.95;
+    background-color: #ECECEC;
     font-weight: bolder;
-    color: White;
-    height: 140px;
+    font-size: 20px;
+    color: #2E4192;
+    height: 260px;
+    width: 260px;
     border: none;
-    padding: 15px;
-    text-align: center;
     border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
     transition: transform 0.2s ease, background-color 0.2s ease;
 }
 
+.inner-square {
+    width: 240px;
+    height: 210px;
+    background-color: white;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .ProductCategoriesButton:hover {
-    background-color: #384FB2;
+    background-color: #CCCCCC;
     transform: scale(1.05);
 }
+
 .ProductCategoriesButton img {
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
+    width: 160px;
+    height: 160px;
+    object-fit: contain;
     display: block;
+    transition: transform 0.2s ease;
 }
+
+.ProductCategoriesButton:hover img{
+    transform: scale(1.2);
+}
+
+
 /*CATEGORIES SHOWCASE*/
 .CategoriesShowcase{
     height: 900px;
