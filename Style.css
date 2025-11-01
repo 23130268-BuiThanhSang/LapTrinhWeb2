@@ -371,9 +371,46 @@ h2{
     transform: scale(1.2);
 }
 
-
 /*CATEGORIES SHOWCASE*/
 .CategoriesShowcase{
     height: 900px;
     background: cadetblue;
+}
+/*FOOTER UI*/
+.footlft{
+    background: #474747;
+    display: flex;
+    height: 250px;
+    gap: 40px;
+}
+.ft{
+    display: flex;
+    color: white;
+    gap: 250px;
+    margin-top: 50px;
+    font-size: 20px;
+}
+.lfft{
+    margin-top: 7px;
+    margin-left: 15px;
+}
+.logoft{
+    margin-right: 20px;
+}
+.about {
+    list-style-position: inside;
+    padding-left: 20px;
+    margin-left: -50px;
+    margin-top: 30px;
+}
+.social{
+    display: flex;
+    align-items: center;
+    margin-top: -40px;
+    margin-left: -50px;
+    gap: 10px;
+}
+.sc{
+    height: 40px;
+    width: 40px;
 }
