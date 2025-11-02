@@ -455,6 +455,91 @@ h2{
     height: 900px;
     background: cadetblue;
 }
+
+
+
+/*Sub Categories*/
+.SubCategories{
+    width: 100%;
+    font-size: 30px;
+    font-style: italic;
+    font-weight: bolder;
+}
+.NewCollection{
+    background: white;
+    width: 100%;
+    /*background: white;*/
+    height: 520px;
+    color: black;
+}
+.SpecCollection{
+    background: white;
+    width: 100%;
+    /*background: white;*/
+    height: 520px;
+    color: black;
+}
+.SpecBrand{
+    background: white;
+    width: 100%;
+    /*background: white;*/
+    height: 520px;
+    color: black;
+}
+.SubCategoriesTitleContainer{
+    padding-top: 20px;
+    padding-left: 20px;
+    display: block;
+}
+.SubCategoriesPageLinkButton{
+    float: right;
+    padding-top: 15px;
+    font-style: italic;
+    border: none;
+    background: white;
+    font-weight: bold;
+}
+.SubCategoriesButtonContainer {
+    overflow-x: visible;
+    background: white;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    display: flex;
+    gap: 40px;
+}
+.NewCollectButton {
+    flex: 0 0 auto;
+    height: 400px;
+    width: 260px;
+    background: #ECECEC ;
+    border: none;
+    transition: linear 0.1s;
+}
+.NewCollectButton img {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+}
+.NewCollectButton:hover {
+    transform: scale(1.1);
+}
+.SpecCollectButton{
+    flex: 0 0 auto;
+    height: 330px;
+    width: 330px;
+    background: #ECECEC ;
+    border: none;
+    transition: linear 0.1s;
+}
+.SpecCollectButton img {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+}
+.SpecCollectButton:hover {
+    transform: scale(1.1);
+}
 /*FOOTER UI*/
 .footlft{
     background: #474747;
