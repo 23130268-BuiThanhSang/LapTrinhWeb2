@@ -94,6 +94,85 @@ h2{
     font-size: 15px;
     margin-top: 15px;
 }
+/* ACCOUNT INFO */
+.accInfo{
+    height: 600px;
+    background: white;
+}
+.acclf{
+    background: #F2F2F2;
+    float: left;
+    height: 600px;
+    width: 350px;
+    font-family: sans-serif;
+}
+.avtac{
+    background: #01A0DA;
+    width: 350px;
+    height: 120px;
+    display: flex;
+}
+.avtr{
+    width: 100px;
+    height: 100px;
+    padding-top: 10px;
+}
+.infoac{
+    padding-top: 43px;
+    margin-left: 10px;
+    color: white;
+}
+.optac{
+    margin: 15px;
+    display: flex;
+    flex-direction: column;
+}
+.tk{
+    margin-left: 10px;
+}
+.tk i{
+    font-size: 30px;
+    text-align: center;
+}
+.fa-user{
+    margin-left: 3px;
+}
+.fa-bars{
+    margin-left: 4px;
+}
+.fa-cart-shopping{
+    margin-left: -2px;
+}
+.tktxt{
+    margin-left: 60px;
+    transform: translateY(-26px);
+}
+.sgout{
+    width: 100px;
+    height: 30px;
+    border: grey solid;
+    border-radius: 10px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    padding-top: 8px;
+    margin-left: 20px;
+    transform: translateY(-210px);
+}
+.wcac{
+    margin-left: 630px;
+    transform: translateY(-300px);
+    width: 700px;
+}
+.wcm{
+    width: 600px;
+    height: 300px;
+}
+.wctxt{
+    margin-left: -90px;
+    font-size: 20px;
+    text-align: center;
+}
 
 #HomePageBody {
     font-family: 'Suggested Font Name', sans-serif;
@@ -475,6 +554,91 @@ h2{
 
 .Product:hover {
     transform: scale(1.05);
+}
+
+
+
+/*Sub Categories*/
+.SubCategories{
+    width: 100%;
+    font-size: 30px;
+    font-style: italic;
+    font-weight: bolder;
+}
+.NewCollection{
+    background: white;
+    width: 100%;
+    /*background: white;*/
+    height: 520px;
+    color: black;
+}
+.SpecCollection{
+    background: white;
+    width: 100%;
+    /*background: white;*/
+    height: 520px;
+    color: black;
+}
+.SpecBrand{
+    background: white;
+    width: 100%;
+    /*background: white;*/
+    height: 520px;
+    color: black;
+}
+.SubCategoriesTitleContainer{
+    padding-top: 20px;
+    padding-left: 20px;
+    display: block;
+}
+.SubCategoriesPageLinkButton{
+    float: right;
+    padding-top: 15px;
+    font-style: italic;
+    border: none;
+    background: white;
+    font-weight: bold;
+}
+.SubCategoriesButtonContainer {
+    overflow-x: visible;
+    background: white;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    display: flex;
+    gap: 40px;
+}
+.NewCollectButton {
+    flex: 0 0 auto;
+    height: 400px;
+    width: 260px;
+    background: #ECECEC ;
+    border: none;
+    transition: linear 0.1s;
+}
+.NewCollectButton img {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+}
+.NewCollectButton:hover {
+    transform: scale(1.1);
+}
+.SpecCollectButton{
+    flex: 0 0 auto;
+    height: 330px;
+    width: 330px;
+    background: #ECECEC ;
+    border: none;
+    transition: linear 0.1s;
+}
+.SpecCollectButton img {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+}
+.SpecCollectButton:hover {
+    transform: scale(1.1);
 }
 /*FOOTER UI*/
 .footlft{
