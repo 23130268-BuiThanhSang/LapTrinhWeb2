@@ -175,6 +175,7 @@ h2{
 }
 
 #HomePageBody {
+    font-family: 'Suggested Font Name', sans-serif;
     padding: 0;
     margin: 0;
 }
@@ -190,6 +191,7 @@ h2{
     color: white;
     font-weight: bold;
     font-size: 20px;
+    border-radius: 5px;
 
 }
 .Logo{
@@ -245,7 +247,7 @@ h2{
     display: flex;
     flex-direction:row;
     align-items: center;
-    font-size: 17px;
+    font-size: 16px;
     margin-right: 470px;
 }
 .GroupCenter>div{
@@ -452,8 +454,106 @@ h2{
 
 /*CATEGORIES SHOWCASE*/
 .CategoriesShowcase{
-    height: 900px;
-    background: cadetblue;
+    padding:15px 35px;
+    height: 3000px;
+    background: white;
+}
+
+.HotdealTitle{
+    padding-bottom: 25px;
+    margin-left: 10px;
+    font-size: 32px;
+    font-family: 'Suggested Font Name', sans-serif;
+    color: black;
+    font-weight: bold;
+}
+.CategoriesShowcaseHotDealSpecial{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.HotDealSpecial{
+    width: 70%;
+    border-radius: 15px;
+}
+
+.CategoriesShowcaseHotDealNormal {
+    display: flex;
+    justify-content: center;
+    padding-top: 15px;
+    gap: 15px;
+}
+.HotDeal1, .HotDeal2{
+    width:35%;
+    border-radius: 15px;
+}
+
+.HotdealProductSpecial {
+    background: white;
+    width: 100%;
+    color: black;
+    padding: 20px 40px;
+}
+
+    /*đề mục sản phẩm ưu đãi*/
+.HotdealProductSpecialTitle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px;
+}
+
+.ProductSpecialTitle {
+    font-size: 28px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.SubHotdealProductSpecialButton {
+    font-style: italic;
+    border: none;
+    background: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.SubHotdealProductSpecialButton:hover {
+    color: #0074D9;
+}
+
+
+.ProductSpecialContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding-bottom: 15px;
+}
+.Product {
+    flex: 0 0 auto;
+    height: 330px;
+    width: 330px;
+    background: #ECECEC;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.Product img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.Product:hover {
+    transform: scale(1.05);
 }
 
 
@@ -542,7 +642,7 @@ h2{
 }
 /*FOOTER UI*/
 .footlft{
-    background: #474747;
+    background:#001A2D ;
     display: flex;
     height: 250px;
     gap: 40px;
