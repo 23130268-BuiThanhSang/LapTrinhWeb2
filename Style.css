@@ -156,8 +156,8 @@ h2{
     text-align: center;
     justify-content: center;
     padding-top: 8px;
-    margin-left: 20px;
-    transform: translateY(-210px);
+    margin-left: 10px;
+    transform: translateY(150px);
 }
 .wcac{
     margin-left: 630px;
@@ -174,6 +174,73 @@ h2{
     text-align: center;
 }
 
+/*MEMBER CARD*/
+.membercd{
+    margin-left: 380px;
+    width: 500px;
+    transform: translateY(-400px);
+}
+#mbcd{
+    font-size: 35px;
+}
+#txtmb{
+    font-size: 20px;
+    margin-top: 10px;
+    width: 1500px;
+}
+.lgwt{
+    display: flex;
+    transform: translateY(-30px);
+    margin-right: 15px;
+}
+#lgtxt{
+    margin-top: 20px;
+}
+.lgatxt{
+    margin-top: 22px;
+    background: #E1FDFF;
+    margin-left: 310px;
+    width: 600px;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.imgcd{
+    width: 50px;
+    height: 50px;
+    margin-top: 15px;
+}
+#lgtxt{
+    font-size: 25px;
+    color: #02BBE7;
+    font-family: sans-serif;
+    font-weight: 800;
+}
+#nmus{
+    width: 300px;
+    font-weight: bold;
+    margin-left: 200px;
+    transform: translateY(-30px);
+}
+.imgseri{
+    width: 340px;
+    height: 120px;
+    transform: translateY(-20px);
+}
+#seritxt{
+    transform: translateY(-5px);
+}
+#mbbn{
+    font-size: 25px;
+    transform: translateY(390px);
+}
+#txtvc{
+    font-size: 20px;
+    width: 700px;
+    transform: translateY(410px);
+}
 #HomePageBody {
     font-family: 'Suggested Font Name', sans-serif;
     padding: 0;
