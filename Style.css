@@ -454,15 +454,17 @@ h2{
 
 /*CATEGORIES SHOWCASE*/
 .CategoriesShowcase{
-    padding:15px 35px;
     height: 3000px;
-    background: white;
+    background:white;
 }
-
+.Hotdeal{
+    padding-bottom: 45px;
+    border-bottom: gray solid 1px;
+}
 .HotdealTitle{
-    padding-bottom: 25px;
-    margin-left: 10px;
-    font-size: 32px;
+    padding: 25px 0;
+    margin-left: 30px;
+    font-size: 28px;
     font-family: 'Suggested Font Name', sans-serif;
     color: black;
     font-weight: bold;
@@ -491,28 +493,31 @@ h2{
     border-radius: 15px;
 }
 
-.HotdealProductSpecial {
+.ProductSection {
     background: white;
     width: 100%;
     color: black;
-    padding: 20px 40px;
+    padding: 50px 0;
+    border-bottom: #777777 solid 1px;
+
 }
 
     /*đề mục sản phẩm ưu đãi*/
-.HotdealProductSpecialTitle {
+.HeaderListProductTitle {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding-bottom: 20px;
 }
 
-.ProductSpecialTitle {
+.ProductDealTitle {
     font-size: 28px;
     font-weight: bold;
-    margin: 0;
+    margin-left: 30px;
+    font-style: italic;
 }
 
-.SubHotdealProductSpecialButton {
+.SubProductDealButton {
     font-style: italic;
     border: none;
     background: white;
@@ -521,42 +526,26 @@ h2{
     transition: 0.2s;
 }
 
-.SubHotdealProductSpecialButton:hover {
+.SubProductDealButton:hover {
     color: #0074D9;
 }
 
 
 .ProductSpecialContainer {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content:flex-start;
+    align-items:flex-start;
     gap: 40px;
-    flex-wrap: nowrap;
+    white-space:nowrap;/*không cho xuống dòng */
     overflow-x: auto;
+    overflow-y: hidden;
+
     scroll-behavior: smooth;
     padding-bottom: 15px;
-}
-.Product {
-    flex: 0 0 auto;
-    height: 330px;
-    width: 330px;
-    background: #ECECEC;
-    border-radius: 12px;
-    overflow: hidden;
-    transition: transform 0.3s ease;
-}
-
-.Product img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
 }
 
-.Product:hover {
-    transform: scale(1.05);
-}
-
-
+/*món hàng được thực hiện css riêng để có thể sửa và sử dụng ở nhiều trang khác nhau*/
 
 /*Sub Categories*/
 .SubCategories{
