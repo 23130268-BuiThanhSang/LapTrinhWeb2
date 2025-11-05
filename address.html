@@ -6,7 +6,6 @@
     <link rel="stylesheet" href="Style.css">
     <link rel="stylesheet" href="icon/fontawesome-free-6.4.0-web/css/all.min.css">
     <link rel="stylesheet" href="AccountInfo.css">
-
 </head>
 <body>
 <div class="MainMenuBar">
@@ -97,12 +96,37 @@
                 <i class="fa-solid fa-bars"></i>
                 <div class="tktxt">Tính năng</div>
             </div>
-            <button type="submit" class="sgout">Đăng xuất</button>
+            <div class="sgout">Đăng xuất</div>
         </div>
-        <div class="wcac">
-            <img src="lgImg/wcm.png" class="wcm">
-            <div class="wctxt">Chào mừng đến với SPGYM</div>
-            <div class="wctxt">Để cập nhật thông tin tài khoản, hãy nhấn vào "Tài khoản"</div>
+        <div class="addressInfo">
+            <div id="addar">Thêm địa chỉ</div>
+            <div class="lstaddress">
+                <div id="adr1">
+                    <label>*Thành phố / Tỉnh </label>
+                    <input type="text">
+                </div>
+                <div id="adr2">
+                    <label>*Quận / Huyện / Thị xã </label>
+                    <input type="text">
+                </div>
+                <div id="adr3">
+                    <label>*Họ tên đầy đủ </label>
+                    <input type="text">
+                </div>
+                <div id="adr4">
+                    <label>*Số điện thoại </label>
+                    <input type="text">
+                </div>
+                <div id="adr5">
+                    <label id="extadr">-Mô tả thêm (nếu có) </label>
+                    <input type="text">
+                </div>
+            </div>
+            <div class="setdf">
+                <input type="checkbox">
+                <span id="pickdf">Chọn làm địa chỉ mặc định</span>
+            </div>
+            <button type="submit" class="addrbt">Lưu địa chỉ</button>
         </div>
     </div>
 </div>
