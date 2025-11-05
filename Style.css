@@ -177,6 +177,7 @@ h2{
 #HomePageBody {
     font-family: 'Suggested Font Name', sans-serif;
     padding: 0;
+    /*background: chartreuse;*/
     margin: 0;
 }
 /*MAIN MENU BAR*/
@@ -576,37 +577,47 @@ h2{
     background: white;
     width: 100%;
     /*background: white;*/
-    height: 520px;
+    height: 450px;
     color: black;
 }
 .SpecBrand{
     background: white;
     width: 100%;
     /*background: white;*/
-    height: 520px;
+    height: 350px;
+    color: black;
+}
+.Sports{
+    background: white;
+    width: 100%;
+    /*background: white;*/
+    height: 500px;
     color: black;
 }
 .SubCategoriesTitleContainer{
     padding-top: 20px;
     padding-left: 20px;
-    display: block;
 }
 .SubCategoriesPageLinkButton{
     float: right;
-    padding-top: 15px;
+    padding-right: 20px;
     font-style: italic;
+    font-size: 15px;
     border: none;
     background: white;
     font-weight: bold;
 }
-.SubCategoriesButtonContainer {
-    overflow-x: visible;
-    background: white;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
+.NewCollectionButtonContainer {
     display: flex;
     gap: 40px;
+    padding: 20px;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+    white-space: nowrap;
+
+    scrollbar-color: #ccc #fff;
 }
 .NewCollectButton {
     flex: 0 0 auto;
@@ -624,6 +635,18 @@ h2{
 .NewCollectButton:hover {
     transform: scale(1.1);
 }
+.SpecCollectionButtonContainer {
+    display: flex;
+    gap: 40px;
+    padding: 20px;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+    white-space: nowrap;
+
+    scrollbar-color: #ccc #fff;
+}
 .SpecCollectButton{
     flex: 0 0 auto;
     height: 330px;
@@ -640,6 +663,62 @@ h2{
 .SpecCollectButton:hover {
     transform: scale(1.1);
 }
+.SpecBrandButtonContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    padding: 20px;
+
+    overflow: hidden;
+    white-space: normal;
+}
+
+.SpecBrandButton {
+    flex: 0 0 auto;
+    height: 100px;
+    width: 220px;
+    background: #ECECEC;
+    border: none;
+    transition: linear 0.1s;
+}
+.SpecBrandButton img {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+}
+.SpecBrandButton:hover {
+    transform: scale(1.1);
+}
+.SportsButtonContainer {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+    white-space: nowrap;
+
+    scrollbar-color: #ccc #fff;
+}
+.SportsButton {
+    flex: 0 0 auto;
+    height: 400px;
+    width: 300px;
+    background: #ECECEC ;
+    border: none;
+    transition: linear 0.1s;
+}
+.SportsButton img {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+}
+.SportsButton:hover {
+    transform: scale(1.1);
+}
+
 /*FOOTER UI*/
 .footlft{
     background:#001A2D ;
