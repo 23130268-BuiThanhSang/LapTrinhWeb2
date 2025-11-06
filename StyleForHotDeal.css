@@ -1,0 +1,234 @@
+body{
+    height: 2000px;
+}
+/*MAIN MENU BAR*/
+.MainMenuBar {
+    height: 40px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding-top:10px;
+    padding-bottom: 10px;
+    background-color: #001A2D;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    border-radius: 5px;
+
+}
+.Logo{
+    width:50px;
+    height:50px;
+}
+.NameWebsite{
+    color: deepskyblue;
+    font-weight: bold;
+    font-size: 20px;
+}
+.SearchBox {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+    height: 25px;
+    width: 230px;
+    padding: 0 10px;
+    transition: background 0.3s ease;
+}.SearchBox:hover {
+     background: rgba(255, 255, 255, 0.25);
+ }
+
+.SearchBox i {
+    color: rgba(255,255,255,0.8);
+    margin-right: 8px;
+    font-size: 14px;
+}
+
+.SearchBar {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    font-size: 14px;
+    margin: 0;
+}
+
+.SearchBar::placeholder {
+    color: rgba(255,255,255,0.6);
+}
+
+.GroupLeft{
+    display: flex;
+    flex-direction:row;
+    align-items: center;
+    margin-right: 75px;
+}
+.GroupCenter{
+    display: flex;
+    flex-direction:row;
+    align-items: center;
+    font-size: 16px;
+    margin-right: 470px;
+}
+.GroupCenter>div{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    height:60px;
+    width:115px;
+    border-radius:3px;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+
+}
+.GroupCenter>div:hover{
+    background-color: lightgray;
+    cursor: pointer;
+    color:deepskyblue;
+}
+.MegaBoxNewProduct,.MegaBoxListProduct,.MegaBoxBrand,.MegaBoxSale{
+    position:absolute;
+    top:100%;
+    left:0;
+    width:900px;
+    height:300px;
+    background-color:  rgba(255,255,255,0.95);
+    color:black;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    display:none;
+    padding: 10px;
+    z-index: 1000;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    opacity: 0;
+    transform: translateY(10px);
+
+}
+.GroupCenter > .NewProduct:hover .MegaBoxNewProduct,
+.GroupCenter > .ListProduct:hover .MegaBoxListProduct,
+.GroupCenter > .Brand:hover .MegaBoxBrand,
+.GroupCenter > .Sale:hover .MegaBoxSale {
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+.Column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.Column h4 {
+    color: black;
+    font-size: 16px;
+    margin-bottom: 5px;
+    border-bottom: 1px solid rgba(0,0,0,0.3);
+    padding-bottom: 4px;
+}
+
+.Column div {
+    color: #333;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+.Column div:hover {
+    color: deepskyblue;
+}
+
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translate(-50%, -10px); }
+    to { opacity: 1; transform: translate(-50%, 0); }
+}
+.GroupRight{
+    display: flex;
+    flex-direction:row;
+    align-items: center;
+
+}
+.GroupRight>div{
+    height:100%;
+    margin-right: 20px;
+}
+
+/* thanh điều hướngg*/
+.breadcrumb {
+    background-color: #f8f8f8;
+    padding: 10px 20px;
+    font-size: 14px;
+    color: #555;
+}
+
+.breadcrumb a {
+    color: #555;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.breadcrumb a:hover {
+    color: #007bff;
+}
+
+.breadcrumb .separator {
+    margin: 0 5px;
+    color: black;
+}
+
+.breadcrumb .current {
+    color: #000;
+    font-weight: 500;
+}
+/**
+Banner lớn
+ */
+.MainBannerHotDeal img{
+    width: 100%;
+    height: 435px;
+}
+.TitleHotDeal{
+    display: flex;
+    flex-direction: row;
+    justify-content:center;
+    font-weight: bold;
+    font-size: 30px;
+}
+.SubBannerHotDeal {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    padding: 10px;
+    margin: 20px 35px;
+    scroll-behavior: smooth;
+}
+.SubBannerHotDeal img{
+    width: 240px;
+
+}
+
+/*
+đây thực hiện hiển thị sản phẩm và filter sản phẩm
+ */
+.ProductContainer{
+    margin: 20px 35px;
+    height:1000px;
+    display:flex;
+    flex-direction: row;
+    gap:40px;
+    justify-content:flex-start;
+}
+.Filter{
+    background-color: aquamarine;
+    width: 300px;
+
+}
+.ListProduct{
+    background-color: #007bff;
+    width: 100%;
+}
