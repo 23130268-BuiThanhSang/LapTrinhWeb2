@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="Style.css">
     <link rel="stylesheet" href="icon/fontawesome-free-6.4.0-web/css/all.min.css">
     <link rel="stylesheet" href="AccountInfo.css">
+
 </head>
 <body>
 <div class="MainMenuBar">
@@ -68,52 +69,80 @@
 </div>
 <div class="accInfo">
     <div class="acclf">
-        <div class="avtac">
-            <img src="lgImg/avt.png" class="avtr">
-            <div class="infoac">
-                <div class="nameus">Edward Alter</div>
-                <div class="stk">Số tài khoản: 3820581034851</div>
+        <div class="acui">
+            <div class="acuilf">
+                <div id="acuitxt">Tài khoản SP GYM</div>
             </div>
         </div>
         <div class="optac">
             <div class="tk">
-                <i class="fa-solid fa-user"></i>
-                <div class="tktxt">Tài khoản</div>
-            </div>
-            <div class="tk">
                 <i class="fa-solid fa-house"></i>
-                <div class="tktxt">Địa chỉ của tôi</div>
+                <div class="tktxt">Trang chủ</div>
             </div>
             <div class="tk">
-                <i class="fa-solid fa-cart-shopping"></i>
-                <div class="tktxt">Giỏ hàng</div>
-            </div>
-            <div class="tk">
-                <i class="fa-solid fa-credit-card"></i>
+                <i class="fa-solid fa-address-card"></i>
                 <div class="tktxt">Thẻ thành viên</div>
             </div>
             <div class="tk">
-                <i class="fa-solid fa-bars"></i>
-                <div class="tktxt">Tính năng</div>
+                <i class="fa-solid fa-credit-card"></i>
+                <div class="tktxt">Phương thức thanh toán</div>
             </div>
-            <button type="submit" class="sgout">Đăng xuất</button>
+            <div class="tk">
+                <i class="fa-solid fa-heart"></i>
+                <div class="tktxt">Sở thích và cá nhân hóa</div>
+            </div>
+            <div class="tk">
+                <i class="fa-solid fa-shield-halved"></i>
+                <div class="tktxt">Bảo mật</div>
+            </div>
+            <button type="submit" class="sgoutui">Đăng xuất</button>
         </div>
-        <div class="membercd">
-            <div id="mbcd">Thẻ thành viên SP GYM</div>
-            <div id="txtmb">Số thẻ là thông tin tài khoản được sử dụng để xác thực tài khoản của bạn</div>
-            <div id="mbbn">Lợi ích thẻ thành viên:</div>
-            <div id="txtvc">Nhận voucher freeship, giảm giá và nhiều ưu đãi thành viên khác.</div>
-            <div class="lgatxt">
-                <div class="lgwt">
-                    <img src="lgImg/logo.png" class="imgcd">
-                    <div id="lgtxt">SP GYM</div>
+        <div class="ctui">
+            <div class="fstacc">
+                <img src="lgImg/avt.png" id="fstact">
+                <div class="avtvid">
+                    <div id="nmac">Edward Alter</div>
+                    <div id="idac">id: 2943184832910</div>
                 </div>
-                <div id="nmus">Edward Alter</div>
-                <img src="lgImg/seri.png" class="imgseri">
-                <div id="seritxt">2 943184 832910</div>
+                <button type="submit" id="btfstac">Đổi Avatar</button>
+            </div>
+            <div id="acuigd">Quản lí mọi dữ liệu và tận hưởng các tiện ích của SP GYM với thông tin cá nhân.</div>
+            <div class="lstbnf">
+                <div class="bnf1">
+                    <div class="bnfb">
+                        <div class="bxtxt">Đổi mật khẩu</div>
+                        <i class="fa-solid fa-lock"></i>
+                    </div>
+                    <div class="bnfb">
+                        <div class="bxtxt">Cập nhật hồ sơ</div>
+                        <i class="fa-solid fa-id-badge"></i>
+                    </div>
+                    <div class="bnfb">
+                        <div class="bxtxt">Thông báo</div>
+                        <i class="fa-solid fa-bell"></i>
+                    </div>
+                    <div class="bnfb">
+                        <div class="bxtxt">Danh sách đã lưu</div>
+                        <i class="fa-solid fa-bookmark"></i>
+                    </div>
+                </div>
+                <div class="dbh">
+                    <i class="fa-solid fa-arrows-rotate"></i>
+                    <div class="dbhtxt">Đồng bộ hóa các hoạt động</div>
+                    <select id="slopt">
+                        <option value="off">tắt</option>
+                        <option value="on">bật</option>
+                    </select>
+                </div>
+                <div class="rngt">
+                    <div class="dbhtxt">Quyền xem thông tin hồ sơ</div>
+                    <select id="rtop">
+                        <option value="off">mọi người</option>
+                        <option value="on">chỉ mình tôi</option>
+                    </select>
+                </div>
             </div>
         </div>
-
     </div>
 </div>
 <div class="FooterUi">
