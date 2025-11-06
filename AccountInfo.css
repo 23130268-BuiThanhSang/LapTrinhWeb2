@@ -48,7 +48,7 @@
     margin-left: -2px;
 }
 .tktxt{
-    margin-left: 60px;
+    margin-left: 50px;
     transform: translateY(-26px);
 }
 .sgout{
@@ -59,9 +59,9 @@
     display: flex;
     text-align: center;
     justify-content: center;
-    padding-top: 8px;
+    padding-top: 5px;
     margin-left: 10px;
-    transform: translateY(150px);
+    transform: translateY(170px);
 }
 .wcac{
     margin-left: 630px;
@@ -182,6 +182,131 @@
     padding: 10px;
     background: #01A0DA;
     color: white;
+}
+/*Account UI*/
+.acui{
+    background: #01A0DA;
+    width: 350px;
+    height: 50px;
+    display: flex;
+}
+#acuitxt{
+    color: white;
+    font-size: 22px;
+    margin-left: 75px;
+    margin-top: 10px;
+}
+.sgoutui{
+    width: 100px;
+    height: 30px;
+    border: grey solid;
+    border-radius: 10px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    padding-top: 5px;
+    margin-left: 10px;
+    transform: translateY(240px);
+}
+.ctui{
+    margin-left: 370px;
+    transform: translateY(-360px);
+    text-align: center;
+    align-items: center;
+    width: 900px;
+}
+.fstacc{
+    display: flex;
+}
+#fstact{
+    width: 160px;
+    height: 160px;
+}
+#nmac{
+    font-size: 35px;
+}
+#btfstac{
+    margin-left: 320px;
+    border-radius: 5px;
+    color: white;
+    background: #01A0DA;
+    padding: 5px;
+    height: 40px;
+    transform: translateY(60px);
+}
+.avtvid{
+    transform: translateY(50px);
+}
+#idac{
+    margin-right: 55px;
+    margin-top: 5px;
+}
+#acuigd{
+    font-size: 20px;
+    margin-right: 100px;
+}
+.bximg{
+    width: 40px;
+    height: 40px;
+}
+.lstbnf i{
+    font-size: 60px;
+    margin-top: 60px;
+    transform: translateX(-5px);
+}
+.bnf1{
+    display: flex;
+}
+.bnfb{
+    background: #B3FDFF;
+    width: 350px;
+    height: 230px;
+    margin-top: 30px;
+    border-radius: 20px;
+    margin-left: 30px;
+}
+.bxtxt{
+    font-size: 20px;
+    margin-top: 10px;
+    transform: translateY(3px);
+}
+.dbh{
+    display: flex;
+    padding-top: 30px;
+    font-size: 20px;
+    margin-left: 30px;
+}
+.dbh i{
+    font-size: 30px;
+    transform: translateY(-63px);
+}
+#slopt{
+    margin-left: 20px;
+    font-size: 17px;
+    padding: 3px;
+    transform: translateY(-8px);
+    height: 40px;
+    width: 60px;
+}
+.dbhtxt{
+    margin-left: 20px;
+}
+.rngt{
+    display: flex;
+    font-size: 20px;
+    margin-left: 10px;
+    transform: translateY(-30px);
+}
+#rtop{
+    margin-left: 15px;
+    font-size: 17px;
+    padding: 3px;
+    transform: translateY(-3px);
 
 }
+
+
+
+
+
 
