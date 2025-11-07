@@ -1,6 +1,6 @@
 #LoginBody{
     height: 100vh;
-    background: url('../lgImg/gym.jpg') no-repeat center center fixed;
+    background: url('lgImg/gym.jpg') no-repeat center center fixed;
     background-size: cover;
     display: flex;
     text-align: center;
