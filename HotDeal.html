@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="Style.css">
     <link rel="stylesheet" href="icon/fontawesome-free-6.4.0-web/css/all.min.css">
     <link rel="stylesheet" href="StyleForHotDeal.css">
+    <link rel="stylesheet" href="StyleForProductCard.css">
+
 </head>
 <body>
 <!--menu cho trang web-->
@@ -80,6 +82,7 @@
     </div>
     <h2 class="TitleHotDeal">ƯU ĐÃI NỔI BẬT</h2>
     <div class="SubBannerHotDeal">
+        <div class="SubBannerHotDealItem">
         <a href="#" class="HotDealCard">
             <img src="https://cdn.shopify.com/s/files/1/0456/5070/6581/files/mb_nike.jpg?v=1761210559&width=550" alt="Nike">
         </a>
@@ -98,36 +101,440 @@
         <a href="#" class="HotDealCard">
             <img src="https://cdn.shopify.com/s/files/1/0456/5070/6581/files/mb_speedo.jpg?v=1761210559&width=550" alt="Nike">
         </a>
+        </div>
     </div>
     <div class="ProductContainer">
         <div class="Filter">
             <details  class="FilterGroup">
-                <summary>GIỚI TÍNH</summary>
+                <summary >GIỚI TÍNH</summary>
                 <div class="FilterBody">
-                    <label><input type="checkbox"> NAM </label><br>
-                    <label><input type="checkbox"> NỮ  </label><br>
+                    <label class="FilterItem"><input type="checkbox"> NAM </label>
+                    <label class="FilterItem"><input type="checkbox"> NỮ  </label>
                 </div>
             </details>
             <details  class="FilterGroup">
                 <summary>DANH MỤC SẢN PHẨM</summary>
                 <div class="FilterBody">
-                    <label><input type="checkbox"> QUẦN </label><br>
-                    <label><input type="checkbox"> ÁO </label><br>
-                    <label><input type="checkbox"> PHỤ KIỆN </label><br>
-                    <label><input type="checkbox"> GIÀY DÉP </label><br>
+                    <label class="FilterItem"><input type="checkbox"> QUẦN ÁO</label>
+                    <label class="FilterItem"><input type="checkbox">  MÁY TẬP </label>
+                    <label class="FilterItem"><input type="checkbox"> THỰC PHẨM BỔ SUNG</label>
+                    <label class="FilterItem"><input type="checkbox"> PHỤ KIỆN </label>
+                    <label class="FilterItem"><input type="checkbox"> GIÀY DÉP </label>
+                </div>
+            </details>
+            <details  class="FilterGroup">
+                <summary>MÀU SẮC</summary>
+                <div class="FilterBody">
+                    <label class="FilterItem ColorBlack"><input type="checkbox"> ĐEN </label>
+                    <label class="FilterItem ColorWhite"><input type="checkbox"> TRẮNG</label>
+                    <label class="FilterItem ColorRed"><input type="checkbox"> ĐỎ</label>
+                    <label class="FilterItem ColorBlue"><input type="checkbox"> XANH DƯƠNG</label>
+                    <label class="FilterItem ColorYellow"><input type="checkbox"> VÀNG</label>
+                    <label class="FilterItem ColorGreen"><input type="checkbox"> XANH LÁ</label>
+                    <label class="FilterItem ColorGray"><input type="checkbox"> XÁM</label>
+
                 </div>
             </details>
             <details  class="FilterGroup">
                 <summary>THƯƠNG HIỆU</summary>
                 <div class="FilterBody">
-                    <label><input type="checkbox">ADIDAS </label><br>
-                    <label><input type="checkbox">NIKE </label><br>
-                    <label><input type="checkbox">HOKA </label><br>
-                    <label><input type="checkbox">COLUMBIA </label><br>
+                    <label class="FilterItem"><input type="checkbox">ADIDAS </label>
+                    <label class="FilterItem"><input type="checkbox">NIKE </label>
+                    <label class="FilterItem"><input type="checkbox">HOKA </label>
+                    <label class="FilterItem"><input type="checkbox">COLUMBIA </label>
+                    <label class="FilterItem"><input type="checkbox">SPIRIT </label>
+                </div>
+            </details>
+            <details  class="FilterGroup">
+                <summary>KÍCH CỠ</summary>
+                <div class="FilterBody">
+                    <label class="FilterItem"><input type="checkbox">S</label>
+                    <label class="FilterItem"><input type="checkbox">M </label>
+                    <label class="FilterItem"><input type="checkbox">L</label>
+                    <label class="FilterItem"><input type="checkbox">XL</label>
+                    <label class="FilterItem"><input type="checkbox">XXL</label>
+                    <label class="FilterItem"><input type="checkbox">XXXL</label>
                 </div>
             </details>
         </div>
-        <div class="ListProduct">List Product</div>
+        <div class="ListProductForFilter">
+            <div class="HeaderListProductForFilter">
+                    <div Class="CountListProductForFilter">XXXX sản phẩm</div>
+                    <button class="SortListProductForFilter">
+                        <span><i class="fa-solid fa-sort-down"></i></span>
+                        Sắp Xếp
+                    </button>
+            </div>
+            <div class="bodyListProductForFilter">
+                <div class="ProductCard">
+                    <!-- ẢNH + TAG -->
+                    <div class="ProductImage">
+                        <img src="https://supersports.com.vn/cdn/shop/products/H59282-1.jpg?v=1668067715&width=1600" alt="Giày HOKA">
+
+                        <div class="ProductTag">
+                            <div class="SpecialOffer">ƯU ĐÃI<br>ĐẶC BIỆT</div>
+                            <div class="Discount">-60%</div>
+                        </div>
+
+                        <div class="BestPrice">GIÁ TỐT NHẤT NĂM</div>
+                    </div>
+
+                    <!-- THÔNG TIN -->
+                    <div class="ProductInfo">
+                        <span class="BrandProduct">ADIDAS</span>
+                        <p class="ProductName">Áo Hoodie Nữ Adidas Future Icons - Cam</p>
+                        <div class="Rating">
+                            <div class="Rating">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-regular fa-star"></i>
+                                <span class="ReviewCount">3 đánh giá</span>
+                            </div>
+                        </div>
+                        <div class="Price">
+                            <span class="NewPrice">640.000₫</span>
+                            <span class="OldPrice">1.600.000₫</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="ProductCard">
+                    <!-- ẢNH + TAG -->
+                    <div class="ProductImage">
+                        <img src="https://supersports.com.vn/cdn/shop/products/H59282-1.jpg?v=1668067715&width=1600" alt="Giày HOKA">
+
+                        <div class="ProductTag">
+                            <div class="SpecialOffer">ƯU ĐÃI<br>ĐẶC BIỆT</div>
+                            <div class="Discount">-60%</div>
+                        </div>
+
+                        <div class="BestPrice">GIÁ TỐT NHẤT NĂM</div>
+                    </div>
+
+                    <!-- THÔNG TIN -->
+                    <div class="ProductInfo">
+                        <span class="BrandProduct">ADIDAS</span>
+                        <p class="ProductName">Áo Hoodie Nữ Adidas Future Icons - Cam</p>
+                        <div class="Rating">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-regular fa-star"></i>
+                                <span class="ReviewCount">3 đánh giá</span>
+                        </div>
+                        <div class="Price">
+                            <span class="NewPrice">640.000₫</span>
+                            <span class="OldPrice">1.600.000₫</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="ProductCard">
+                    <!-- ẢNH + TAG -->
+                    <div class="ProductImage">
+                        <img src="https://supersports.com.vn/cdn/shop/products/H59282-1.jpg?v=1668067715&width=1600" alt="Giày HOKA">
+
+                        <div class="ProductTag">
+                            <div class="SpecialOffer">ƯU ĐÃI<br>ĐẶC BIỆT</div>
+                            <div class="Discount">-60%</div>
+                        </div>
+
+                        <div class="BestPrice">GIÁ TỐT NHẤT NĂM</div>
+                    </div>
+
+                    <!-- THÔNG TIN -->
+                    <div class="ProductInfo">
+                        <span class="BrandProduct">ADIDAS</span>
+                        <p class="ProductName">Áo Hoodie Nữ Adidas Future Icons - Cam</p>
+                        <div class="Rating">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                            <span class="ReviewCount">3 đánh giá</span>
+                        </div>
+                        <div class="Price">
+                            <span class="NewPrice">640.000₫</span>
+                            <span class="OldPrice">1.600.000₫</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="ProductCard">
+                    <!-- ẢNH + TAG -->
+                    <div class="ProductImage">
+                        <img src="https://supersports.com.vn/cdn/shop/products/H59282-1.jpg?v=1668067715&width=1600" alt="Giày HOKA">
+
+                        <div class="ProductTag">
+                            <div class="SpecialOffer">ƯU ĐÃI<br>ĐẶC BIỆT</div>
+                            <div class="Discount">-60%</div>
+                        </div>
+
+                        <div class="BestPrice">GIÁ TỐT NHẤT NĂM</div>
+                    </div>
+
+                    <!-- THÔNG TIN -->
+                    <div class="ProductInfo">
+                        <span class="BrandProduct">ADIDAS</span>
+                        <p class="ProductName">Áo Hoodie Nữ Adidas Future Icons - Cam</p>
+                        <div class="Rating">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                            <span class="ReviewCount">3 đánh giá</span>
+                        </div>
+                        <div class="Price">
+                            <span class="NewPrice">640.000₫</span>
+                            <span class="OldPrice">1.600.000₫</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="ProductCard">
+                <!-- ẢNH + TAG -->
+                <div class="ProductImage">
+                    <img src="https://supersports.com.vn/cdn/shop/products/H59282-1.jpg?v=1668067715&width=1600" alt="Giày HOKA">
+
+                    <div class="ProductTag">
+                        <div class="SpecialOffer">ƯU ĐÃI<br>ĐẶC BIỆT</div>
+                        <div class="Discount">-60%</div>
+                    </div>
+
+                    <div class="BestPrice">GIÁ TỐT NHẤT NĂM</div>
+                </div>
+
+                <!-- THÔNG TIN -->
+                <div class="ProductInfo">
+                    <span class="BrandProduct">ADIDAS</span>
+                    <p class="ProductName">Áo Hoodie Nữ Adidas Future Icons - Cam</p>
+                    <div class="Rating">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                        <span class="ReviewCount">3 đánh giá</span>
+                    </div>
+                    <div class="Price">
+                        <span class="NewPrice">640.000₫</span>
+                        <span class="OldPrice">1.600.000₫</span>
+                    </div>
+                </div>
+            </div>
+                <div class="ProductCard">
+                    <!-- ẢNH + TAG -->
+                    <div class="ProductImage">
+                        <img src="https://supersports.com.vn/cdn/shop/products/H59282-1.jpg?v=1668067715&width=1600" alt="Giày HOKA">
+
+                        <div class="ProductTag">
+                            <div class="SpecialOffer">ƯU ĐÃI<br>ĐẶC BIỆT</div>
+                            <div class="Discount">-60%</div>
+                        </div>
+
+                        <div class="BestPrice">GIÁ TỐT NHẤT NĂM</div>
+                    </div>
+
+                    <!-- THÔNG TIN -->
+                    <div class="ProductInfo">
+                        <span class="BrandProduct">ADIDAS</span>
+                        <p class="ProductName">Áo Hoodie Nữ Adidas Future Icons - Cam</p>
+                        <div class="Rating">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                            <span class="ReviewCount">3 đánh giá</span>
+                        </div>
+                        <div class="Price">
+                            <span class="NewPrice">640.000₫</span>
+                            <span class="OldPrice">1.600.000₫</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="ProductCard">
+                    <!-- ẢNH + TAG -->
+                    <div class="ProductImage">
+                        <img src="https://supersports.com.vn/cdn/shop/products/H59282-1.jpg?v=1668067715&width=1600" alt="Giày HOKA">
+
+                        <div class="ProductTag">
+                            <div class="SpecialOffer">ƯU ĐÃI<br>ĐẶC BIỆT</div>
+                            <div class="Discount">-60%</div>
+                        </div>
+
+                        <div class="BestPrice">GIÁ TỐT NHẤT NĂM</div>
+                    </div>
+
+                    <!-- THÔNG TIN -->
+                    <div class="ProductInfo">
+                        <span class="BrandProduct">ADIDAS</span>
+                        <p class="ProductName">Áo Hoodie Nữ Adidas Future Icons - Cam</p>
+                        <div class="Rating">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                            <span class="ReviewCount">3 đánh giá</span>
+                        </div>
+                        <div class="Price">
+                            <span class="NewPrice">640.000₫</span>
+                            <span class="OldPrice">1.600.000₫</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="ProductCard">
+                    <!-- ẢNH + TAG -->
+                    <div class="ProductImage">
+                        <img src="https://supersports.com.vn/cdn/shop/products/H59282-1.jpg?v=1668067715&width=1600" alt="Giày HOKA">
+
+                        <div class="ProductTag">
+                            <div class="SpecialOffer">ƯU ĐÃI<br>ĐẶC BIỆT</div>
+                            <div class="Discount">-60%</div>
+                        </div>
+
+                        <div class="BestPrice">GIÁ TỐT NHẤT NĂM</div>
+                    </div>
+
+                    <!-- THÔNG TIN -->
+                    <div class="ProductInfo">
+                        <span class="BrandProduct">ADIDAS</span>
+                        <p class="ProductName">Áo Hoodie Nữ Adidas Future Icons - Cam</p>
+                        <div class="Rating">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                            <span class="ReviewCount">3 đánh giá</span>
+                        </div>
+                        <div class="Price">
+                            <span class="NewPrice">640.000₫</span>
+                            <span class="OldPrice">1.600.000₫</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="ProductCard">
+                    <!-- ẢNH + TAG -->
+                    <div class="ProductImage">
+                        <img src="https://supersports.com.vn/cdn/shop/products/H59282-1.jpg?v=1668067715&width=1600" alt="Giày HOKA">
+
+                        <div class="ProductTag">
+                            <div class="SpecialOffer">ƯU ĐÃI<br>ĐẶC BIỆT</div>
+                            <div class="Discount">-60%</div>
+                        </div>
+
+                        <div class="BestPrice">GIÁ TỐT NHẤT NĂM</div>
+                    </div>
+
+                    <!-- THÔNG TIN -->
+                    <div class="ProductInfo">
+                        <span class="BrandProduct">ADIDAS</span>
+                        <p class="ProductName">Áo Hoodie Nữ Adidas Future Icons - Cam</p>
+                        <div class="Rating">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                            <span class="ReviewCount">3 đánh giá</span>
+                        </div>
+                        <div class="Price">
+                            <span class="NewPrice">640.000₫</span>
+                            <span class="OldPrice">1.600.000₫</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="ProductCard">
+                <!-- ẢNH + TAG -->
+                <div class="ProductImage">
+                    <img src="https://supersports.com.vn/cdn/shop/products/H59282-1.jpg?v=1668067715&width=1600" alt="Giày HOKA">
+
+                    <div class="ProductTag">
+                        <div class="SpecialOffer">ƯU ĐÃI<br>ĐẶC BIỆT</div>
+                        <div class="Discount">-60%</div>
+                    </div>
+
+                    <div class="BestPrice">GIÁ TỐT NHẤT NĂM</div>
+                </div>
+
+                <!-- THÔNG TIN -->
+                <div class="ProductInfo">
+                    <span class="BrandProduct">ADIDAS</span>
+                    <p class="ProductName">Áo Hoodie Nữ Adidas Future Icons - Cam</p>
+                    <div class="Rating">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                        <span class="ReviewCount">3 đánh giá</span>
+                    </div>
+                    <div class="Price">
+                        <span class="NewPrice">640.000₫</span>
+                        <span class="OldPrice">1.600.000₫</span>
+                    </div>
+                </div>
+            </div>
+                <div class="ProductCard">
+                <!-- ẢNH + TAG -->
+                <div class="ProductImage">
+                    <img src="https://supersports.com.vn/cdn/shop/products/H59282-1.jpg?v=1668067715&width=1600" alt="Giày HOKA">
+
+                    <div class="ProductTag">
+                        <div class="SpecialOffer">ƯU ĐÃI<br>ĐẶC BIỆT</div>
+                        <div class="Discount">-60%</div>
+                    </div>
+
+                    <div class="BestPrice">GIÁ TỐT NHẤT NĂM</div>
+                </div>
+
+                <!-- THÔNG TIN -->
+                <div class="ProductInfo">
+                    <span class="BrandProduct">ADIDAS</span>
+                    <p class="ProductName">Áo Hoodie Nữ Adidas Future Icons - Cam</p>
+                    <div class="Rating">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                        <span class="ReviewCount">3 đánh giá</span>
+                    </div>
+                    <div class="Price">
+                        <span class="NewPrice">640.000₫</span>
+                        <span class="OldPrice">1.600.000₫</span>
+                    </div>
+                </div>
+            </div>
+            </div>
+            <button class="LoadMoreBtn">Xem thêm</button>
+        </div>
+    </div>
+</div>
+<div class="FooterUi">
+    <div class="footlft">
+        <img class="logoft" src="lgImg/logo.png" alt="">
+        <div class="ft">
+            <div class="lfft">
+                <p>Địa chỉ: Thủ Đức, Hồ Chí Minh</p>
+                <p>Số điện thoại: 0922482619</p>
+                <p>Email: sportadgym@gmail.com</p>
+            </div>
+            <div class="about">Về Chúng Tôi
+                <li>Trang chủ</li>
+                <li>Giới thiệu</li>
+                <li>Sản phẩm</li>
+            </div>
+            <div class="social">Liên kết xã hội:
+                <img class="sc" src="lgImg/fb.png" alt="">
+                <img class="sc" src="lgImg/tw.png" alt="">
+                <img class="sc" src="lgImg/isg.png" alt="">
+                <img class="sc" src="lgImg/yt.png" alt="">
+            </div>
+        </div>
     </div>
 </div>
 
