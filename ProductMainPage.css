@@ -1,15 +1,18 @@
 body {
     margin: 0;
+    font-family: 'Suggested Font Name', sans-serif;
 }
 .UpperPart {
     display: flex;
     justify-content: center;
     gap: 20px;
     padding: 20px;
+    background: #01A0DA;
 }
 
 .ProductPreview {
     background: white;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
     width: 700px;
     display: flex;
     flex-direction: column;
@@ -66,19 +69,48 @@ body {
 .ThumbButton:hover {
     transform: scale(1.05);
 }
-
+.HighlightBox {
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    border-radius: 10px;
+    padding: 10px;
+}
 .ProductInfo {
     width: 700px;
     height: 820px;
     background-color: #fff;
     border-radius: 10px;
     padding: 20px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
     display: flex;
     flex-direction: column;
     gap: 16px;
 }
+.breadcrumb {
+    background-color: #f8f8f8;
+    padding: 10px 20px;
+    font-size: 14px;
+    color: #555;
+}
 
+.breadcrumb a {
+    color: #555;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.breadcrumb a:hover {
+    color: #007bff;
+}
+
+.breadcrumb .separator {
+    margin: 0 5px;
+    color: black;
+}
+
+.breadcrumb .current {
+    color: #000;
+    font-weight: 500;
+}
 .ProductBrand {
     font-weight: bold;
     letter-spacing: 1px;
@@ -91,11 +123,21 @@ body {
     font-weight: 700;
     margin: 0;
 }
+.Rating {
+    font-size: 13px;
+    color: #f5b301;
+}
 
+.ReviewCount {
+    color: #333;
+    font-size: 12px;
+    margin-left: 5px;
+}
 .ProductPrice {
-    font-size: 20px;
+    font-size: 30px;
     font-weight: 700;
     margin: 8px 0;
+    color: #EE2F36;
 }
 
 .SectionTitle {
@@ -138,7 +180,7 @@ body {
 
 .SizeButton {
     width: 80px;
-    border: 1px solid #000;
+    border: 1px solid #0074D9;
     background: #fff;
     padding: 10px 16px;
     border-radius: 4px;
@@ -147,7 +189,7 @@ body {
 }
 
 .SizeButton:hover {
-    background: #000;
+    background: #0074D9;
     color: #fff;
 }
 
@@ -244,12 +286,20 @@ body {
     color: #01A0DA;
 }
 
-
+.LowerHighlightBox {
+    width: 96%;
+    margin-left: 20px;
+    background: white;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 20px;
+}
 .LowerPart {
     display: flex;
     width: 100%;
-    background: white;
-    height: 400px;
+    background: #01A0DA;
+    height: 600px;
 }
 
 .TabContainer {
@@ -285,7 +335,7 @@ body {
 
 .TabWindow {
     width: 100%;
-    height: 150px;
+    height: 500px;
     overflow: hidden;
     position: relative;
     border: 1px solid #ccc;
@@ -293,7 +343,8 @@ body {
 
 .TabContents {
     display: flex;
-    transition: transform 0.4s ease;
+    width: 400%;
+    /*transition: transform 0.4s ease;*/
 }
 
 .TabContent {
