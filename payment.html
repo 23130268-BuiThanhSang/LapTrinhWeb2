@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="icon/fontawesome-free-6.4.0-web/css/all.min.css">
     <link rel="stylesheet" href="CSS/Style.css">
     <link rel="stylesheet" href="CSS/AccountInfo.css">
+
 </head>
 <body>
 <div class="MainMenuBar">
@@ -68,12 +69,8 @@
 </div>
 <div class="accInfo">
     <div class="acclf">
-        <div class="avtac">
-            <img src="lgImg/avt.png" class="avtr">
-            <div class="infoac">
-                <div class="nameus">Edward Alter</div>
-                <div class="stk">Số tài khoản: 3820581034851</div>
-            </div>
+        <div class="acui">
+            <div id="acuitxt">Tài khoản SP GYM</div>
         </div>
         <div class="optac">
             <a href="accountUI.html" class="tk">
@@ -81,50 +78,55 @@
                 <div class="tktxt">Tài khoản</div>
             </a>
             <div class="tkad">
-                <i class="fa-solid fa-house"></i>
-                <div class="tktxtad">Địa chỉ của tôi</div>
+                <i class="fa-solid fa-credit-card"></i>
+                <div class="tktxtad">Phương thức thanh toán</div>
             </div>
             <div class="tk">
-                <i class="fa-solid fa-cart-shopping"></i>
-                <div class="tktxt">Giỏ hàng</div>
+                <i class="fa-solid fa-heart"></i>
+                <div class="tktxt">Danh sách đã lưu</div>
             </div>
-            <a href="memberCard.html" class="tk">
-                <i class="fa-solid fa-address-card"></i>
-                <div class="tktxt">Thẻ thành viên</div>
+            <div class="tk">
+                <i class="fa-solid fa-shield-halved"></i>
+                <div class="tktxt">Bảo mật</div>
+            </div>
+            <a href="accountInfo.html" class="tk">
+                <i class="fa-solid fa-arrow-left"></i>
+                <div class="tktxt">Quay lại</div>
             </a>
-            <a href=login.html class="sgout">Đăng xuất</a>
+            <a href=login.html class="sgoutui">Đăng xuất</a>
         </div>
-        <div class="addressInfo">
-            <div id="addar">Thêm địa chỉ</div>
-            <div class="lstaddress">
-                <div id="adr1">
-                    <label>*Thành phố / Tỉnh </label>
-                    <input type="text">
+        <div class="choosecd">
+            <div id="pmhd">Phương thức thanh toán</div>
+            <div class="cdlst">
+                <div class="cdgp1">
+                    <div class="cdgr">
+                        <img src="lgImg/tcb.png" class="cdimg1">
+                        <div class="cdtxt1">TECHCOMBANK</div>
+                        <input type="radio" name="payment" class="rdo1">
+                    </div>
+                    <div class="cdgr">
+                        <img src="lgImg/momo.png" class="cdimg2">
+                        <div class="cdtxt2">MOMO</div>
+                        <input type="radio" name="payment" class="rdo2">
+                    </div>
                 </div>
-                <div id="adr2">
-                    <label>*Quận / Huyện / Thị xã </label>
-                    <input type="text">
-                </div>
-                <div id="adr3">
-                    <label>*Họ tên đầy đủ </label>
-                    <input type="text">
-                </div>
-                <div id="adr4">
-                    <label>*Số điện thoại </label>
-                    <input type="text">
-                </div>
-                <div id="adr5">
-                    <label id="extadr">-Mô tả thêm (nếu có) </label>
-                    <input type="text">
+                <div class="cdgp2">
+                    <div class="cdgr">
+                        <img src="lgImg/bidv.png" class="cdimg3">
+                        <div class="cdtxt3">BIDV</div>
+                        <input type="radio" name="payment" class="rdo3" checked>
+                    </div>
+                    <div class="cdgr">
+                        <img src="lgImg/add.png" class="cdimg4">
+                        <div class="cdtxt4">Phương thức khác</div>
+                    </div>
                 </div>
             </div>
-            <div class="setdf">
-                <input type="checkbox">
-                <span id="pickdf">Chọn làm địa chỉ mặc định</span>
-            </div>
-            <button type="submit" class="addrbt">Lưu địa chỉ</button>
+
+
         </div>
     </div>
+
 </div>
 <div class="FooterUi">
     <div class="footlft">
