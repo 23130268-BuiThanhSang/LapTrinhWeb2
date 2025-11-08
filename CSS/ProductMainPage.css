@@ -1,6 +1,7 @@
 body {
     margin: 0;
     font-family: 'Suggested Font Name', sans-serif;
+    background: #01A0DA;
 }
 .UpperPart {
     display: flex;
@@ -70,6 +71,9 @@ body {
     transform: scale(1.05);
 }
 .HighlightBox {
+    width: fit-content;
+    height: fit-content;
+    display: inline-block;
     box-shadow: 0 2px 6px rgba(0,0,0,0.3);
     border-radius: 10px;
     padding: 10px;
@@ -336,7 +340,8 @@ body {
 .TabWindow {
     width: 100%;
     height: 500px;
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
     position: relative;
     border: 1px solid #ccc;
 }
@@ -351,4 +356,104 @@ body {
     min-width: 100%;
     padding: 10px;
     box-sizing: border-box;
+    display: block;
 }
+
+.RatingSection {
+    width: 94.5%;
+    margin: 0 20px 20px 20px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    box-shadow: 2px 2px 6px rgba(0,0,0,0.3);
+    padding: 20px;
+    font-family: sans-serif;
+}
+
+.RatingSection h3 {
+    margin-bottom: 15px;
+    font-size: 20px;
+    color: #333;
+}
+
+.RatingSummary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #f8fcff;
+    border: 1px solid #cceaf8;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.AverageRating .Score {
+    font-size: 28px;
+    font-weight: bold;
+    color: #01A0DA;
+    margin-right: 5px;
+}
+
+.StarFilter {
+    border: 1px solid #01A0DA;
+    border-radius: 8px;
+    padding: 6px 10px;
+    color: #01A0DA;
+    background: white;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.Stars {
+    color: #01A0DA;
+    margin: 10px 0;
+}
+
+.ReviewList {
+    margin-top: 15px;
+}
+
+.ReviewItem {
+    border-top: 1px solid #eee;
+    padding: 15px 0;
+}
+
+.Reviewer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.Avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #01A0DA;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.ReviewDate {
+    color: gray;
+    font-size: 13px;
+    margin-left: auto;
+}
+
+.ReviewContent {
+    margin-left: 50px;
+    margin-top: 10px;
+    color: #333;
+    line-height: 1.5;
+}
+
+.ReviewImages img {
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
+    object-fit: cover;
+    border: 1px solid #ddd;
+}
+
