@@ -23,7 +23,6 @@
 }
 .infoac{
     padding-top: 43px;
-    margin-left: 10px;
     color: white;
 }
 .optac{
@@ -31,12 +30,26 @@
     display: flex;
     flex-direction: column;
 }
+.optac a:hover {
+    color: #01A0DA;
+}
 .tk{
     margin-left: 10px;
+    text-decoration: none;
+    color: black;
 }
+.tkad{
+    margin-left: 10px;
+}
+
 .tk i{
     font-size: 30px;
     text-align: center;
+}
+.tkad i{
+    font-size: 30px;
+    text-align: center;
+    color: #01A0DA;
 }
 .fa-user{
     margin-left: 3px;
@@ -49,7 +62,12 @@
 }
 .tktxt{
     margin-left: 50px;
-    transform: translateY(-26px);
+    transform: translateY(-23px);
+}
+.tktxtad{
+    margin-left: 50px;
+    transform: translateY(-23px);
+    color: #01A0DA;
 }
 .sgout{
     width: 100px;
@@ -59,12 +77,14 @@
     display: flex;
     text-align: center;
     justify-content: center;
-    padding-top: 5px;
+    padding-top: 8px;
     margin-left: 10px;
-    transform: translateY(170px);
+    transform: translateY(220px);
+    text-decoration: none;
+    color: black;
 }
 .wcac{
-    margin-left: 630px;
+    margin-left: 620px;
     transform: translateY(-300px);
     width: 700px;
 }
@@ -82,7 +102,7 @@
 .membercd{
     margin-left: 380px;
     width: 500px;
-    transform: translateY(-400px);
+    transform: translateY(-350px);
 }
 #mbcd{
     font-size: 35px;
@@ -149,14 +169,17 @@
 .addressInfo{
     margin-left: 370px;
     width: 1300px;
-    transform: translateY(-400px);
+    transform: translateY(-325px);
 }
 #addar{
     font-size: 35px;
+    transform: translateY(-20px);
+    margin-left: 10px;
 }
 .lstaddress{
     margin-top: 10px;
     font-size: 20px;
+    transform: translateY(-20px);
 }
 .lstaddress > div {
     margin-top: 20px;
@@ -167,7 +190,6 @@
     width: 1200px;
 }
 .setdf{
-    margin-top: 10px;
     font-size: 15px;
     margin-left: 5px;
 }
@@ -204,9 +226,11 @@
     display: flex;
     text-align: center;
     justify-content: center;
-    padding-top: 5px;
+    padding-top: 8px;
     margin-left: 10px;
     transform: translateY(240px);
+    text-decoration: none;
+    color: black;
 }
 .ctui{
     margin-left: 370px;
@@ -226,7 +250,7 @@
     font-size: 35px;
 }
 #btfstac{
-    margin-left: 320px;
+    margin-left: 30px;
     border-radius: 5px;
     color: white;
     background: #01A0DA;
@@ -284,8 +308,8 @@
     margin-left: 20px;
     font-size: 17px;
     padding: 3px;
-    transform: translateY(-8px);
-    height: 40px;
+    transform: translateY(-2px);
+    height: 30px;
     width: 60px;
 }
 .dbhtxt{
@@ -295,15 +319,116 @@
     display: flex;
     font-size: 20px;
     margin-left: 10px;
-    transform: translateY(-30px);
+    transform: translateY(-40px);
 }
 #rtop{
     margin-left: 15px;
     font-size: 17px;
     padding: 3px;
-    transform: translateY(-3px);
-
+    transform: translateY(-1px);
 }
+/*Credit Card*/
+.choosecd{
+    height: 600px;
+    transform: translate(380px, -350px);
+}
+#pmhd{
+    font-size: 35px;
+    width: 700px;
+}
+.cdlst{
+    margin-top: 10px;
+    width: 800px;
+    height: 480px;
+}
+.cdgr{
+    width: 350px;
+    height: 220px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    background: #E1FDFF;
+    border-radius: 10px;
+    margin-left: 20px;
+    margin-top: 20px;
+    transform: translateX(-20px);
+}
+.cdimg1{
+    width: 120px;
+    height: 120px;
+    margin-top: 45px;
+    margin-left: 15px;
+}
+.cdimg2{
+    width: 120px;
+    height: 120px;
+    margin-top: 45px;
+    transform: translateX(-45px);
+}
+.cdimg3{
+    width: 120px;
+    height: 120px;
+    margin-top: 50px;
+    margin-left: 15px;
+    transform: translateX(-55px);
+    border-radius: 15px;
+}
+.cdimg4{
+    width: 120px;
+    height: 120px;
+    margin-top: 45px;
+    transform: translateX(-10px);
+}
+.cdtxt1{
+    font-size: 20px;
+    margin-left: 15px;
+    transform: translate(1px, 47px);
+}
+.cdtxt2{
+    font-size: 20px;
+    margin-left: 15px;
+    transform: translate(-45px, 48px);
+}
+.cdtxt3{
+    font-size: 20px;
+    margin-left: 15px;
+    transform: translate(-45px, 49px);
+}
+.cdtxt4{
+    font-size: 20px;
+    margin-left: 15px;
+    transform: translate(-17px, 53px);
+}
+.rdo1{
+    width: 20px;
+    height: 20px;
+    display: flex;
+    transform: translate(-5px, 185px);
+}
+.rdo2{
+    width: 20px;
+    height: 20px;
+    display: flex;
+    transform: translate(50px, 185px);
+}
+.rdo3{
+    width: 20px;
+    height: 20px;
+    display: flex;
+    transform: translate(50px, 185px);
+}
+.rdom{
+    width: 20px;
+    height: 20px;
+    display: flex;
+}
+.cdgp1{
+    display: flex;
+}
+.cdgp2{
+    display: flex;
+}
+
 
 
 
