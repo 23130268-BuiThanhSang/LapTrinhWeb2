@@ -428,6 +428,49 @@
 .cdgp2{
     display: flex;
 }
+/*SECURITY*/
+.scgr{
+    width: 350px;
+    height: 220px;
+    background: #E1FDFF;
+    border-radius: 10px;
+    margin-left: 20px;
+    margin-top: 20px;
+    transform: translateX(-20px);
+}
+.scgr i{
+    font-size: 50px;
+    margin-top: 50px;
+    margin-left: 145px;
+}
+.sctxt1{
+    font-size: 30px;
+    margin-left: 15px;
+    transform: translate(23px, 20px);
+}
+.sctxt2{
+    font-size: 30px;
+    margin-left: 15px;
+    transform: translate(43px, 20px);
+}.sctxt3{
+     font-size: 30px;
+     margin-left: 15px;
+     transform: translate(43px, 20px);
+ }.sctxt4{
+      font-size: 30px;
+      margin-left: 15px;
+      transform: translate(50px, 20px);
+  }
+  .scud{
+      border: lightgrey solid;
+      border-radius: 10px;
+      width: 66px;
+      padding: 5px;
+      margin-top: 25px;
+      margin-left: 125px;
+  }
+
+
 
 
 
