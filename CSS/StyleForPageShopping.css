@@ -159,7 +159,7 @@ danh sách sản phẩm có trong trang giỏ hàng
     justify-content: space-between;
     align-items: center;
     font-family: sans-serif;
-   border: gray 1px solid;
+    border: gray 1px solid;
     border-radius: 8px;
     padding: 25px 15px 25px 15px;
 }
