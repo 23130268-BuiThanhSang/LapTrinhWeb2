@@ -74,6 +74,47 @@
     <a href="#">Giỏ Hàng</a>
 </nav>
 <div class="ShoppingCartForProduct">
+    <div id="voucherID" class="voucherUI">
+        <div class="voucherTxt">
+            <h2 id="vch2">Nhập Mã Voucher</h2>
+            <button onclick="closeVoucher()">X</button>
+        </div>
+        <div class="voucherExplain">Áp dụng Voucher để giảm phí vận chuyển, giá sản phẩm khi mua hàng trong thời gian giới hạn.</div>
+        <input type="text" class="searchVoucher" placeholder="Nhập mã Voucher">
+        <div class="scrollVc">
+            <div class="voucherInfo">
+                <div class="vcId">Voucher: 4U9W5G, Thời hạn: còn 8 giờ.</div>
+                <div class="vcInfo">Free ship với đơn hàng trên 100.000đ.</div>
+                <input type="checkbox" class="checkBx">
+            </div>
+            <div class="voucherInfo">
+                <div class="vcId">Voucher: 1X8J4K, Thời hạn: còn 1 ngày.</div>
+                <div class="vcInfo">Giảm 50.000đ với đơn hàng trên 150.000đ.</div>
+                <input type="checkbox" class="checkBx">
+            </div>
+            <div class="voucherInfo">
+                <div class="vcId">Voucher: 7P5B2Q, Thời hạn: còn 2 ngày.</div>
+                <div class="vcInfo">Giảm 30.000đ với đơn hàng trên 100.000đ.</div>
+                <input type="checkbox" class="checkBx">
+            </div>
+            <div class="voucherInfo">
+                <div class="vcId">Voucher: 1L9D3V, Thời hạn: còn 3 ngày.</div>
+                <div class="vcInfo">Giảm 40.000đ với đơn hàng trên 120.000đ.</div>
+                <input type="checkbox" class="checkBx">
+            </div>
+            <div class="voucherInfo">
+                <div class="vcId">Voucher: 5K2N4E, Thời hạn: còn 4 ngày.</div>
+                <div class="vcInfo">Giảm 60.000đ với đơn hàng trên 150.000đ.</div>
+                <input type="checkbox" class="checkBx">
+            </div>
+            <div class="voucherInfo">
+                <div class="vcId">Voucher: 9I2B4R, Thời hạn: còn 5 ngày.</div>
+                <div class="vcInfo">Giảm 20.000đ với đơn hàng trên 80.000đ.</div>
+                <input id="checkBxId" type="checkbox" class="checkBx">
+            </div>
+        </div>
+        <button id="approveVc">Áp dụng Voucher</button>
+    </div>
     <div class="headerShoppingCart">
         GIỎ HÀNG
     </div>
@@ -177,7 +218,7 @@
                 <label for="voucher">Nhập mã voucher của bạn</label>
                 <div class="VoucherInputBox">
                     <input type="text" id="voucher" placeholder="Nhập mã voucher">
-                    <button>›</button>
+                    <button onclick="showVoucher()">›</button>
                 </div>
             </div>
             <div class="OrderButtons">
@@ -211,5 +252,6 @@
         </div>
     </div>
 </div>
+<script src="JS/Voucher.js"></script>
 </body>
 </html>
