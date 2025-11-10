@@ -97,6 +97,7 @@ danh sách sản phẩm có trong trang giỏ hàng
     border: 1px solid #ccc;
     border-radius: 4px;
     overflow: hidden;
+    text-decoration: none;
 }
 .VoucherInputBox input {
     flex: 1;
@@ -117,6 +118,7 @@ danh sách sản phẩm có trong trang giỏ hàng
 .VoucherInputBox button:hover {
     background: #0f5ec0;
 }
+
 .OrderButtons {
     display: flex;
     flex-direction: column;
@@ -297,4 +299,89 @@ danh sách sản phẩm có trong trang giỏ hàng
 }
 .ShoppingCart i{
     color: #1a73e8;
+}
+
+/*Voucher*/
+.blur{
+    filter: blur(3px);
+}
+.voucherUI{
+    display: none;
+    position: absolute;
+    width: 435px;
+    height: 624px;
+    background: #D6FEFF;
+    z-index: 10;
+    transform: translateX(957px);
+    border-radius: 15px;
+    margin-top: 20px;
+}
+.voucherTxt{
+    display: flex;
+    margin-left: 25px;
+    color: #3B42FF;
+}
+.voucherTxt button{
+    height: 40px;
+    width: 40px;
+    border-radius: 10px;
+    background: #64CCFF;
+    font-size: 25px;
+    padding: 0;
+    transform: translate(155px,15px);
+    color: white;
+    border: white solid 1px;
+}
+.voucherTxt button:hover{
+    color: black;
+    border: black solid 1px;
+}
+.voucherExplain{
+    font-family: sans-serif;
+    font-size: 17px;
+    margin: 24px;
+    transform: translateY(-15px);
+}
+.searchVoucher{
+    width: 370px;
+    height: 40px;
+    border: black solid 1px;
+    margin-left: 25px;
+    transform: translateY(-25px);
+    padding-left: 10px;
+}
+.voucherInfo{
+    width: 360px;
+    height: 40px;
+    font-size: 17px;
+    margin-top: 15px;
+    border: black solid 1px;
+    padding: 10px;
+    transform: translate(25px,-20px);
+    background: linear-gradient(to right, #31BFFF, #7EDAFF);
+}
+.checkBx{
+    width: 20px;
+    height: 20px;
+    display: flex;
+    margin-left: 340px;
+    transform: translateY(-33px);
+}
+#approveVc{
+    width: 170px;
+    height: 40px;
+    border-radius: 10px;
+    margin-left: 130px;
+    background: #DEDEDE;
+    color: #6B6B6B;
+    transform: translateY(10px);
+    border: #6B6B6B solid 1px;
+}
+.scrollVc{
+    width: 420px;
+    height: 360px;
+    overflow: scroll;
+    overflow-x: hidden;
+
+
 }
