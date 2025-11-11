@@ -732,9 +732,7 @@ kết thúc */
 /*Sub Categories*/
 .SubCategories{
     width: 100%;
-    font-size: 30px;
-    font-style: italic;
-    font-weight: bolder;
+
 }
 .NewCollection{
     background: white;
@@ -767,6 +765,9 @@ kết thúc */
 .SubCategoriesTitleContainer{
     padding-top: 20px;
     padding-left: 20px;
+    font-size: 30px;
+    font-style: italic;
+    font-weight: bolder;
 }
 .SubCategoriesPageLinkButton{
     float: right;
