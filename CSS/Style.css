@@ -160,6 +160,42 @@ h2{
     margin-left: 15px;
     transform: translateY(1px);
 }
+/*SupportCustomer*/
+.bchSp{
+    background: #C0FDFF;
+    border-radius: 20px;
+    padding: 30px;
+    height: 320px;
+    width: 350px;
+    margin-top: 10px;
+    margin-left: 70px;
+}
+.bchSp i{
+    background: #66C9FF;
+    font-size: 30px;
+    border: black solid 1px;
+    border-radius: 10px;
+    padding: 10px;
+    transform: translate(150px, 250px);
+}
+.bchSp i:hover{
+    cursor: pointer;
+}
+.splst{
+    font-size: 25px;
+    transform: translateY(-40px);
+}
+.spbt{
+    display: flex;
+    gap: 10px;
+}
+.spSocial{
+    font-size: 25px;
+    margin-top: 55px;
+    transform: translateX(70px);
+}
+
+
 
 #HomePageBody {
     font-family: 'Suggested Font Name', sans-serif;
