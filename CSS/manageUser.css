@@ -1,14 +1,13 @@
 body{
     margin:0;
 }
-.ManagerUser{
-    height: 760px;
-}
+
 .acclf{
     background: #F2F2F2;
     float: left;
-    height: 760px;
+    height: 730px;
     font-family: sans-serif;
+    background: lightcyan;
 }
 .nameAdmin{
     font-size: 25px;
@@ -79,40 +78,41 @@ body{
     justify-content: center;
     padding-top: 8px;
     margin-left: 10px;
-    transform: translateY(360px);
+    transform: translateY(330px);
     text-decoration: none;
     color: black;
 }
 .mangeUserUi{
     transform: translate(20px,20px);
 }
+
 #mangeUserHeader{
     font-size: 35px;
 }
 #adminSearch{
     font-size: 20px;
-    width: 1248px;
+    width: 1100px;
     height: 40px;
     margin-top: 20px;
     padding-left: 10px;
     border: black solid 1px;
 }
 .typeUser{
-    width: 1250px;
+    width: 1100px;
     height: 35px;
     border: black solid 1px;
     margin-top: 20px;
     background: lightcyan;
     display: flex;
     font-size: 20px;
-    gap: 135px;
+    gap: 100px;
     padding: 5px;
 }
 .typeUser #usTx{
     transform: translateX(30px);
 }
 .userBox{
-    width: 1250px;
+    width: 1100px;
     height: 70px;
     border: black solid 1px;
     margin-top: 20px;
