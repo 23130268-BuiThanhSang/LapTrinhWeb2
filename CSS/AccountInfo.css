@@ -1,4 +1,7 @@
 /* ACCOUNT INFO */
+body{
+    margin:0;
+}
 .accInfo{
     height: 600px;
     background: white;

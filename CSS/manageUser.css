@@ -1,0 +1,151 @@
+body{
+    margin:0;
+}
+.ManagerUser{
+    height: 760px;
+}
+.acclf{
+    background: #F2F2F2;
+    float: left;
+    height: 760px;
+    font-family: sans-serif;
+}
+.nameAdmin{
+    font-size: 25px;
+}
+.avtac{
+    background: #01A0DA;
+    width: 350px;
+    height: 120px;
+    display: flex;
+}
+.avtr{
+    width: 100px;
+    height: 100px;
+    padding-top: 10px;
+}
+.infoac{
+    padding-top: 43px;
+    color: white;
+}
+.optac{
+    margin: 15px;
+    display: flex;
+    flex-direction: column;
+}
+.optac a:hover {
+    color: #01A0DA;
+}
+.tk{
+    margin-left: 10px;
+    text-decoration: none;
+    color: black;
+}
+.tkad{
+    margin-left: 10px;
+    text-decoration: none;
+}
+.tk i{
+    font-size: 30px;
+    text-align: center;
+}
+.tkad i{
+    font-size: 30px;
+    text-align: center;
+    color: #01A0DA;
+}
+.fa-box-open{
+    transform: translateX(-5px);
+}
+.fa-address-card{
+    transform: translateX(-4px);
+}
+.tktxt{
+    margin-left: 50px;
+    transform: translateY(-23px);
+}
+.tktxtad{
+    margin-left: 50px;
+    transform: translateY(-23px);
+    color: #01A0DA;
+}
+.sgoutAdmin{
+    width: 100px;
+    height: 30px;
+    border: grey solid;
+    border-radius: 10px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    padding-top: 8px;
+    margin-left: 10px;
+    transform: translateY(360px);
+    text-decoration: none;
+    color: black;
+}
+.mangeUserUi{
+    transform: translate(20px,20px);
+}
+#mangeUserHeader{
+    font-size: 35px;
+}
+#adminSearch{
+    font-size: 20px;
+    width: 1248px;
+    height: 40px;
+    margin-top: 20px;
+    padding-left: 10px;
+    border: black solid 1px;
+}
+.typeUser{
+    width: 1250px;
+    height: 35px;
+    border: black solid 1px;
+    margin-top: 20px;
+    background: lightcyan;
+    display: flex;
+    font-size: 20px;
+    gap: 135px;
+    padding: 5px;
+}
+.typeUser #usTx{
+    transform: translateX(30px);
+}
+.userBox{
+    width: 1250px;
+    height: 70px;
+    border: black solid 1px;
+    margin-top: 20px;
+    background: lightgreen;
+    display: flex;
+    font-size: 25px;
+    padding: 5px;
+}
+.userGroup{
+    display: flex;
+    margin-top: 20px;
+}
+.userTxt{
+    font-size: 20px;
+}
+.userTxt1{
+    font-size: 20px;
+    transform: translateX(30px);
+}
+.userTxt2{
+    font-size: 20px;
+    transform: translateX(140px);
+}
+.userTxt3{
+    font-size: 20px;
+    transform: translateX(320px);
+}.userTxt4{
+     font-size: 20px;
+     transform: translateX(500px);
+ }
+.userTxt5{
+    font-size: 20px;
+    transform: translateX(690px);
+}
+
+
