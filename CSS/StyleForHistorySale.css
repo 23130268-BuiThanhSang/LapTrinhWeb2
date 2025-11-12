@@ -1,0 +1,84 @@
+.body{
+    font-family: sans-serif;
+    margin: 0;
+}
+
+.HistorySale{
+    color:deepskyblue;
+}
+
+.BodyHistorySale{
+    margin-left: 350px;
+    height: 600px;
+    padding:20px;
+}
+.ButtonForAllHistorySale{
+    background: white;
+    display: flex;
+    justify-content:flex-start;
+    padding: 5px 0 30px 5px;
+}
+.ButtonDeleteHistory{
+    background: white;
+    border-radius:10px;
+}
+.ButtonDeleteHistory:active{
+    color: white;
+    background: #0f5ec0;
+
+}
+.ListItemProductInHistorySale{
+
+    height: 500px;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+}
+.ItemProductInHistorySale{
+    background:#dddddd;
+    display: flex;
+    justify-content:space-between;
+    padding:10px;
+    margin: 10px;
+    border-radius:10px;
+    align-items: center;
+}
+.ItemProductInHistorySale img{
+    width:80px;
+    height:80px;
+    border-radius:10px;
+}
+.InforProduct{
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+    flex:1;
+    padding-left:20px;
+}
+.NameProduct{
+    font-weight: bold;
+    font-size:17px;
+    font-family: sans-serif;
+}
+.BrandProduct{
+    font-weight: 500;
+    font-size:15px;
+    font-family: sans-serif;
+    color: #999999;
+}
+.ButtonControl{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+.ButtonControl button{
+    border-radius: 10px;
+    padding: 5px 10px;
+}
+.ButtonDeleteItemProduct:active{
+ color: white;
+    background: #EE2F36;
+}
+.Review:active{
+    color: white;
+    background: #0f5ec0;
+}
