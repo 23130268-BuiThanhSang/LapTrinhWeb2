@@ -6,6 +6,7 @@ html, body {
 .AccountLeft{
     background: #F2F2F2;
     float: left;
+    width: 350px;
     height: 730px;
     font-family: sans-serif;
     background: lightcyan;
@@ -34,7 +35,7 @@ html, body {
     flex-direction: column;
 
 }
-.AccountLeftOption:hover .OptionIcon{
+.AccountLeftOption a:hover{
     cursor: pointer;
     color: #01A0DA;
 }
@@ -75,24 +76,24 @@ html, body {
 .sgoutAdmin{
     width: 100px;
     height: 30px;
-    border: black solid 1px;
+    border: black solid;
     border-radius: 10px;
     display: flex;
     text-align: center;
     justify-content: center;
     padding-top: 8px;
     margin-left: 10px;
-    transform: translateY(330px);
+    transform: translateY(380px);
     text-decoration: none;
-    color: white;
-    background: #01A0DA;
 }
+
 .mangeUserUi{
-    transform: translate(20px,20px);
+    transform: translate(370px,-300px);
 }
 
 #mangeUserHeader{
     font-size: 35px;
+    width: 700px;
 }
 #adminSearch{
     font-size: 20px;
@@ -115,10 +116,10 @@ html, body {
 }
 .typeUser #userTx{ transform: translateX(30px); }
 .typeUser #userId{ transform: translateX(40px); }
-.typeUser #userMember{ transform: translateX(40px); }
-.typeUser #userPay{ transform: translateX(20px); }
+.typeUser #userMember{ transform: translateX(45px); }
+.typeUser #userPay{ transform: translateX(23px); }
 .typeUser #userActivity{ transform: translateX(-10px); }
-.typeUser #userStatus{ transform: translateX(-20px); }
+.typeUser #userStatus{ transform: translateX(-23px); }
 .userBox{
     width: 1110px;
     height: 70px;
@@ -141,6 +142,5 @@ html, body {
 .userTxt2 { flex: 10%; }
 .userTxt3 { flex: 10%; }
 .userTxt4 { flex: 12%; }
-.userTxt5 { flex: 7%; }
-
+.userTxt5 { flex: 3%; }
 
