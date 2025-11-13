@@ -1,14 +1,14 @@
 body {
     margin: 0;
     font-family: 'Suggested Font Name', sans-serif;
-    background: #01A0DA;
+    background: #B2E9FF;
 }
 .UpperPart {
     display: flex;
     justify-content: center;
     gap: 20px;
     padding: 20px;
-    background: #01A0DA;
+    background: #B2E9FF;
 }
 
 .ProductPreview {
@@ -302,7 +302,7 @@ body {
 .LowerPart {
     display: flex;
     width: 100%;
-    background: #01A0DA;
+    background: #B2E9FF;
     height: 600px;
 }
 

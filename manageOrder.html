@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="CSS/manageUser.css">
+    <link rel="stylesheet" href="CSS/Style.css">
+    <link rel="stylesheet" href="CSS/manageOrder.css">
+</head>
+<body>
+<div class="MainUI">
+    <div class="AccountLeft">
+        <div class="AvatarAccount">
+            <img src="lgImg/avt.png" class="avtr">
+            <div class="AccountName">
+                <div class="nameAdmin">Admin</div>
+                <div class="stk">Quản trị viên</div>
+            </div>
+        </div>
+        <div class="AccountLeftOption">
+            <a href="accountUI.html" class="NameOptionBold">
+                <i class="fa-solid fa-user"></i>
+                <div class="NameOptionBoldText">Quản lí người dùng</div>
+            </a>
+            <a href="address.html" class="OptionIcon">
+                <i class="fa-solid fa-box-open"></i>
+                <div class="NameOption">Quản lí sản phẩm</div>
+            </a>
+            <a href="PageShopping.html" class="OptionIcon">
+                <i class="fa-solid fa-box"></i>
+                <div class="NameOption">Quản lí đơn hàng</div>
+            </a>
+            <a href="login.html" class="sgoutAdmin">Đăng xuất</a>
+        </div>
+    </div>
+    <div class="OrderManagerUI">
+        <div class="topRow">
+            <div class="topBox leftBox">
+                <p class = "BoxTitle">Tổng Doanh Thu</p>
+                <a class = "DetailPageLink" href="">Xem chi tiết</a>
+                <div class="NumberContainer">
+                <div class="IncomeDisplay">2034076000</div><span class = "CurrencyValue">(vnd)</span>
+                </div>
+            </div>
+            <div class="topBox rightBox">
+                <p class = "BoxTitle">Đơn Đã Bán</p>
+                <a class = "DetailPageLink" href="">Xem chi tiết</a>
+                <div class="NumberContainer">
+                <div class="TotalOrderDisplay">1836</div><span class = "CurrencyValue">(đơn)</span>
+                </div>
+            </div>
+        </div>
+        <div class="bottomBox">
+            <p class = "BoxTitle">Đơn Hàng Đang Hoạt Động</p>
+            <a class = "DetailPageLink" href="">Xem chi tiết</a>
+            <div class = OrdersDisplay>
+                <div class="OrderItem">
+                    <div class="OrderHeader">
+                        <span class="OrderID">#ORD-10234</span>
+                        <span class="OrderDate">2025-11-13</span>
+                        <span class="OrderStatus status-cancelled">Cancelled</span>
+                    </div>
+
+                    <div class="OrderSummary">
+                        <p class="CustomerName">Customer_id: <span>Nguyen Van A</span></p>
+                        <p class="OrderTotal">Total: <span>1,250,000 VND</span></p>
+                        <p class="ItemsCount">Items: <span>3</span></p>
+                    </div>
+                </div>
+                <div class="OrderItem">
+                    <div class="OrderHeader">
+                        <a class="OrderID">#ORD-10234</a>
+                        <span class="OrderDate">2025-11-13</span>
+                        <span class="OrderStatus status-processing">Processing</span>
+                    </div>
+
+                    <div class="OrderSummary">
+                        <p class="CustomerName">Customer_id: <span>Nguyen Van A</span></p>
+                        <p class="OrderTotal">Total: <span>1,250,000 VND</span></p>
+                        <p class="ItemsCount">Items: <span>3</span></p>
+                    </div>
+                </div>
+                <div class="OrderItem">
+                    <div class="OrderHeader">
+                        <a class="OrderID">#ORD-10234</a>
+                        <span class="OrderDate">2025-11-13</span>
+                        <span class="OrderStatus status-delivered">Delivered</span>
+                    </div>
+
+                    <div class="OrderSummary">
+                        <p class="CustomerName">Customer_id: <span>Nguyen Van A</span></p>
+                        <p class="OrderTotal">Total: <span>1,250,000 VND</span></p>
+                        <p class="ItemsCount">Items: <span>3</span></p>
+                    </div>
+                </div>
+                <div class="OrderItem">
+                    <div class="OrderHeader">
+                        <a class="OrderID">#ORD-10234</a>
+                        <span class="OrderDate">2025-11-13</span>
+                        <span class="OrderStatus status-pending">Pending</span>
+                    </div>
+
+                    <div class="OrderSummary">
+                        <p class="CustomerName">Customer_id: <span>Nguyen Van A</span></p>
+                        <p class="OrderTotal">Total: <span>1,250,000 VND</span></p>
+                        <p class="ItemsCount">Items: <span>3</span></p>
+                    </div>
+                </div>
+                <div class="OrderItem">
+                    <div class="OrderHeader">
+                        <a class="OrderID">#ORD-10234</a>
+                        <span class="OrderDate">2025-11-13</span>
+                        <span class="OrderStatus status-delivered">Delivered</span>
+                    </div>
+
+                    <div class="OrderSummary">
+                        <p class="CustomerName">Customer_id: <span>Nguyen Van A</span></p>
+                        <p class="OrderTotal">Total: <span>1,250,000 VND</span></p>
+                        <p class="ItemsCount">Items: <span>3</span></p>
+                    </div>
+                </div>
+                <div class="OrderItem">
+                    <div class="OrderHeader">
+                        <a class="OrderID">#ORD-10234</a>
+                        <span class="OrderDate">2025-11-13</span>
+                        <span class="OrderStatus status-delivered">Delivered</span>
+                    </div>
+
+                    <div class="OrderSummary">
+                        <p class="CustomerName">Customer_id: <span>Nguyen Van A</span></p>
+                        <p class="OrderTotal">Total: <span>1,250,000 VND</span></p>
+                        <p class="ItemsCount">Items: <span>3</span></p>
+                    </div>
+                </div>
+                <div class="OrderItem">
+                    <div class="OrderHeader">
+                        <a class="OrderID">#ORD-10234</a>
+                        <span class="OrderDate">2025-11-13</span>
+                        <span class="OrderStatus status-delivered">Delivered</span>
+                    </div>
+
+                    <div class="OrderSummary">
+                        <p class="CustomerName">Customer_id: <span>Nguyen Van A</span></p>
+                        <p class="OrderTotal">Total: <span>1,250,000 VND</span></p>
+                        <p class="ItemsCount">Items: <span>3</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+
