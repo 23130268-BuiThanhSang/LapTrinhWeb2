@@ -28,10 +28,7 @@
 
 }
 .ListItemProductInHistorySale{
-
     height: 500px;
-    //overflow-y: scroll;
-    scroll-behavior: smooth;
 }
 .ItemProductInHistorySale{
     background:#dddddd;
