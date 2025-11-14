@@ -382,6 +382,73 @@ danh sách sản phẩm có trong trang giỏ hàng
     height: 360px;
     overflow: scroll;
     overflow-x: hidden;
-
-
 }
+/*Rating*/
+.ratingUI{
+    display: none;
+    position: absolute;
+    width: 435px;
+    height: 500px;
+    background: #D6FEFF;
+    z-index: 10;
+    transform: translate(716px, -606px);
+    border-radius: 15px;
+    margin-top: 70px;
+}
+#approveRating{
+    width: 170px;
+    height: 40px;
+    border-radius: 10px;
+    margin-left: 140px;
+    background: #31BFFF;
+    transform: translateY(80px);
+    border: #6B6B6B solid 1px;
+    color: white;
+}
+.ratingTxt{
+    display: flex;
+    color: #3B42FF;
+    margin-left: 110px;
+    border-bottom: grey 1px;
+}
+
+.ratingTxt button{
+    height: 30px;
+    width: 30px;
+    border-radius: 10px;
+    background: #64CCFF;
+    font-size: 25px;
+    padding: 0;
+    transform: translate(50px,15px);
+    color: white;
+    border: white solid 1px;
+}
+.ratingTxt button:hover{
+    color: black;
+    border: black solid 1px;
+}
+.addComment{
+    width: 370px;
+    height: 150px;
+    border: black solid 1px;
+    margin-left: 30px;
+    transform: translateY(50px);
+    padding-left: 10px;
+    font-size: 20px;
+    resize: none;
+}
+.starRating{
+    gap: 15px;
+    font-size: 40px;
+    margin-left: 90px;
+    color: #FFF337;
+    transform: translateY(20px);
+}
+.RatingInfo{
+    font-size: 22px;
+    width: 380px;
+    margin-left: 37px;
+    word-wrap: break-word;
+}
+
+
