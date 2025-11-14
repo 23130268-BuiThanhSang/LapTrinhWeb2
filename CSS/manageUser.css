@@ -83,17 +83,20 @@ html, body {
     justify-content: center;
     padding-top: 8px;
     margin-left: 10px;
-    transform: translateY(380px);
+    transform: translateY(330px);
     text-decoration: none;
 }
-
-.mangeUserUi{
-    transform: translate(370px,-300px);
+.ManagerUser{
+    display: flex;
+}
+.manageUserUi{
+    transform: translate(370px,-320px);
 }
 
 #mangeUserHeader{
     font-size: 35px;
     width: 700px;
+
 }
 #adminSearch{
     font-size: 20px;
@@ -129,13 +132,15 @@ html, body {
     display: flex;
     padding: 5px;
     box-sizing: border-box;
+    border-radius: 10px;
 }
 .userGroup{
     display: flex;
     width: 100%;
-    height: 100%;                /* TÍCH: sẽ bằng 70px của .userBox */
-    align-items: center;         /* canh dọc giữa */
+    height: 100%;
+    align-items: center;
     gap: 10px;
+    border-radius: 10px;
 }
 .userTxt  { flex: 5%; padding-left: 10px; }
 .userTxt1 { flex: 7%; }
@@ -143,4 +148,14 @@ html, body {
 .userTxt3 { flex: 10%; }
 .userTxt4 { flex: 12%; }
 .userTxt5 { flex: 3%; }
-
+.choosePage{
+    display: flex;
+    gap: 20px;
+    font-size: 25px;
+    margin-top: 15px;
+    transform: translateX(480px);
+}
+.pageInfo:hover{
+    cursor: pointer;
+    color: #01A0DA;
+}
