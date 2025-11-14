@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="CSS/manageUser.css">
+    <link rel="stylesheet" href="CSS/Style.css">
+    <link rel="stylesheet" href="CSS/manageOrder.css">
+    <link rel="stylesheet" href="CSS/StyleForManageProduct.css">
+</head>
+<body>
+<div class="MainUI">
+    <div class="AccountLeft">
+        <div class="AvatarAccount">
+            <img src="lgImg/avt.png" class="avtr">
+            <div class="AccountName">
+                <div class="nameAdmin">Admin</div>
+                <div class="stk">Quản trị viên</div>
+            </div>
+        </div>
+        <div class="AccountLeftOption">
+            <a href="accountUI.html" class="NameOptionBold">
+                <i class="fa-solid fa-user"></i>
+                <div class="NameOptionBoldText">Quản lí người dùng</div>
+            </a>
+            <a href="address.html" class="OptionIcon IconManageProduct">
+                <i class="fa-solid fa-box-open"></i>
+                <div class="NameOption">Quản lí sản phẩm</div>
+            </a>
+            <a href="PageShopping.html" class="OptionIcon">
+                <i class="fa-solid fa-box"></i>
+                <div class="NameOption">Quản lí đơn hàng</div>
+            </a>
+            <a href="PageShopping.html" class="OptionIcon IconmanageView">
+                <i class="fa-solid fa-eye"></i>
+                <div class="NameOption">Quản lí giao diện</div>
+            </a>
+            <a href="login.html" class="sgoutAdmin">Đăng xuất</a>
+        </div>
+    </div>
+    <div class="MainManagerForProduct">
+        <div class="HeaderForManageProduct">Quản Lý Sản Phẩm</div>
+        <div class="DisplayToTal">
+            <div class="DisplayQuantityProduct">
+                <div class="TitleForQuantity">
+                    Sản Phẩm Trong Cửa Hàng
+                </div>
+                <div class="QuantityProduct">
+                    500
+                </div>
+                <button class="ActionButton">
+                    Thao Tác
+                </button>
+            </div>
+            <div class="DisplayQuantityProduct">
+                <div class="TitleForQuantity">
+                    Sản Phẩm Giảm Giá
+                </div>
+                <div class="QuantityProduct">
+                    300
+                </div>
+                <button class="ActionButton">
+                    Thao Tác
+                </button>
+            </div>
+            <div class="DisplayQuantityProduct">
+                <div class="TitleForQuantity">
+                Sản Phẩm Sắp Hết Hạn
+                </div>
+                <div class="QuantityProduct">
+                    30
+                </div>
+                <button class="ActionButton">
+                    Thao Tác
+                </button>
+            </div>
+        </div>
+        <div class="BlockTableForDisplayQuantityProduct">
+            <div class="TiTlefortable">
+                Quản Lý Sản Phẩm Trong kho
+            </div>
+            <div class="ControlProduct">
+                <button class="ButtonControlProduct">
+                    Thêm sản phẩm
+                </button>
+                <div class="SearchBox">
+                    <input type="text" placeholder="Search..." class="SearchBar">
+                    <i class="fa fa-search"></i>
+                </div>
+
+            </div>
+            <div class="TableWrapper">
+                <table class="TableProductManage">
+                    <thead>
+                    <th>Mã Sản phẩm</th>
+                    <th>Tên Sản Phẩm</th>
+                    <th>Phân Loại</th>
+                    <th>Giá Bán</th>
+                    <th>Số Lượng</th>
+                    <th>Ngày Nhập kho</th>
+                    <th>Hạn Sử Dụng</th>
+                    <th>Trạng Thái</th>
+                    <th>Hành Động</th>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>101</td>
+                        <td>Áo ADIDAS</td>
+                        <td>Đồ thể thao</td>
+                        <td>200.000đ</td>
+                        <td>50</td>
+                        <td>23/2/2023</td>
+                        <td>Không</td>
+                        <td>Hiển thị</td>
+                        <td>
+                            <button class="ButtonEditProduct">Sửa</button>
+                            <button class="ButtonDeleteProduct">Xóa</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>101</td>
+                        <td>Áo ADIDAS</td>
+                        <td>Đồ thể thao</td>
+                        <td>200.000đ</td>
+                        <td>50</td>
+                        <td>23/2/2023</td>
+                        <td>Không</td>
+                        <td>Hiển thị</td>
+                        <td>
+                            <button class="ButtonEditProduct">Sửa</button>
+                            <button class="ButtonDeleteProduct">Xóa</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>101</td>
+                        <td>Áo ADIDAS</td>
+                        <td>Đồ thể thao</td>
+                        <td>200.000đ</td>
+                        <td>50</td>
+                        <td>23/2/2023</td>
+                        <td>Không</td>
+                        <td>Hiển thị</td>
+                        <td>
+                            <button class="ButtonEditProduct">Sửa</button>
+                            <button class="ButtonDeleteProduct">Xóa</button>
+                        </td>
+                    </tr>
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+
