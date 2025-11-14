@@ -4,12 +4,11 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="icon/fontawesome-free-6.4.0-web/css/all.min.css">
-
-
-
     <link rel="stylesheet" href="CSS/AccountInfo.css">
     <link rel="stylesheet" href="CSS/Style.css">
     <link rel="stylesheet" href="CSS/StyleForHistorySale.css">
+    <link rel="stylesheet" href="CSS/StyleForPageShopping.css">
+    <script src="JS/Voucher.js"></script>
 
 </head>
 <body>
@@ -72,32 +71,32 @@
     </div>
 </div>
 <div class="accInfo">
-    <div class="acclf">
-        <div class="avtac">
+    <div class="AccountLeft">
+        <div class="AvatarAccount">
             <img src="lgImg/avt.png" class="avtr">
-            <div class="infoac">
+            <div class="AccountName">
                 <div class="nameus">Edward Alter</div>
                 <div class="stk">Số tài khoản: 3820581034851</div>
             </div>
         </div>
-        <div class="optac">
-            <a href="accountUI.html" class="tk">
+        <div class="AccountLeftOption">
+            <a href="accountUI.html" class="OptionIcon">
                 <i class="fa-solid fa-user"></i>
-                <div class="tktxt">Tài khoản</div>
+                <div class="NameOption">Tài khoản</div>
             </a>
-            <a href="address.html" class="tk">
+            <a href="address.html" class="OptionIcon">
                 <i class="fa-solid fa-house"></i>
-                <div class="tktxt">Địa chỉ của tôi</div>
+                <div class="NameOption">Địa chỉ của tôi</div>
             </a>
-            <div class="tk HistorySale">
+            <div class="NameOptionBold">
                 <i class="fa-solid fa-cart-shopping"></i>
-                <div class="tktxt">Lịch sử mua hàng</div>
+                <div class="NameOptionBoldText">Lịch sử mua hàng</div>
             </div>
-            <a href="memberCard.html" class="tk">
+            <a href="memberCard.html" class="OptionIcon">
                 <i class="fa-solid fa-address-card"></i>
-                <div class="tktxt">Thẻ thành viên</div>
+                <div class="NameOption">Thẻ thành viên</div>
             </a>
-            <a href=login.html class="sgout">Đăng xuất</a>
+            <a href=login.html class="OptionSignOut">Đăng xuất</a>
         </div>
 
     </div>
@@ -113,7 +112,7 @@
                     <div class="BrandProduct">SCULPTURE</div>
                 </div>
                 <div class="ButtonControl">
-                    <button class="Review">Đánh Giá</button>
+                    <button onclick="showVoucher()" class="Review">Đánh Giá</button>
                     <button class="ButtonDeleteItemProduct">Xóa</button>
 
                 </div>
@@ -125,12 +124,28 @@
                     <div class="BrandProduct">SCULPTURE</div>
                 </div>
                 <div class="ButtonControl">
-                    <button class="Review">Đánh Giá</button>
+                    <button onclick="showVoucher()" class="Review">Đánh Giá</button>
                     <button class="ButtonDeleteItemProduct">Xóa</button>
 
                 </div>
             </div>
 
+        </div>
+        <div id="voucherID" class="ratingUI">
+            <div class="ratingTxt">
+                <h2 id="vch2">Đánh Giá Sản Phẩm</h2>
+                <button onclick="closeVoucher()">X</button>
+            </div>
+            <div class="RatingInfo">Đánh giá của bạn giúp chúng tôi cải thiện chất lượng và trải nghiệm sản phẩm, hãy chia sẽ cảm nhận của bạn.</div>
+            <div class="starRating">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+            </div>
+            <textarea class="addComment" placeholder="Chia sẻ đánh giá của bạn..."></textarea>
+            <button id="approveRating">Gửi đánh giá</button>
         </div>
     </div>
 </div>
@@ -157,6 +172,7 @@
         </div>
     </div>
 </div>
+
 </body>
 </html>
 
