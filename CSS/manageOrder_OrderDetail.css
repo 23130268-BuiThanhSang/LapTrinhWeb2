@@ -1,0 +1,163 @@
+/* ===== MAIN CONTAINER ===== */
+.OrderManageContainer {
+    width: 100%;
+    padding-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    height: 400px;
+}
+
+
+/* ===== ORDER HEADER ===== */
+.OrderHeader {
+    background: #ffffff;
+    padding: 10px 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+}
+
+.OrderTitle {
+    margin: 0;
+    margin-bottom: 8px;
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.OrderID,
+.OrderDate {
+    margin: 3px 0;
+    font-size: 15px;
+}
+
+.OrderID span,
+.OrderDate span {
+    font-weight: 600;
+}
+
+.OrderStatusBox {
+    margin-top: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.StatusSelect {
+    padding: 6px 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+}
+
+
+/* ===== CUSTOMER INFO ===== */
+.CustomerBox {
+    background: #ffffff;
+    padding: 20px 25px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+}
+
+.CustomerBox h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.CustomerBox p {
+    margin: 4px 0;
+    font-size: 15px;
+}
+
+
+/* ===== ORDER ITEMS ===== */
+.OrderItemsContainer {
+    background: #ffffff;
+    padding: 20px 25px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+}
+
+.OrderItemsContainer h3 {
+    display: inline-block;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+.StoredCheckButton {
+    float: right;
+}
+.AllItemsContainer{
+    margin: 0;
+    padding: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 130px;
+}
+.OrderDetailItem {
+    display: grid;
+    grid-template-columns: 1fr 60px 150px 90px 80px;
+    padding: 10px 0;
+    border-bottom: 1px solid #e5e5e5;
+    font-size: 15px;
+}
+
+.OrderDetailItem:last-child {
+    border-bottom: none;
+}
+
+.ItemName {
+    font-weight: 500;
+}
+
+.ItemQty {
+    text-align: center;
+}
+
+.ItemPrice {
+    text-align: center;
+    font-weight: 600;
+}
+.StoredStatus{
+    text-align: right;
+}
+
+.OrderTotalBox {
+    background: #ffffff;
+    padding: 20px 25px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    font-size: 16px;
+}
+
+.OrderTotalBox p {
+    margin: 6px 0;
+}
+
+.FinalTotal {
+    font-size: 18px;
+    font-weight: 700;
+    margin-top: 10px;
+}
+
+.ActionButtons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.ActionButtons button {
+    padding: 10px 18px;
+    font-size: 15px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.SaveBtn {
+    background: #4CAF50;
+    color: white;
+}
+.SaveBtn:hover {
+    background: #43a047;
+}

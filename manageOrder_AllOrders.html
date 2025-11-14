@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="CSS/manageUser.css">
     <link rel="stylesheet" href="CSS/Style.css">
     <link rel="stylesheet" href="CSS/manageOrder.css">
+    <link rel="stylesheet" href="CSS/manageOrder_AllOrders.css">
 </head>
 <body>
 <div class="MainUI">
@@ -36,20 +37,54 @@
     </div>
     <div class="OrderManagerUI">
         <div class="topRow">
-            <div class="topBox leftBox">
-                <p class = "BoxTitle">Tổng Doanh Thu / Đơn Hàng</p>
-                <a class = "DetailPageLink" href="manageOrder_IncomeDetail.html">Xem chi tiết</a>
-                <div class="NumberContainer">
-                <div class="IncomeDisplay">203407600</div><span class = "CurrencyValue">(vnd) /</span>
-                    <div class="TotalOrderDisplay">1836</div><span class = "CurrencyValue">(đơn)</span>
-                </div>
-                <p class = "GrowingLabel">Tăng trưởng so với tháng trước: <span>100%</span></p>
-            </div>
+            <a class = "turnBack" href = "manageOrder.html">
+                Quay lại
+            </a>
         </div>
         <div class="bottomBox">
-            <p class = "BoxTitle">Đơn Hàng Gần Đây</p>
-            <a class = "DetailPageLink" href="manageOrder_AllOrders.html">Xem chi tiết</a>
-            <div class = OrdersDisplay>
+            <p class = "BoxTitle">Đơn Hàng Trong Tháng: </p>
+            <div class="FilterBar">
+                <select id="filterMonth" class="FilterSelect">
+                    <option value="1">January</option>
+                    <option value="2">February</option>
+                    <option value="3">March</option>
+                    <option value="4">April</option>
+                    <option value="5">May</option>
+                    <option value="6">June</option>
+                    <option value="7">July</option>
+                    <option value="8">August</option>
+                    <option value="9">September</option>
+                    <option value="10">October</option>
+                    <option value="11">November</option>
+                    <option value="12">December</option>
+                </select>
+
+                <label class="FilterLabel">Năm:</label>
+                <select id="filterYear" class="FilterSelect">
+                    <option value="2025">2025</option>
+                </select>
+
+                <label for="filterBranch" class="FilterLabel">Chi nhánh:</label>
+                <select id="filterBranch" class="FilterSelect">
+                    <option value="ThuDuc">Tất cả</option>
+                    <option value="ThuDuc">Thủ Đức</option>
+                    <option value="Quan1">Quận 1</option>
+                    <option value="BinhThanh">Bình Thạnh</option>
+                </select>
+
+                <label class="FilterLabel">Trạng thái:</label>
+                <select id="filterStatus" class="FilterSelect">
+                    <option value="all">Tất cả</option>
+                    <option value="processing">Đang Xử Lý</option>
+                    <option value="delivered">Đã Giao</option>
+                    <option value="pending">Tạm Ngưng</option>
+                    <option value="cancelled">Đã Hủy</option>
+                </select>
+
+                <button class="FilterBtn">Filter</button>
+            </div>
+
+            <div class = OrdersDetailDisplay>
                 <div class="OrderItem">
                     <div class="OrderHeader">
                         <span class="OrderID">#ORD-10234</span>
