@@ -12,7 +12,7 @@
     width:100%;
 }
 .HeaderForManageProduct{
-    padding: 40px 20px 20px 20px;
+    padding: 20px 20px 0 20px;
     margin-bottom:20px;
     font-family: sans-serif;
     font-weight: bold;
@@ -48,7 +48,8 @@
     white-space: nowrap;
 }
 .ActionButton{
-     background: #FFFFFF;
+     background:deepskyblue;
+    color:white;
     border: #dddddd 1px solid;
     box-shadow: 0 2px 6px rgba(0,0,0,0.2);
     padding:3px;
@@ -59,7 +60,7 @@
     font-weight: 500;
 }
 .ActionButton:active{
-    background:deepskyblue;
+    background:blue;
 }
 .BlockTableForDisplayQuantityProduct{
    width:100%;
@@ -100,7 +101,7 @@
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
-    margin-top:30px;
+    margin-top:20px;
     margin-left: 80px;
     gap:30px;
 }
@@ -108,7 +109,7 @@
     padding:10px;
     border-radius: 15px;
     background:rgba(52, 152, 219, 0.25) ;
-    box-shadow: 0px 3px 10px rgba(0,0,0,0.15);
+    box-shadow: 0 3px 10px rgba(0,0,0,0.15);
     font-weight: bold;
 }
 .ButtonControlProduct:active{
@@ -122,7 +123,6 @@
     font-family: sans-serif;
     border-radius: 8px;
     overflow: hidden;
-    /*border: 1px solid rgba(52, 152, 219, 0.25) ;*/
 }
 .TableProductManage thead{
     background-color:deepskyblue;
@@ -154,6 +154,7 @@
     border-radius: 4px;
     font-size: 12px;
     cursor: pointer;
+    margin:6px;
 }
 .ButtonEditProduct:active {
     background:dimgray;
@@ -166,15 +167,20 @@
     border-radius: 4px;
     font-size: 12px;
     cursor: pointer;
+    margin: 6px;
 }
 .ButtonDeleteProduct:active {
     background:dimgray;
 }
 .TableWrapper {
-    max-height: 500px;
-    overflow-y: auto;
-    overflow-x: auto;
-    margin: 40px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 330px;
+    /*overflow-y: auto;*/
+    /*overflow-x: auto;*/
+    margin: 30px auto 40px auto;
     background: #7EDAFF;
     width: 90%;
     border-radius: 8px;
