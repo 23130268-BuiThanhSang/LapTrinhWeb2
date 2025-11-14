@@ -1,0 +1,189 @@
+.NameOptionBold i{
+    color:black;
+}
+.NameOptionBoldText{
+    color: black;
+}
+.IconManageProduct{
+    color:deepskyblue;
+}
+.MainManagerForProduct{
+    /*background:#B2E9FF;*/
+    width:100%;
+}
+.HeaderForManageProduct{
+    padding: 40px 20px 20px 20px;
+    margin-bottom:20px;
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size:35px;
+}
+.DisplayToTal{
+    display: flex;
+    flex-direction: row;
+    justify-content:center;
+    gap:100px;
+    background: white;
+    padding: 30px;
+    margin-right: 150px;
+    margin-left: 150px;
+    border-radius: 10px;
+    border-bottom: 1px solid #dddddd;
+}
+.DisplayQuantityProduct{
+    background:rgba(52, 152, 219, 0.25);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap:10px;
+    padding:10px;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+.TitleForQuantity{
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 15px;
+    white-space: nowrap;
+}
+.ActionButton{
+     background: #FFFFFF;
+    border: #dddddd 1px solid;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    padding:3px;
+    border-radius: 5px;
+    font-weight: 500;
+}
+.QuantityProduct{
+    font-weight: 500;
+}
+.ActionButton:active{
+    background:deepskyblue;
+}
+.BlockTableForDisplayQuantityProduct{
+   width:100%;
+}
+.SearchBox {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    background-color: #f0f4ff;
+    border: 1px solid #d0d8ff;
+    border-radius: 20px;
+
+    padding: 6px 12px;
+    width: 300px;
+    height: 30px;
+}
+
+.SearchBar {
+    flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 14px;
+    color: #2c3e50;
+}
+
+.SearchBar::placeholder {
+    color: #8aa3c0;
+}
+
+.SearchBox i {
+    color: #3498db;
+    font-size: 16px;
+}
+.ControlProduct{
+    display:flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top:30px;
+    margin-left: 80px;
+    gap:30px;
+}
+.ButtonControlProduct{
+    padding:10px;
+    border-radius: 15px;
+    background:rgba(52, 152, 219, 0.25) ;
+    box-shadow: 0px 3px 10px rgba(0,0,0,0.15);
+    font-weight: bold;
+}
+.ButtonControlProduct:active{
+    background:deepskyblue ;
+}
+.TableProductManage{
+    width: 90%;
+    margin:20px auto;
+    border-collapse: collapse;
+    background-color:white;
+    font-family: sans-serif;
+    border-radius: 8px;
+    overflow: hidden;
+    /*border: 1px solid rgba(52, 152, 219, 0.25) ;*/
+}
+.TableProductManage thead{
+    background-color:deepskyblue;
+    color:white;
+    font-weight: bold;
+    font-size:14px;
+    position: sticky;
+    top: 0;
+    z-index: 5;
+}
+.TableProductManage thead th{
+    padding:14px 10px;
+    border-right: 1px solid rgba(255,255,255,0.3);
+}
+.TableProductManage tbody td{
+    padding:10px;
+    border-bottom: 1px solid gray;
+    text-align: center;
+    font-size:14px;
+}
+.TableProductManage tbody tr:hover {
+    background-color: #f0f8ff;
+}
+.ButtonEditProduct{
+    padding: 6px 10px;
+    border:none;
+    background: #27ae60;
+    color: white;
+    border-radius: 4px;
+    font-size: 12px;
+    cursor: pointer;
+}
+.ButtonEditProduct:active {
+    background:dimgray;
+}
+.ButtonDeleteProduct{
+    padding: 6px 10px;
+    border:none;
+    background:#EE2F36;
+    color: white;
+    border-radius: 4px;
+    font-size: 12px;
+    cursor: pointer;
+}
+.ButtonDeleteProduct:active {
+    background:dimgray;
+}
+.TableWrapper {
+    max-height: 500px;
+    overflow-y: auto;
+    overflow-x: auto;
+    margin: 40px auto;
+    background: #7EDAFF;
+    width: 90%;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+}
+.TiTlefortable{
+    margin-left:56px;
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+    margin-top: 30px;
+}
