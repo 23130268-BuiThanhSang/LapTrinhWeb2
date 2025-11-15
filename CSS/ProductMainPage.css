@@ -276,19 +276,19 @@ body {
 }
 
 /* Service List */
-.ServiceList p {
-    margin: 8px 0;
-    font-size: 15px;
-}
+/*.ServiceList p {*/
+/*    margin: 8px 0;*/
+/*    font-size: 15px;*/
+/*}*/
 
-.ServiceList a {
-    color: #2E4192;
-    font-style: italic;
-    text-decoration: none;
-}
-.ServiceList a:hover {
-    color: #01A0DA;
-}
+/*.ServiceList a {*/
+/*    color: #2E4192;*/
+/*    font-style: italic;*/
+/*    text-decoration: none;*/
+/*}*/
+/*.ServiceList a:hover {*/
+/*    color: #01A0DA;*/
+/*}*/
 
 .LowerHighlightBox {
     width: 96%;
