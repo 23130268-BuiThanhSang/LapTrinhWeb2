@@ -82,13 +82,7 @@ body{
     padding: 10px;
     text-decoration: none;
 }
-.GrowingLabel{
-    margin-bottom: 0;
-}
-.GrowingLabel span{
-    color: #27ae60;
-    font-weight: bolder;
-}
+
 .bottomBox {
     background-color: white;
     padding: 20px;
@@ -97,7 +91,7 @@ body{
     height: fit-content;
 }
 .OrdersDisplay{
-    height: 405px;
+    height: 440px;
     width: 100%;
     border-radius: 15px;
     background: #001A2D;
