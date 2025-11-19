@@ -9,6 +9,7 @@
 body{
     margin: 0;
 }
+
 h2{
     font-family: sans-serif;
 }
@@ -77,10 +78,10 @@ h2{
     float: right;
     margin-right: 50px;
 }
-#loginBt:hover{
+.loginBt:hover{
     color: #F5E779;
 }
-#loginBt{
+.loginBt{
     background: rgba(255, 255, 255, 0.2);
     color: rgba(255,255,255,0.7);
     width: 230px;
