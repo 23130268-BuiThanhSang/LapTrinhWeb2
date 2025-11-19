@@ -102,28 +102,25 @@ body{
 }
 
 /*MEMBER CARD*/
-.membercd{
+.memberCard{
     margin-left: 380px;
     width: 500px;
     transform: translateY(-350px);
 }
-#mbcd{
+#memberText{
     font-size: 35px;
 }
-#txtmb{
+#memberGuide{
     font-size: 20px;
     margin-top: 10px;
     width: 1500px;
 }
-.lgwt{
+.logoCard{
     display: flex;
     transform: translateY(-30px);
     margin-right: 15px;
 }
-#lgtxt{
-    margin-top: 20px;
-}
-.lgatxt{
+.CardInfo{
     margin-top: 22px;
     background: #E1FDFF;
     margin-left: 310px;
@@ -134,18 +131,19 @@ body{
     align-items: center;
     flex-direction: column;
 }
-.imgcd{
+.logoImg{
     width: 50px;
     height: 50px;
     margin-top: 15px;
 }
-#lgtxt{
+#logoText{
+    margin-top: 20px;
     font-size: 25px;
     color: #02BBE7;
     font-family: sans-serif;
     font-weight: 800;
 }
-#nmus{
+#cardName{
     width: 300px;
     font-weight: bold;
     margin-left: 200px;
@@ -156,14 +154,14 @@ body{
     height: 120px;
     transform: translateY(-20px);
 }
-#seritxt{
+#seriText{
     transform: translateY(-5px);
 }
-#mbbn{
+#memberBenefic{
     font-size: 25px;
     transform: translateY(390px);
 }
-#txtvc{
+#beneficInfo{
     font-size: 20px;
     width: 700px;
     transform: translateY(410px);
@@ -174,29 +172,29 @@ body{
     width: 1300px;
     transform: translateY(-325px);
 }
-#addar{
+#addressTitle{
     font-size: 35px;
     transform: translateY(-20px);
     margin-left: 10px;
 }
-.lstaddress{
+.addressList{
     margin-top: 10px;
     font-size: 20px;
     transform: translateY(-20px);
 }
-.lstaddress > div {
+.addressList > div {
     margin-top: 20px;
 }
-.lstaddress > div > input {
+.addressList > div > input {
     margin-left: 10px;
     height: 30px;
     width: 1200px;
 }
-.setdf{
+.setDefaultAddress{
     font-size: 15px;
     margin-left: 5px;
 }
-.addrbt{
+.addressButton{
     font-size: 15px;
     margin-top: 15px;
     display: flex;
@@ -209,13 +207,13 @@ body{
     color: white;
 }
 /*Account UI*/
-.acui{
+.AccountLogo{
     background: #01A0DA;
     width: 350px;
     height: 50px;
     display: flex;
 }
-#acuitxt{
+#AccountLogoText{
     color: white;
     font-size: 22px;
     margin-left: 75px;
@@ -231,28 +229,28 @@ body{
     justify-content: center;
     padding-top: 8px;
     margin-left: 10px;
-    transform: translateY(240px);
+    transform: translateY(290px);
     text-decoration: none;
     color: black;
 }
-.ctui{
+.accountUI{
     margin-left: 370px;
-    transform: translateY(-360px);
+    transform: translateY(-310px);
     text-align: center;
     align-items: center;
     width: 900px;
 }
-.fstacc{
+.avatarInfo{
     display: flex;
 }
-#fstact{
+#imageAvt{
     width: 160px;
     height: 160px;
 }
-#nmac{
+#nameAccount{
     font-size: 35px;
 }
-#btfstac{
+#changeAvt{
     margin-left: 30px;
     border-radius: 5px;
     color: white;
@@ -261,14 +259,14 @@ body{
     height: 40px;
     transform: translateY(60px);
 }
-.avtvid{
+.nameAndId{
     transform: translateY(50px);
 }
 #idac{
     margin-right: 55px;
     margin-top: 5px;
 }
-#acuigd{
+#accountGuide{
     font-size: 20px;
     margin-right: 100px;
 }
@@ -276,15 +274,15 @@ body{
     width: 40px;
     height: 40px;
 }
-.lstbnf i{
+.groupOption i{
     font-size: 60px;
     margin-top: 60px;
     transform: translateX(-5px);
 }
-.bnf1{
+.OptionList{
     display: flex;
 }
-.bnfb{
+.AccountUpdate{
     background: #B3FDFF;
     width: 350px;
     height: 230px;
@@ -292,22 +290,22 @@ body{
     border-radius: 20px;
     margin-left: 30px;
 }
-.bxtxt{
+.UpdateText{
     font-size: 20px;
     margin-top: 10px;
     transform: translateY(3px);
 }
-.dbh{
+.Synchronize{
     display: flex;
     padding-top: 30px;
     font-size: 20px;
     margin-left: 30px;
 }
-.dbh i{
+.Synchronize i{
     font-size: 30px;
     transform: translateY(-63px);
 }
-#slopt{
+#turnoff{
     margin-left: 20px;
     font-size: 17px;
     padding: 3px;
@@ -315,36 +313,36 @@ body{
     height: 30px;
     width: 60px;
 }
-.dbhtxt{
+.SyncText{
     margin-left: 20px;
 }
-.rngt{
+.seeInfo{
     display: flex;
     font-size: 20px;
     margin-left: 10px;
     transform: translateY(-40px);
 }
-#rtop{
+#seeOption{
     margin-left: 15px;
     font-size: 17px;
     padding: 3px;
     transform: translateY(-1px);
 }
 /*Credit Card*/
-.choosecd{
+.chooseOption{
     height: 600px;
-    transform: translate(380px, -350px);
+    transform: translate(380px, -290px);
 }
-#pmhd{
+#payText{
     font-size: 35px;
     width: 700px;
 }
-.cdlst{
+.payList{
     margin-top: 10px;
     width: 800px;
     height: 480px;
 }
-.cdgr{
+.payInfo{
     width: 350px;
     height: 220px;
     display: flex;
@@ -356,19 +354,19 @@ body{
     margin-top: 20px;
     transform: translateX(-20px);
 }
-.cdimg1{
+.payIcon1{
     width: 120px;
     height: 120px;
     margin-top: 45px;
     margin-left: 15px;
 }
-.cdimg2{
+.payIcon2{
     width: 120px;
     height: 120px;
     margin-top: 45px;
     transform: translateX(-45px);
 }
-.cdimg3{
+.payIcon3{
     width: 120px;
     height: 120px;
     margin-top: 50px;
@@ -376,63 +374,59 @@ body{
     transform: translateX(-55px);
     border-radius: 15px;
 }
-.cdimg4{
+.payIcon4{
     width: 120px;
     height: 120px;
     margin-top: 45px;
     transform: translateX(-10px);
 }
-.cdtxt1{
+.payName1{
     font-size: 20px;
     margin-left: 15px;
     transform: translate(1px, 47px);
 }
-.cdtxt2{
+.payName2{
     font-size: 20px;
     margin-left: 15px;
     transform: translate(-45px, 48px);
 }
-.cdtxt3{
+.payName3{
     font-size: 20px;
     margin-left: 15px;
     transform: translate(-45px, 49px);
 }
-.cdtxt4{
+.payName4{
     font-size: 20px;
     margin-left: 15px;
     transform: translate(-17px, 53px);
 }
-.rdo1{
+.radio1{
     width: 20px;
     height: 20px;
     display: flex;
     transform: translate(-5px, 185px);
 }
-.rdo2{
+.radio2{
     width: 20px;
     height: 20px;
     display: flex;
     transform: translate(50px, 185px);
 }
-.rdo3{
+.radio3{
     width: 20px;
     height: 20px;
     display: flex;
     transform: translate(50px, 185px);
 }
-.rdom{
-    width: 20px;
-    height: 20px;
+
+.payGroup{
     display: flex;
 }
-.cdgp1{
-    display: flex;
-}
-.cdgp2{
+.payGroup{
     display: flex;
 }
 /*SECURITY*/
-.scgr{
+.SecurityGroup{
     width: 350px;
     height: 220px;
     background: #E1FDFF;
@@ -441,30 +435,30 @@ body{
     margin-top: 20px;
     transform: translateX(-20px);
 }
-.scgr i{
+.SecurityGroup i{
     font-size: 50px;
     margin-top: 50px;
     margin-left: 145px;
 }
-.sctxt1{
+.securityText1{
     font-size: 30px;
     margin-left: 15px;
     transform: translate(23px, 20px);
 }
-.sctxt2{
+.securityText2{
     font-size: 30px;
     margin-left: 15px;
     transform: translate(43px, 20px);
-}.sctxt3{
+}.securityText3{
      font-size: 30px;
      margin-left: 15px;
      transform: translate(43px, 20px);
- }.sctxt4{
+ }.securityText4{
       font-size: 30px;
       margin-left: 15px;
       transform: translate(50px, 20px);
   }
-  .scud{
+  .securityUpdate{
       border: lightgrey solid;
       border-radius: 10px;
       width: 66px;
