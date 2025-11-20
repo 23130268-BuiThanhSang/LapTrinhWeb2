@@ -12,21 +12,7 @@
     height: 600px;
     padding:20px;
 }
-.ButtonForAllHistorySale{
-    background: white;
-    display: flex;
-    justify-content:flex-start;
-    padding: 5px 0 30px 5px;
-}
-.ButtonDeleteHistory{
-    background: white;
-    border-radius:10px;
-}
-.ButtonDeleteHistory:active{
-    color: white;
-    background: #0f5ec0;
 
-}
 .ListItemProductInHistorySale{
     height: 500px;
 }
@@ -78,4 +64,28 @@
 .Review:active{
     color: white;
     background: #0f5ec0;
+}
+/**
+update
+ */
+.OrderHistory{
+    display:flex;
+    flex-direction: column;
+    border:1px #dddddd solid;
+    padding: 10px;
+    border-radius: 10px;
+    gap: 10px;
+}
+.titleOrderHistory{
+    display: flex;
+    flex-direction:row;
+    justify-content: space-between;
+    margin-left:20px;
+    margin-right: 20px;
+    font-weight:bold;
+    font-family: sans-serif;
+    font-size: 17px;
+}
+.titleOrderHistory span{
+    font-weight:300;
 }

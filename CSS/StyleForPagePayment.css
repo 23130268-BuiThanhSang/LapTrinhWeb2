@@ -53,7 +53,6 @@ phần tiêu đề để hiện thị cho khách hàng biết ang ở trang than
 
 .InforPayment {
     flex: 1;
-    height: 500px;
     border-radius: 10px;
     padding: 25px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
@@ -295,4 +294,16 @@ thồn tin khách hàng
     padding-top: 15px;
     padding-bottom: 15px;
     border-bottom: 1px solid #ddd;
+}
+/**
+update
+ */
+.DisplayInforCustomer{
+    padding: 10px 0;
+    background-color: #f9f9f9;
+
+}
+.InforCustomerDetail{
+    color: #999999;
+    font-size: 14px;
 }
