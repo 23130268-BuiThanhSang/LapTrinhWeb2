@@ -134,24 +134,9 @@ danh sách sản phẩm có trong trang giỏ hàng
     cursor: pointer;
     transition: background 0.2s;
 }
-.ContinueButton:hover {
+.ContinueButton:active{
     background: #0f5ec0;
 }
-.AddMoreButton{
-    background: white;
-    color: #333;
-    border: 1px solid #ccc;
-    padding: 10px;
-    font-weight: bold;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.2s, color 0.2s;
-}
-.AddMoreButton:hover {
-    background: #f0f0f0;
-    color: #1a73e8;
-}
-
 
 /**
 điều chỉnh cho tất cả các thành phẩn sản phẩm có trong giỏ hàng thực hiện bỏ hết hoặc thực hiện chọn tất cả
