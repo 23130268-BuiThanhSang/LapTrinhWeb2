@@ -32,6 +32,10 @@
                 <i class="fa-solid fa-box"></i>
                 <div class="NameOptionBoldText">Quản lí đơn hàng</div>
             </a>
+            <a href="manageUI.html" class="OptionIcon">
+                <i class="fa-solid fa-eye"></i>
+                <div class="NameOption">Quản lí giao diện</div>
+            </a>
             <a href="login.html" class="sgoutAdmin">Đăng xuất</a>
         </div>
     </div>
@@ -44,6 +48,7 @@
         <div class="bottomBox">
             <p class = "BoxTitle">Đơn Hàng Trong Tháng: </p>
             <div class="FilterBar">
+                <input class = "day_input" placeholder="Enter day">
                 <select id="filterMonth" class="FilterSelect">
                     <option value="1">January</option>
                     <option value="2">February</option>
@@ -64,14 +69,14 @@
                     <option value="2025">2025</option>
                 </select>
 
-                <label for="filterBranch" class="FilterLabel">Chi nhánh:</label>
-                <select id="filterBranch" class="FilterSelect">
-                    <option value="ThuDuc">Tất cả</option>
-                    <option value="Online">Online</option>
-                    <option value="ThuDuc">Thủ Đức</option>
-                    <option value="Quan1">Quận 1</option>
-                    <option value="BinhThanh">Bình Thạnh</option>
-                </select>
+<!--                <label for="filterBranch" class="FilterLabel">Chi nhánh:</label>-->
+<!--                <select id="filterBranch" class="FilterSelect">-->
+<!--                    <option value="ThuDuc">Tất cả</option>-->
+<!--                    <option value="Online">Online</option>-->
+<!--                    <option value="ThuDuc">Thủ Đức</option>-->
+<!--                    <option value="Quan1">Quận 1</option>-->
+<!--                    <option value="BinhThanh">Bình Thạnh</option>-->
+<!--                </select>-->
 
                 <label class="FilterLabel">Trạng thái:</label>
                 <select id="filterStatus" class="FilterSelect">

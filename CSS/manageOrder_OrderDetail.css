@@ -94,7 +94,7 @@
 }
 .OrderDetailItem {
     display: grid;
-    grid-template-columns: 1fr 60px 150px 90px 80px;
+    grid-template-columns: 1fr 60px 150px 80px;
     padding: 10px 0;
     border-bottom: 1px solid #e5e5e5;
     font-size: 15px;
