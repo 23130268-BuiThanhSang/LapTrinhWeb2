@@ -1,0 +1,127 @@
+.MainUI {
+    font-family: 'Suggested Font Name', sans-serif;
+}
+.HighlightBox {
+    width: fit-content;
+    height: fit-content;
+    display: inline-block;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    border-radius: 10px;
+    padding: 10px;
+    background: white;
+}
+.manageUI{
+    padding: 15px;
+    background: #B2E9FF;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.all-displaying-banner {
+    display: flex;
+    flex-direction: column;
+    width: 1135px;
+    gap: 6px;
+}
+.Banner-container{
+    background: #001A2D;
+    border-radius: 10px;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    height: 210px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+.label {
+    font-weight: bold;
+}
+
+.banner-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 4px;
+}
+
+.banner-text-left,
+.banner-text-right {
+    border: none;
+    font-size: 14px;
+    max-width: 380px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.banner-text-order {
+    border: none;
+    font-size: 14px;
+    max-width: 40px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.banner-box {
+    padding: 10px;
+    border: 1px solid #888;
+    border-radius: 6px;
+    background: #f6f6f6;
+    display: grid;
+    grid-template-columns: 400px 1px 400px 1px 60px auto;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.divider {
+    width: 1px;
+    height: 20px;
+    background-color: #aaa;
+    margin: 0 10px;
+}
+
+.banner-editor {
+    width: 1135px;
+}
+
+
+
+.search-section {
+    width: 1135px;
+    height: 250px;
+}
+
+/* Row spacing */
+.search-row {
+    margin-bottom: 10px;
+}
+
+/* Input+button row layout */
+.input-row {
+    display: flex;
+    gap: 10px;
+}
+
+/* Search input */
+#searchInput {
+    flex: 1;
+    height: 30px;
+}
+
+/* Button styling */
+#searchButton {
+    height: 34px;
+    padding: 0 15px;
+    cursor: pointer;
+}
+
+/* Result box */
+.result-box {
+    width: 100%;
+    min-height: 175px;
+    border: 1px solid #ccc;
+    padding: 8px;
+    box-sizing: border-box;
+}
