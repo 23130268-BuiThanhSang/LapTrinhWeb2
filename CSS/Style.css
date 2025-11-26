@@ -100,7 +100,16 @@ h2{
 }
 
 /*SupportCustomer*/
-.bchSp{
+#SupportHeader{
+    display: flex;
+    justify-content: center;
+    font-size: 35px;
+    font-family: sans-serif;
+}
+.SupportGroup{
+    display: flex;
+}
+.SupportBox{
     background: #C0FDFF;
     border-radius: 20px;
     padding: 30px;
@@ -109,32 +118,40 @@ h2{
     margin-top: 10px;
     margin-left: 70px;
 }
-.bchSp i{
+.SupportBox i{
     background: #66C9FF;
     font-size: 30px;
     border: black solid 1px;
     border-radius: 10px;
     padding: 10px;
-    transform: translate(150px, 250px);
+    margin-left: 150px;
+    transform: translateY(240px);
 }
-.bchSp i:hover{
+.SupportBox i:hover{
     cursor: pointer;
 }
-.splst{
+.SupportTitle{
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+}
+.SupportDiv{
+    margin-top: 20px;
+}
+.SupportGuide{
     font-size: 25px;
     transform: translateY(-40px);
 }
-.spbt{
+.SupportConnect{
     display: flex;
     gap: 10px;
+    padding-bottom: 20px;
 }
 .spSocial{
     font-size: 25px;
     margin-top: 55px;
     transform: translateX(70px);
 }
-
-
 
 #HomePageBody {
     font-family: 'Suggested Font Name', sans-serif;

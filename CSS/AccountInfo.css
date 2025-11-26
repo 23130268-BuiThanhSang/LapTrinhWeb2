@@ -44,7 +44,7 @@ body{
 .NameOptionBold{
     margin-left: 10px;
 }
-.NameOptionBold i{
+.AccountLeftOption .NameOptionBold i{
     font-size: 30px;
     text-align: center;
     color: #01A0DA;
@@ -63,6 +63,12 @@ body{
 .fa-cart-shopping{
     margin-left: -2px;
 }
+.fa-lock{
+    margin-left: 3px;
+}
+.fa-clipboard-user{
+    margin-left: 5px;
+}
 .NameOption{
     margin-left: 50px;
     transform: translateY(-23px);
@@ -71,6 +77,9 @@ body{
     margin-left: 50px;
     transform: translateY(-23px);
     color: #01A0DA;
+}
+.SignOut{
+    margin-top: 120px;
 }
 .OptionSignOut{
     width: 100px;
@@ -82,14 +91,13 @@ body{
     justify-content: center;
     padding-top: 8px;
     margin-left: 10px;
-    transform: translateY(220px);
     text-decoration: none;
     color: black;
 }
 .WelcomeAccount{
     margin-left: 620px;
-    transform: translateY(-300px);
     width: 700px;
+    padding-top: 90px;
 }
 .WelcomeImage{
     width: 600px;
@@ -100,77 +108,12 @@ body{
     font-size: 20px;
     text-align: center;
 }
-
-/*MEMBER CARD*/
-.memberCard{
-    margin-left: 380px;
-    width: 500px;
-    transform: translateY(-350px);
-}
-#memberText{
-    font-size: 35px;
-}
-#memberGuide{
-    font-size: 20px;
-    margin-top: 10px;
-    width: 1500px;
-}
-.logoCard{
-    display: flex;
-    transform: translateY(-30px);
-    margin-right: 15px;
-}
-.CardInfo{
-    margin-top: 22px;
-    background: #E1FDFF;
-    margin-left: 310px;
-    width: 600px;
-    height: 250px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-.logoImg{
-    width: 50px;
-    height: 50px;
-    margin-top: 15px;
-}
-#logoText{
-    margin-top: 20px;
-    font-size: 25px;
-    color: #02BBE7;
-    font-family: sans-serif;
-    font-weight: 800;
-}
-#cardName{
-    width: 300px;
-    font-weight: bold;
-    margin-left: 200px;
-    transform: translateY(-30px);
-}
-.imgseri{
-    width: 340px;
-    height: 120px;
-    transform: translateY(-20px);
-}
-#seriText{
-    transform: translateY(-5px);
-}
-#memberBenefic{
-    font-size: 25px;
-    transform: translateY(390px);
-}
-#beneficInfo{
-    font-size: 20px;
-    width: 700px;
-    transform: translateY(410px);
-}
-/*Address*/
+/*Update Profile*/
 .addressInfo{
     margin-left: 370px;
     width: 1300px;
-    transform: translateY(-325px);
+    padding-top: 60px;
+    font-family: sans-serif;
 }
 #addressTitle{
     font-size: 35px;
@@ -178,9 +121,11 @@ body{
     margin-left: 10px;
 }
 .addressList{
+    display: flex;
     margin-top: 10px;
     font-size: 20px;
     transform: translateY(-20px);
+    flex-wrap: wrap;
 }
 .addressList > div {
     margin-top: 20px;
@@ -188,7 +133,7 @@ body{
 .addressList > div > input {
     margin-left: 10px;
     height: 30px;
-    width: 1200px;
+    width: 1100px;
 }
 .setDefaultAddress{
     font-size: 15px;
@@ -206,132 +151,47 @@ body{
     background: #01A0DA;
     color: white;
 }
-/*Account UI*/
-.AccountLogo{
-    background: #01A0DA;
-    width: 350px;
-    height: 50px;
-    display: flex;
+/*ChangePassword*/
+.ChangePassword{
+    margin-left: 380px;
 }
-#AccountLogoText{
-    color: white;
-    font-size: 22px;
-    margin-left: 75px;
-    margin-top: 10px;
+#PasswordHeader{
+    font-size: 35px;
+    margin-left: 380px;
+    padding-top: 40px;
+    font-family: sans-serif;
 }
-.sgoutui{
-    width: 100px;
+.PasswordGroup{
+    margin-top: 40px;
+    font-size: 20px;
+    font-family: sans-serif;
+}
+.PasswordText{
+    margin-top: 30px;
+}
+.PasswordText input{
+    width: 1100px;
     height: 30px;
-    border: grey solid;
-    border-radius: 10px;
+    padding-left: 5px;
+}
+.PasswordButton button{
+    font-size: 15px;
+    margin-top: 30px;
     display: flex;
     text-align: center;
     justify-content: center;
-    padding-top: 8px;
     margin-left: 10px;
-    transform: translateY(290px);
-    text-decoration: none;
-    color: black;
-}
-.accountUI{
-    margin-left: 370px;
-    transform: translateY(-310px);
-    text-align: center;
-    align-items: center;
-    width: 900px;
-}
-.avatarInfo{
-    display: flex;
-}
-#imageAvt{
-    width: 160px;
-    height: 160px;
-}
-#nameAccount{
-    font-size: 35px;
-}
-#changeAvt{
-    margin-left: 30px;
-    border-radius: 5px;
-    color: white;
+    border-radius: 10px;
+    padding: 7px;
     background: #01A0DA;
-    padding: 5px;
-    height: 40px;
-    transform: translateY(60px);
-}
-.nameAndId{
-    transform: translateY(50px);
-}
-#idac{
-    margin-right: 55px;
-    margin-top: 5px;
-}
-#accountGuide{
-    font-size: 20px;
-    margin-right: 100px;
-}
-.bximg{
-    width: 40px;
-    height: 40px;
-}
-.groupOption i{
-    font-size: 60px;
-    margin-top: 60px;
-    transform: translateX(-5px);
-}
-.OptionList{
-    display: flex;
-}
-.AccountUpdate{
-    background: #B3FDFF;
-    width: 350px;
-    height: 230px;
-    margin-top: 30px;
-    border-radius: 20px;
-    margin-left: 30px;
-}
-.UpdateText{
-    font-size: 20px;
-    margin-top: 10px;
-    transform: translateY(3px);
-}
-.Synchronize{
-    display: flex;
-    padding-top: 30px;
-    font-size: 20px;
-    margin-left: 30px;
-}
-.Synchronize i{
-    font-size: 30px;
-    transform: translateY(-63px);
-}
-#turnoff{
-    margin-left: 20px;
-    font-size: 17px;
-    padding: 3px;
-    transform: translateY(-2px);
-    height: 30px;
-    width: 60px;
-}
-.SyncText{
-    margin-left: 20px;
-}
-.seeInfo{
-    display: flex;
-    font-size: 20px;
-    margin-left: 10px;
-    transform: translateY(-40px);
-}
-#seeOption{
-    margin-left: 15px;
-    font-size: 17px;
-    padding: 3px;
-    transform: translateY(-1px);
+    color: white;
 }
 /*Credit Card*/
 .chooseOption{
     height: 600px;
-    transform: translate(380px, -290px);
+    margin-left: 380px;
+    padding-top: 40px;
+    font-family: sans-serif;
 }
 #payText{
     font-size: 35px;
@@ -400,24 +260,6 @@ body{
     margin-left: 15px;
     transform: translate(-17px, 53px);
 }
-.radio1{
-    width: 20px;
-    height: 20px;
-    display: flex;
-    transform: translate(-5px, 185px);
-}
-.radio2{
-    width: 20px;
-    height: 20px;
-    display: flex;
-    transform: translate(50px, 185px);
-}
-.radio3{
-    width: 20px;
-    height: 20px;
-    display: flex;
-    transform: translate(50px, 185px);
-}
 
 .payGroup{
     display: flex;
@@ -425,47 +267,72 @@ body{
 .payGroup{
     display: flex;
 }
-/*SECURITY*/
-.SecurityGroup{
-    width: 350px;
-    height: 220px;
+/*MEMBER CARD*/
+.memberCard{
+    margin-left: 380px;
+    width: 500px;
+    padding-top: 40px;
+    font-family: sans-serif;
+}
+#memberText{
+    font-size: 35px;
+}
+#memberGuide{
+    font-size: 20px;
+    margin-top: 10px;
+    width: 1500px;
+}
+.logoCard{
+    display: flex;
+    transform: translateY(-30px);
+    margin-right: 15px;
+}
+.CardInfo{
+    margin-top: 22px;
     background: #E1FDFF;
-    border-radius: 10px;
-    margin-left: 20px;
+    margin-left: 310px;
+    width: 600px;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.logoImg{
+    width: 50px;
+    height: 50px;
+    margin-top: 15px;
+}
+#logoText{
     margin-top: 20px;
-    transform: translateX(-20px);
+    font-size: 25px;
+    color: #02BBE7;
+    font-family: sans-serif;
+    font-weight: 800;
 }
-.SecurityGroup i{
-    font-size: 50px;
-    margin-top: 50px;
-    margin-left: 145px;
+#cardName{
+    width: 300px;
+    font-weight: bold;
+    margin-left: 200px;
+    transform: translateY(-30px);
 }
-.securityText1{
-    font-size: 30px;
-    margin-left: 15px;
-    transform: translate(23px, 20px);
+.imgseri{
+    width: 340px;
+    height: 120px;
+    transform: translateY(-20px);
 }
-.securityText2{
-    font-size: 30px;
-    margin-left: 15px;
-    transform: translate(43px, 20px);
-}.securityText3{
-     font-size: 30px;
-     margin-left: 15px;
-     transform: translate(43px, 20px);
- }.securityText4{
-      font-size: 30px;
-      margin-left: 15px;
-      transform: translate(50px, 20px);
-  }
-  .securityUpdate{
-      border: lightgrey solid;
-      border-radius: 10px;
-      width: 66px;
-      padding: 5px;
-      margin-top: 25px;
-      margin-left: 125px;
-  }
+#seriText{
+    transform: translateY(-5px);
+}
+#memberBenefic{
+    font-size: 25px;
+    transform: translateY(390px);
+}
+#beneficInfo{
+    font-size: 20px;
+    width: 700px;
+    transform: translateY(410px);
+}
 
 
 
