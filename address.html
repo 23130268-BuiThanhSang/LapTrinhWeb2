@@ -71,59 +71,69 @@
         <div class="AvatarAccount">
             <img src="lgImg/avt.png" class="avtr">
             <div class="AccountName">
-                <div class="nameus">Edward Alter</div>
-                <div class="stk">Số tài khoản: 3820581034851</div>
+                <div class="nameus">Bùi Thanh Sang</div>
+                <div class="stk">Số tài khoản: 3820581034</div>
             </div>
         </div>
         <div class="AccountLeftOption">
-            <a href="accountUI.html" class="OptionIcon">
+            <a href="currentInfo.html" class="OptionIcon">
                 <i class="fa-solid fa-user"></i>
-                <div class="NameOption">Tài khoản</div>
+                <div class="NameOption">Thông tin tài khoản</div>
             </a>
             <div class="NameOptionBold">
-                <i class="fa-solid fa-house"></i>
-                <div class="NameOptionBoldText">Địa chỉ của tôi</div>
+                <i class="fa-solid fa-clipboard-user"></i>
+                <div class="NameOptionBoldText">Cập nhật hồ sơ</div>
             </div>
+            <a href="changePassword.html" class="OptionIcon">
+                <i class="fa-solid fa-lock"></i>
+                <div class="NameOption">Đổi mật khẩu</div>
+            </a>
+            <a href="payment.html" class="OptionIcon">
+                <i class="fa-solid fa-credit-card"></i>
+                <div class="NameOption">Phương thức thanh toán</div>
+            </a>
             <a href="HistorySale.html" class="OptionIcon">
-                <i class="fa-solid fa-cart-shopping"></i>
+                <i class="fa-solid fa-cart-arrow-down"></i>
                 <div class="NameOption">Lịch sử mua hàng</div>
             </a>
             <a href="memberCard.html" class="OptionIcon">
                 <i class="fa-solid fa-address-card"></i>
                 <div class="NameOption">Thẻ thành viên</div>
             </a>
-            <a href="login.html" class="OptionSignOut">Đăng xuất</a>
-        </div>
-        <div class="addressInfo">
-            <div id="addressTitle">Thêm địa chỉ</div>
-            <div class="addressList">
-                <div id="adr1">
-                    <label>*Thành phố / Tỉnh </label>
-                    <input type="text">
-                </div>
-                <div id="adr2">
-                    <label>*Quận / Huyện / Thị xã </label>
-                    <input type="text">
-                </div>
-                <div id="adr3">
-                    <label>*Họ tên đầy đủ </label>
-                    <input type="text">
-                </div>
-                <div id="adr4">
-                    <label>*Số điện thoại </label>
-                    <input type="text">
-                </div>
-                <div id="adr5">
-                    <label id="description">-Mô tả thêm (nếu có) </label>
-                    <input type="text">
-                </div>
+            <div class="SignOut">
+                <a href=login.html class="OptionSignOut">Đăng xuất</a>
             </div>
-            <div class="setDefaultAddress">
-                <input type="checkbox">
-                <span id="pick">Chọn làm địa chỉ mặc định</span>
-            </div>
-            <button type="submit" class="addressButton">Lưu địa chỉ</button>
         </div>
+    </div>
+    <div class="addressInfo">
+        <div id="addressTitle">Cập nhật hồ sơ</div>
+        <div class="addressList">
+            <div class="adr">
+                <div>*Họ tên đầy đủ </div>
+                <input type="text">
+            </div>
+            <div class="adr">
+                <div>*Số điện thoại </div>
+                <input type="text">
+            </div>
+            <div class="adr">
+                <div>*Thành phố / Tỉnh </div>
+                <input type="text">
+            </div>
+            <div class="adr">
+                <div>*Quận / Huyện / Thị xã </div>
+                <input type="text">
+            </div>
+            <div class="adr">
+                <div id="description">-Mô tả thêm (nếu có) </div>
+                <input type="text">
+            </div>
+        </div>
+        <div class="setDefaultAddress">
+            <input type="checkbox">
+            <span id="pick">Chọn làm địa chỉ mặc định</span>
+        </div>
+        <button type="submit" class="addressButton">Lưu địa chỉ</button>
     </div>
 </div>
 
