@@ -73,6 +73,9 @@ html, body {
     transform: translateY(-23px);
     color: #01A0DA;
 }
+.button_container {
+    padding-top: 280px;
+}
 .sgoutAdmin{
     width: 100px;
     height: 30px;
@@ -83,7 +86,7 @@ html, body {
     justify-content: center;
     padding-top: 8px;
     margin-left: 10px;
-    transform: translateY(330px);
+    /*transform: translateY(330px);*/
     text-decoration: none;
 }
 .ManagerUser{

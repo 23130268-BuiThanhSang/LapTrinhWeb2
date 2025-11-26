@@ -413,8 +413,7 @@ h2{
     height: 400px;
     overflow: hidden;
     position: relative;
-    /*margin: auto;*/
-    border-radius: 10px;
+    margin: auto;
 }
 
 .BannerSlides {
@@ -425,7 +424,7 @@ h2{
 }
 
 .BannerSlides img {
-    width: 800px;
+    width: 1600px;
     height: 400px;
     object-fit: fill;
 }

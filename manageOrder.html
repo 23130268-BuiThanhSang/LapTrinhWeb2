@@ -5,7 +5,6 @@
     <title>Title</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="CSS/manageUser.css">
-    <link rel="stylesheet" href="CSS/Style.css">
     <link rel="stylesheet" href="CSS/manageOrder.css">
 </head>
 <body>
@@ -35,7 +34,13 @@
                 <i class="fa-solid fa-eye"></i>
                 <div class="NameOption">Quản lí giao diện</div>
             </a>
-            <a href="login.html" class="sgoutAdmin">Đăng xuất</a>
+            <a href="manageAnoun.html" class="OptionIcon">
+                <i class="fa-solid fa-bullhorn"></i>
+                <div class="NameOption">Quản lí giao diện</div>
+            </a>
+            <div class = "button_container">
+                <a href="login.html" class="sgoutAdmin">Đăng xuất</a>
+            </div>
         </div>
     </div>
     <div class="OrderManagerUI">
@@ -53,7 +58,20 @@
             <p class = "BoxTitle">Đơn Hàng Trong Ngày</p>
             <a class = "DetailPageLink" href="manageOrder_AllOrders.html">Xem chi tiết</a>
             <div class = OrdersDisplay>
-                <div class="OrderItem">
+                <a href="manageOrder_OrderDetail.html" class="OrderItem">
+                    <div class="OrderHeader">
+                        <span class="OrderID">#ORD-10234</span>
+                        <span class="OrderDate">2025-11-13</span>
+                        <span class="OrderStatus status-processing">Đang xử lý</span>
+                    </div>
+
+                    <div class="OrderSummary">
+                        <p class="CustomerName">Customer_id: <span>Nguyen Van A</span></p>
+                        <p class="OrderTotal">Total: <span>1,250,000 VND</span></p>
+                        <p class="ItemsCount">Items: <span>3</span></p>
+                    </div>
+                </a>
+                <a href="manageOrder_OrderDetail.html" class="OrderItem">
                     <div class="OrderHeader">
                         <span class="OrderID">#ORD-10234</span>
                         <span class="OrderDate">2025-11-13</span>
@@ -65,12 +83,12 @@
                         <p class="OrderTotal">Total: <span>1,250,000 VND</span></p>
                         <p class="ItemsCount">Items: <span>3</span></p>
                     </div>
-                </div>
-                <div class="OrderItem">
+                </a>
+                <a href="manageOrder_OrderDetail.html" class="OrderItem">
                     <div class="OrderHeader">
-                        <a class="OrderID">#ORD-10234</a>
+                        <span class="OrderID">#ORD-10234</span>
                         <span class="OrderDate">2025-11-13</span>
-                        <span class="OrderStatus status-processing">Đang Xử Lý</span>
+                        <span class="OrderStatus status-pending">Tạm ngưng</span>
                     </div>
 
                     <div class="OrderSummary">
@@ -78,12 +96,12 @@
                         <p class="OrderTotal">Total: <span>1,250,000 VND</span></p>
                         <p class="ItemsCount">Items: <span>3</span></p>
                     </div>
-                </div>
-                <div class="OrderItem">
+                </a>
+                <a href="manageOrder_OrderDetail.html" class="OrderItem">
                     <div class="OrderHeader">
-                        <a class="OrderID">#ORD-10234</a>
+                        <span class="OrderID">#ORD-10234</span>
                         <span class="OrderDate">2025-11-13</span>
-                        <span class="OrderStatus status-processing">Đang Xử Lý</span>
+                        <span class="OrderStatus status-approved">Đang giao</span>
                     </div>
 
                     <div class="OrderSummary">
@@ -91,12 +109,12 @@
                         <p class="OrderTotal">Total: <span>1,250,000 VND</span></p>
                         <p class="ItemsCount">Items: <span>3</span></p>
                     </div>
-                </div>
-                <div class="OrderItem">
+                </a>
+                <a href="manageOrder_OrderDetail.html" class="OrderItem">
                     <div class="OrderHeader">
-                        <a class="OrderID">#ORD-10234</a>
+                        <span class="OrderID">#ORD-10234</span>
                         <span class="OrderDate">2025-11-13</span>
-                        <span class="OrderStatus status-pending">Đang chờ</span>
+                        <span class="OrderStatus status-approved">Đang giao</span>
                     </div>
 
                     <div class="OrderSummary">
@@ -104,12 +122,12 @@
                         <p class="OrderTotal">Total: <span>1,250,000 VND</span></p>
                         <p class="ItemsCount">Items: <span>3</span></p>
                     </div>
-                </div>
-                <div class="OrderItem">
+                </a>
+                <a href="manageOrder_OrderDetail.html" class="OrderItem">
                     <div class="OrderHeader">
-                        <a class="OrderID">#ORD-10234</a>
+                        <span class="OrderID">#ORD-10234</span>
                         <span class="OrderDate">2025-11-13</span>
-                        <span class="OrderStatus status-processing">Đang Xử Lý</span>
+                        <span class="OrderStatus status-approved">Đang giao</span>
                     </div>
 
                     <div class="OrderSummary">
@@ -117,33 +135,7 @@
                         <p class="OrderTotal">Total: <span>1,250,000 VND</span></p>
                         <p class="ItemsCount">Items: <span>3</span></p>
                     </div>
-                </div>
-                <div class="OrderItem">
-                    <div class="OrderHeader">
-                        <a class="OrderID">#ORD-10234</a>
-                        <span class="OrderDate">2025-11-13</span>
-                        <span class="OrderStatus status-processing">Đang Xử Lý</span>
-                    </div>
-
-                    <div class="OrderSummary">
-                        <p class="CustomerName">Customer_id: <span>Nguyen Van A</span></p>
-                        <p class="OrderTotal">Total: <span>1,250,000 VND</span></p>
-                        <p class="ItemsCount">Items: <span>3</span></p>
-                    </div>
-                </div>
-                <div class="OrderItem">
-                    <div class="OrderHeader">
-                        <a class="OrderID">#ORD-10234</a>
-                        <span class="OrderDate">2025-11-13</span>
-                        <span class="OrderStatus status-processing">Đang Xử Lý</span>
-                    </div>
-
-                    <div class="OrderSummary">
-                        <p class="CustomerName">Customer_id: <span>Nguyen Van A</span></p>
-                        <p class="OrderTotal">Total: <span>1,250,000 VND</span></p>
-                        <p class="ItemsCount">Items: <span>3</span></p>
-                    </div>
-                </div>
+                </a>
             </div>
         </div>
     </div>

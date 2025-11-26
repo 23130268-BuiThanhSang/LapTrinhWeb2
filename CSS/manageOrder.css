@@ -104,6 +104,7 @@ body{
 }
 
 .OrderItem {
+    text-decoration: none;
     /*margin: 10px;*/
     display: flex;
     flex-direction: column;
@@ -145,7 +146,7 @@ body{
 
 .status-pending { background: #f1c40f; }
 .status-processing { background: #3498db; }
-.status-delivered { background: #2ecc71; }
+.status-approved { background: #2ecc71; }
 .status-cancelled { background: #e74c3c; }
 
 .OrderSummary p {
