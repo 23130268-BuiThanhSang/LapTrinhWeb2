@@ -137,20 +137,7 @@ danh sách sản phẩm có trong trang giỏ hàng
 .ContinueButton:hover {
     background: #0f5ec0;
 }
-.AddMoreButton{
-    background: white;
-    color: #333;
-    border: 1px solid #ccc;
-    padding: 10px;
-    font-weight: bold;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.2s, color 0.2s;
-}
-.AddMoreButton:hover {
-    background: #f0f0f0;
-    color: #1a73e8;
-}
+
 
 
 /**
@@ -177,21 +164,7 @@ danh sách sản phẩm có trong trang giỏ hàng
     accent-color: deepskyblue;
     cursor: pointer;
 }
-.deleteAllItemsProductInShoppingCart{
-    border:1px solid gray;
-    border-radius: 5px;
-    background: white;
-    font-weight: bold;
-    font-size: 10px;
-    padding:5px;
-    cursor: pointer;
-    transition: 0.2s;
-}
-.deleteAllItemsProductInShoppingCart:hover{
-    background: lightgray;
-    color: #0074D9;
-    text-decoration: underline;
-}
+
 .ItemProductInshoppingCart{
     display: flex;
     align-items: center;

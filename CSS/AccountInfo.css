@@ -1,8 +1,11 @@
 /* ACCOUNT INFO */
 body{
     margin:0;
+    font-family: sans-serif;
+    overflow-x:hidden;
 }
 .accInfo{
+    padding-top: 58px;
     height: 600px;
     background: white;
 }
@@ -111,8 +114,8 @@ body{
 /*Update Profile*/
 .addressInfo{
     margin-left: 370px;
-    width: 1300px;
-    padding-top: 60px;
+    width: 1145px;
+    padding-top: 30px;
     font-family: sans-serif;
 }
 #addressTitle{
@@ -122,9 +125,9 @@ body{
 }
 .addressList{
     display: flex;
-    margin-top: 10px;
-    font-size: 20px;
-    transform: translateY(-20px);
+    /*margin-top: 10px;*/
+    font-size: 17px;
+    transform: translateY(-15px);
     flex-wrap: wrap;
 }
 .addressList > div {
@@ -135,10 +138,7 @@ body{
     height: 30px;
     width: 1100px;
 }
-.setDefaultAddress{
-    font-size: 15px;
-    margin-left: 5px;
-}
+
 .addressButton{
     font-size: 15px;
     margin-top: 15px;
@@ -167,7 +167,7 @@ body{
     font-family: sans-serif;
 }
 .PasswordText{
-    margin-top: 30px;
+    margin-top: 15px;
 }
 .PasswordText input{
     width: 1100px;

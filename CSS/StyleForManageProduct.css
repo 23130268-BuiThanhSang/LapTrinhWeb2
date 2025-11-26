@@ -111,7 +111,7 @@
     background:deepskyblue ;
 }
 .TableProductManage{
-    width: 90%;
+    width: 95%;
     margin:20px auto;
     border-collapse: collapse;
     background-color:white;
@@ -167,20 +167,20 @@
 .ButtonDeleteProduct:active {
     background:dimgray;
 }
-.TableWrapper {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 330px;
-    /*overflow-y: auto;*/
-    /*overflow-x: auto;*/
-    margin: 30px auto 40px auto;
-    background: #7EDAFF;
-    width: 90%;
-    border-radius: 8px;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.15);
-}
+/*.TableWrapper {*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    justify-content: center;*/
+/*    align-items: center;*/
+/*    !*height: 330px;*!*/
+/*    !*overflow-y: auto;*!*/
+/*    !*overflow-x: auto;*!*/
+/*    margin: 30px auto 40px auto;*/
+/*    !*background: #7EDAFF;*!*/
+/*    width: 90%;*/
+/*    border-radius: 8px;*/
+/*    !*box-shadow: 0 3px 10px rgba(0,0,0,0.15);*!*/
+/*}*/
 .TiTlefortable{
     margin-left:56px;
     font-family: sans-serif;
@@ -188,3 +188,4 @@
     font-size: 20px;
     margin-top: 30px;
 }
+
