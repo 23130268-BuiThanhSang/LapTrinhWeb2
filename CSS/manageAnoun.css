@@ -30,7 +30,7 @@ input, select, textarea {
     font-size: 14px;
 }
 textarea {
-    height: 320px;
+    height: 240px;
     resize: vertical;
 }
 .submit-btn {
