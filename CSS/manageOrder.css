@@ -148,7 +148,7 @@ body{
 .status-processing { background: #3498db; }
 .status-approved { background: #2ecc71; }
 .status-cancelled { background: #e74c3c; }
-
+.status-completed { background: rebeccapurple;}
 .OrderSummary p {
     margin: 0;
     font-size: 14px;
