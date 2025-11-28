@@ -334,8 +334,13 @@ body{
     transform: translateY(410px);
 }
 
-
-
+/**
+thực hiện css cho combobox của các tình/ thành phố
+ */
+.ComboBoxCity{
+    margin-left: 10px;
+    height: 34px;
+}
 
 
 
