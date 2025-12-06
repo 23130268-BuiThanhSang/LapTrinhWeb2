@@ -1,11 +1,15 @@
+
 function showVoucher(){
-    document.getElementById("voucherID").style.display="block";
+    document.getElementById("voucherPopup").style.display = "flex";
 }
+
 function closeVoucher(){
-    document.getElementById("voucherID").style.display="none";
+    document.getElementById("voucherPopup").style.display = "none";
 }
-const btCx=document.getElementById("approveVc");
-const grpCx=document.querySelectorAll(".checkBx");
+
+const btCx = document.getElementById("voucher-apply");
+const grpCx = document.querySelectorAll(".voucher-item input[type='checkbox']");
+
 
 function checkCx() {
     let hasChecked = false;
@@ -27,3 +31,4 @@ function checkCx() {
 }
     grpCx.forEach(b=>b.addEventListener('change', checkCx));
     checkCx();
+

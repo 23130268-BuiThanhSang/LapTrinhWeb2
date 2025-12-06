@@ -274,14 +274,13 @@ danh sách sản phẩm có trong trang giỏ hàng
     filter: blur(3px);
 }
 .voucherUI{
-    display: none;
+    display: block;
     position: absolute;
     width: 435px;
     height: 624px;
     background: #D6FEFF;
     z-index: 10;
-    transform: translateX(957px);
-    border-radius: 15px;
+    border-radius: 5px;
     margin-top: 20px;
 }
 .voucherTxt{
@@ -292,7 +291,7 @@ danh sách sản phẩm có trong trang giỏ hàng
 .voucherTxt button{
     height: 40px;
     width: 40px;
-    border-radius: 10px;
+    border-radius: 5px;
     background: #64CCFF;
     font-size: 25px;
     padding: 0;
