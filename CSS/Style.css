@@ -6,14 +6,18 @@
     text-align: center;
     align-items: center;
 }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 body{
     margin: 0;
-    font-family: sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f5f5f5;
 }
 
-h2{
-    font-family: sans-serif;
-}
+
 .login{
     background: rgba(0, 0, 0, 0.6);
     backdrop-filter: blur(2px);
@@ -155,265 +159,290 @@ h2{
 }
 
 #HomePageBody {
-    font-family: 'Suggested Font Name', sans-serif;
+    /*font-family: 'Suggested Font Name', sans-serif;*/
     padding: 0;
     /*background: chartreuse;*/
     margin: 0;
 }
 /*MAIN MENU BAR*/
+a {
+    color: inherit;
+    text-decoration: none;
+}
+ul {
+    list-style: none;
+}
+
+/* MAIN BAR */
 .MainMenuBar {
-    height: 38px;
-    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(135deg, #0b1f3a 0%, #0f2d54 100%);
+    padding: 0 32px;
+    height: 70px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.25);
+    /*border-radius: 0 0 10px 10px;*/
+}
+
+/* LEFT */
+.GroupLeft {
     display: flex;
     align-items: center;
-    padding-top:10px;
+    gap: 12px;
+}
+.LogoWrap {
+    display: flex;
+    align-items: center;
+}
+.Logo {
+    width: 46px;
+    height: 46px;
+    object-fit: contain;
+}
+.NameWebsite {
+    font-size: 22px;
+    font-weight: 800;
+    color: #1fb6ff;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* CENTER */
+.GroupCenter {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+.MenuItem {
+    position: relative;
+}
+.MenuItem > a {
+    display: block;
+    padding: 22px 18px;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 600;
+    transition: all 0.25s ease;
+    border-bottom: 3px solid transparent;
+}
+.MenuItem > a:hover {
+    color: #1fb6ff;
+    background: rgba(31, 182, 255, 0.10);
+    border-bottom-color: #1fb6ff;
+}
+
+/* MEGA BOX */
+.MegaBox {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    min-width: 620px;
+    background: #ffffff;
+    border-radius: 0 0 12px 12px;
+    box-shadow: 0 12px 36px rgba(0,0,0,0.16);
+    padding: 28px 30px;
+    display: flex;
+    gap: 32px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.25s ease;
+}
+.MenuItem:hover .MegaBox {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+.MegaBox .Column {
+    flex: 1;
+    min-width: 160px;
+}
+.MegaBox .Column h4 {
+    font-size: 14px;
+    font-weight: 800;
+    color: #0b1f3a;
+    text-transform: uppercase;
+    margin-bottom: 12px;
     padding-bottom: 10px;
-    background-color: #001A2D;
-    color: white;
-    font-weight: bold;
-    font-size: 20px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 2000;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    border-bottom: 2px solid #1fb6ff;
 }
-.Logo{
-    width:50px;
-    height:50px;
+.MegaBox .Column ul {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
-.NameWebsite{
-    color: deepskyblue;
-    font-weight: bold;
-    font-size: 20px;
+.MegaBox .Column ul li a {
+    display: block;
+    padding: 7px 10px;
+    color: #555555;
+    font-size: 14px;
+    border-radius: 6px;
+    transition: all 0.18s ease;
 }
+.MegaBox .Column ul li a:hover {
+    background: #f6f7fb;
+    color: #1fb6ff;
+    padding-left: 16px;
+}
+
+/* RIGHT */
+.GroupRight { display: flex; align-items: center; gap: 14px; }
+
+/* Search */
 .SearchBox {
     display: flex;
     align-items: center;
-    background: rgba(255, 255, 255, 0.15);
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    border-radius: 20px;
-    height: 25px;
-    width: 230px;
-    padding: 0 10px;
-    transition: background 0.3s ease;
-}.SearchBox:hover {
-     background: rgba(255, 255, 255, 0.25);
- }
-
-.SearchBox i {
-    color: rgba(255,255,255,0.8);
-    margin-right: 8px;
-    font-size: 14px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 24px;
+    padding: 7px 12px 7px 14px;
+    border: 1px solid rgba(255,255,255,0.2);
+    transition: all 0.25s ease;
 }
-
-.SearchBar {
-    flex: 1;
-    background: transparent;
+.SearchBox:focus-within {
+    background: rgba(255,255,255,0.18);
+    border-color: #1fb6ff;
+}
+.SearchBox input {
     border: none;
     outline: none;
-    color: white;
+    background: transparent;
+    color: #ffffff;
     font-size: 14px;
-    margin: 0;
+    width: 150px;
+    transition: width 0.25s ease;
 }
-
-.SearchBar::placeholder {
-    color: rgba(255,255,255,0.6);
+.SearchBox input::placeholder {
+    color: rgba(255,255,255,0.7);
 }
-
-.GroupLeft{
-    display: flex;
-    flex-direction:row;
-    align-items: center;
-    margin-right: 75px;
+.SearchBox:focus-within input {
+    width: 200px;
 }
-.GroupCenter{
-    display: flex;
-    flex-direction:row;
-    align-items: center;
-    font-size: 15px;
-    margin-right: 370px;
-}
-.GroupCenter>div{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    height:60px;
-    width:113px;
-    border-radius:3px;
-    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
-
-}
-.GroupCenter>div:hover{
-
+.SearchBox button {
+    background: transparent;
+    border: none;
+    color: rgba(255,255,255,0.8);
     cursor: pointer;
-    color:deepskyblue;
-}
-.MegaBoxNewProduct,.MegaBoxListProduct,.MegaBoxBrand,.MegaBoxSale{
-    position:absolute;
-    top:100%;
-    left:0;
-    width:900px;
-    height:300px;
-    background-color:  rgba(255,255,255,0.95);
-    color:black;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    display:none;
-    padding: 10px;
-    z-index: 1000;
-    transition: 0.3s;
-
-
-}
-.GroupCenter > .NewProduct:hover .MegaBoxNewProduct,
-.GroupCenter > .ListProduct:hover .MegaBoxListProduct,
-.GroupCenter > .Brand:hover .MegaBoxBrand,
-.GroupCenter > .Sale:hover .MegaBoxSale {
-    display: flex;
-    flex-direction: row;
-    justify-content:space-between;
-
-}
-
-
-.Column {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.Column h4 {
-    color: black;
-    font-size: 16px;
-    margin-bottom: 5px;
-    border-bottom: 1px solid rgba(0,0,0,0.3);
-    padding-bottom: 4px;
-}
-
-.Column div {
-    color: #333;
-    cursor: pointer;
-    transition: color 0.2s;
-}
-.Column div:hover {
-    color: deepskyblue;
-}
-
-
-.GroupRight{
-    display: flex;
-    flex-direction:row;
-    align-items: center;
-
-}
-.GroupRight>div{
-    height:100%;
-    margin-right: 16px;
-}
-.GroupRight>div:hover{
-    cursor: pointer;
-}
-.User i:active{
-    color: deepskyblue;
-}
-.ShoppingCart i:active{
-    color: deepskyblue;
-}
-.Announcement{
-    position: relative;
-}
-.Announcement i {
+    padding: 4px;
     transition: color 0.2s ease;
 }
-.Announcement i:active{
-    color: deepskyblue;
-}
+.SearchBox button:hover { color: #1fb6ff; }
 
-.MegaBoxAnnouncement{
-    position:absolute;
-    top:43px;
-    left:-350px;
-    width:375px;
-    height:500px;
-    background-color:  white;
-    color:black;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    padding: 5px;
-    z-index: 1000;
-    display: none;
-
-}
-
-.MegaBoxAnnouncement.show{
+/* Icon Buttons */
+.IconBtn {
     display: flex;
-    flex-direction: column;
-}
-.TitleAnnouncement{
-    display: flex;
+    align-items: center;
     justify-content: center;
-    font-family:sans-serif;
-    font-weight: bold;
-    font-size: 20px;
-    margin-top: 10px;
-    padding-bottom: 20px;
-    margin-bottom: 5px;
-    border-bottom:#999999 1px solid;
+    width: 40px;
+    height: 40px;
+    background: rgba(255,255,255,0.1);
+    border: none;
+    border-radius: 50%;
+    color: #ffffff;
+    font-size: 18px;
+    cursor: pointer;
+    transition: all 0.22s ease;
 }
-.ContentAnnounment{
-    height: 100%;
-    margin:15px 0 10px 15px;
-    display: flex;
-    flex-direction: column;
-    font-family: sans-serif;
-    overflow-y: scroll;
-    scroll-behavior: smooth;
+.IconBtn:hover {
+    background: #1fb6ff;
+    color: #ffffff;
+    transform: scale(1.08);
 }
-.ItemAnnouncement{
-    display: flex;
-    flex-direction: column;
-    width: 310px;
-    padding:10px;
-    border-radius: 10px;
-    border: #999999 1px solid;
-    margin-bottom: 10px;
-    text-decoration: none;
-    color: inherit;
+
+/* Announcement dropdown */
+.Announcement {
+    position: relative;
 }
-.TitleAnnounce{
+.MegaBoxAnnouncement {
+    position: absolute;
+    top: 52px;
+    right: 0;
+    width: 320px;
+    max-height: 380px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 12px 36px rgba(0,0,0,0.16);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(8px);
+    transition: all 0.22s ease;
+    overflow: hidden;
+}
+.Announcement:hover .MegaBoxAnnouncement {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+.TitleAnnouncement {
+    padding: 14px 16px;
+    font-size: 15px;
+    font-weight: 800;
+    color: #0b1f3a;
+    background: #f7f8fb;
+    border-bottom: 1px solid #eeeeee;
+}
+.ContentAnnounment {
+    max-height: 300px;
+    overflow-y: auto;
+}
+.ItemAnnouncement {
+    display: block;
+    padding: 12px 16px;
+    border-bottom: 1px solid #f1f1f1;
+    transition: background 0.18s ease;
+}
+.ItemAnnouncement:hover {
+    background: #f8f9fb;
+}
+.TitleAnnounce {
+    font-size: 14px;
+    font-weight: 700;
+    color: #0b1f3a;
+    margin-bottom: 4px;
+}
+.DescriptionItemAnnounce {
     font-size: 13px;
-    font-weight: bold;
+    color: #555555;
+    line-height: 1.4;
 }
-.DescriptionItemAnnounce{
-    font-size: 13px;
-    font-weight: bold;
-}
-.subDescriptionAnnounce{
-    display: inline-block;
-    font-size: 11px;
-    color:#777777;
-    max-width: 250px;
+.subDescriptionAnnounce {
+    display: block;
+    color: #888888;
+    font-size: 12px;
+    margin-top: 4px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    vertical-align: middle;
-}
-.ItemAnnouncement:active{
-    background: #7EDAFF;
+    max-width: 250px;
 }
 
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+    .MainMenuBar { padding: 0 18px; }
+    .MenuItem > a { padding: 20px 12px; font-size: 14px; }
+    .MegaBox { min-width: 520px; }
+}
+@media (max-width: 768px) {
+    .MainMenuBar { flex-wrap: wrap; height: auto; padding: 14px; gap: 12px; }
+    .GroupCenter { order: 3; width: 100%;
+        /*justifyment: center; */
+        flex-wrap: wrap;
+    }
+    .MenuItem { width: auto; }
+    .MegaBox { position: fixed; left: 50% !important; min-width: 92vw; max-width: 92vw; top: 70px; }
+    .SearchBox input { width: 120px; }
+}
 /*MAIN BANNER*/
 .banner {
-    margin-top: 58px;
+    /*margin-top: 58px;*/
     width: 100%;
     height: 400px;
     overflow: hidden;
     position: relative;
-    margin: auto;
+    /*margin: auto;*/
 }
 
 .BannerSlides {
