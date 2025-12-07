@@ -205,3 +205,118 @@ a:hover{
     height: 40px;
     width: 40px;
 }
+/**Voucher**/
+.voucher-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+    z-index: 9999;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 39px;
+    display: none;
+}
+
+.voucher-box {
+    width: 430px;
+    max-height: 85vh;
+    background: white;
+    padding: 22px;
+    border-radius: 5px;
+    overflow-y: auto;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.25);
+    border: 1.5px solid #B8E6FF;
+}
+
+.voucher-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.voucher-header h2 {
+    font-size: 22px;
+    color: #0747A6;
+    font-weight: 700;
+}
+
+.voucher-close {
+    background: #1E88E5;
+    border: none;
+    color: white;
+    width: 36px;
+    height: 36px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.25s;
+    transform: translateY(-10px);
+}
+
+.voucher-close:hover {
+    background: #0D47A1;
+}
+
+.voucher-list {
+    max-height: 300px;
+    overflow-y: auto;
+    margin-top: 10px;
+}
+
+.voucher-item {
+    background: #C9ECFF;
+    padding: 14px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-left: 5px solid #1E88E5;
+}
+
+.voucher-text {
+    font-size: 14px;
+    color: #003366;
+    padding-right: 10px;
+    transform: translateY(5px);
+}
+
+.voucher-item input[type="checkbox"] {
+    width: 24px;
+    height: 24px;
+    accent-color: #388AFF;
+    cursor: pointer;
+    transform: translateY(13px);
+}
+
+#voucher-apply {
+    margin-top: 15px;
+    width: 100%;
+    padding: 12px;
+    background: #388AFF;
+    color: white;
+    font-weight: 600;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+#voucher-apply:hover {
+    background: #0D47A1;
+}
+#code:hover {
+    cursor: pointer;
+}
+#voucherInput{
+    transform: translateY(10px);
+}
+.scrollCart{
+    overflow-y: auto;
+}
+
+
+
+
+
