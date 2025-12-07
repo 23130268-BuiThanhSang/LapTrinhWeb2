@@ -252,15 +252,15 @@
 }
 
 .status-approved {
-    background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
-    color: #1d4ed8;
-    box-shadow: 0 2px 8px rgba(37, 99, 235, 0.25);
-}
-
-.status-completed {
     background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
     color: #047857;
     box-shadow: 0 2px 8px rgba(5, 150, 105, 0.25);
+}
+
+.status-completed {
+    background: linear-gradient(135deg, #ede9fe 0%, #ddd6fe 100%);
+    color: #7c3aed;
+    box-shadow: 0 2px 8px rgba(124, 58, 237, 0.25);
 }
 
 /* ===== ORDER SUMMARY ===== */
@@ -357,164 +357,3 @@
         font-size: 28px;
     }
 }
-/*.MainUI {*/
-/*    display: flex;*/
-/*}*/
-/*body{*/
-/*    overflow-y: hidden;*/
-/*}*/
-
-/*.OrderManagerUI {*/
-/*    font-family: 'Suggested Font Name', sans-serif;*/
-/*    display: flex;*/
-/*    flex-direction: column;*/
-/*    gap: 15px;*/
-/*    padding: 15px;*/
-/*    width: 100%;*/
-/*    box-sizing: border-box;*/
-/*    background: #B2E9FF;*/
-/*}*/
-
-/*.topRow {*/
-/*    display: flex;*/
-/*    justify-content: space-between;*/
-/*    gap: 15px;*/
-/*}*/
-
-/*.topBox {*/
-/*    flex: 1;*/
-/*    width: fit-content;*/
-/*    height: fit-content;*/
-/*    background-color: white;*/
-/*    padding: 20px;*/
-/*    border-radius: 10px;*/
-/*    box-shadow: 0 2px 5px rgba(0,0,0,0.1);*/
-/*}*/
-
-/*.BoxTitle{*/
-/*    color: #001A2D;*/
-/*    margin-top: 0;*/
-/*    margin-bottom: 10px;*/
-/*    font-size: 20px;*/
-/*    display: inline-block;*/
-/*    font-weight: bold;*/
-/*}*/
-/*.DetailPageLink{*/
-/*    background: #001A2D;*/
-/*    color: white;*/
-/*    font-weight: bold;*/
-/*    padding: 5px;*/
-/*    padding-left: 8px;*/
-/*    padding-right: 8px;*/
-/*    border-radius: 15px;*/
-/*    float: right;*/
-/*    text-decoration: none;*/
-/*    transition: transform 0.2s;*/
-/*}*/
-/*.DetailPageLink:hover{*/
-/*    transform: scale(1.1);*/
-/*}*/
-/*.NumberContainer {*/
-/*    display: flex;*/
-/*    align-items: baseline;*/
-/*    padding: 15px;*/
-/*    justify-content: center;*/
-/*    gap: 5px;*/
-/*    background: #001A2D;*/
-/*    border-radius: 15px;*/
-/*}*/
-/*.IncomeDisplay{*/
-/*    color: #02E500;*/
-/*    font-size: 40px;*/
-/*}*/
-/*.TotalOrderDisplay{*/
-/*    color: #01A0DA;*/
-/*    font-size: 40px;*/
-/*}*/
-/*.CurrencyValue{*/
-/*    font-size: 35px;*/
-/*    color: white;*/
-/*}*/
-/*.turnBack {*/
-/*    border-radius: 10px;*/
-/*    background: #02BBE7;*/
-/*    padding: 10px;*/
-/*    text-decoration: none;*/
-/*}*/
-
-/*.bottomBox {*/
-/*    background-color: white;*/
-/*    padding: 20px;*/
-/*    border-radius: 10px;*/
-/*    box-shadow: 0 2px 8px rgba(0,0,0,0.15);*/
-/*    height: fit-content;*/
-/*}*/
-/*.OrdersDisplay{*/
-/*    height: 440px;*/
-/*    width: 100%;*/
-/*    border-radius: 15px;*/
-/*    background: #001A2D;*/
-/*    overflow-x: hidden;*/
-/*    overflow-y: auto;*/
-/*    display: flex;*/
-/*    flex-direction: column;*/
-/*    padding: 10px;*/
-/*    gap: 10px;*/
-/*}*/
-
-/*.OrderItem {*/
-/*    text-decoration: none;*/
-/*    !*margin: 10px;*!*/
-/*    display: flex;*/
-/*    flex-direction: column;*/
-/*    gap: 8px;*/
-/*    background: #fff;*/
-/*    border: 1px solid #ddd;*/
-/*    border-radius: 10px;*/
-/*    padding: 15px 20px;*/
-/*    box-shadow: 0 2px 6px rgba(0,0,0,0.08);*/
-/*}*/
-/*.OrderItem:hover{*/
-/*    background: #ECECEC;*/
-/*}*/
-
-/*.OrderHeader {*/
-/*    display: flex;*/
-/*    justify-content: space-between;*/
-/*    align-items: center;*/
-/*    font-weight: bold;*/
-/*}*/
-
-/*.OrderID {*/
-/*    color: #333;*/
-/*}*/
-
-/*.OrderDate {*/
-/*    color: #888;*/
-/*    font-size: 14px;*/
-/*}*/
-
-/*.OrderStatus {*/
-/*    padding: 4px 10px;*/
-/*    border-radius: 20px;*/
-/*    font-size: 13px;*/
-/*    text-transform: capitalize;*/
-/*    color: #fff;*/
-/*    text-align: center;*/
-/*}*/
-
-/*.status-pending { background: #f1c40f; }*/
-/*.status-processing { background: #3498db; }*/
-/*.status-approved { background: #2ecc71; }*/
-/*.status-cancelled { background: #e74c3c; }*/
-/*.status-completed { background: rebeccapurple;}*/
-/*.OrderSummary p {*/
-/*    margin: 0;*/
-/*    font-size: 14px;*/
-/*    color: #555;*/
-/*}*/
-
-/*.OrderSummary span {*/
-/*    font-weight: bold;*/
-/*}*/
-
