@@ -1,167 +1,255 @@
-html, body {
-    height: 100%;
+/* ===== GLOBAL RESET & BASE ===== */
+* {
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.AccountLeft{
-    background: #F2F2F2;
-    float: left;
-    width: 350px;
-    height: 730px;
-    font-family: sans-serif;
-    background: lightcyan;
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f7fa;
+    min-height: 100vh;
+    overflow-x: hidden;
 }
-.nameAdmin{
-    font-size: 25px;
-}
-.AvatarAccount{
-    background: #01A0DA;
-    width: 350px;
-    height: 120px;
+
+/* ===== MAIN LAYOUT CONTAINER ===== */
+.MainUI {
     display: flex;
+    min-height: 100vh;
 }
-.avtr{
-    width: 100px;
-    height: 100px;
-    padding-top: 10px;
-}
-.AccountName{
-    padding-top: 43px;
-    color: white;
-}
-.AccountLeftOption{
-    margin: 15px;
+
+/* ===== LEFT SIDEBAR - FIXED POSITION ===== */
+.AccountLeft {
+    width: 280px;
+    height: 100vh;
+    background: linear-gradient(180deg, #0f0f1a 0%, #1a1a2e 50%, #16213e 100%);
+    padding: 24px 16px;
     display: flex;
     flex-direction: column;
-
-}
-.AccountLeftOption a:hover{
-    cursor: pointer;
-    color: #01A0DA;
-}
-.OptionIcon{
-    margin-left: 10px;
-    text-decoration: none;
-    color: black;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 4px 0 25px rgba(0, 0, 0, 0.3);
+    border-right: 1px solid rgba(102, 126, 234, 0.2);
+    overflow-y: auto;
 }
 
-.NameOptionBold{
-    margin-left: 10px;
+/* Custom Scrollbar for Sidebar */
+.AccountLeft::-webkit-scrollbar {
+    width: 6px;
+}
+
+.AccountLeft::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.AccountLeft::-webkit-scrollbar-thumb {
+    background: rgba(102, 126, 234, 0.3);
+    border-radius: 3px;
+}
+
+.AccountLeft::-webkit-scrollbar-thumb:hover {
+    background: rgba(102, 126, 234, 0.5);
+}
+
+/* ===== AVATAR SECTION ===== */
+.AvatarAccount {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 18px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 14px;
+    margin-bottom: 32px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.avtr {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #667eea;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+.AccountName {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.nameAdmin {
+    font-size: 17px;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.stk {
+    font-size: 12px;
+    color: #667eea;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* ===== NAVIGATION OPTIONS ===== */
+.AccountLeftOption {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
+}
+
+/* Regular Menu Item */
+.OptionIcon {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 18px;
+    color: #8892a6;
     text-decoration: none;
-}
-.OptionIcon i{
-    font-size: 30px;
-    text-align: center;
-}
-.NameOptionBold i{
-    font-size: 30px;
-    text-align: center;
-    color: #01A0DA;
-}
-.fa-box-open{
-    transform: translateX(-5px);
-}
-.fa-address-card{
-    transform: translateX(-4px);
-}
-.NameOption{
-    margin-left: 50px;
-    transform: translateY(-23px);
-}
-.NameOptionBoldText{
-    margin-left: 50px;
-    transform: translateY(-23px);
-    color: #01A0DA;
-}
-.button_container {
-    padding-top: 280px;
-}
-.sgoutAdmin{
-    width: 100px;
-    height: 30px;
-    border: black solid;
     border-radius: 10px;
-    display: flex;
+    transition: all 0.3s ease;
+    font-size: 15px;
+    border: 1px solid transparent;
+}
+
+.OptionIcon i {
+    font-size: 18px;
+    width: 24px;
     text-align: center;
-    justify-content: center;
-    padding-top: 8px;
-    margin-left: 10px;
-    /*transform: translateY(330px);*/
-    text-decoration: none;
+    transition: all 0.3s ease;
 }
-.ManagerUser{
+
+.OptionIcon:hover {
+    background: rgba(102, 126, 234, 0.1);
+    color: #ffffff;
+    transform: translateX(6px);
+    border-color: rgba(102, 126, 234, 0.2);
+}
+
+.OptionIcon:hover i {
+    color: #667eea;
+}
+
+.NameOption {
+    font-weight: 500;
+}
+
+/* Active/Bold Menu Item (Current Page) */
+.NameOptionBold {
     display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 18px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 10px;
+    font-size: 15px;
+    box-shadow: 0 4px 20px rgba(102, 126, 234, 0.5);
+    position: relative;
+    overflow: hidden;
 }
-.manageUserUi{
-    margin-left: 20px;
-    padding-top: 20px;
-    font-family: sans-serif;
+
+.NameOptionBold::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, transparent 100%);
+    pointer-events: none;
+}
+
+.NameOptionBold i {
+    font-size: 18px;
+    width: 24px;
+    text-align: center;
+}
+
+.NameOptionBoldText {
     font-weight: 600;
 }
 
-#mangeUserHeader{
-    font-size: 35px;
-    width: 700px;
+/* ===== LOGOUT BUTTON ===== */
+.button_container {
+    margin-top: auto;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
 
-}
-#adminSearch{
-    font-size: 20px;
-    width: 1100px;
-    height: 40px;
-    margin-top: 20px;
-    padding-left: 10px;
-    border: black solid 1px;
-}
-.typeUser{
-    width: 1100px;
-    height: 23px;
-    border: black solid 1px;
-    margin-top: 20px;
-    background: lightcyan;
+.sgoutAdmin {
     display: flex;
-    font-size: 20px;
-    gap: 97px;
-    padding: 5px;
-}
-.typeUser #userTx{ transform: translateX(30px); }
-.typeUser #userId{ transform: translateX(40px); }
-.typeUser #userMember{ transform: translateX(45px); }
-.typeUser #userPay{ transform: translateX(23px); }
-.typeUser #userActivity{ transform: translateX(-13px); }
-.typeUser #userStatus{ transform: translateX(-40px); }
-.userBox{
-    width: 1110px;
-    height: 70px;
-    border: black solid 1px;
-    margin-top: 20px;
-    background: lightgreen;
-    display: flex;
-    padding: 5px;
-    box-sizing: border-box;
-    border-radius: 10px;
-}
-.userGroup{
-    display: flex;
-    width: 100%;
-    height: 100%;
     align-items: center;
+    justify-content: center;
     gap: 10px;
+    width: 100%;
+    padding: 14px 18px;
+    background: rgba(239, 68, 68, 0.1);
+    color: #f87171;
+    text-decoration: none;
     border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(239, 68, 68, 0.2);
 }
-.userTxt  { flex: 5%; padding-left: 10px; }
-.userTxt1 { flex: 7%; }
-.userTxt2 { flex: 10%; }
-.userTxt3 { flex: 10%; }
-.userTxt4 { flex: 12%; }
-.userTxt5 { flex: 3%; }
-.choosePage{
-    display: flex;
-    gap: 20px;
-    font-size: 25px;
-    margin-left: 480px;
-    padding-top: 30px;
+
+.sgoutAdmin:hover {
+    background: rgba(239, 68, 68, 0.2);
+    color: #fca5a5;
+    transform: scale(1.02);
+    box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);
 }
-.pageInfo:hover{
-    cursor: pointer;
-    color: #01A0DA;
+
+/* ===== RESPONSIVE SIDEBAR ===== */
+@media (max-width: 1024px) {
+    .AccountLeft {
+        width: 240px;
+    }
+}
+
+@media (max-width: 768px) {
+    .AccountLeft {
+        width: 72px;
+        padding: 16px 10px;
+    }
+
+    .AvatarAccount {
+        justify-content: center;
+        padding: 12px;
+    }
+
+    .AccountName,
+    .NameOption,
+    .NameOptionBoldText {
+        display: none;
+    }
+
+    .OptionIcon,
+    .NameOptionBold {
+        justify-content: center;
+        padding: 14px;
+    }
+
+    .OptionIcon i,
+    .NameOptionBold i {
+        font-size: 20px;
+        margin: 0;
+    }
+
+    .sgoutAdmin {
+        font-size: 0;
+    }
+
+    .sgoutAdmin::before {
+        content: '\f2f5';
+        font-family: 'Font Awesome 6 Free';
+        font-weight: 900;
+        font-size: 18px;
+    }
 }

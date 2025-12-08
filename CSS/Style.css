@@ -437,12 +437,11 @@ ul {
 }
 /*MAIN BANNER*/
 .banner {
-    /*margin-top: 58px;*/
+    margin-top: 58px;
     width: 100%;
     height: 400px;
     overflow: hidden;
     position: relative;
-    /*margin: auto;*/
 }
 
 .BannerSlides {
