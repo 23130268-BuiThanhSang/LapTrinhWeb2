@@ -5,9 +5,7 @@
     <title>Title</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="CSS/manageUser.css">
-    <link rel="stylesheet" href="CSS/Style.css">
-    <link rel="stylesheet" href="CSS/manageOrder.css">
-    <link rel="stylesheet" href="CSS/StyleForManageProduct.css">
+    <link rel="stylesheet" href="CSS/manageProduct.css">
 </head>
 <body>
 <div class="MainUI">
@@ -46,125 +44,182 @@
         </div>
     </div>
     <div class="MainManagerForProduct">
-        <div class="HeaderForManageProduct">Quản Lý Sản Phẩm</div>
-        <div class="DisplayToTal">
-            <div class="DisplayQuantityProduct">
-                <div class="TitleForQuantity">
-                    Sản Phẩm Trong Cửa Hàng
-                </div>
-                <div class="QuantityProduct">
-                    500
-                </div>
-                <button class="ActionButton">
-                    Thao Tác
-                </button>
-            </div>
-            <div class="DisplayQuantityProduct">
-                <div class="TitleForQuantity">
-                    Sản Phẩm Giảm Giá
-                </div>
-                <div class="QuantityProduct">
-                    300
-                </div>
-                <button class="ActionButton">
-                    Thao Tác
-                </button>
-            </div>
-            <div class="DisplayQuantityProduct">
-                <div class="TitleForQuantity">
-                    Sản Phẩm Sắp Hết Hạn
-                </div>
-                <div class="QuantityProduct">
-                    30
-                </div>
-                <button class="ActionButton">
-                    Thao Tác
-                </button>
-            </div>
+        <div class="TabButtons">
+            <button id="btnAddProduct" class="TabButton">Thêm sản phẩm</button>
+            <button id="btnSearchProduct" class="TabButton">Tìm kiếm sản phẩm</button>
         </div>
-        <div class="BlockTableForDisplayQuantityProduct">
-            <div class="TiTlefortable">
-                Quản Lý Sản Phẩm Trong kho
-            </div>
-            <div class="ControlProduct">
-                <button class="ButtonControlProduct">
-                    Thêm sản phẩm
-                </button>
-                <div class="SearchBox">
-                    <input type="text" placeholder="Tìm sản phẩm..." class="SearchBar">
-                    <i class="fa fa-search"></i>
+
+        <!-- ===================== ADD PRODUCT SECTION ===================== -->
+        <div id="AddProductSection" class="AddProductSection">
+            <div class="HeaderForManageProduct">Thêm Sản Phẩm Mới</div>
+
+            <form class="AddProductForm">
+
+                <div class="FormRow">
+                    <label>Mã sản phẩm:</label>
+                    <input type="text" name="product_id">
                 </div>
 
+                <div class="FormRow">
+                    <label>Variant ID:</label>
+                    <input type="text" name="variant_id">
+                </div>
+
+                <div class="FormRow">
+                    <label>Tên sản phẩm:</label>
+                    <input type="text" name="product_name">
+                </div>
+
+                <div class="FormRow">
+                    <label>Phân loại:</label>
+                    <input type="text" name="category">
+                </div>
+
+                <div class="FormRow">
+                    <label>Giá bán:</label>
+                    <input type="number" name="price">
+                </div>
+
+                <div class="FormRow">
+                    <label>Số lượng:</label>
+                    <input type="number" name="quantity">
+                </div>
+
+                <div class="FormRow">
+                    <label>Ngày nhập kho:</label>
+                    <input type="date" name="import_date">
+                </div>
+
+                <div class="FormRow">
+                    <label>Hạn sử dụng:</label>
+                    <input type="date" name="expire_date">
+                </div>
+
+                <button type="submit" class="SubmitAddProduct">Thêm sản phẩm</button>
+
+            </form>
+        </div>
+
+
+        <!-- ===================== SEARCH / VIEW PRODUCT SECTION ===================== -->
+        <div id="SearchProductSection" class="SearchProductSection">
+
+            <div class="HeaderForManageProduct">Tìm Kiếm & Quản Lý Sản Phẩm</div>
+
+            <!-- Search Controls -->
+            <div class="SearchControls">
+
+                <!-- Search text -->
+                <input type="text" class="SearchInput" placeholder="Nhập từ khóa..." name="search_text">
+
+                <!-- Filter: search by -->
+                <select class="SearchFilter" name="search_by">
+                    <option value="name">Tên sản phẩm</option>
+                    <option value="id">Mã sản phẩm</option>
+                    <option value="variant_id">Variant ID</option>
+                </select>
+
+                <!-- Filter: categories -->
+                <select class="CategoryFilter" name="category_filter">
+                    <option value="">Tất cả</option>
+                    <option value="Đồ thể thao">Đồ thể thao</option>
+                    <option value="Công sở">Máy Gym</option>
+                    <option value="Đồ nam">Thực phẩm chức năng</option>
+                    <option value="Đồ nữ">Phụ kiện thể thao</option>
+                </select>
+
+                <!-- Filter: gender -->
+                <select class="GenderFilter" name="gender_filter">
+                    <option value="">Giới tính: Tất cả</option>
+                    <option value="nam">Nam</option>
+                    <option value="nu">Nữ</option>
+                </select>
+
+                <!-- Filter: price range -->
+                <select class="PriceFilter" name="price_filter">
+                    <option value="">Khoảng giá</option>
+                    <option value="0-200k">0 - 200k</option>
+                    <option value="200k-500k">200k - 500k</option>
+                    <option value="500k-1000k">500k - 1tr</option>
+                    <option value="500k-1000k">> 1tr</option>
+                </select>
+
+                <button class="SearchButton">Tìm kiếm</button>
             </div>
-                <table class="TableProductManage">
-                    <thead>
-                    <th>Mã Sản phẩm</th>
-                    <th>variant_id</th>
-                    <th>Tên Sản Phẩm</th>
-                    <th>Phân Loại</th>
-                    <th>Giá Bán</th>
-                    <th>Số Lượng</th>
-                    <th>Ngày Nhập kho</th>
-                    <th>Hạn Sử Dụng</th>
-                    <th>Trạng Thái</th>
-                    <th>Hành Động</th>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>101</td>
-                        <td>VR001</td>
-                        <td>Áo ADIDAS</td>
-                        <td>Đồ thể thao</td>
-                        <td>200.000đ</td>
-                        <td>50</td>
-                        <td>23/2/2023</td>
-                        <td>Không</td>
-                        <td>Hiển thị</td>
-                        <td>
-                            <button class="ButtonEditProduct">Sửa</button>
-                            <button class="ButtonDeleteProduct">Xóa</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>101</td>
-                        <td>VR001</td>
-                        <td>Áo ADIDAS</td>
-                        <td>Đồ thể thao</td>
-                        <td>200.000đ</td>
-                        <td>50</td>
-                        <td>23/2/2023</td>
-                        <td>Không</td>
-                        <td>Hiển thị</td>
-                        <td>
-                            <button class="ButtonEditProduct">Sửa</button>
-                            <button class="ButtonDeleteProduct">Xóa</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>101</td>
-                        <td>VR001</td>
-                        <td>Áo ADIDAS</td>
-                        <td>Đồ thể thao</td>
-                        <td>200.000đ</td>
-                        <td>50</td>
-                        <td>23/2/2023</td>
-                        <td>Không</td>
-                        <td>Hiển thị</td>
-                        <td>
-                            <button class="ButtonEditProduct">Sửa</button>
-                            <button class="ButtonDeleteProduct">Xóa</button>
-                        </td>
-                    </tr>
 
+            <!-- Results table -->
+            <table class="TableProductManage">
+                <thead>
+                <tr>
+                    <th>Mã SP</th>
+                    <th>Variant</th>
+                    <th>Tên</th>
+                    <th>Phân loại</th>
+                    <th>Giá</th>
+                    <th>Số lượng</th>
+                    <th>Ngày nhập</th>
+                    <th>Hạn SD</th>
+                    <th>Trạng thái</th>
+                    <th>Hành động</th>
+                </tr>
+                </thead>
 
+                <tbody>
+                <!-- Backend will generate rows here -->
+                <tr>
+                    <td>101</td>
+                    <td>VR001</td>
+                    <td>Áo ADIDAS</td>
+                    <td>Đồ thể thao</td>
+                    <td>200.000đ</td>
+                    <td>50</td>
+                    <td>23/2/2023</td>
+                    <td>Không</td>
+                    <td>Hiển thị</td>
+                    <td>
+                        <button class="ButtonEditProduct">Sửa</button>
+                        <button class="ButtonDeleteProduct">Xóa</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>101</td>
+                    <td>VR001</td>
+                    <td>Áo ADIDAS</td>
+                    <td>Đồ thể thao</td>
+                    <td>200.000đ</td>
+                    <td>50</td>
+                    <td>23/2/2023</td>
+                    <td>Không</td>
+                    <td>Hiển thị</td>
+                    <td>
+                        <button class="ButtonEditProduct">Sửa</button>
+                        <button class="ButtonDeleteProduct">Xóa</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>101</td>
+                    <td>VR001</td>
+                    <td>Áo ADIDAS</td>
+                    <td>Đồ thể thao</td>
+                    <td>200.000đ</td>
+                    <td>50</td>
+                    <td>23/2/2023</td>
+                    <td>Không</td>
+                    <td>Hiển thị</td>
+                    <td>
+                        <button class="ButtonEditProduct">Sửa</button>
+                        <button class="ButtonDeleteProduct">Xóa</button>
+                    </td>
+                </tr>
 
-
-                    </tbody>
-                </table>
+                </tbody>
+            </table>
 
         </div>
+
     </div>
 </div>
+<script src="JS/manageProductTabSw.js"></script>
 </body>
 </html>
 
