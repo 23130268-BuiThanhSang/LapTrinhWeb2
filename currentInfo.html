@@ -8,190 +8,217 @@
     <link rel="stylesheet" href="CSS/Style.css">
 </head>
 <body>
-<div class="MainMenuBar">
+<nav class="MainMenuBar">
     <div class="GroupLeft">
-        <img src="lgImg/logo.png" alt="Logo" class="Logo">
-        <div class="NameWebsite">SPGYM</div>
+        <a href="/" class="LogoWrap">
+            <img src="lgImg/logo.png" alt="SPGYM Logo" class="Logo">
+        </a>
+        <span class="NameWebsite">SPGYM</span>
     </div>
-    <div class="GroupCenter">
-        <div class="NewProduct">Sản Phẩm Mới
-            <div class="MegaBoxNewProduct">
+
+    <ul class="GroupCenter">
+        <li class="MenuItem">
+            <a href="#">Sản Phẩm Mới</a>
+            <div class="MegaBox">
                 <div class="Column">
                     <h4>Đồ thể thao</h4>
-                    <div>Đồ chạy bộ</div>
-                    <div>Đồ bơi</div>
+                    <ul>
+                        <li><a href="#">Đồ chạy bộ</a></li>
+                        <li><a href="#">Đồ bơi</a></li>
+                    </ul>
                 </div>
                 <div class="Column">
                     <h4>Thực phẩm bổ sung</h4>
-                    <div>Thanh protein & đồ ăn nhẹ lành mạnh</div>
-                    <div>Bột protein thuần chay</div>
-                    <div>kẽm bổ sung</div>
+                    <ul>
+                        <li><a href="#">Thanh protein & đồ ăn nhẹ</a></li>
+                        <li><a href="#">Bột protein thuần chay</a></li>
+                        <li><a href="#">Kẽm bổ sung</a></li>
+                    </ul>
                 </div>
                 <div class="Column">
                     <h4>Dụng cụ tập gym</h4>
-                    <div>Bánh xe tập cơ bụng</div>
-                    <div>Dây kháng lực</div>
+                    <ul>
+                        <li><a href="#">Bánh xe tập cơ bụng</a></li>
+                        <li><a href="#">Dây kháng lực</a></li>
+                    </ul>
                 </div>
             </div>
-        </div>
-        <div class="ListProduct"> Danh Mục
-            <div class="MegaBoxListProduct">
+        </li>
+
+        <li class="MenuItem">
+            <a href="#">Danh Mục</a>
+            <div class="MegaBox">
                 <div class="Column">
                     <h4>Danh Mục Sản Phẩm</h4>
-                    <div> Dụng Cụ Tập Gym</div>
-                    <div>Đồ Thể Thao</div>
-                    <div>Thực Phẩm Bổ Sung</div>
-                    <div>Phụ Kiện</div>
+                    <ul>
+                        <li><a href="#">Dụng Cụ Tập Gym</a></li>
+                        <li><a href="#">Đồ Thể Thao</a></li>
+                        <li><a href="#">Thực Phẩm Bổ Sung</a></li>
+                        <li><a href="#">Phụ Kiện</a></li>
+                    </ul>
                 </div>
             </div>
-        </div>
-        <div class="Brand">Nhãn Hàng
-            <div class="MegaBoxBrand">
+        </li>
+
+        <li class="MenuItem">
+            <a href="#">Nhãn Hàng</a>
+            <div class="MegaBox">
                 <div class="Column">
                     <h4>Đồ thể thao</h4>
-                    <div>ADIDAS</div>
-                    <div>NIKE</div>
-                    <div>HOKA</div>
-                    <div>PUMA</div>
-                    <div>CROCS</div>
+                    <ul>
+                        <li><a href="#">ADIDAS</a></li>
+                        <li><a href="#">NIKE</a></li>
+                        <li><a href="#">HOKA</a></li>
+                        <li><a href="#">PUMA</a></li>
+                        <li><a href="#">CROCS</a></li>
+                    </ul>
                 </div>
                 <div class="Column">
                     <h4>Dụng cụ tập gym</h4>
-                    <div>Eleiko</div>
-                    <div>NordicTrack</div>
-                    <div>BowFlex</div>
-                    <div>Precor</div>
+                    <ul>
+                        <li><a href="#">Eleiko</a></li>
+                        <li><a href="#">NordicTrack</a></li>
+                        <li><a href="#">BowFlex</a></li>
+                        <li><a href="#">Precor</a></li>
+                    </ul>
                 </div>
             </div>
-        </div>
-        <div class="Sale">Ưu Đãi
-            <div class="MegaBoxSale">
+        </li>
+
+        <li class="MenuItem">
+            <a href="#">Ưu Đãi</a>
+            <div class="MegaBox">
                 <div class="Column">
                     <h4>Đồ thể thao</h4>
-                    <div>Đồ leo núi</div>
-                    <div>Đồ bơi</div>
-                    <div>Đồ chạy bộ</div>
+                    <ul>
+                        <li><a href="#">Đồ leo núi</a></li>
+                        <li><a href="#">Đồ bơi</a></li>
+                        <li><a href="#">Đồ chạy bộ</a></li>
+                    </ul>
                 </div>
                 <div class="Column">
                     <h4>Thực phẩm bổ sung</h4>
-                    <div>Whey</div>
-                    <div>Bột protein thuần chay</div>
-                    <div>kẽm bổ sung</div>
+                    <ul>
+                        <li><a href="#">Whey</a></li>
+                        <li><a href="#">Bột protein thuần chay</a></li>
+                        <li><a href="#">Kẽm bổ sung</a></li>
+                    </ul>
                 </div>
                 <div class="Column">
                     <h4>Dụng cụ tập gym</h4>
-                    <div>Suspension Trainer</div>
-                    <div>Barbell + đĩa tạ</div>
-                    <div>Kettlebell</div>
+                    <ul>
+                        <li><a href="#">Suspension Trainer</a></li>
+                        <li><a href="#">Barbell + đĩa tạ</a></li>
+                        <li><a href="#">Kettlebell</a></li>
+                    </ul>
                 </div>
             </div>
-        </div>
-        <div class="HelpCustomer">
-            Hỗ trợ
-        </div>
-    </div>
+        </li>
+
+        <li class="MenuItem"><a href="#">Hỗ trợ</a></li>
+    </ul>
+
     <div class="GroupRight">
-        <div class="Search">
-            <div class="SearchBox">
-                <input type="text" placeholder="Tìm sản phẩm..." class="SearchBar">
+        <form class="SearchBox" role="search">
+            <input type="search" placeholder="Tìm sản phẩm..." aria-label="Tìm kiếm">
+            <button type="submit" aria-label ="Tìm kiếm">
                 <i class="fa fa-search"></i>
-            </div>
-        </div>
-        <div class="User">
+            </button>
+        </form>
+
+        <button class="IconBtn User" aria-label="Tài khoản">
             <i class="fa-regular fa-user"></i>
-        </div>
-        <div class="ShoppingCart">
+        </button>
+
+        <a href="/cart" class="IconBtn ShoppingCart" aria-label="Giỏ hàng">
             <i class="fa-solid fa-cart-shopping"></i>
-        </div>
-        <div class="Announcement">
+        </a>
+
+        <button class="IconBtn Announcement" aria-label="Thông báo">
             <i class="fa-regular fa-bell"></i>
             <div class="MegaBoxAnnouncement">
                 <div class="TitleAnnouncement">Thông Báo</div>
-
                 <div class="ContentAnnounment">
                     <a href="#" class="ItemAnnouncement">
-                        <div class="TitleAnnounce">
-                            Đặt hàng Thành Công
-                        </div>
+                        <div class="TitleAnnounce">Đặt hàng thành công</div>
                         <div class="DescriptionItemAnnounce">
-                            chi tiết :<span class="subDescriptionAnnounce">Tạ Lục Giác 15Kg Body Sculpture - Đen ihkAHFUEHAIUHFIUHAUNCKZHUDIRYWNAEKJ3HTJLAKNSKDHAKEHTHANCKJNAHETHAFOJOlfow4eoghfinvdiouewiytfuihiu</span>
+                            chi tiết:
+                            <span class="subDescriptionAnnounce">Tạ Lục Giác 15Kg Body Sculpture - Đen ...</span>
                         </div>
                     </a>
-
-
                 </div>
             </div>
-        </div>
+        </button>
     </div>
-</div>
+</nav>
 <div class="accInfo">
-    <div class="AccountLeft">
-        <div class="AvatarAccount">
-            <img src="lgImg/avt.png" class="avtr">
-            <div class="AccountName">
-                <div class="nameus">Bùi Thanh Sang</div>
-                <div class="stk">Số tài khoản: 3820581034</div>
+    <main class="layout layout-scroll">
+        <aside class="AccountLeft">
+            <div class="AvatarAccount">
+                <img src="lgImg/avt.png" class="avtr" alt="avatar">
+                <div class="AccountName">
+                    <div class="nameus">Bùi Thanh Sang</div>
+                    <div class="stk">Số tài khoản: 3820581034</div>
+                </div>
             </div>
-        </div>
-        <div class="AccountLeftOption">
-            <div class="NameOptionBold">
-                <i class="fa-solid fa-user"></i>
-                <div class="NameOptionBoldText">Thông tin tài khoản</div>
+            <div class="AccountLeftOption">
+                <div class="NameOptionBold active">
+                    <i class="fa-solid fa-user"></i>
+                    <div class="NameOption">Thông tin tài khoản</div>
+                </div>
+                <a href="address.html" class="OptionIcon">
+                    <i class="fa-solid fa-clipboard-user"></i>
+                    <div class="NameOption">Cập nhật hồ sơ</div>
+                </a>
+                <a href="changePassword.html" class="OptionIcon">
+                    <i class="fa-solid fa-lock"></i>
+                    <div class="NameOption">Đổi mật khẩu</div>
+                </a>
+                <a href="payment.html" class="OptionIcon">
+                    <i class="fa-solid fa-credit-card"></i>
+                    <div class="NameOption">Phương thức thanh toán</div>
+                </a>
+                <a href="HistorySale.html" class="OptionIcon">
+                    <i class="fa-solid fa-cart-arrow-down"></i>
+                    <div class="NameOptionBoldText">Lịch sử mua hàng</div>
+                </a>
+                <a href="memberCard.html" class="OptionIcon">
+                    <i class="fa-solid fa-address-card"></i>
+                    <div class="NameOption">Thẻ thành viên</div>
+                </a>
+                <div class="SignOut">
+                    <a href="login.html" class="OptionSignOut">Đăng xuất</a>
+                </div>
             </div>
-            <a href="address.html" class="OptionIcon">
-                <i class="fa-solid fa-clipboard-user"></i>
-                <div class="NameOption">Cập nhật hồ sơ</div>
-            </a>
-            <a href="changePassword.html" class="OptionIcon">
-                <i class="fa-solid fa-lock"></i>
-                <div class="NameOption">Đổi mật khẩu</div>
-            </a>
-            <a href="payment.html" class="OptionIcon">
-                <i class="fa-solid fa-credit-card"></i>
-                <div class="NameOption">Phương thức thanh toán</div>
-            </a>
-            <a href="HistorySale.html" class="OptionIcon">
-                <i class="fa-solid fa-cart-arrow-down"></i>
-                <div class="NameOption">Lịch sử mua hàng</div>
-            </a>
-            <a href="memberCard.html" class="OptionIcon">
-                <i class="fa-solid fa-address-card"></i>
-                <div class="NameOption">Thẻ thành viên</div>
-            </a>
-            <div class="SignOut">
-                <a href=login.html class="OptionSignOut">Đăng xuất</a>
+        </aside>
+            <div class="PasswordGroup">
+                <div id="PasswordHeader">Thông tin tài khoản</div>
+                <div class="PasswordText">
+                    <div class="ChangePasswordText">Tên tài khoản</div>
+                    <input type="text" placeholder="Bùi Thanh Sang" disabled>
+                </div>
+                <div class="PasswordText">
+                    <div class="ChangePasswordText">Năm sinh</div>
+                    <input type="text" placeholder="2005" disabled>
+                </div>
+                <div class="PasswordText">
+                    <div class="ChangePasswordText">Số tài khoản</div>
+                    <input type="text" placeholder="3820581034" disabled>
+                </div>
+                <div class="PasswordText">
+                    <div class="ChangePasswordText">Số điện thoại</div>
+                    <input type="text" placeholder="0829811312" disabled>
+                </div>
+                <div class="PasswordText">
+                    <div class="ChangePasswordText">Email</div>
+                    <input type="text" placeholder="23130268@st.hcmuaf.edu.vn" disabled>
+                </div>
+                <div class="PasswordText">
+                    <div class="ChangePasswordText">Địa chỉ</div>
+                    <input type="text" placeholder="123 Lý Thường Kiệt, P.7, Q.10, TP.HCM" disabled>
+                </div>
             </div>
-        </div>
-    </div>
-    <div id="PasswordHeader">Thông tin tài khoản</div>
-    <div class="ChangePassword">
-        <div class="PasswordGroup">
-            <div class="PasswordText">
-                <div class="ChangePasswordText">Tên tài khoản</div>
-                <input type="text" placeholder="Bùi Thanh Sang" disabled>
-            </div>
-            <div class="PasswordText">
-                <div class="ChangePasswordText">Năm sinh</div>
-                <input type="text" placeholder="2005" disabled>
-            </div>
-            <div class="PasswordText">
-                <div class="ChangePasswordText">Số tài khoản</div>
-                <input type="text" placeholder="3820581034" disabled>
-            </div>
-            <div class="PasswordText">
-                <div class="ChangePasswordText">Số điện thoại</div>
-                <input type="text" placeholder="0829811312" disabled>
-            </div>
-            <div class="PasswordText">
-                <div class="ChangePasswordText">Email</div>
-                <input type="text" placeholder="23130268@st.hcmuaf.edu.vn" disabled>
-            </div>
-            <div class="PasswordText">
-                <div class="ChangePasswordText">Địa chỉ</div>
-                <input type="text" placeholder="123 Lý Thường Kiệt, P.7, Q.10, TP.HCM" disabled>
-            </div>
-        </div>
-    </div>
+    </main>
 </div>
 <footer class="footer">
     <div class="footer-container">
@@ -202,7 +229,7 @@
             <p>Email: sportadgym@gmail.com</p>
         </div>
 
-        <div class="footer-col1">
+        <div class="footer-col">
             <h3 class="footer-title">Về Chúng Tôi</h3>
             <div class="homepage">
                 <span>Trang chủ:</span>
@@ -211,7 +238,7 @@
             <div>© 2025 SPGYM. All rights reserved.</div>
         </div>
 
-        <div class="footer-col1">
+        <div class="footer-col">
             <h3 class="footer-title">Liên kết xã hội:</h3>
             <div class="social-icons">
                 <a href="#"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/facebook.svg"></a>

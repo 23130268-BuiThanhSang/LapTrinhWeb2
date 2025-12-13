@@ -14,9 +14,8 @@
 body{
     margin: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: #f5f5f5;
+    background: white;
 }
-
 
 .login{
     background: rgba(0, 0, 0, 0.6);
@@ -108,54 +107,86 @@ body{
 #SupportHeader{
     display: flex;
     justify-content: center;
-    font-size: 35px;
+    font-size: 36px;
     font-family: sans-serif;
+    font-weight: 700;
+    margin-bottom: 8px;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.06);
 }
+
 .SupportGroup{
     display: flex;
-}
-.SupportBox{
-    background: #C0FDFF;
-    border-radius: 20px;
-    padding: 30px;
-    height: 320px;
-    width: 350px;
-    margin-top: 10px;
-    margin-left: 70px;
-}
-.SupportBox i{
-    background: #66C9FF;
-    font-size: 30px;
-    border: black solid 1px;
-    border-radius: 10px;
-    padding: 10px;
-    margin-left: 150px;
-    transform: translateY(240px);
-}
-.SupportBox i:hover{
-    cursor: pointer;
-}
-.SupportTitle{
-    font-size: 30px;
-    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
     justify-content: center;
 }
+
+.SupportBox{
+    background: linear-gradient(135deg, #0b1f3a 0%, #0f2d54 100%);
+    border-radius: 16px;
+    padding: 24px 22px;
+    min-height: 400px;
+    width: 340px;
+    margin-top: 10px;
+    border: 1px solid rgba(0,0,0,0.08);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+}
+.SupportBox:hover{
+    transform: translateY(-2px);
+    box-shadow:0 14px 28px rgba(0,0,0,0.12),0 4px 10px rgba(0,0,0,0.08);
+}
+
+.SupportTitle{
+    font-size: 22px;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 12px;
+    color: white;
+}
+
 .SupportDiv{
-    margin-top: 20px;
+    margin-top: 6px;
 }
 .SupportGuide{
-    font-size: 25px;
-    transform: translateY(-40px);
+    font-size: 16px;
+    line-height: 1.6;
+    color: white;
+    transform: none;
 }
+.SupportQuestion{
+    font-size: 16px;
+    line-height: 1.6;
+    color: #0BD600;
+    transform: none;
+}
+.SupportAnswer{
+    font-size: 16px;
+    line-height: 1.6;
+    color: #40C0FF;
+    transform: none;
+}
+
+
 .SupportConnect{
     display: flex;
+    flex-wrap: wrap;
+    margin-top: 22px;
     gap: 10px;
-    padding-bottom: 20px;
+    justify-content: center;
 }
 .spSocial{
-    font-size: 25px;
-    margin-top: 55px;
-    transform: translateX(70px);
+    font-size: 16px;
+    color: #222;
+    margin: 0;
+    transform: none;
+}
+
+.SupportCustomer{
+    padding: 16px 12px 28px;
+    background: linear-gradient(180deg, #f7f7f9 0%, #f3f5f7 100%);
+    border-radius: 16px;
+    min-height: 550px;
 }
 
 #HomePageBody {
@@ -1015,12 +1046,7 @@ kết thúc */
     height: 40px;
     width: 40px;
 }
-/**
-support customer
- */
-.SupportCustomer{
-    margin-top: 60px;
-}
+
 /**Footer**/
 .footer {
     background: #051a2e;
