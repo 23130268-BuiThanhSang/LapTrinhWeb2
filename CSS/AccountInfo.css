@@ -1,49 +1,159 @@
 /* ACCOUNT INFO */
-body{
-    margin:0;
-    font-family: sans-serif;
-    overflow-x:hidden;
-}
 .accInfo{
     /*padding-top: 58px;*/
     height: 600px;
     background: white;
 }
-.AccountLeft{
-    background: #F2F2F2;
-    float: left;
-    height: 600px;
-    width: 350px;
-    font-family: sans-serif;
-}
-.AvatarAccount{
-    background: #01A0DA;
-    width: 350px;
-    height: 120px;
+/* ====== LAYOUT CONTAINER ========== */
+.layout.layout-scroll {
     display: flex;
+    flex-direction: row;
+    gap: 32px; /* Khoảng cách chuẩn giữa sidebar và body */
+    align-items: flex-start;
+    width: 100%;
+    padding-left: 32px;
+    padding-right: 32px;
+    max-width: 1300px;
+    margin: 0 auto;
+    min-height: calc(100vh - 120px);
 }
-.avtr{
-    width: 100px;
-    height: 100px;
-    padding-top: 10px;
-}
-.AccountName{
-    padding-top: 43px;
-    color: white;
-}
-.AccountLeftOption{
-    margin: 15px;
+/* ====== SIDEBAR TÀI KHOẢN ====== */
+.AccountLeft {
+    background: linear-gradient(104deg, #ebf5ff 0%, #f7fbfe 100%);
+    border-radius: 17px;
+    min-width: 320px;
+    max-width: 370px;
+    padding: 38px 12px 20px 12px;
+    box-shadow: 0 6px 26px rgba(10,54,124,0.09);
     display: flex;
     flex-direction: column;
+    align-items: center;
+    margin-top: 32px;
+    /* margin-right không cần nếu đã dùng gap ở layout cha */
+    margin-left: 5px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    position: sticky;
+    top: 76px; /* Số này bằng chiều cao menu của bạn; chỉnh lại cho khớp */
+    z-index: 20;
 }
+/* ========== SIDEBAR ACCOUNT - PROFILE ========== */
+.AvatarAccount {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 31px;
+}
+.avtr {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 50%;
+    /*border: 3px solid #007adf;*/
+    box-shadow: 0 2px 8px rgba(0,122,223,0.13);
+}
+.AccountName {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+}
+.nameus {
+    font-size: 18px;
+    font-weight: 700;
+    /*color: #022d6b;*/
+    letter-spacing: 0.2px;
+}
+.stk {
+    font-size: 14px;
+    color: #5f7fae;
+    font-weight: 500;
+    text-shadow: 0 1px 3px rgba(9,43,110,0.06);
+}
+
+.AccountLeftOption {
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+    width: 100%;
+    overflow: visible;
+}
+.OptionIcon {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 9px 12px;
+    background: #eff2fc;
+    border-radius: 12px;
+    /*color: #013478;*/
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 2px;
+    transition: background 0.17s, color 0.17s;
+    cursor: pointer;
+    text-decoration: none;
+}
+.OptionIcon i {
+    font-size: 17px;
+    color: #007adf;
+    transition: color 0.22s;
+}
+.OptionIcon:hover {
+    background: #d6e5ff;
+    color: #007adf;
+    box-shadow: 0 4px 14px rgba(0,122,223,0.10);
+}
+.OptionIcon:hover i {
+    color: #2754c3;
+}
+.NameOptionBold.active, .NameOptionBold {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 11px 15px;
+    background: linear-gradient(94deg,#205ee7 0, #00ccff 100%);
+    color: #fff;
+    border-radius: 13px;
+    font-size: 17px;
+    font-weight: 600;
+    box-shadow: 0 3px 12px rgba(32,94,231,0.11);
+}
+.NameOptionBold i {
+    font-size: 18px;
+    margin-right: 3px;
+}
+.NameOptionBoldText {
+    font-weight: 600;
+    font-size: 16px;
+}
+
+/* Đăng xuất (SignOut) */
+.SignOut {
+    margin-top: 26px;
+    text-align: left;
+    width: 100%;
+}
+.OptionSignOut {
+    color: #ef4444;
+    font-size: 15px;
+    font-weight: 500;
+    background: #fff;
+    padding: 7px 15px;
+    border-radius: 7px;
+    transition: background 0.17s, color 0.13s;
+    box-shadow: 0 2px 6px rgba(250,74,74,0.08);
+    text-decoration: none;
+    display: inline-block;
+}
+.OptionSignOut:hover {
+    background: #ef4444;
+    color: #fff !important;
+}
+
 .AccountLeftOption a:hover {
     color: #01A0DA;
 }
-.OptionIcon{
-    margin-left: 10px;
-    text-decoration: none;
-    color: black;
-}
+
+
 .NameOptionBold{
     margin-left: 10px;
 }
@@ -51,10 +161,6 @@ body{
     font-size: 30px;
     text-align: center;
     color: #01A0DA;
-}
-.OptionIcon i{
-    font-size: 30px;
-    text-align: center;
 }
 
 .fa-user{
@@ -72,30 +178,7 @@ body{
 .fa-clipboard-user{
     margin-left: 5px;
 }
-.NameOption{
-    margin-left: 50px;
-    transform: translateY(-23px);
-}
-.NameOptionBoldText{
-    margin-left: 50px;
-    transform: translateY(-23px);
-    color: #01A0DA;
-}
-.SignOut{
-    margin-top: 120px;
-}
-.OptionSignOut{
-    width: 100px;
-    height: 30px;
-    border: grey solid;
-    border-radius: 10px;
-    display: flex;
-    text-align: center;
-    justify-content: center;
-    margin-left: 10px;
-    text-decoration: none;
-    color: black;
-}
+
 .WelcomeAccount{
     margin-left: 620px;
     width: 700px;
@@ -112,10 +195,10 @@ body{
 }
 /*Update Profile*/
 .addressInfo{
-    margin-left: 370px;
+    margin-top: 60px;
     width: 1145px;
-    padding-top: 30px;
     font-family: sans-serif;
+    padding-bottom: 30px;
 }
 #addressTitle{
     font-size: 35px;
@@ -135,7 +218,7 @@ body{
 .addressList > div > input {
     margin-left: 10px;
     height: 30px;
-    width: 1100px;
+    width: 920px;
 }
 
 .addressButton{
@@ -152,16 +235,15 @@ body{
 }
 /*ChangePassword*/
 .ChangePassword{
-    margin-left: 380px;
+    margin-top: 10px;
 }
 #PasswordHeader{
     font-size: 35px;
-    margin-left: 380px;
     padding-top: 40px;
     font-family: sans-serif;
 }
 .PasswordGroup{
-    margin-top: 40px;
+    margin-top: 10px;
     font-size: 20px;
     font-family: sans-serif;
 }
@@ -169,9 +251,10 @@ body{
     margin-top: 15px;
 }
 .PasswordText input{
-    width: 1100px;
+    width: 920px;
     height: 30px;
     padding-left: 5px;
+    margin-top: 5px;
 }
 .PasswordButton button{
     font-size: 15px;
@@ -339,6 +422,9 @@ thực hiện css cho combobox của các tình/ thành phố
 .ComboBoxCity{
     margin-left: 10px;
     height: 34px;
+}
+.backgroundWhite{
+    background: white;
 }
 
 
