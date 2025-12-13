@@ -46,6 +46,7 @@
     <div class="MainManagerForProduct">
         <div class="TabButtons">
             <button id="btnAddProduct" class="TabButton">Thêm sản phẩm</button>
+            <button id="btnAddGroup" class="TabButton">Thêm nhóm sản phẩm</button>
             <button id="btnSearchProduct" class="TabButton">Tìm kiếm sản phẩm</button>
         </div>
 
@@ -54,17 +55,6 @@
             <div class="HeaderForManageProduct">Thêm Sản Phẩm Mới</div>
 
             <form class="AddProductForm">
-
-                <div class="FormRow">
-                    <label>Mã sản phẩm:</label>
-                    <input type="text" name="product_id">
-                </div>
-
-                <div class="FormRow">
-                    <label>Variant ID:</label>
-                    <input type="text" name="variant_id">
-                </div>
-
                 <div class="FormRow">
                     <label>Tên sản phẩm:</label>
                     <input type="text" name="product_name">
@@ -99,7 +89,54 @@
 
             </form>
         </div>
+        <!-- ===================== ADD PRODUCT GROUP SECTION ===================== -->
+        <div id="AddGroupSection" class="AddGroupSection">
 
+            <div class="HeaderForManageProduct">Thêm Nhóm Sản Phẩm</div>
+
+            <form class="AddGroupForm">
+
+                <!-- Group type -->
+                <div class="FormRow">
+                    <label>Loại nhóm:</label>
+                    <select name="group_type">
+                        <option value="thuong_hieu">Thương Hiệu</option>
+                        <option value="bo_suu_tap">Bộ Sưu Tập</option>
+                        <option value="mon_the_thao">Môn Thể Thao</option>
+                        <option value="uu_dai">Ưu Đãi</option>
+                    </select>
+                </div>
+
+                <!-- Group name -->
+                <div class="FormRow">
+                    <label>Tên nhóm:</label>
+                    <input type="text" name="group_name" placeholder="Nhập tên nhóm">
+                </div>
+
+                <!-- Thumbnail URL -->
+                <div class="FormRow">
+                    <label>Thumbnail URL:</label>
+                    <input type="text" name="thumbnail_url" placeholder="https://...">
+                </div>
+
+                <!-- Image URL -->
+                <div class="FormRow">
+                    <label>Image URL:</label>
+                    <input type="text" name="image_url" placeholder="https://...">
+                </div>
+
+                <!-- Display order -->
+                <div class="FormRow">
+                    <label>Thứ tự hiển thị:</label>
+                    <input type="number" name="display_order" min="1">
+                </div>
+
+                <button type="submit" class="SubmitAddProduct">
+                    Thêm nhóm
+                </button>
+
+            </form>
+        </div>
 
         <!-- ===================== SEARCH / VIEW PRODUCT SECTION ===================== -->
         <div id="SearchProductSection" class="SearchProductSection">

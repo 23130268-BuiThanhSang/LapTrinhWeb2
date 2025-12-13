@@ -446,6 +446,88 @@
     font-weight: 600;
     color: #047857;
 }
+/* ===== ADD GROUP PRODUCT SECTION ===== */
+
+.AddGroupSection {
+    background: white;
+    border-radius: 20px;
+    padding: 32px 36px;
+    box-shadow:
+            0 4px 24px rgba(0, 0, 0, 0.06),
+            0 0 0 1px rgba(0, 0, 0, 0.02);
+    position: relative;
+    z-index: 1;
+    display: none; /* toggled by JS */
+}
+
+.AddGroupSection.active {
+    display: block;
+}
+
+/* ===== ADD GROUP FORM ===== */
+.AddGroupForm {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px 32px;
+}
+
+/* reuse existing FormRow styles */
+.AddGroupForm .FormRow {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* select styling to match inputs */
+.AddGroupForm select {
+    padding: 14px 18px;
+    font-size: 14px;
+    border: 2px solid #e8ecf1;
+    border-radius: 10px;
+    background: white;
+    color: #374151;
+    transition: all 0.3s ease;
+    font-family: inherit;
+    cursor: pointer;
+}
+
+.AddGroupForm select:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.15);
+}
+
+/*!* ===== FULL-WIDTH ROWS ===== *!*/
+/*!* Thumbnail URL + Image URL *!*/
+/*.AddGroupForm .FormRow:nth-child(3),*/
+/*.AddGroupForm .FormRow:nth-child(4) {*/
+/*    grid-column: 1 / -1;*/
+/*}*/
+
+/* Submit button already styled globally */
+.AddGroupForm .SubmitAddProduct {
+    grid-column: 1 / -1;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .AddGroupForm {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 1024px) {
+    .AddGroupSection {
+        padding: 24px 28px;
+    }
+}
+
+@media (max-width: 768px) {
+    .AddGroupSection {
+        padding: 20px;
+        border-radius: 14px;
+    }
+}
 
 /* ===== RESPONSIVE DESIGN ===== */
 @media (max-width: 1200px) {
