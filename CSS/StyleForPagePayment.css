@@ -1,315 +1,4 @@
-/*body {*/
-/*    font-family: "Segoe UI", Arial, sans-serif;*/
-/*    margin: 0;*/
-/*    padding: 0;*/
-/*}*/
 
-/*!***/
-/*phần tiêu đề để hiện thị cho khách hàng biết ang ở trang thanh toán*/
-/* *!*/
-/*.headerForPagePayment {*/
-/*    display: flex;*/
-/*    align-items: center;*/
-/*    justify-content: space-between;*/
-/*    padding: 15px 25px;*/
-/*    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);*/
-/*    top: 0;*/
-/*    z-index: 10;*/
-/*}*/
-
-/*.TitleForPagePayment {*/
-/*    margin-right: 45%;*/
-/*    font-size: 24px;*/
-/*    font-weight: bold;*/
-/*    padding: 10px;*/
-/*    border-radius: 5px;*/
-/*    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);*/
-/*}*/
-
-/*.BackParent {*/
-/*    color: #333;*/
-/*    font-weight: 500;*/
-/*    font-size: 15px;*/
-/*    text-decoration: none;*/
-/*    cursor: pointer;*/
-/*    padding: 5px;*/
-/*    border-radius: 15px;*/
-/*    border: black 1px solid;*/
-/*}*/
-
-/*.BackParent:hover {*/
-/*    color: deepskyblue;*/
-/*    border: #0f5ec0 solid 1px;*/
-/*}*/
-
-/*.BodyForPagePayment {*/
-/*    display: flex;*/
-/*    justify-content: center;*/
-/*    align-items: flex-start;*/
-/*    gap: 40px;*/
-/*    padding: 40px 60px;*/
-/*    background: #f8f8f8;*/
-/*}*/
-
-/*.InforPayment {*/
-/*    flex: 1;*/
-/*    border-radius: 10px;*/
-/*    padding: 25px;*/
-/*    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);*/
-/*}*/
-
-/*.InforProduct {*/
-/*    display: flex;*/
-/*    flex-direction: column;*/
-/*    height: 550px;*/
-/*    width: 520px;*/
-/*    padding: 25px;*/
-/*    gap: 10px;*/
-/*    border-radius: 10px;*/
-/*    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);;*/
-/*}*/
-
-/*!***/
-/*hiển thị để cho khách hàng chọn kiểu thanh toán*/
-/* *!*/
-/*.ChooseTypePayment {*/
-/*    padding-bottom: 10px;*/
-/*    border-bottom: lightgray 1px solid;*/
-/*}*/
-
-/*.TitleChooseTypePayment {*/
-/*    font-weight: bold;*/
-/*    font-size: 17px;*/
-/*}*/
-
-/*.TypePayment {*/
-/*    display: flex;*/
-/*    gap: 15px;*/
-/*    flex-wrap: wrap;*/
-/*    margin-top: 10px;*/
-/*}*/
-
-/*.PaymentOption {*/
-/*    display: flex;*/
-/*    align-items: center;*/
-/*    gap: 2px;*/
-/*    padding: 5px 10px;*/
-/*    border: 1px solid #ccc;*/
-/*    border-radius: 15px;*/
-/*    cursor: pointer;*/
-/*    transition: all 0.25s ease;*/
-/*}*/
-
-/*.PaymentOption input[type="radio"] {*/
-/*    accent-color: #007bff;*/
-/*}*/
-
-/*.PaymentOption input[type="radio"]:checked + span {*/
-/*    font-weight: 600;*/
-/*    color: #007bff;*/
-/*}*/
-
-/*!***/
-/*thồn tin khách hàng*/
-/* *!*/
-/*.InforCustomer {*/
-/*    display: flex;*/
-/*    flex-direction: column;*/
-/*    gap: 15px;*/
-/*    margin-top: 10px;*/
-/*}*/
-
-/*.TitleInforCustomer {*/
-/*    font-weight: bold;*/
-/*    font-size: 17px;*/
-/*}*/
-
-/*.IforUser {*/
-/*    display: flex;*/
-/*    flex-direction: column;*/
-/*    gap: 5px;*/
-/*}*/
-
-/*.IforUser input {*/
-/*    padding: 5px;*/
-/*}*/
-
-/*!***/
-/*địa chỉ nhận hàng*/
-/* *!*/
-/*.AddAddess {*/
-/*    display: flex;*/
-/*    flex-direction: column;*/
-/*    gap: 6px;*/
-/*    margin-top: 10px;*/
-/*}*/
-
-/*.AddAddess label {*/
-/*    font-weight: bold;*/
-/*    font-size: 17px;*/
-/*    color: #333;*/
-/*}*/
-
-/*.DefaultAddress {*/
-/*    padding: 10px 12px;*/
-/*    background-color: #f9f9f9;*/
-/*    border: 1px solid #ddd;*/
-/*    border-radius: 8px;*/
-/*}*/
-
-/*.DefaultAddressText {*/
-/*    color: #999;*/
-/*    font-size: 14px;*/
-/*}*/
-
-/*.ChangeAddress {*/
-/*    margin-top: 5px;*/
-/*    border: none;*/
-/*    padding: 8px 12px;*/
-/*    border-radius: 8px;*/
-/*    cursor: pointer;*/
-/*    font-size: 14px;*/
-/*    transition: 0.2s;*/
-/*}*/
-
-/*.ChangeAddress:active {*/
-/*    background-color: deepskyblue;*/
-/*}*/
-
-/*!***/
-/* thực hiện phần sản phẩm khách hàng mua*/
-/* *!*/
-/*.InforProductTitle {*/
-/*    font-weight: bold;*/
-/*    font-size: 19px;*/
-/*    display: flex;*/
-/*    justify-content: center;*/
-/*    padding-bottom: 10px;*/
-/*    border-bottom: 1px solid #ddd;*/
-/*}*/
-
-/*.InforItemProduct {*/
-/*    display: flex;*/
-/*    flex-direction: column;*/
-/*    flex: 1;*/
-/*    gap: 5px;*/
-/*    margin-top: 10px;*/
-/*    margin-left: 40px;*/
-/*    padding-bottom: 10px;*/
-/*    overflow-y: auto;*/
-/*    border-bottom: 1px solid gray;*/
-/*}*/
-
-/*.BottomOfPayment {*/
-/*    flex-shrink: 0;*/
-/*    display: flex;*/
-/*    flex-direction: column;*/
-/*    gap: 10px;*/
-/*}*/
-
-/*.InforImageProduct img {*/
-/*    width: 120px;*/
-/*    height: 120px;*/
-/*    object-fit: cover;*/
-/*    border-radius: 8px;*/
-/*    border: 1px solid #ccc;*/
-/*}*/
-
-/*.InforMainforProduct {*/
-/*    display: flex;*/
-/*    flex-direction: column;*/
-/*    gap: 3px;*/
-/*}*/
-
-/*.ProductItemName {*/
-/*    font-weight: 600;*/
-/*    font-size: 16px;*/
-/*}*/
-
-/*.ProductItemBrand {*/
-/*    font-size: 13px;*/
-/*    color: #555;*/
-/*}*/
-
-/*.ProductItemDetail {*/
-/*    display: flex;*/
-/*    flex-direction: column;*/
-/*    gap: 3px;*/
-/*    font-size: 13px;*/
-/*    color: #555;*/
-/*}*/
-
-/*.ProductItemDetail span {*/
-/*    font-weight: 500;*/
-/*    color: #333;*/
-/*}*/
-
-/*.ProductItemPrice {*/
-/*    font-weight: 600;*/
-/*    font-size: 16px;*/
-/*    margin-top: 5px;*/
-/*}*/
-
-/*.TotalPaymentProduct {*/
-/*    margin-top: 10px;*/
-/*    display: flex;*/
-/*    flex-direction: column;*/
-/*    align-items: center;*/
-/*    gap: 6px;*/
-/*    font-size: 14px;*/
-/*    padding: 10px;*/
-/*    background-color: #f5f5f5;*/
-/*    border-radius: 8px;*/
-/*    border: 1px solid gray;*/
-
-/*}*/
-
-/*.ToltalOTP {*/
-/*    font-weight: bold;*/
-/*}*/
-
-/*.DisplayButtonConfirm {*/
-/*    padding: 10px;*/
-/*    display: flex;*/
-/*    justify-content: center;*/
-/*}*/
-
-/*.ConfirmPaymentButton {*/
-/*    width: 300px;*/
-/*    padding: 9px;*/
-/*    font-size: 16px;*/
-/*    font-weight: 600;*/
-/*    color: #fff;*/
-/*    background-color: deepskyblue;*/
-/*    border: none;*/
-/*    border-radius: 8px;*/
-/*    cursor: pointer;*/
-/*    transition: 0.25s;*/
-/*}*/
-
-/*.ConfirmPaymentButton:active {*/
-/*    background-color: #0f5ec0;*/
-/*}*/
-/*.ProductItemInPayment{*/
-/*    padding-top: 15px;*/
-/*    padding-bottom: 15px;*/
-/*    border-bottom: 1px solid #ddd;*/
-/*}*/
-/*!***/
-/*update*/
-/* *!*/
-/*.DisplayInforCustomer{*/
-/*    padding: 10px 0;*/
-/*    background-color: #f9f9f9;*/
-
-/*}*/
-/*.InforCustomerDetail{*/
-/*    color: #999999;*/
-/*    font-size: 14px;*/
-/*}*/
-/* =========================================
-   1. CẤU HÌNH CHUNG (RESET & BASE)
-   ========================================= */
 * {
     box-sizing: border-box;
 }
@@ -323,9 +12,6 @@ body {
     line-height: 1.5;
 }
 
-/* =========================================
-   2. HEADER (THANH TIÊU ĐỀ)
-   ========================================= */
 .headerForPagePayment {
     display: flex;
     align-items: center;
@@ -379,34 +65,27 @@ body {
     box-shadow: none;
 }
 
-/* =========================================
-   3. BỐ CỤC CHÍNH (ĐÃ CHỈNH TỈ LỆ)
-   ========================================= */
 .BodyForPagePayment {
     display: flex;
     justify-content: center;
     align-items: flex-start;
     gap: 30px;
     padding: 40px 20px;
-    max-width: 1300px; /* Tăng chiều rộng tổng thể để chứa sản phẩm to hơn */
+    max-width: 1300px;
     margin: 0 auto;
 }
 
-/* --- KHỐI BÊN TRÁI (THÔNG TIN) --- */
-/* Thu nhỏ lại để nhường chỗ cho sản phẩm */
 .InforPayment {
-    flex: 1; /* Chiếm 1 phần (khoảng 40%) */
+    flex: 1;
     background: #ffffff;
     border-radius: 12px;
     padding: 30px;
-    box-shadow: 0 0 15px 2px rgba(0, 191, 255, 0.15); /* Giảm độ chói bóng 1 chút cho đỡ lóa */
+    box-shadow: 0 0 15px 2px rgba(0, 191, 255, 0.15);
     height: fit-content;
 }
 
-/* --- KHỐI BÊN PHẢI (SẢN PHẨM - VIP) --- */
-/* Phóng to ra */
 .InforProduct {
-    flex: 1.5; /* Chiếm 1.5 phần (khoảng 60%) - To hơn hẳn bên trái */
+    flex: 1.5;
     background: #ffffff;
     border-radius: 12px;
     padding: 30px;
@@ -419,9 +98,6 @@ body {
     width: auto;
 }
 
-/* =========================================
-   4. PHẦN CHỌN THANH TOÁN
-   ========================================= */
 .ChooseTypePayment {
     margin-bottom: 30px;
     padding-bottom: 20px;
@@ -480,9 +156,6 @@ body {
     color: #374151;
 }
 
-/* =========================================
-   5. THÔNG TIN KHÁCH HÀNG
-   ========================================= */
 .InforCustomer {
     display: flex;
     flex-direction: column;
@@ -558,9 +231,6 @@ body {
     box-shadow: none;
 }
 
-/* =========================================
-   6. DANH SÁCH SẢN PHẨM (ĐÃ LÀM TO & ĐẸP)
-   ========================================= */
 .InforProductTitle {
     text-align: center;
     padding-bottom: 15px;
@@ -573,54 +243,32 @@ body {
     overflow-y: auto;
     padding-right: 8px;
     margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
 
-.InforItemProduct::-webkit-scrollbar {
-    width: 5px;
-}
-.InforItemProduct::-webkit-scrollbar-track {
-    background: #f1f1f1;
-}
-.InforItemProduct::-webkit-scrollbar-thumb {
-    background: #d1d5db;
-    border-radius: 4px;
-}
-.InforItemProduct::-webkit-scrollbar-thumb:hover {
-    background: #9ca3af;
-}
-
-/* --- THẺ SẢN PHẨM --- */
 .ProductItemInPayment {
     display: flex;
-    align-items: center; /* Căn giữa theo chiều dọc */
-    gap: 20px; /* Tăng khoảng cách giữa ảnh và chữ */
+    align-items: center;
+    gap: 20px;
     padding: 15px;
-    border-bottom: 1px solid #f3f4f6;
     border-radius: 12px;
     background-color: #fff;
-    /* Mặc định viền trong suốt hoặc xám siêu nhạt để nhìn thoáng */
-    border: 1px solid transparent;
+    border: 1px solid #e5e7eb;
     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
-.ProductItemInPayment:last-child {
-    border-bottom: none;
-}
-
-/* HIỆU ỨNG HOVER SẢN PHẨM */
 .ProductItemInPayment:hover {
     transform: translateY(-5px);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1); /* Bóng sâu hơn */
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
     z-index: 10;
-
-    /* Màu nền xanh nhạt dễ chịu, làm nổi bật chữ đen */
     background-color: #e6f7ff;
-    border-color: #bae0ff; /* Viền xanh nhạt */
+    border-color: #bae0ff;
 }
 
-/* ẢNH SẢN PHẨM (TO HƠN) */
 .InforImageProduct img {
-    width: 100px; /* Tăng từ 70px lên 100px */
+    width: 100px;
     height: 100px;
     object-fit: cover;
     border-radius: 8px;
@@ -633,13 +281,12 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 6px; /* Khoảng cách các dòng chữ */
+    gap: 6px;
 }
 
-/* TÊN SẢN PHẨM (TO HƠN) */
 .ProductItemName {
     font-weight: 700;
-    font-size: 17px; /* Tăng cỡ chữ */
+    font-size: 17px;
     color: #111;
     line-height: 1.4;
     display: -webkit-box;
@@ -650,7 +297,7 @@ body {
 
 .ProductItemBrand {
     font-size: 12px;
-    color: #0091ff; /* Màu thương hiệu xanh cho nổi */
+    color: #0091ff;
     text-transform: uppercase;
     font-weight: 700;
 }
@@ -660,18 +307,14 @@ body {
     color: #6b7280;
 }
 
-/* GIÁ TIỀN (TO & ĐỎ) */
 .ProductItemPrice {
-    font-size: 18px; /* To hơn */
+    font-size: 18px;
     font-weight: 800;
-    color: #ef4444; /* Đỏ */
+    color: #ef4444;
     text-align: right;
     margin-top: 5px;
 }
 
-/* =========================================
-   7. CHÂN TRANG (TỔNG TIỀN & BUTTON)
-   ========================================= */
 .BottomOfPayment {
     margin-top: auto;
     border-top: 2px solid #f3f4f6;
@@ -690,7 +333,7 @@ body {
 .TotalPaymentProduct > div {
     display: flex;
     justify-content: space-between;
-    font-size: 15px; /* Chữ to hơn 1 xíu */
+    font-size: 15px;
     color: #4b5563;
 }
 
@@ -708,9 +351,9 @@ body {
 }
 
 .TotalPrice span:last-child {
-    font-size: 28px; /* Giá tổng siêu to */
+    font-size: 28px;
     font-weight: 800;
-    color: #d32f2f; /* Đỏ đậm */
+    color: #d32f2f;
 }
 
 .DisplayButtonConfirm {
@@ -721,8 +364,8 @@ body {
 
 .ConfirmPaymentButton {
     width: 100%;
-    padding: 16px; /* Nút cao hơn */
-    font-size: 18px; /* Chữ to hơn */
+    padding: 16px;
+    font-size: 18px;
     font-weight: 700;
     color: #fff;
     background: linear-gradient(135deg, #0091ff 0%, #0066cc 100%);
