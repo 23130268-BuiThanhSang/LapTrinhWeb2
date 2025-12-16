@@ -142,21 +142,21 @@
         <img src="lgImg/ProductSample/HQ1717-400-1.png" class="MainImage" alt="Main shoe image">
         </div>
         <div class="ImageSlider">
-            <button class="ThumbButton"><img src="lgImg/ProductSample/HQ1717-400-1.png" alt=""></button>
-            <button class="ThumbButton"><img src="lgImg/ProductSample/HQ1717-400-2.png" alt=""></button>
-            <button class="ThumbButton"><img src="lgImg/ProductSample/HQ1717-400-4.png" alt=""></button>
-            <button class="ThumbButton"><img src="lgImg/ProductSample/HQ1717-400-6.png" alt=""></button>
-            <button class="ThumbButton"><img src="lgImg/ProductSample/HQ1717-400-2.png" alt=""></button>
-            <button class="ThumbButton"><img src="lgImg/ProductSample/HQ1717-400-4.png" alt=""></button>
-            <button class="ThumbButton"><img src="lgImg/ProductSample/HQ1717-400-6.png" alt=""></button>
-            <button class="ThumbButton"><img src="lgImg/ProductSample/HQ1717-400-1.png" alt=""></button>
+            <button class="ThumbButton"><img src="${product.img}" alt=""></button>
+            <button class="ThumbButton"><img src="${product.img}" alt=""></button>
+            <button class="ThumbButton"><img src="${product.img}" alt=""></button>
+            <button class="ThumbButton"><img src="${product.img}" alt=""></button>
+            <button class="ThumbButton"><img src="${product.img}" alt=""></button>
+            <button class="ThumbButton"><img src="${product.img}" alt=""></button>
+            <button class="ThumbButton"><img src="${product.img}" alt=""></button>
+            <button class="ThumbButton"><img src="${product.img}" alt=""></button>
         </div>
     </div>
     <div class="ProductInfo">
         <div class = "HighlightBox">
         <p class="ProductBrand">NIKE</p>
 
-        <h1 class="ProductName">Giày Chạy Bộ Nam Nike Pegasus 41</h1>
+        <h1 class="ProductName">${product.name}</h1>
         <div class="Rating">
             <i class="fa-solid fa-star"></i>
             <i class="fa-solid fa-star"></i>
@@ -165,7 +165,7 @@
             <i class="fa-solid fa-star"></i>
             <span class="ReviewCount">2 đánh giá</span>
         </div>
-        <p class="ProductPrice">2.300.000₫</p>
+        <p class="ProductPrice">${product.price}</p>
         </div>
         <div class="ProductColor">
             <p class="SectionTitle">Màu Sắc: <span>XANH DƯƠNG (RACBLU/SAI)</span></p>
