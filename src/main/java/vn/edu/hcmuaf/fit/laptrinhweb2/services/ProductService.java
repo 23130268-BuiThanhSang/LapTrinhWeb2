@@ -10,4 +10,8 @@ public class ProductService {
     public List<Product> getAllProduct() {
         return productDao.getAllProduct();
     }
+
+    public Product getProduct(int id) {
+        return productDao.getProduct(id);
+    }
 }

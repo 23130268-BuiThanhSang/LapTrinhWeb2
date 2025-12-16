@@ -18,4 +18,8 @@ public class ProductDao {
     public List<Product> getAllProduct() {
         return new ArrayList<Product>(productMap.values());
     }
+
+    public Product getProduct(int id) {
+        return productMap.get(id);
+    }
 }

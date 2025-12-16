@@ -7,17 +7,14 @@ import vn.edu.hcmuaf.fit.laptrinhweb2.model.Product;
 import vn.edu.hcmuaf.fit.laptrinhweb2.services.ProductService;
 
 import java.io.IOException;
-import java.util.List;
 
-@WebServlet(name = "ListProductController", value = "/List-product")
-public class ListProductController extends HttpServlet {
+@WebServlet(name = "ProductController", value = "/Product")
+public class ProductController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-        ProductService productService = new ProductService();
-        List<Product> list = productService.getAllProduct();
-        request.setAttribute("list", list);
-        request.getRequestDispatcher("PageListAllProduct.jsp").forward(request, response);
+       int id = Integer.parseInt(request.getParameter("id"));
+       ProductService productService = new ProductService();
+         Product product = productService.getProduct(id);
 
     }
 
