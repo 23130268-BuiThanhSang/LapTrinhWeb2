@@ -1,0 +1,185 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="CSS/StyleForPagePayment.css">
+    <link rel="stylesheet" href="CSS/Style.css">
+</head>
+<body>
+<div class="headerForPagePayment">
+    <a class="BackParent">
+        Quay lại
+    </a>
+    <div class="TitleForPagePayment"> THANH TOÁN</div>
+</div>
+<div class="BodyForPagePayment">
+    <div class="InforPayment">
+        <div class="ChooseTypePayment">
+            <div class="TitleChooseTypePayment"> Chọn Hình Thức Thanh Toán :</div>
+            <div class="TypePayment">
+                <label class="PaymentOption">
+                    <input type="radio" name="payment" value="cod" checked>
+                    <span>Thanh toán khi nhận hàng (COD)</span>
+                </label>
+                <label class="PaymentOption">
+                    <input type="radio" name="payment" value="bank">
+                    <span>Chuyển khoản ngân hàng</span>
+                </label>
+                <label class="PaymentOption">
+                    <input type="radio" name="payment" value="momo">
+                    <span>Ví MoMo / ZaloPay</span>
+                </label>
+            </div>
+        </div>
+        <div class="InforCustomer">
+            <div class="TitleInforCustomer">Thông Tin Khách Hàng :</div>
+            <div class="IforUser">
+                <label>Họ Và Tên: <span class="InforCustomerDetail">Bùi Thanh Sang</span></label>
+
+            </div>
+            <div class="IforUser">
+                <label>Số điện thoại: <span class="InforCustomerDetail">0829811312</span></label>
+
+            </div>
+
+            <div class="IforUser">
+                <label>Email: <span class="InforCustomerDetail">23130268@st.hcmuaf.edu.vn</span> </label>
+            </div>
+            <div class="AddAddess">
+                <label>Địa chỉ nhận hàng : </label>
+                <div class="DefaultAddress">
+                    <span class="DefaultAddressText">123 Lý Thường Kiệt, P.7, Q.10, TP.HCM</span>
+                </div>
+
+                <button class="ChangeAddress">+Thêm địa chỉ</button>
+            </div>
+        </div>
+
+    </div>
+    <div class="InforProduct">
+        <div class="InforProductTitle"> Tóm Tắt Đơn Hàng</div>
+        <div class="InforItemProduct">
+            <div class="ProductItemInPayment">
+                <div class="InforImageProduct">
+                    <img src="https://supersports.com.vn/cdn/shop/products/BW-460-15KG-1.jpg?v=1703644838&width=1600">
+                </div>
+                <div class="InforMainforProduct">
+                    <div class="ProductItemName">Tạ Lục Giác 15Kg Body Sculpture - Đen</div>
+                    <div class="ProductItemBrand">BODY SCULPTURE</div>
+                    <div class="ProductItemDetail">
+                        <div class="ProductItemType">
+                            Phân loại: <span
+                                class="TypeProductInShoppingCart">Dụng Cụ Tập Gym-ĐEN</span>
+                        </div>
+                        <div class="ProductItemSize">
+                            Kích cỡ:<span class="sizeProductInShoppingCart">Một cỡ duy nhất</span>
+                        </div>
+                    </div>
+                    <div class="ProductItemPrice">
+                        Giá : <span>446.000đ</span>
+                    </div>
+                </div>
+
+            </div>
+            <div class="ProductItemInPayment">
+                <div class="InforImageProduct">
+                    <img src="https://supersports.com.vn/cdn/shop/products/BW-460-15KG-1.jpg?v=1703644838&width=1600">
+                </div>
+                <div class="InforMainforProduct">
+                    <div class="ProductItemName">Tạ Lục Giác 15Kg Body Sculpture - Đen</div>
+                    <div class="ProductItemBrand">BODY SCULPTURE</div>
+                    <div class="ProductItemDetail">
+                        <div class="ProductItemType">
+                            Phân loại: <span
+                                class="TypeProductInShoppingCart">Dụng Cụ Tập Gym-ĐEN</span>
+                        </div>
+                        <div class="ProductItemSize">
+                            Kích cỡ:<span class="sizeProductInShoppingCart">Một cỡ duy nhất</span>
+                        </div>
+                    </div>
+                    <div class="ProductItemPrice">
+                        Giá : <span>446.000đ</span>
+                    </div>
+                </div>
+
+            </div>
+            <div class="ProductItemInPayment">
+                <div class="InforImageProduct">
+                    <img src="https://supersports.com.vn/cdn/shop/products/BW-460-15KG-1.jpg?v=1703644838&width=1600">
+                </div>
+                <div class="InforMainforProduct">
+                    <div class="ProductItemName">Tạ Lục Giác 15Kg Body Sculpture - Đen</div>
+                    <div class="ProductItemBrand">BODY SCULPTURE</div>
+                    <div class="ProductItemDetail">
+                        <div class="ProductItemType">
+                            Phân loại: <span
+                                class="TypeProductInShoppingCart">Dụng Cụ Tập Gym-ĐEN</span>
+                        </div>
+                        <div class="ProductItemSize">
+                            Kích cỡ:<span class="sizeProductInShoppingCart">Một cỡ duy nhất</span>
+                        </div>
+                    </div>
+                    <div class="ProductItemPrice">
+                        Giá : <span>446.000đ</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="BottomOfPayment">
+            <div class="TotalPaymentProduct">
+                <div class="TempTotalPriceForProduct">
+                    <span class="ToltalOTP">Tạm Tính : </span>
+                    <span>446.000đ</span>
+                </div>
+                <div class="ShippingFee">
+                    <span class="ToltalOTP">Phí vận chuyển : </span>
+                    <span>Miễn Phí</span>
+                </div>
+                <div class="TotalPrice">
+                    <span class="ToltalOTP">Thành Tiền : </span>
+                    <span>446.000đ</span>
+                </div>
+            </div>
+            <div class="DisplayButtonConfirm">
+                <button class="ConfirmPaymentButton">Xác Nhận</button>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+<footer class="footer">
+    <div class="footer-container">
+        <img class="logoft" src="lgImg/logo.png" alt="">
+        <div class="footer-col">
+            <p>Địa chỉ: Thủ Đức, Hồ Chí Minh</p>
+            <p>SĐT: 0922482619</p>
+            <p>Email: sportadgym@gmail.com</p>
+        </div>
+
+        <div class="footer-col1">
+            <h3 class="footer-title">Về Chúng Tôi</h3>
+            <div class="homepage">
+                <span>Trang chủ:</span>
+                <a href="index.html">https://SPGym.vn</a>
+            </div>
+            <div>© 2025 SPGYM. All rights reserved.</div>
+        </div>
+
+        <div class="footer-col1">
+            <h3 class="footer-title">Liên kết xã hội:</h3>
+            <div class="social-icons">
+                <a href="#"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/facebook.svg"></a>
+                <a href="#"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/twitter.svg"></a>
+                <a href="#"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/instagram.svg"></a>
+                <a href="#"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/youtube.svg"></a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

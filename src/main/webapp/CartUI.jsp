@@ -1,0 +1,328 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="CSS/Style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="CSS/CartUI.css">
+</head>
+<body>
+<nav class="MainMenuBar">
+    <div class="GroupLeft">
+        <a href="/" class="LogoWrap">
+            <img src="lgImg/logo.png" alt="SPGYM Logo" class="Logo">
+        </a>
+        <span class="NameWebsite">SPGYM</span>
+    </div>
+
+    <ul class="GroupCenter">
+        <li class="MenuItem">
+            <a href="#">Sản Phẩm Mới</a>
+            <div class="MegaBox">
+                <div class="Column">
+                    <h4>Đồ thể thao</h4>
+                    <ul>
+                        <li><a href="#">Đồ chạy bộ</a></li>
+                        <li><a href="#">Đồ bơi</a></li>
+                    </ul>
+                </div>
+                <div class="Column">
+                    <h4>Thực phẩm bổ sung</h4>
+                    <ul>
+                        <li><a href="#">Thanh protein & đồ ăn nhẹ</a></li>
+                        <li><a href="#">Bột protein thuần chay</a></li>
+                        <li><a href="#">Kẽm bổ sung</a></li>
+                    </ul>
+                </div>
+                <div class="Column">
+                    <h4>Dụng cụ tập gym</h4>
+                    <ul>
+                        <li><a href="#">Bánh xe tập cơ bụng</a></li>
+                        <li><a href="#">Dây kháng lực</a></li>
+                    </ul>
+                </div>
+            </div>
+        </li>
+
+        <li class="MenuItem">
+            <a href="#">Danh Mục</a>
+            <div class="MegaBox">
+                <div class="Column">
+                    <h4>Danh Mục Sản Phẩm</h4>
+                    <ul>
+                        <li><a href="#">Dụng Cụ Tập Gym</a></li>
+                        <li><a href="#">Đồ Thể Thao</a></li>
+                        <li><a href="#">Thực Phẩm Bổ Sung</a></li>
+                        <li><a href="#">Phụ Kiện</a></li>
+                    </ul>
+                </div>
+            </div>
+        </li>
+
+        <li class="MenuItem">
+            <a href="#">Nhãn Hàng</a>
+            <div class="MegaBox">
+                <div class="Column">
+                    <h4>Đồ thể thao</h4>
+                    <ul>
+                        <li><a href="#">ADIDAS</a></li>
+                        <li><a href="#">NIKE</a></li>
+                        <li><a href="#">HOKA</a></li>
+                        <li><a href="#">PUMA</a></li>
+                        <li><a href="#">CROCS</a></li>
+                    </ul>
+                </div>
+                <div class="Column">
+                    <h4>Dụng cụ tập gym</h4>
+                    <ul>
+                        <li><a href="#">Eleiko</a></li>
+                        <li><a href="#">NordicTrack</a></li>
+                        <li><a href="#">BowFlex</a></li>
+                        <li><a href="#">Precor</a></li>
+                    </ul>
+                </div>
+            </div>
+        </li>
+
+        <li class="MenuItem">
+            <a href="#">Ưu Đãi</a>
+            <div class="MegaBox">
+                <div class="Column">
+                    <h4>Đồ thể thao</h4>
+                    <ul>
+                        <li><a href="#">Đồ leo núi</a></li>
+                        <li><a href="#">Đồ bơi</a></li>
+                        <li><a href="#">Đồ chạy bộ</a></li>
+                    </ul>
+                </div>
+                <div class="Column">
+                    <h4>Thực phẩm bổ sung</h4>
+                    <ul>
+                        <li><a href="#">Whey</a></li>
+                        <li><a href="#">Bột protein thuần chay</a></li>
+                        <li><a href="#">Kẽm bổ sung</a></li>
+                    </ul>
+                </div>
+                <div class="Column">
+                    <h4>Dụng cụ tập gym</h4>
+                    <ul>
+                        <li><a href="#">Suspension Trainer</a></li>
+                        <li><a href="#">Barbell + đĩa tạ</a></li>
+                        <li><a href="#">Kettlebell</a></li>
+                    </ul>
+                </div>
+            </div>
+        </li>
+
+        <li class="MenuItem"><a href="#">Hỗ trợ</a></li>
+    </ul>
+
+    <div class="GroupRight">
+        <form class="SearchBox" role="search">
+            <input type="search" placeholder="Tìm sản phẩm..." aria-label="Tìm kiếm">
+            <button type="submit" aria-label ="Tìm kiếm">
+                <i class="fa fa-search"></i>
+            </button>
+        </form>
+
+        <button class="IconBtn User" aria-label="Tài khoản">
+            <i class="fa-regular fa-user"></i>
+        </button>
+
+        <a href="/cart" class="IconBtn ShoppingCart" aria-label="Giỏ hàng">
+            <i class="fa-solid fa-cart-shopping"></i>
+        </a>
+
+        <button class="IconBtn Announcement" aria-label="Thông báo">
+            <i class="fa-regular fa-bell"></i>
+            <div class="MegaBoxAnnouncement">
+                <div class="TitleAnnouncement">Thông Báo</div>
+                <div class="ContentAnnounment">
+                    <a href="#" class="ItemAnnouncement">
+                        <div class="TitleAnnounce">Đặt hàng thành công</div>
+                        <div class="DescriptionItemAnnounce">
+                            chi tiết:
+                            <span class="subDescriptionAnnounce">Tạ Lục Giác 15Kg Body Sculpture - Đen ...</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </button>
+    </div>
+</nav>
+<div class="CartUI">
+    <div class="MainContent">
+        <div class="card">
+            <div class="row">
+                <div class="col-md-8 cart">
+                    <div class="title">
+                        <div class="row">
+                            <div class="col"><h4><b>Giỏ hàng</b></h4></div>
+                            <div class="col align-self-center text-right text-muted">đã chọn 3</div>
+                        </div>
+                    </div>
+                    <div class="scrollCart">
+                        <div class="row border-top border-bottom">
+                            <div class="row main align-items-center">
+                                <div class="col-2"><img class="img-fluid" src="https://i.imgur.com/1GrakTl.jpg"></div>
+                                <div class="col">
+                                    <div class="row text-muted">Shirt</div>
+                                    <div class="row">Cotton T-shirt</div>
+                                </div>
+                                <div class="col">
+                                    <a href="#">-</a><a href="#" class="border">1</a><a href="#">+</a>
+                                </div>
+                                <div class="col">&euro; 44.00 <span class="close">&#10005;</span></div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="row main align-items-center">
+                                <div class="col-2"><img class="img-fluid" src="https://i.imgur.com/ba3tvGm.jpg"></div>
+                                <div class="col">
+                                    <div class="row text-muted">Shirt</div>
+                                    <div class="row">Cotton T-shirt</div>
+                                </div>
+                                <div class="col">
+                                    <a href="#">-</a><a href="#" class="border">1</a><a href="#">+</a>
+                                </div>
+                                <div class="col">&euro; 44.00 <span class="close">&#10005;</span></div>
+                            </div>
+                        </div>
+                        <div class="row border-top border-bottom">
+                            <div class="row main align-items-center">
+                                <div class="col-2"><img class="img-fluid" src="https://i.imgur.com/pHQ3xT3.jpg"></div>
+                                <div class="col">
+                                    <div class="row text-muted">Shirt</div>
+                                    <div class="row">Cotton T-shirt</div>
+                                </div>
+                                <div class="col">
+                                    <a href="#">-</a><a href="#" class="border">1</a><a href="#">+</a>
+                                </div>
+                                <div class="col">&euro; 44.00 <span class="close">&#10005;</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="back-to-shop"><a href="index.jsp">
+                        &leftarrow;<span class="text-muted">Trở về trang chủ</span></a></div>
+                </div>
+                <div class="col-md-4 summary">
+                    <div><h5><b>Summary</b></h5></div>
+                    <hr>
+                    <div class="row">
+                        <div class="col" style="padding-left:0;">Đã chọn 3</div>
+                        <div class="col text-right">&euro; 132.00</div>
+                    </div>
+                    <form>
+                        <p>Phương thức thanh toán</p>
+                        <select>
+                            <option class="text-muted">Tiền mặt</option>
+                            <option class="text-muted">BIDV</option>
+                            <option class="text-muted">MOMO</option>
+                            <option class="text-muted">TECHCOMBANK</option>
+                        </select>
+                        <p>Vouchers</p>
+                        <input id="code" onclick="showVoucher()" placeholder="Nhập mã voucher">
+                    </form>
+                    <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
+                        <div class="col">Tổng thành tiền</div>
+                        <div class="col text-right">&euro; 137.00</div>
+                    </div>
+                    <button class="btn">ĐẶT HÀNG</button>
+                </div>
+            </div>
+        </div>
+        <div id="voucherPopup" class="voucher-overlay">
+            <div class="voucher-box">
+                <div class="voucher-header">
+                    <h2>Nhập Mã Voucher</h2>
+                    <button class="voucher-close" onclick="closeVoucher()">X</button>
+                </div>
+
+                <p>Áp dụng Voucher để giảm phí vận chuyển, giá sản phẩm khi mua hàng trong thời gian giới hạn.</p>
+
+                <input type="text" id="voucherInput" placeholder="Nhập mã Voucher">
+
+                <div class="voucher-list">
+                    <div class="voucher-item">
+                        <div class="voucher-text">
+                            <b>Voucher: 4U9W5G</b>, Thời hạn: còn 8 giờ.<br>
+                            Free ship với đơn hàng trên 100.000đ.
+                        </div>
+                        <input type="checkbox">
+                    </div>
+
+                    <div class="voucher-item">
+                        <div class="voucher-text">
+                            <b>Voucher: 1X8J4K</b>, Thời hạn: còn 1 ngày.<br>
+                            Giảm 50.000đ với đơn trên 150.000đ.
+                        </div>
+                        <input type="checkbox">
+                    </div>
+
+                    <div class="voucher-item">
+                        <div class="voucher-text">
+                            <b>Voucher: 7P5B2Q</b>, Thời hạn: còn 2 ngày.<br>
+                            Giảm 30.000đ với đơn trên 100.000đ.
+                        </div>
+                        <input type="checkbox">
+                    </div>
+
+                    <div class="voucher-item">
+                        <div class="voucher-text">
+                            <b>Voucher: 1L9D3V</b>, Thời hạn: còn 3 ngày.<br>
+                            Giảm 40.000đ với đơn trên 120.000đ.
+                        </div>
+                        <input type="checkbox">
+                    </div>
+
+                    <div class="voucher-item">
+                        <div class="voucher-text">
+                            <b>Voucher: 5K2N4E</b>, Thời hạn: còn 4 ngày.<br>
+                            Giảm 60.000đ với đơn trên 150.000đ.
+                        </div>
+                        <input type="checkbox">
+                    </div>
+                </div>
+
+                <button id="voucher-apply">Áp dụng Voucher</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer class="footer">
+    <div class="footer-container">
+        <img class="logoft" src="lgImg/logo.png" alt="">
+        <div class="footer-col">
+            <p>Địa chỉ: Thủ Đức, Hồ Chí Minh</p>
+            <p>SĐT: 0922482619</p>
+            <p>Email: sportadgym@gmail.com</p>
+        </div>
+
+        <div class="footer-col2">
+            <h3 class="footer-title">Về Chúng Tôi</h3>
+            <div class="homepage">
+                <span>Trang chủ:</span><a href="index.html">https://SPGym.vn</a>
+            </div>
+            <div>© 2025 SPGYM. All rights reserved.</div>
+        </div>
+
+        <div class="footer-col2">
+            <h3 class="footer-title">Liên kết xã hội:</h3>
+            <div class="social-icons">
+                <a href="#"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/facebook.svg"></a>
+                <a href="#"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/twitter.svg"></a>
+                <a href="#"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/instagram.svg"></a>
+                <a href="#"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/youtube.svg"></a>
+            </div>
+        </div>
+    </div>
+</footer>
+<script src="JS/Voucher.js"></script>
+</body>
+</html>
