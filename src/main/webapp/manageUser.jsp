@@ -1,0 +1,121 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="CSS/manageUser.css">
+</head>
+<body>
+<div class="ManagerUser">
+    <div class="AccountLeft">
+        <div class="AvatarAccount">
+            <img src="lgImg/avt.png" class="avtr">
+            <div class="AccountName">
+                <div class="nameAdmin">Admin</div>
+                <div class="stk">Quản trị viên</div>
+            </div>
+        </div>
+        <div class="AccountLeftOption">
+            <a href="manageUser.html" class="NameOptionBold">
+                <i class="fa-solid fa-user"></i>
+                <div class="NameOptionBoldText">Quản lí người dùng</div>
+            </a>
+            <a href="ManageProduct.jsp" class="OptionIcon">
+                <i class="fa-solid fa-box-open"></i>
+                <div class="NameOption">Quản lí sản phẩm</div>
+            </a>
+            <a href="manageOrder.jsp" class="OptionIcon">
+                <i class="fa-solid fa-box"></i>
+                <div class="NameOption">Quản lí đơn hàng</div>
+            </a>
+            <a href="manageUI.jsp" class="OptionIcon">
+                <i class="fa-solid fa-eye"></i>
+                <div class="NameOption">Quản lí giao diện</div>
+            </a>
+            <a href="manageAnoun.jsp" class="OptionIcon">
+                <i class="fa-solid fa-bullhorn"></i>
+                <div class="NameOption">Quản lí thông báo</div>
+            </a>
+            <div class = "button_container">
+                <a href="login.jsp" class="sgoutAdmin">Đăng xuất</a>
+            </div>
+        </div>
+    </div>
+    <div class="manageUserUi">
+        <div class="userHeader">
+            <div id="mangeUserHeader">Quản Lí Người Dùng / Tất Cả</div>
+            <div><input type="text" placeholder="Tìm tên / id user..." id="adminSearch"></div>
+            <div class="typeUser">
+                <div id="userTx">User</div>
+                <div id="userId">ID</div>
+                <div id="userMember">Thẻ thành viên</div>
+                <div id="userPay">Tổng chi tiêu</div>
+                <div id="userActivity">Hoạt động gần nhất</div>
+                <div id="userStatus">Trạng thái</div>
+            </div>
+            <div class="userInfo">
+                <div class="userBox">
+                    <div class="userGroup">
+                        <div class="userTxt">Edward Alter</div>
+                        <div class="userTxt1">id: 392014</div>
+                        <div class="userTxt2">Unactived</div>
+                        <div class="userTxt3">120.000đ</div>
+                        <div class="userTxt4">Hôm nay</div>
+                        <div class="userTxt5">Online</div>
+                    </div>
+                </div>
+                <div class="userBox">
+                    <div class="userGroup">
+                        <div class="userTxt">Olivia Alice</div>
+                        <div class="userTxt1">id: 192042</div>
+                        <div class="userTxt2">Actived</div>
+                        <div class="userTxt3">230.000đ</div>
+                        <div class="userTxt4">1 ngày trước</div>
+                        <div class="userTxt5">Offline</div>
+                    </div>
+                </div>
+                <div class="userBox">
+                    <div class="userGroup">
+                        <div class="userTxt">Marcus Hale</div>
+                        <div class="userTxt1">id: 391038</div>
+                        <div class="userTxt2">Actived</div>
+                        <div class="userTxt3">2.800.000đ</div>
+                        <div class="userTxt4">Hôm nay</div>
+                        <div class="userTxt5">Online</div>
+                    </div>
+                </div>
+                <div class="userBox">
+                    <div class="userGroup">
+                        <div class="userTxt">Maya Nova</div>
+                        <div class="userTxt1">id: 389143</div>
+                        <div class="userTxt2">Unactive</div>
+                        <div class="userTxt3">80.000đ</div>
+                        <div class="userTxt4">2 ngày trước</div>
+                        <div class="userTxt5">Offline</div>
+                    </div>
+                </div>
+                <div class="userBox">
+                    <div class="userGroup">
+                        <div class="userTxt">Renoa Dirge</div>
+                        <div class="userTxt1">id: 291054</div>
+                        <div class="userTxt2">Unactive</div>
+                        <div class="userTxt3">240.000đ</div>
+                        <div class="userTxt4">4 ngày trước</div>
+                        <div class="userTxt5">Offline</div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="choosePage">
+                <div class="pageInfo"><</div>
+                <div class="pageInfoNumber">1/23</div>
+                <div class="pageInfo">></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
