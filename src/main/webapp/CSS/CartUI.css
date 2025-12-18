@@ -1,10 +1,10 @@
 
 .CartUI {
     background: white;
-
     font-family: sans-serif;
     font-size: 0.8rem;
     font-weight: bold;
+    padding: 20px;
 }
 
 
@@ -58,7 +58,11 @@
 .CartUI .summary .col-10 { padding: 0; }
 
 /* Lưới hàng sản phẩm */
-.CartUI .row { margin: 0; }
+.CartUI .MainContent .row {
+    margin: 0;
+}
+
+
 .CartUI .main {
     margin: 0;
     padding: 10px 0;
