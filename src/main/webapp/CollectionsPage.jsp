@@ -589,7 +589,7 @@
         </div>
     </div>
 </div>
-<jsp:include page="/WEB-INF/jsp/common/footer.jsp" />
+<jsp:include page="/Share/footer.jsp" />
 <script src="JS/Notification.js"></script>
 <script src="JS/CollectionsPage.js"></script>
 </body>

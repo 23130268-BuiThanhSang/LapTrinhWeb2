@@ -4,7 +4,7 @@
 <nav class="MainMenuBar">
     <div class="GroupLeft">
         <a href="/" class="LogoWrap">
-            <img src="lgImg/logo.png" alt="SPGYM Logo" class="Logo">
+            <img src="../lgImg/logo.png" alt="SPGYM Logo" class="Logo">
         </a>
         <span class="NameWebsite">SPGYM</span>
     </div>

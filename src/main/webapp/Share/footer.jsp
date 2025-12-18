@@ -3,7 +3,7 @@
 <%-- Footer fragment --%>
 <footer class="footer">
     <div class="footer-container">
-        <img class="logoft" src="lgImg/logo.png" alt="">
+        <img class="logoft" src="../lgImg/logo.png" alt="">
         <div class="footer-col">
             <p>Địa chỉ: Thủ Đức, Hồ Chí Minh</p>
             <p>SĐT: 0922482619</p>

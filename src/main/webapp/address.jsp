@@ -11,7 +11,7 @@
 
 </head>
 <body>
-<jsp:include page="/WEB-INF/jsp/common/header.jsp" />
+<jsp:include page="/Share/header.jsp" />
 <main class="layout layout-scroll">
     <aside class="AccountLeft">
         <div class="AvatarAccount">
@@ -34,17 +34,9 @@
                 <i class="fa-solid fa-lock"></i>
                 <div class="NameOption">Đổi mật khẩu</div>
             </a>
-            <a href="payment.jsp" class="OptionIcon">
-                <i class="fa-solid fa-credit-card"></i>
-                <div class="NameOption">Phương thức thanh toán</div>
-            </a>
             <a href="HistorySale.jsp" class="OptionIcon">
                 <i class="fa-solid fa-cart-arrow-down"></i>
                 <div class="NameOptionBoldText">Lịch sử mua hàng</div>
-            </a>
-            <a href="memberCard.jsp" class="OptionIcon">
-                <i class="fa-solid fa-address-card"></i>
-                <div class="NameOption">Thẻ thành viên</div>
             </a>
             <div class="SignOut">
                 <a href="login.jsp" class="OptionSignOut">Đăng xuất</a>
@@ -151,35 +143,7 @@
     </div>
 </main>
 
-<footer class="footer">
-    <div class="footer-container">
-        <img class="logoft" src="lgImg/logo.png" alt="">
-        <div class="footer-col">
-            <p>Địa chỉ: Thủ Đức, Hồ Chí Minh</p>
-            <p>SĐT: 0922482619</p>
-            <p>Email: sportadgym@gmail.com</p>
-        </div>
-
-        <div class="footer-col">
-            <h3 class="footer-title">Về Chúng Tôi</h3>
-            <div class="homepage">
-                <span>Trang chủ:</span>
-                <a href="index.html">https://SPGym.vn</a>
-            </div>
-            <div>© 2025 SPGYM. All rights reserved.</div>
-        </div>
-
-        <div class="footer-col">
-            <h3 class="footer-title">Liên kết xã hội:</h3>
-            <div class="social-icons">
-                <a href="#"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/facebook.svg"></a>
-                <a href="#"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/twitter.svg"></a>
-                <a href="#"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/instagram.svg"></a>
-                <a href="#"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/youtube.svg"></a>
-            </div>
-        </div>
-    </div>
-</footer>
+<jsp:include page="/Share/footer.jsp" />
 <script src="JS/Notification.js"></script>
 </body>
 </html>

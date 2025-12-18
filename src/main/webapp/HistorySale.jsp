@@ -15,7 +15,7 @@
 
 </head>
 <body>
-<jsp:include page="/WEB-INF/jsp/common/header.jsp" />
+<jsp:include page="/Share/header.jsp" />
 <main class="layout layout-scroll">
     <aside class="AccountLeft">
         <div class="AvatarAccount">
@@ -38,18 +38,10 @@
                 <i class="fa-solid fa-lock"></i>
                 <div class="NameOption">Đổi mật khẩu</div>
             </a>
-            <a href="payment.jsp" class="OptionIcon">
-                <i class="fa-solid fa-credit-card"></i>
-                <div class="NameOption">Phương thức thanh toán</div>
-            </a>
             <div class="NameOptionBold active">
                 <i class="fa-solid fa-cart-arrow-down"></i>
                 <div class="NameOptionBoldText">Lịch sử mua hàng</div>
             </div>
-            <a href="memberCard.jsp" class="OptionIcon">
-                <i class="fa-solid fa-address-card"></i>
-                <div class="NameOption">Thẻ thành viên</div>
-            </a>
             <div class="SignOut">
                 <a href="login.jsp" class="OptionSignOut">Đăng xuất</a>
             </div>
@@ -159,7 +151,7 @@
         </div>
     </section>
 </main>
-<jsp:include page="/WEB-INF/jsp/common/footer.jsp" />
+<jsp:include page="/Share/footer.jsp" />
 <script src="JS/Notification.js"></script>
 </body>
 </html>

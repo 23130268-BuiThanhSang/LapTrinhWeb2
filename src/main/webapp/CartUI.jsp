@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/CartUI.css?v=<%=System.currentTimeMillis()%>">
 </head>
 <body>
-<jsp:include page="/WEB-INF/jsp/common/header.jsp" />
+<jsp:include page="/Share/header.jsp" />
 <div class="CartUI">
     <div class="MainContent">
         <div class="card">
@@ -154,7 +154,7 @@
     </div>
 </div>
 
-<jsp:include page="/WEB-INF/jsp/common/footer.jsp" />
+<jsp:include page="/Share/footer.jsp" />
 <script src="JS/Voucher.js"></script>
 </body>
 </html>
