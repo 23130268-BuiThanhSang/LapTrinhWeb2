@@ -10,40 +10,7 @@
 </head>
 <body>
 <div class="MainUI">
-    <div class="AccountLeft">
-        <div class="AvatarAccount">
-            <img src="lgImg/avt.png" class="avtr">
-            <div class="AccountName">
-                <div class="nameAdmin">Admin</div>
-                <div class="stk">Quản trị viên</div>
-            </div>
-        </div>
-        <div class="AccountLeftOption">
-            <a href="manageUser.jsp" class="OptionIcon">
-                <i class="fa-solid fa-user"></i>
-                <div class="NameOption">Quản lí người dùng</div>
-            </a>
-            <a href="ManageProduct.html" class="NameOptionBold">
-                <i class="fa-solid fa-box-open"></i>
-                <div class="NameOptionBoldText">Quản lí sản phẩm</div>
-            </a>
-            <a href="manageOrder.jsp" class="OptionIcon">
-                <i class="fa-solid fa-box"></i>
-                <div class="NameOption">Quản lí đơn hàng</div>
-            </a>
-            <a href="manageUI.jsp" class="OptionIcon">
-                <i class="fa-solid fa-eye"></i>
-                <div class="NameOption">Quản lí giao diện</div>
-            </a>
-            <a href="manageAnoun.jsp" class="OptionIcon">
-                <i class="fa-solid fa-bullhorn"></i>
-                <div class="NameOption">Quản lí thông báo</div>
-            </a>
-            <div class = "button_container">
-                <a href="login.jsp" class="sgoutAdmin">Đăng xuất</a>
-            </div>
-        </div>
-    </div>
+    <jsp:include page="/Share/admin_leftbar.jsp" />
     <div class="MainManagerForProduct">
         <div class="TabButtons">
             <button id="btnAddProduct" class="TabButton">Thêm sản phẩm</button>
@@ -86,8 +53,51 @@
                     <input type="date" name="expire_date">
                 </div>
 
-                <button type="submit" class="SubmitAddProduct">Thêm sản phẩm</button>
+                <div class="FormRow">
+                    <label>Thương hiệu <span class="required">*</span>:</label>
+                    <div class="RadioContainer">
+                        <label><input type="radio" name="brand" value="Nike" required> Nike</label>
+                        <label><input type="radio" name="brand" value="Adidas" required> Adidas</label>
+                        <label><input type="radio" name="brand" value="Puma" required> Puma</label>
+                        <!-- Add more brands if needed -->
+                    </div>
+                </div>
 
+                <div class="FormRow">
+                    <label>Bộ Sưu tập:</label>
+                    <div class="CheckboxContainer">
+                        <label><input type="checkbox" name="collection" value="Summer"> Summer</label>
+                        <label><input type="checkbox" name="collection" value="Winter"> Winter</label>
+                        <!-- Add more collections if needed -->
+                    </div>
+                </div>
+
+                <div class="FormRow">
+                    <label>Môn thể thao:</label>
+                    <div class="CheckboxContainer">
+                        <label><input type="checkbox" name="sport" value="Football"> Football</label>
+                        <label><input type="checkbox" name="sport" value="Yoga"> Yoga</label>
+                        <!-- Add more sports if needed -->
+                    </div>
+                </div>
+
+                <div class="FormRow">
+                    <label>Ưu đãi:</label>
+                    <div class="CheckboxContainer">
+                        <label><input type="checkbox" name="hotdeal" value="Yes"> Có</label>
+                    </div>
+                </div>
+
+                <div class="FormRow">
+                    <label>Giới tính:</label>
+                    <div class="RadioContainer">
+                        <label><input type="radio" name="gender" value="Nam"> Nam</label>
+                        <label><input type="radio" name="gender" value="Nữ"> Nữ</label>
+                        <!-- Not required, so users can skip -->
+                    </div>
+                </div>
+
+                <button type="submit" class="SubmitAddProduct">Thêm sản phẩm</button>
             </form>
         </div>
         <!-- ===================== ADD PRODUCT GROUP SECTION ===================== -->

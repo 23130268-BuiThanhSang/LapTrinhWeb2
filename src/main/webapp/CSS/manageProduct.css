@@ -163,6 +163,57 @@
     color: #9ca3af;
 }
 
+/* ======================= */
+/* Radio / Checkbox Groups */
+/* ======================= */
+
+.RadioContainer, .CheckboxContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 4px;
+}
+.RadioContainer label,
+.CheckboxContainer label {
+    font-weight: 500;
+    color: #444;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: #f3f4f6;
+    padding: 8px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.RadioContainer label:hover,
+.CheckboxContainer label:hover {
+    background: #e0e7ff;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+    accent-color: #667eea; /* Makes checkboxes/radios purple on supported browsers */
+    margin-right: 4px;
+}
+
+.required {
+    color: #e53e3e;
+    font-weight: bold;
+}
+
+@media (max-width: 768px) {
+    .RadioContainer, .CheckboxContainer {
+        gap: 10px;
+    }
+    .RadioContainer label, .CheckboxContainer label {
+        padding: 7px 10px;
+        font-size: 13px;
+    }
+}
+
 /* Date input styling */
 .FormRow input[type="date"] {
     cursor: pointer;
