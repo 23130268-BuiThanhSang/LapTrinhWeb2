@@ -9,7 +9,7 @@ import vn.edu.hcmuaf.fit.laptrinhweb2.services.ProductService;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "ListProductController", value = "/List-product")
+@WebServlet(name = "ListProductController", value = "/List-Product")
 public class ListProductController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
