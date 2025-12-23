@@ -13,6 +13,8 @@ public class Product implements Serializable {
         this.price = price;
         this.img = img;
     }
+    public Product() {
+    }
     public int getId() {
         return id;
     }

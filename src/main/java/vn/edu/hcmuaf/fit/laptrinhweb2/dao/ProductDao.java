@@ -18,11 +18,13 @@ public class ProductDao extends BaseDao{
 //        productMap.put(4,new Product(4,"Áo Thun Nam Venum Ufc Pro Line Black Jersey - Blue - Xanh Dương",300000,"https://supersports.com.vn/cdn/shop/files/VNMUFC-00059-400-1.jpg?v=1704354123&width=1600"));
 //    }
     public List<Product> getAllProduct() {
-        return new ArrayList<Product>(productMap.values());
+        return get().withHandle(h -> h.createQuery("select * from product").mapToBean(Product.class).list());
     }
 
     public Product getProduct(int id) {
-        return productMap.get(id);
+        return get().withHandle(handle -> {
+            return handle.createQuery("select * from product where id = :id").bind("id", id).mapToBean(Product.class).stream().findFirst().orElse(null);
+        });
     }
 
     public void insertProduct(List<Product> products) {
@@ -39,7 +41,7 @@ public class ProductDao extends BaseDao{
 
     public static void main(String[] args) {
         ProductDao dao = new ProductDao();
-        List<Product> products = dao.getAllProduct();
-        dao.insertProduct(products);
+        dao.getAllProduct().forEach(System.out::println);
     }
+
 }

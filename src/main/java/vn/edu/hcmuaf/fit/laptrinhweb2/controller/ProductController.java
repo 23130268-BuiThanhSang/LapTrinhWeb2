@@ -7,6 +7,7 @@ import vn.edu.hcmuaf.fit.laptrinhweb2.model.Product;
 import vn.edu.hcmuaf.fit.laptrinhweb2.services.ProductService;
 
 import java.io.IOException;
+import java.util.List;
 
 @WebServlet(name = "ProductController", value = "/Product")
 public class ProductController extends HttpServlet {
@@ -17,7 +18,6 @@ public class ProductController extends HttpServlet {
        Product product = productService.getProduct(id);
        request.setAttribute("product",product);
        request.getRequestDispatcher("ProductMainPage.jsp").forward(request,response);
-
     }
 
     @Override
