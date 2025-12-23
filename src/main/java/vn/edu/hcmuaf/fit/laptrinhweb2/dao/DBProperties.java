@@ -14,12 +14,12 @@ public class DBProperties {
     }
 
     public static String host(){
-        return prop.get("host").toString();
+        return prop.get("db.host").toString();
     }
 
     public static int port(){
         try{
-            return Integer.parseInt(prop.get("port").toString());
+            return Integer.parseInt(prop.get("db.port").toString());
         }catch (NumberFormatException e){
             return 3306;
         }
@@ -33,7 +33,7 @@ public class DBProperties {
     }
 
     public static String dbname(){
-        return prop.get("db.name").toString();
+        return prop.get("db.dbname").toString();
     }
 
     public static String option(){
