@@ -17,8 +17,8 @@ public class OrderService {
         return orderDao.getById(id);
     }
 
-    public int createOrder(Order order) {
-        return orderDao.create(order);
-    }
+//    public int createOrder(Order order) {
+//        return orderDao.create(order);
+//    }
 }
 
