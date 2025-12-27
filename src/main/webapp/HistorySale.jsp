@@ -9,8 +9,7 @@
     <link rel="stylesheet" href="CSS/AccountInfo.css">
     <link rel="stylesheet" href="CSS/Style.css">
     <link rel="stylesheet" href="CSS/StyleForHistorySale.css">
-<!--    <link rel="stylesheet" href="CSS/manageOrder.css">-->
-    <!--    <link rel="stylesheet" href="CSS/StyleForPageShopping.css">-->
+
 
 
 </head>
