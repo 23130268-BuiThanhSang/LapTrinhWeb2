@@ -151,35 +151,7 @@
 
     </div>
 </div>
-<footer class="footer">
-    <div class="footer-container">
-        <img class="logoft" src="lgImg/logo.png" alt="">
-        <div class="footer-col">
-            <p>Địa chỉ: Thủ Đức, Hồ Chí Minh</p>
-            <p>SĐT: 0922482619</p>
-            <p>Email: sportadgym@gmail.com</p>
-        </div>
-
-        <div class="footer-col1">
-            <h3 class="footer-title">Về Chúng Tôi</h3>
-            <div class="homepage">
-                <span>Trang chủ:</span>
-                <a href="index.html">https://SPGym.vn</a>
-            </div>
-            <div>© 2025 SPGYM. All rights reserved.</div>
-        </div>
-
-        <div class="footer-col1">
-            <h3 class="footer-title">Liên kết xã hội:</h3>
-            <div class="social-icons">
-                <a href="#"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/facebook.svg"></a>
-                <a href="#"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/twitter.svg"></a>
-                <a href="#"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/instagram.svg"></a>
-                <a href="#"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/youtube.svg"></a>
-            </div>
-        </div>
-    </div>
-</footer>
+<jsp:include page="/Share/footer.jsp" />
 
 </body>
 </html>
