@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,129 +20,92 @@
         </div>
         <div class="bottomBox">
             <p class = "BoxTitle">Lọc Đơn Hàng: </p>
-            <div class="FilterBar">
-                <input class = "day_input" placeholder="Enter day">
-                <select id="filterMonth" class="FilterSelect">
-                    <option value="1">January</option>
-                    <option value="2">February</option>
-                    <option value="3">March</option>
-                    <option value="4">April</option>
-                    <option value="5">May</option>
-                    <option value="6">June</option>
-                    <option value="7">July</option>
-                    <option value="8">August</option>
-                    <option value="9">September</option>
-                    <option value="10">October</option>
-                    <option value="11">November</option>
-                    <option value="12">December</option>
+            <form class="FilterBar"
+                  action="servlet_getOrder"
+                  method="get">
+                <input type="hidden" name="action" value="filter">
+                <input class="day_input"
+                       name="day"
+                       value="${day != null ? day : ''}"
+                       placeholder="Nhập ngày">
+
+                <label class="FilterLabel">Tháng:</label>
+                <select name="month" class="FilterSelect">
+                    <option value="">Tất cả</option>
+                    <option value="1" ${month == 1 ? "selected" : ""}>1</option>
+                    <option value="2" ${month == 2 ? "selected" : ""}>2</option>
+                    <option value="3" ${month == 3 ? "selected" : ""}>3</option>
+                    <option value="4" ${month == 4 ? "selected" : ""}>4</option>
+                    <option value="5" ${month == 5 ? "selected" : ""}>5</option>
+                    <option value="6" ${month == 6 ? "selected" : ""}>6</option>
+                    <option value="7" ${month == 7 ? "selected" : ""}>7</option>
+                    <option value="8" ${month == 8 ? "selected" : ""}>8</option>
+                    <option value="9" ${month == 9 ? "selected" : ""}>9</option>
+                    <option value="10" ${month == 10 ? "selected" : ""}>10</option>
+                    <option value="11" ${month == 11 ? "selected" : ""}>11</option>
+                    <option value="12" ${month == 12 ? "selected" : ""}>12</option>
                 </select>
 
                 <label class="FilterLabel">Năm:</label>
-                <select id="filterYear" class="FilterSelect">
-                    <option value="2025">2025</option>
+                <select name="year" class="FilterSelect">
+                    <option value="">Tất cả</option>
+                    <option value="2025" ${year == 2025 ? "selected" : ""}>2025</option>
                 </select>
 
-<!--                <label for="filterBranch" class="FilterLabel">Chi nhánh:</label>-->
-<!--                <select id="filterBranch" class="FilterSelect">-->
-<!--                    <option value="ThuDuc">Tất cả</option>-->
-<!--                    <option value="Online">Online</option>-->
-<!--                    <option value="ThuDuc">Thủ Đức</option>-->
-<!--                    <option value="Quan1">Quận 1</option>-->
-<!--                    <option value="BinhThanh">Bình Thạnh</option>-->
-<!--                </select>-->
 
                 <label class="FilterLabel">Trạng thái:</label>
-                <select id="filterStatus" class="FilterSelect">
-                    <option value="all">Tất cả</option>
-                    <option value="processing">Đang Xử Lý</option>
-                    <option value="delivered">Đã Giao</option>
-                    <option value="pending">Tạm Ngưng</option>
-                    <option value="cancelled">Đã Hủy</option>
-                    <option value="completed">Đã Hoàn Tất</option>
+                <select name="status" class="FilterSelect">
+                    <option value="all" ${status == null || status == 'all' ? "selected" : ""}>Tất cả</option>
+                    <option value="PENDING" ${status == 'PENDING' ? "selected" : ""}>Đang xử lý</option>
+                    <option value="DELIVERED" ${status == 'DELIVERED' ? "selected" : ""}>Đã giao</option>
+                    <option value="CANCELLED" ${status == 'CANCELLED' ? "selected" : ""}>Đã hủy</option>
+                    <option value="COMPLETED" ${status == 'COMPLETED' ? "selected" : ""}>Hoàn tất</option>
                 </select>
 
-                <button class="FilterBtn">Filter</button>
-            </div>
+                <button type="submit" class="FilterBtn">Filter</button>
+            </form>
+
 
             <div class = OrdersDetailDisplay>
-                <a href="manageOrder_OrderDetail.jsp" class="OrderItem">
-                    <div class="OrderHeader">
-                        <span class="OrderID">#ORD-10234</span>
-                        <span class="OrderDate">2025-11-13</span>
-                        <span class="OrderStatus status-processing">Đang xử lý</span>
-                    </div>
+                <c:forEach var="o" items="${orders}">
+                    <a href="manageOrder_OrderDetail.jsp?orderId=${o.id}" class="OrderItem">
 
-                    <div class="OrderSummary">
-                        <p class="CustomerName">Customer_id: <span>Nguyen Van A</span></p>
-                        <p class="OrderTotal">Total: <span>1,250,000 VND</span></p>
-                        <p class="ItemsCount">Items: <span>3</span></p>
-                    </div>
-                </a>
-                <a href="manageOrder_OrderDetail.jsp" class="OrderItem">
-                    <div class="OrderHeader">
-                        <span class="OrderID">#ORD-10234</span>
-                        <span class="OrderDate">2025-11-13</span>
-                        <span class="OrderStatus status-cancelled">Đã hủy</span>
-                    </div>
+                        <div class="OrderHeader">
+                            <span class="OrderID">#ORD-${o.id}</span>
+                            <span class="OrderDate">${o.orderDate}</span>
 
-                    <div class="OrderSummary">
-                        <p class="CustomerName">Customer_id: <span>Nguyen Van A</span></p>
-                        <p class="OrderTotal">Total: <span>1,250,000 VND</span></p>
-                        <p class="ItemsCount">Items: <span>3</span></p>
-                    </div>
-                </a>
-                <a href="manageOrder_OrderDetail.jsp" class="OrderItem">
-                    <div class="OrderHeader">
-                        <span class="OrderID">#ORD-10234</span>
-                        <span class="OrderDate">2025-11-13</span>
-                        <span class="OrderStatus status-pending">Tạm ngưng</span>
-                    </div>
+                            <span class="OrderStatus
+                    <c:choose>
+                        <c:when test="${o.status == 'PENDING'}">status-pending</c:when>
+                        <c:when test="${o.status == 'PAID'}">status-processing</c:when>
+                        <c:when test="${o.status == 'SHIPPED'}">status-approved</c:when>
+                        <c:when test="${o.status == 'DELIVERED'}">status-completed</c:when>
+                        <c:when test="${o.status == 'CANCELLED'}">status-cancelled</c:when>
+                    </c:choose>
+                ">
+                                    ${o.status}
+                            </span>
+                        </div>
 
-                    <div class="OrderSummary">
-                        <p class="CustomerName">Customer_id: <span>Nguyen Van A</span></p>
-                        <p class="OrderTotal">Total: <span>1,250,000 VND</span></p>
-                        <p class="ItemsCount">Items: <span>3</span></p>
-                    </div>
-                </a>
-                <a href="manageOrder_OrderDetail.jsp" class="OrderItem">
-                    <div class="OrderHeader">
-                        <span class="OrderID">#ORD-10234</span>
-                        <span class="OrderDate">2025-11-13</span>
-                        <span class="OrderStatus status-approved">Đang giao</span>
-                    </div>
+                        <div class="OrderSummary">
+                            <p class="CustomerName">
+                                User ID: <span>${o.userId}</span>
+                            </p>
 
-                    <div class="OrderSummary">
-                        <p class="CustomerName">Customer_id: <span>Nguyen Van A</span></p>
-                        <p class="OrderTotal">Total: <span>1,250,000 VND</span></p>
-                        <p class="ItemsCount">Items: <span>3</span></p>
-                    </div>
-                </a>
-                <a class="OrderItem">
-                    <div class="OrderHeader">
-                        <span class="OrderID">#ORD-10234</span>
-                        <span class="OrderDate">2025-11-13</span>
-                        <span class="OrderStatus status-completed">Hoàn thành</span>
-                    </div>
+                            <p class="OrderTotal">
+                                Total: <span>${o.totalPrice} VND</span>
+                            </p>
 
-                    <div class="OrderSummary">
-                        <p class="CustomerName">Customer_id: <span>Nguyen Van A</span></p>
-                        <p class="OrderTotal">Total: <span>1,250,000 VND</span></p>
-                        <p class="ItemsCount">Items: <span>3</span></p>
-                    </div>
-                </a>
-                <a class="OrderItem">
-                    <div class="OrderHeader">
-                        <span class="OrderID">#ORD-10234</span>
-                        <span class="OrderDate">2025-11-13</span>
-                        <span class="OrderStatus status-completed">Hoàn thành</span>
-                    </div>
+                            <p class="ItemsCount">
+                                Items:
+                                <span>
+                        <c:out value="${o.items.size()}" />
+                    </span>
+                            </p>
+                        </div>
 
-                    <div class="OrderSummary">
-                        <p class="CustomerName">Customer_id: <span>Nguyen Van A</span></p>
-                        <p class="OrderTotal">Total: <span>1,250,000 VND</span></p>
-                        <p class="ItemsCount">Items: <span>3</span></p>
-                    </div>
-                </a>
+                    </a>
+                </c:forEach>
             </div>
         </div>
     </div>

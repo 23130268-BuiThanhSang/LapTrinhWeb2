@@ -3,21 +3,31 @@ package vn.edu.hcmuaf.fit.laptrinhweb2.dao;
 import vn.edu.hcmuaf.fit.laptrinhweb2.model.OrderItem;
 import vn.edu.hcmuaf.fit.laptrinhweb2.model.Product;
 
-import java.util.*;
+import java.util.List;
 
-public class OrderItemDao {
-    private static Map<Integer, List<OrderItem>> orderItemMap = new HashMap<>();
+public class OrderItemDao extends BaseDao {
+
+    private final ProductDao productDao = new ProductDao();
+
     public List<OrderItem> getByOrderId(int orderId) {
-        return orderItemMap.getOrDefault(orderId, new ArrayList<>());
-    }
-    public void addOrderItem(int orderId, OrderItem item) {
-        List<OrderItem> items = orderItemMap.get(orderId);
-        if (items == null) {
-            items = new ArrayList<>();
-        }
-        item.setOrderId(orderId);
-        items.add(item);
-        orderItemMap.put(orderId, items);
+        return get().withHandle(handle ->
+                handle.createQuery("SELECT * FROM order_detail WHERE order_id = :orderId")
+                        .bind("orderId", orderId)
+                        .map((rs, ctx) -> {
+                            OrderItem item = new OrderItem();
+                            item.setId(rs.getInt("id"));
+                            item.setOrderId(rs.getInt("order_id"));
+
+                            int variantId = rs.getInt("variant_id");
+                            Product product = productDao.getProduct(variantId);
+                            item.setProduct(product);
+
+                            item.setQuantity(rs.getInt("quantity"));
+                            item.setPrice(rs.getDouble("price"));
+
+                            return item;
+                        })
+                        .list()
+        );
     }
 }
-

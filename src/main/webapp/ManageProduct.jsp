@@ -105,12 +105,14 @@
 
             <div class="HeaderForManageProduct">Thêm Nhóm Sản Phẩm</div>
 
-            <form class="AddGroupForm">
+            <form class="AddGroupForm"
+                  action="servlet_addProductGroup"
+                  method="post">
 
                 <!-- Group type -->
                 <div class="FormRow">
                     <label>Loại nhóm:</label>
-                    <select name="group_type">
+                    <select name="group_type" required>
                         <option value="thuong_hieu">Thương Hiệu</option>
                         <option value="bo_suu_tap">Bộ Sưu Tập</option>
                         <option value="mon_the_thao">Môn Thể Thao</option>
@@ -121,25 +123,35 @@
                 <!-- Group name -->
                 <div class="FormRow">
                     <label>Tên nhóm:</label>
-                    <input type="text" name="group_name" placeholder="Nhập tên nhóm">
+                    <input type="text"
+                           name="group_name"
+                           placeholder="Nhập tên nhóm"
+                           required>
                 </div>
 
                 <!-- Thumbnail URL -->
                 <div class="FormRow">
                     <label>Thumbnail URL:</label>
-                    <input type="text" name="thumbnail_url" placeholder="https://...">
+                    <input type="text"
+                           name="thumbnail_url"
+                           placeholder="https://...">
                 </div>
 
                 <!-- Image URL -->
                 <div class="FormRow">
                     <label>Image URL:</label>
-                    <input type="text" name="image_url" placeholder="https://...">
+                    <input type="text"
+                           name="image_url"
+                           placeholder="https://...">
                 </div>
 
                 <!-- Display order -->
                 <div class="FormRow">
                     <label>Thứ tự hiển thị:</label>
-                    <input type="number" name="display_order" min="1">
+                    <input type="number"
+                           name="display_order"
+                           min="1"
+                           value="1">
                 </div>
 
                 <button type="submit" class="SubmitAddProduct">
@@ -148,6 +160,7 @@
 
             </form>
         </div>
+
 
         <!-- ===================== SEARCH / VIEW PRODUCT SECTION ===================== -->
         <div id="SearchProductSection" class="SearchProductSection">

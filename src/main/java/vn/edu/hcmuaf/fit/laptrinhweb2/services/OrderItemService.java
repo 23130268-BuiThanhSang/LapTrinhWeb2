@@ -13,8 +13,8 @@ public class OrderItemService {
         return orderItemDao.getByOrderId(orderId);
     }
 
-    public void addOrderItem(int orderId, OrderItem item) {
-        orderItemDao.addOrderItem(orderId, item);
-    }
+//    public void addOrderItem(int orderId, OrderItem item) {
+//        orderItemDao.addOrderItem(orderId, item);
+//    }
 }
 

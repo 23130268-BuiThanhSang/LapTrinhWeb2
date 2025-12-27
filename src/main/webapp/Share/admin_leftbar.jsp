@@ -17,7 +17,7 @@
             <i class="fa-solid fa-box-open"></i>
             <div class="NameOption">Quản lí sản phẩm</div>
         </a>
-        <a href="manageOrder.jsp" class="OptionIcon">
+        <a href="servlet_getOrder?action=today" class="OptionIcon">
             <i class="fa-solid fa-box"></i>
             <div class="NameOption">Quản lí đơn hàng</div>
         </a>

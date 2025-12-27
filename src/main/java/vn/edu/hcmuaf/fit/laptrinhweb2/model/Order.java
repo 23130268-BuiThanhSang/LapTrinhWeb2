@@ -1,6 +1,7 @@
 package vn.edu.hcmuaf.fit.laptrinhweb2.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -10,7 +11,8 @@ public class Order implements Serializable {
     private Date orderDate;
     private double totalPrice;
     private String status;
-    private List<OrderItem> items;
+    private List<OrderItem> items = new ArrayList<>();
+
 
     public Order() {
     }
@@ -22,6 +24,10 @@ public class Order implements Serializable {
         this.orderDate = orderDate;
         this.totalPrice = totalPrice;
         this.status = status;
+    }
+
+    public void addItem(OrderItem item) {
+        this.items.add(item);
     }
 
     public int getId() { return id; }
