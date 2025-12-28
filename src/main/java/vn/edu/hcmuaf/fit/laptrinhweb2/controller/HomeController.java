@@ -5,26 +5,18 @@ import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 import vn.edu.hcmuaf.fit.laptrinhweb2.dao.MenuDAO;
 import vn.edu.hcmuaf.fit.laptrinhweb2.model.Menu.MainMenu;
-import vn.edu.hcmuaf.fit.laptrinhweb2.model.Product;
-import vn.edu.hcmuaf.fit.laptrinhweb2.services.ProductService;
 
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "ListProductController", value = "/List-product")
-public class ListProductController extends HttpServlet {
+@WebServlet(name = "HomeController", value = "/Home")
+public class HomeController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // important load menu for page
         MenuDAO menudao= new MenuDAO();
         List<MainMenu> listMenu= menudao.getAllMenus();
         request.setAttribute("listMenu", listMenu);
-
-        ProductService productService = new ProductService();
-        List<Product> list = productService.getAllProduct();
-        request.setAttribute("list", list);
-        request.getRequestDispatcher("PageListAllProduct.jsp").forward(request, response);
-
+        request.getRequestDispatcher("index.jsp").forward(request, response);
     }
 
     @Override
