@@ -22,6 +22,6 @@ public class MenuController extends HttpServlet {
 
         request.setAttribute("listMenu", listMenu);
 
-        request.getRequestDispatcher("/header.jsp").forward(request, response); // hoặc menu.jsp nếu muốn
+        request.getRequestDispatcher("/Share/header.jsp").forward(request, response); // hoặc menu.jsp nếu muốn
     }
 }
