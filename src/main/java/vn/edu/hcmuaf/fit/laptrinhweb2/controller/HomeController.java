@@ -13,9 +13,7 @@ import java.util.List;
 public class HomeController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        MenuDAO menudao= new MenuDAO();
-        List<MainMenu> listMenu= menudao.getAllMenus();
-        request.setAttribute("listMenu", listMenu);
+
         request.getRequestDispatcher("index.jsp").forward(request, response);
     }
 
