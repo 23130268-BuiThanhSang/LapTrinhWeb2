@@ -1,11 +1,8 @@
-function showVoucher() {
-    document.getElementById("voucherPopup").classList.add("show");
+function toggleAllProducts() {
+    const selectAll = document.getElementById('selectAllCheckbox');
+    const itemCheckboxes = document.querySelectorAll('.item-checkbox');
+    itemCheckboxes.forEach(cb => cb.checked = selectAll.checked);
 }
 
-function closeVoucher() {
-    document.getElementById("voucherPopup").classList.remove("show");
-    document.querySelectorAll('#voucherPopup input[type="checkbox"]').forEach(cb => {
-        cb.checked = false;
-    });
-}
+
 

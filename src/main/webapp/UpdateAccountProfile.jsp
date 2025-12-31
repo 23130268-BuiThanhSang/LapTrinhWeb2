@@ -22,7 +22,7 @@
             </div>
         </div>
         <div class="AccountLeftOption">
-            <a href="currentInfo.jsp" class="OptionIcon">
+            <a href="AccountInfo.jsp" class="OptionIcon">
                 <i class="fa-solid fa-user"></i>
                 <div class="NameOption">Thông tin tài khoản</div>
             </a>
@@ -30,7 +30,7 @@
                 <i class="fa-solid fa-clipboard-user"></i>
                 <div class="NameOption">Cập nhật hồ sơ</div>
             </div>
-            <a href="changePassword.jsp" class="OptionIcon">
+            <a href="ChangePassword.jsp" class="OptionIcon">
                 <i class="fa-solid fa-lock"></i>
                 <div class="NameOption">Đổi mật khẩu</div>
             </a>

@@ -22,11 +22,11 @@
                     </div>
                 </div>
                 <div class="AccountLeftOption">
-                    <a href="currentInfo.jsp" class="OptionIcon">
+                    <a href="AccountInfo.jsp" class="OptionIcon">
                         <i class="fa-solid fa-user"></i>
                         <div class="NameOption">Thông tin tài khoản</div>
                     </a>
-                    <a href="address.jsp" class="OptionIcon">
+                    <a href="UpdateAccountProfile.jsp" class="OptionIcon">
                         <i class="fa-solid fa-clipboard-user"></i>
                         <div class="NameOption">Cập nhật hồ sơ</div>
                     </a>
