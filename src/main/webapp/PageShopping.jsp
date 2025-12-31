@@ -32,6 +32,16 @@
                         <div class="ProductItemName">Tên sản phẩm</div>
                         <div class="ProductItemBrand">Thương hiệu</div>
                     </div>
+                    <div class="ProductItemControl">
+                        <div class="QuantityBoxForProduct">
+                            <button>-</button>
+                            <span>1</span>
+                            <button>+</button>
+                        </div>
+                        <div class="actions">
+                            <a href="#">xóa</a>
+                        </div>
+                    </div>
                     <div class="ProductItemPrice">
                         Giá:  220.000đ
                     </div>
@@ -40,46 +50,14 @@
                     </label>
                 </div>
 
-                <div class="ItemProductInshoppingCart">
-                    <img src="https://supersports.com.vn/cdn/shop/products/BW-460-15KG-1.jpg?v=1703644838&width=1600" alt="Sản phẩm" class="ProductItemImage">
-                    <div class="ProductItemInfor">
-                        <div class="ProductItemName">Tên sản phẩm</div>
-                        <div class="ProductItemBrand">Thương hiệu</div>
-                    </div>
-                    <div class="ProductItemPrice">
-                        Giá: 220.000đ
-                    </div>
-                    <label class="CheckboxItem">
-                        <input type="checkbox" class="item-checkbox">
-                    </label>
-                </div>
-                <div class="ItemProductInshoppingCart">
-                    <img src="https://supersports.com.vn/cdn/shop/products/BW-460-15KG-1.jpg?v=1703644838&width=1600" alt="Sản phẩm" class="ProductItemImage">
-                    <div class="ProductItemInfor">
-                        <div class="ProductItemName">Tên sản phẩm</div>
-                        <div class="ProductItemBrand">Thương hiệu</div>
-                    </div>
-                    <div class="ProductItemPrice">
-                        Giá: 220.000đ
-                    </div>
-                    <label class="CheckboxItem">
-                        <input type="checkbox" class="item-checkbox">
-                    </label>
-                </div>
-                <div class="ItemProductInshoppingCart">
-                    <img src="https://supersports.com.vn/cdn/shop/products/BW-460-15KG-1.jpg?v=1703644838&width=1600" alt="Sản phẩm" class="ProductItemImage">
-                    <div class="ProductItemInfor">
-                        <div class="ProductItemName">Tên sản phẩm</div>
-                        <div class="ProductItemBrand">Thương hiệu</div>
-                    </div>
-                    <div class="ProductItemPrice">
-                        Giá: 220.000đ
-                    </div>
-                    <label class="CheckboxItem">
-                        <input type="checkbox" class="item-checkbox">
-                    </label>
-                </div>
             </div>
+            <div class="CartActionsFooter">
+                <button class="DeleteCartButton">
+                    <i class="fa-solid fa-trash-can"></i>
+                    <span> Xóa giỏ hàng</span>
+                </button>
+            </div>
+
         </div>
 
         <div class="OrderSumary">
