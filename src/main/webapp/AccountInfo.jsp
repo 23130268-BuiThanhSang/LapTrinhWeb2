@@ -26,11 +26,11 @@
                     <i class="fa-solid fa-user"></i>
                     <div class="NameOption">Thông tin tài khoản</div>
                 </div>
-                <a href="address.jsp" class="OptionIcon">
+                <a href="UpdateAccountProfile.jsp" class="OptionIcon">
                     <i class="fa-solid fa-clipboard-user"></i>
                     <div class="NameOption">Cập nhật hồ sơ</div>
                 </a>
-                <a href="changePassword.jsp" class="OptionIcon">
+                <a href="ChangePassword.jsp" class="OptionIcon">
                     <i class="fa-solid fa-lock"></i>
                     <div class="NameOption">Đổi mật khẩu</div>
                 </a>

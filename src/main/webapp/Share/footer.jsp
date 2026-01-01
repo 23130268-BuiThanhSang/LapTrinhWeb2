@@ -3,7 +3,7 @@
 <%-- Footer fragment --%>
 <footer class="footer">
     <div class="footer-container">
-        <img class="logoft" src="../lgImg/logo.png" alt="">
+        <img src="${pageContext.request.contextPath}/lgImg/logo.png" class="logoft">
         <div class="footer-col">
             <p>Địa chỉ: Thủ Đức, Hồ Chí Minh</p>
             <p>SĐT: 0922482619</p>
@@ -13,7 +13,7 @@
         <div class="footer-col">
             <h3 class="footer-title">Về Chúng Tôi</h3>
             <div class="homepage">
-                <span>Trang chủ:</span><a href="index.html">https://SPGym.vn</a>
+                <span>Trang chủ: </span><a href="index.html">https://SPGym.vn</a>
             </div>
             <div>© 2025 SPGYM. All rights reserved.</div>
         </div>

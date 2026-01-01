@@ -1,259 +1,313 @@
 /**
  tổng toàn bộ phần chính của trang bán hàng
  */
-.ShoppingCartForProduct{
-    margin-left: 40px;
-    margin-right: 40px;
+.ShoppingCartForProduct {
+    margin: 10px 40px 0 40px;
+    padding: 10px;
 }
+
 /**
-phần hiển thị tiêu đề đâu chính là giỏ hàng
+phần hiển thị tiêu đề đầu chính là giỏ hàng
  */
-.headerShoppingCart{
+.headerShoppingCart {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     font-weight: bold;
     font-family: sans-serif;
-    font-size: 37px;
-    padding: 30px;
-
+    font-size: 32px;
+    padding: 10px;
+    margin-bottom: 20px;
 }
 
-.bodyShoppingCart{
+.bodyShoppingCart {
     display: flex;
     flex-direction: row;
-    justify-content:flex-start;
-    gap:20px;
-    margin-bottom: 20px;
-
+    justify-content: center;
+    gap: 30px;
+    margin-bottom:  20px;
 }
+
 /**
 danh sách sản phẩm có trong trang giỏ hàng
  */
-.ListProductInShoppingCart{
-    width:900px;
-    height: 500px;
-    padding:20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+.ListProductInShoppingCart {
+    width: 700px;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    background: #fff;
+    border: 2px solid #C3C3C3;
+    display: flex;
+    flex-direction: column;
+    height: 510px;
+}
+.ListProductInnerScroll {
+    overflow-y: auto;
+    flex: 1 1 0;
+    min-height: 0;
+    max-height: 380px;
+    padding-right: 6px; /* cho đẹp với thanh cuộn */
 }
 /**
  thông tin tổng quát những món hàng mà mình thực hiện chọn
  */
-.OrderSumary{
-    width: 380px;
-    padding: 20px 25px;
-    border-radius: 8px;
-    font-family: sans-serif;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+.OrderSumary {
+    width: 350px;
+    padding: 25px;
+    border-radius: 12px;
+    font-family:  sans-serif;
+    display:  flex;
+    flex-direction:  column;
+    gap: 15px;
+    box-shadow:  0 4px 12px rgba(0, 0, 0, 0.15);
+    background: #fff;
+    border: 1px solid #C3C3C3;
 }
-.OrderSumaryTitle{
+
+.OrderSumaryTitle {
     display: flex;
     justify-content: center;
-    /*align-items: center;*/
-    font-size: 18px;
+    font-size: 20px;
     font-weight: bold;
-    border-bottom: 1px solid #ddd;
-    padding-bottom: 10px;
+    margin-bottom: 10px;
 }
-.OrderSumaryDetail{
+
+.OrderSumaryDetail {
     display: flex;
     flex-direction: column;
     gap: 10px;
     color: #333;
     font-size: 14px;
+    flex:  1;
 }
+
 .SummaryRow,
 .SummaryTotal {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
+
 .SummaryRow span:last-child {
     font-weight: 500;
 }
+
 .SummaryTotal {
     font-size: 16px;
     font-weight: bold;
     border-top: 1px solid #ddd;
     padding-top: 10px;
 }
-.VoucherSection {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-.VoucherSection label {
-    font-size: 14px;
-    color: #333;
-    font-weight: 500;
-}
-.VoucherInputBox {
-    display: flex;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    overflow: hidden;
-    text-decoration: none;
-}
-.VoucherInputBox input {
-    flex: 1;
-    border: none;
-    outline: none;
-    padding: 8px 10px;
-    font-size: 14px;
-}
-.VoucherInputBox button {
-    background: #1a73e8;
-    color: white;
-    border: none;
-    padding: 0 15px;
-    font-size: 20px;
-    cursor: pointer;
-    transition: background 0.2s;
-}
-.VoucherInputBox button:hover {
-    background: #0f5ec0;
-}
 
 .OrderButtons {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    margin-top: auto;
 }
-.ContinueButton{
-    background: #1a73e8;
+
+.ContinueButton {
+    background: linear-gradient(135deg, #1D539C 0%, #0B203C 100%);
     color: white;
     border: none;
-    padding: 10px;
-    font-weight: bold;
-    border-radius: 5px;
+    padding: 14px 20px;
+    font-weight:  bold;
+    font-size: 16px;
+    border-radius: 8px;
     cursor: pointer;
-    transition: background 0.2s;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
+
 .ContinueButton:hover {
-    background: #0f5ec0;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
 }
-
-
 
 /**
-điều chỉnh cho tất cả các thành phẩn sản phẩm có trong giỏ hàng thực hiện bỏ hết hoặc thực hiện chọn tất cả
+điều chỉnh cho tất cả các thành phẩn sản phẩm có trong giỏ hàng
  */
-.ControlForAllItemsProductInShoppingCart{
+.ControlForAllItemsProductInShoppingCart {
     display: flex;
     justify-content: space-between;
     align-items: center;
     font-family: sans-serif;
-    border: gray 1px solid;
-    border-radius: 8px;
-    padding: 25px 15px 25px 15px;
-}
-.SelectAllItem{
-    display: flex;
-    align-items: center;
-    gap:10px;
-    cursor: pointer;
-}
-.SelectAllItem input[type="checkbox"]{
-    width: 18px;
-    height: 18px;
-    accent-color: deepskyblue;
-    cursor: pointer;
+    padding: 15px;
+    margin-bottom: 15px;
 }
 
-.ItemProductInshoppingCart{
+. ControlForAllItemsProductInShoppingCart . ListTitle {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.SelectAllItem {
+    display: flex;
+    align-items: center;
+    gap:  10px;
+    cursor:  pointer;
+    font-size: 14px;
+}
+
+.SelectAllItem input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    accent-color:  #1D539C;
+    cursor:  pointer;
+    border-radius: 4px;
+}
+
+.ItemProductInshoppingCart {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap:20px;
-    font-family: sans-serif;
-    border-bottom:gray 1px solid;
-    padding: 10px 15px;
+    gap: 15px;
+    font-family:  sans-serif;
+    border:  2px solid #C3C3C3;
+    border-radius: 12px;
+    padding: 15px;
+    margin-bottom:  15px;
+    background:  #fff;
+    transition: all 0.2s ease;
 }
+
 .ItemProductInshoppingCart:hover {
-    background: #f9f9f9;
-    transition: background 0.2s;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
-.ProductItemImage{
-    width: 100px;
-    height: 100px;
+
+.ProductItemImage {
+    width: 80px;
+    height: 80px;
     object-fit: cover;
-    margin-right: 15px;
-    border: 1px solid #eee;
-    border-radius: 4px;
+    border:  2px solid #C3C3C3;
+    border-radius: 12px;
+    flex-shrink: 0;
 }
-.ProductItemInfor{
+
+.ProductItemInfor {
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 4px;
-    min-width: 250px;
-}
-.ProductItemPrice{
-    font-weight: bold;
-    font-size: 16px;
-    color: #111;
-    white-space: nowrap;
-    min-width: 120px;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.ProductItemControl{
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    align-items:center;
-}
-.QuantityBoxForProduct{
-    display: flex;
-    align-items: center;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    overflow: hidden;
-}
-.QuantityBoxForProduct button{
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: background 0.2s;
-}
-.QuantityBoxForProduct button:hover{
-    background:deepskyblue;
-}
-.QuantityBoxForProduct span{
-    padding:0 10px;
-}
-.CheckboxItem{
-    display: flex;
-    align-items: center;
-    margin-right: 15px;
-}
-.CheckboxItem input[type="checkbox"]{
-    width: 18px;
-    height: 18px;
-    accent-color: deepskyblue;
-    cursor: pointer;
-}
-.ProductItemName{
-    font-weight: bold;
-    font-size: 16px;
-}
-.ProductItemDesc{
-    color: #333;
-}
-.ProductItemDetail{
-    margin: 0;
-    color: #666;
-    font-size: 13px;
+    gap:  4px;
+    min-width: 150px;
 }
 
+.ProductItemName {
+    font-weight:  bold;
+    font-size:  14px;
+}
+
+.ProductItemBrand {
+    color: #666;
+    font-size: 12px;
+}
+
+.ProductItemDetail {
+    display: none;
+}
+
+.ProductItemPrice {
+    font-weight: bold;
+    font-size: 14px;
+    color: #111;
+    white-space: nowrap;
+    min-width:  100px;
+    text-align:  right;
+}
+
+.ProductItemPrice span {
+    display: block;
+}
+
+.ProductItemControl {
+    display: flex;
+    flex-direction: column;
+    gap:  10px;
+    align-items:  center;
+}
+.QuantityBoxForProduct {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.QuantityBoxForProduct button {
+    width: 24px;
+    height: 24px;
+    font-size: 18px;
+    border-radius: 4px;
+    border: 1px solid #C3C3C3;
+    background: #f5f7fa;
+    cursor: pointer;
+    transition: 0.1s;
+    font-weight: bold;
+}
+.QuantityBoxForProduct button {
+    width: 24px;
+    height: 24px;
+    font-size: 18px;
+    border-radius: 4px;
+    border: 1px solid #C3C3C3;
+    background: #f5f7fa;
+    cursor: pointer;
+    transition: 0.1s;
+    font-weight: bold;
+}
+.QuantityBoxForProduct button:hover {
+    background: #e3efff;
+}
+.QuantityBoxForProduct span {
+    min-width: 24px;
+    text-align: center;
+    display: inline-block;
+}
+
+.CheckboxItem {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.CheckboxItem input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    accent-color: #1D539C;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.actions {
+    display: none;
+}
+
+/* Order Note Textarea */
+.order-note {
+    width: 100%;
+    min-height: 120px;
+    padding: 12px;
+    font-size:  14px;
+    border:  2px solid #C3C3C3;
+    border-radius: 8px;
+    resize: none;
+    outline: none;
+    font-family: sans-serif;
+    margin-bottom: 10px;
+}
+
+. order-note:focus {
+    border-color: #667eea;
+}
+
+/* Hide unnecessary elements to match design */
+.VoucherSection {
+    display: none;
+}
+
+.SummaryTotal {
+    display: none;
+}
 
 .actions a {
     text-decoration: none;
@@ -265,91 +319,79 @@ danh sách sản phẩm có trong trang giỏ hàng
 .actions a:hover {
     text-decoration: underline;
 }
-.ShoppingCart i{
-    color: #1a73e8;
-}
 
-/*Voucher*/
-.blur{
-    filter: blur(3px);
-}
-.voucherUI{
-    display: none;
-    position: absolute;
-    width: 435px;
-    height: 624px;
-    background: #D6FEFF;
-    z-index: 10;
-    transform: translateX(957px);
-    border-radius: 15px;
-    margin-top: 20px;
-}
-.voucherTxt{
+.CartActionsFooter {
     display: flex;
-    margin-left: 25px;
-    color: #3B42FF;
+    justify-content: center;
+    padding: 16px 0 0 0;
 }
-.voucherTxt button{
-    height: 40px;
-    width: 40px;
-    border-radius: 10px;
-    background: #64CCFF;
-    font-size: 25px;
-    padding: 0;
-    transform: translate(155px,15px);
-    color: white;
-    border: white solid 1px;
-}
-.voucherTxt button:hover{
-    color: black;
-    border: black solid 1px;
-}
-.voucherExplain{
-    font-family: sans-serif;
-    font-size: 17px;
-    margin: 24px;
-    transform: translateY(-15px);
-}
-.searchVoucher{
-    width: 370px;
-    height: 40px;
-    border: black solid 1px;
-    margin-left: 25px;
-    transform: translateY(-25px);
-    padding-left: 10px;
-}
-.voucherInfo{
-    width: 360px;
-    height: 40px;
-    font-size: 17px;
-    margin-top: 15px;
-    border: black solid 1px;
-    padding: 10px;
-    transform: translate(25px,-20px);
-    background: linear-gradient(to right, #31BFFF, #7EDAFF);
-}
-.checkBx{
-    width: 20px;
-    height: 20px;
+
+.DeleteCartButton {
     display: flex;
-    margin-left: 340px;
-    transform: translateY(-33px);
+    align-items: center;
+    background: linear-gradient(90deg, #ff4e50 0%, #f1354f 100%);
+    border: none;
+    color: #fff;
+    font-weight: bold;
+    font-size: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    gap: 8px;
+    padding: 10px 20px;
+    box-shadow: 0 4px 12px rgba(255, 78, 80, 0.15);
+    transition: background 0.2s, box-shadow 0.2s;
 }
-#approveVc{
-    width: 170px;
-    height: 40px;
-    border-radius: 10px;
-    margin-left: 130px;
-    background: #DEDEDE;
-    color: #6B6B6B;
-    transform: translateY(10px);
-    border: #6B6B6B solid 1px;
+.DeleteCartButton:hover {
+    background: linear-gradient(90deg, #ff0000 0%, #e53935 100%);
+    box-shadow: 0 6px 16px rgba(255, 78, 80, 0.22);
 }
-.scrollVc{
-    width: 420px;
-    height: 360px;
-    overflow: scroll;
-    overflow-x: hidden;
+.DeleteCartButton i {
+    font-size: 10px;
 }
 
+.modal-overlay {
+    position: fixed; left: 0; top: 0; width: 100vw; height: 100vh;
+    background: rgba(0,0,0,0.36); display: flex; align-items: center; justify-content: center;
+    z-index: 1002;
+}
 
+.modal-confirm-box {
+    background: #fff; border-radius: 10px; max-width: 90vw; width: 370px;
+    box-shadow: 0 6px 24px rgba(0,0,0,0.17);
+    padding: 30px 24px 22px 24px;
+    text-align: center;
+}
+.modal-title {
+    font-weight: 700;
+    font-size: 18px;
+    margin-bottom: 8px; }
+.modal-message {
+    font-size: 16px;
+    margin-bottom: 18px; }
+.modal-actions {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+}
+.modal-btn {
+    padding: 8px 22px;
+    border-radius: 5px;
+    border: none;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+}
+.modal-btn.confirm {
+    background: linear-gradient(90deg,#ff4e50 0%,#f1354f 100%);
+    color: #fff;
+}
+.modal-btn.cancel {
+    background: #eee;
+    color: #333;
+}
+.modal-btn.confirm:hover {
+    background: linear-gradient(90deg,#f73244 0%,#a32c2f 100%);
+}
+.modal-btn.cancel:hover {
+    background: #e1e1e1;
+}
