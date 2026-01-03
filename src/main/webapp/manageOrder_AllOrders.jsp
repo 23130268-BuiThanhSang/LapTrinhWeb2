@@ -14,7 +14,7 @@
     <jsp:include page="/Share/admin_leftbar.jsp" />
     <div class="OrderManagerUI">
         <div class="topRow">
-            <a class = "turnBack" href = "manageOrder.jsp">
+            <a class = "turnBack" href = "servlet_getOrder?action=today">
                 Quay lại
             </a>
         </div>

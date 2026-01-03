@@ -13,7 +13,7 @@
     <jsp:include page="/Share/admin_leftbar.jsp" />
     <div class="OrderManagerUI">
         <div class="topRow">
-            <a class = "turnBack" href = "manageOrder_AllOrders.jsp">
+            <a class = "turnBack" href = "servlet_getOrder?action=all">
                 Quay lại
             </a>
         </div>
