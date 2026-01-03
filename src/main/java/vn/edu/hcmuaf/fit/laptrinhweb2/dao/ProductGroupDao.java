@@ -1,7 +1,6 @@
 package vn.edu.hcmuaf.fit.laptrinhweb2.dao;
 
-import org.jdbi.v3.core.Jdbi;
-import vn.edu.hcmuaf.fit.laptrinhweb2.model.GroupType;
+import vn.edu.hcmuaf.fit.laptrinhweb2.enum_macro.GroupType;
 import vn.edu.hcmuaf.fit.laptrinhweb2.model.ProductGroup;
 
 import java.util.List;
