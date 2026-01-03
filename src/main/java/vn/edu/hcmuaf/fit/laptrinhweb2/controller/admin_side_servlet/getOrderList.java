@@ -3,20 +3,20 @@ package vn.edu.hcmuaf.fit.laptrinhweb2.controller.admin_side_servlet;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
-import vn.edu.hcmuaf.fit.laptrinhweb2.dao.OrderDao;
 import vn.edu.hcmuaf.fit.laptrinhweb2.model.Order;
+import vn.edu.hcmuaf.fit.laptrinhweb2.services.OrderService;
 
 import java.io.IOException;
 import java.util.List;
 
 @WebServlet(name = "servlet_getOrder", value = "/servlet_getOrder")
-public class servlet_getOrder extends HttpServlet {
+public class getOrderList extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        OrderDao orderDAO = new OrderDao();
+        OrderService orderService = new OrderService();
         String action = request.getParameter("action");
 
         List<Order> orders;
@@ -24,7 +24,7 @@ public class servlet_getOrder extends HttpServlet {
         // ===== DEFAULT: TODAY =====
         if (action == null || action.equals("today")) {
 
-            orders = orderDAO.getToday();
+            orders = orderService.getToday();
             request.setAttribute("orders", orders);
             request.getRequestDispatcher("manageOrder.jsp")
                     .forward(request, response);
@@ -34,7 +34,7 @@ public class servlet_getOrder extends HttpServlet {
         // ===== ALL ORDERS =====
         if (action.equals("all")) {
 
-            orders = orderDAO.getAll();
+            orders = orderService.getAll();
             request.setAttribute("orders", orders);
             request.getRequestDispatcher("manageOrder_AllOrders.jsp")
                     .forward(request, response);
@@ -64,11 +64,11 @@ public class servlet_getOrder extends HttpServlet {
 
             String status = request.getParameter("status");
             if (status == null || status.isBlank() || "all".equals(status)) {
-                status = null; // treat as no filter
+                status = null;
             }
 
 
-            orders = orderDAO.getByFilter(day, month, year, status);
+            orders = orderService.getByFilter(day, month, year, status);
 
             request.setAttribute("orders", orders);
             request.setAttribute("day", day);

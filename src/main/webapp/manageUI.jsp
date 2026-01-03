@@ -12,27 +12,61 @@
 <div class="MainUI">
     <jsp:include page="/Share/admin_leftbar.jsp" />
     <div class = "manageUI">
-        <div class = "HighlightBox">
-            <div class="banner-editor">
-                <label class="BoxTitle">Thêm Banner bằng:</label>
-                <select id="pageType">
-                    <option value="baseURL">URL cụ thể</option>
-                    <option value="brand">Brand</option>
-                    <option value="collection">Collection</option>
-                    <option value="sports">Sports</option>
-                    <option value="hotdeal">HotDeal</option>
-                </select>
+        <div class="HighlightBox">
+            <label class="BoxTitle">Add New Banner</label>
 
+            <form action="admin-banner" method="post" class="banner-editor">
+                <!-- ===== IMAGE ===== -->
+                <label>Banner Image</label>
                 <div class="banner-box">
-                    <input class="banner-text-left" placeholder="Nhập URL của banner, để trống nếu dùng main image">
-                    <div class="divider"></div>
-                    <input class="banner-text-right" placeholder="Nhập url hoặc id của brand/colletion/..">
-                    <div class="divider"></div>
-                    <input class="banner-text-order" placeholder="1">
-                    <button class="add-banner-id-btn">Thêm</button>
+                    <input
+                            class="banner-text-left"
+                            name="imageUrl"
+                            id="imageUrl"
+                            placeholder="Image URL will be filled after upload"
+                            readonly
+                            required
+                    >
+                    <button type="button" class="add-banner-id-btn">
+                        Upload Image
+                    </button>
                 </div>
-            </div>
+                <!-- ===== TARGET URL ===== -->
+                <label>Target URL</label>
+                <div class="banner-box">
+                    <input
+                            class="banner-text-right"
+                            name="targetUrl"
+                            placeholder="https://example.com/page"
+                            required
+                    >
+                </div>
+                <!-- ===== DISPLAY ORDER + ACTIVE ===== -->
+                <label>Display Settings</label>
+                <div class="banner-box">
+                    <label class="checkbox-inline">
+                        Mức độ ưu tiên
+                    </label>
+                    <input
+                            class="banner-text-order"
+                            name="displayOrder"
+                            type="number"
+                            min="1"
+                            placeholder="1"
+                            required
+                    >
+                    <label class="checkbox-inline">
+                        Kích Hoạt:
+                        <input type="checkbox" name="isActive" value="1" checked>
+                    </label>
+                    <button type="submit" class="add-banner-id-btn">
+                        Thêm Banner
+                    </button>
+                </div>
+
+            </form>
         </div>
+
         <div class ="HighlightBox">
             <div class="search-section">
                 <div class="search-row">

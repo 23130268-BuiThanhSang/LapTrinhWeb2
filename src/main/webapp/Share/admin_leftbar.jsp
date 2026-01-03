@@ -21,7 +21,7 @@
             <i class="fa-solid fa-box"></i>
             <div class="NameOption">Quản lí đơn hàng</div>
         </a>
-        <a href="manageUI.jsp" class="OptionIcon">
+        <a href="getAllBanner" class="OptionIcon">
             <i class="fa-solid fa-eye"></i>
             <div class="NameOption">Quản lí giao diện</div>
         </a>

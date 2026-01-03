@@ -5,14 +5,13 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import vn.edu.hcmuaf.fit.laptrinhweb2.dao.ProductGroupDao;
-import vn.edu.hcmuaf.fit.laptrinhweb2.model.GroupType;
-import vn.edu.hcmuaf.fit.laptrinhweb2.services.OrderService;
+import vn.edu.hcmuaf.fit.laptrinhweb2.enum_macro.GroupType;
+import vn.edu.hcmuaf.fit.laptrinhweb2.services.ProductGroupService;
 
 import java.io.IOException;
 
 @WebServlet(name = "servlet_addProductGroup", value = "/servlet_addProductGroup")
-public class servlet_addProductGroup extends HttpServlet {
+public class addProductGroup extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -56,8 +55,9 @@ public class servlet_addProductGroup extends HttpServlet {
                     return;
             }
 
-            ProductGroupDao dao = new ProductGroupDao();
-            dao.addGroup(groupType, groupName, thumbnailUrl, imageUrl, displayOrder);
+            ProductGroupService service = new ProductGroupService();
+            service.addGroup(groupType, groupName, thumbnailUrl, imageUrl, displayOrder);
+
             response.sendRedirect("ManageProduct.jsp?success=add_group");
 
         } catch (Exception e) {

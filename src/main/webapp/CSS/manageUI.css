@@ -521,3 +521,44 @@ span.banner-text-order {
         font-size: 12px;
     }
 }
+
+/* ===== ADD BANNER FORM REFINEMENTS ===== */
+
+.banner-editor form,
+.banner-editor {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+/* Upload image row emphasis */
+.banner-editor .banner-box:first-of-type {
+    background: linear-gradient(135deg, #eef2ff 0%, #f8f9fc 100%);
+    border-color: #c7d2fe;
+}
+
+/* Checkbox inline refinement */
+.checkbox-inline {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 12px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #374151;
+    background: #f8fafc;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+}
+
+.checkbox-inline input[type="checkbox"] {
+    accent-color: #667eea;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+/* Add Banner submit button emphasis */
+.banner-editor button[type="submit"] {
+    margin-left: auto;
+}
