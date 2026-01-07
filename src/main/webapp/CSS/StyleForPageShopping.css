@@ -395,3 +395,13 @@ danh sách sản phẩm có trong trang giỏ hàng
 .modal-btn.cancel:hover {
     background: #e1e1e1;
 }
+
+.delProduct {
+    margin-left: 10px;
+    padding: 10px;
+    color: orangered;
+}
+
+.delProduct {
+    cursor: pointer;
+}
