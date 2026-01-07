@@ -11,7 +11,7 @@
     <h2 class="loginTxt">Đăng nhập</h2>
     <input type="text" name="username" placeholder="nhập tên tài khoản" class="loginip">
     <input type="password" name="pass" placeholder="nhập mật khẩu" class="loginip"><br>
-    <span>${error}</span>
+    <span class="error">${error}</span>
     <div class="links">
         <div class="left">
             <a href="#" onclick="showPage('forgotPage')">Đổi mật khẩu</a>

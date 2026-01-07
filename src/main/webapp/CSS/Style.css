@@ -28,7 +28,7 @@ body{
     text-align: center;
     align-items: center;
     margin: auto;
-    padding-top: 40px;
+    padding-top: 30px;
 }
 .forgotpw{
     background: rgba(0, 0, 0, 0.6);
@@ -41,7 +41,7 @@ body{
     text-align: center;
     align-items: center;
     margin: auto;
-    padding-top: 40px;
+    padding-top: 30px;
 }
 .register{
     background: rgba(0, 0, 0, 0.6);
@@ -54,7 +54,7 @@ body{
     text-align: center;
     align-items: center;
     margin: auto;
-    padding-top: 40px;
+    padding-top: 30px;
 }
 .loginip {
     width: 300px;
@@ -1129,5 +1129,10 @@ kết thúc */
     color: #1a73e8;
 }
 
-
+.error{
+    display: block;
+    margin-bottom: 8px;
+    font-size: 13px;
+    color: orangered;
+}
 
