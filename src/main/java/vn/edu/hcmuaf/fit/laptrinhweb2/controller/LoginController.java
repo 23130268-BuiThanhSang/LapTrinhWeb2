@@ -24,8 +24,11 @@ public class LoginController extends HttpServlet {
         String username = request.getParameter("username");
         String pass = request.getParameter("pass");
         AuthService as = new AuthService();
+        Account acc = as.login(username, pass);
 
-        if("chuongtran".equals(username) && "chuong235".equals(pass)){
+        if(acc != null) {
+            HttpSession session = request.getSession();
+            session.setAttribute("auth", acc);
             response.sendRedirect("index.jsp");
         } else {
             request.setAttribute("error", "tên tài khoản hoặc mật khẩu không khớp!");
