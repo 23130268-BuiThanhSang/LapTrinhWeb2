@@ -45,7 +45,7 @@
                 </c:if>
             </li>
         </c:forEach>
-        <li class="MenuItem"><a href="#">Hỗ trợ</a></li>
+        <li class="MenuItem"><a href="Policy.jsp">Chính Sách</a></li>
     </ul>
 
     <div class="GroupRight">

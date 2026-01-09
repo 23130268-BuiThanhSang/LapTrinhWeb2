@@ -6,7 +6,7 @@ import vn.edu.hcmuaf.fit.laptrinhweb2.model.Menu.MenuItem;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MenuDAO {
+public class MenuDAO extends BaseDao {
     public List<MainMenu> getAllMenusInMenuDao() {
         List<MainMenu> mainMenus = new ArrayList<>();
 
