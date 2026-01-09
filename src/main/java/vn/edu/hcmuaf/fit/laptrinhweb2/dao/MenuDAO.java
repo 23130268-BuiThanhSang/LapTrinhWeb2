@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MenuDAO {
-    public List<MainMenu> getAllMenus() {
+    public List<MainMenu> getAllMenusInMenuDao() {
         List<MainMenu> mainMenus = new ArrayList<>();
 
         // Menu "Sản Phẩm Mới"
