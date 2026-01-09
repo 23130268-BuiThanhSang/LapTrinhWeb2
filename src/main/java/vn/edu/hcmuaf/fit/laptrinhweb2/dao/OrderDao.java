@@ -56,4 +56,30 @@ public class OrderDao extends BaseDao {
             return order;
         });
     }
+
+    public List<Order> getByUserId(int userId) {
+        return get().withHandle(handle -> {
+            List<Order> orders = handle
+                    .createQuery("SELECT * FROM orders WHERE user_id = :userId")
+                    .bind("userId", userId)
+                    .map((rs, ctx) -> {
+                        Order o = new Order();
+                        o.setId(rs.getInt("id"));
+                        o.setUserId(rs.getInt("user_id"));
+                        o.setOrderDate(rs.getTimestamp("order_date"));
+                        o.setTotalPrice(rs.getDouble("price"));
+                        o.setStatus(rs.getString("order_status"));
+                        return o;
+                    })
+                    .list();
+
+            // load order items for each order
+            for (Order order : orders) {
+                order.setItems(orderItemDao.getByOrderId(order.getId()));
+            }
+
+            return orders;
+        });
+    }
+
 }

@@ -29,6 +29,17 @@ public class Order implements Serializable {
     public void addItem(OrderItem item) {
         this.items.add(item);
     }
+    public double calculateTotal() {
+        if (items == null || items.isEmpty()) {
+            return 0;
+        }
+
+        double total = 0;
+        for (OrderItem item : items) {
+            total += item.getPrice() * item.getQuantity();
+        }
+        return total;
+    }
 
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
