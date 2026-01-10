@@ -35,4 +35,8 @@ public class AccountService {
     public Account getAccountByUsername(String username) {
         return accountDao.getByUsername(username);
     }
+
+    public void add(Account acc) {
+        accountDao.add(acc);
+    }
 }
