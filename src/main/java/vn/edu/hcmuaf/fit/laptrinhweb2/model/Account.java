@@ -5,6 +5,7 @@ import java.util.Date;
 public class Account {
     private int id;
     private String username;
+    private String accountName;
     private String password;
     private int accountStatus;
     private String phoneNumber;
@@ -15,14 +16,17 @@ public class Account {
     public Account() {
     }
 
-    public Account(int id, String username, String password, int accountStatus,
-                   String phoneNumber, String accountEmail) {
+    public Account(int id, String username, String accountName, String password, int accountStatus,
+                   String phoneNumber, String accountEmail, String role, Date lastLogin) {
         this.id = id;
         this.username = username;
+        this.accountName = accountName;
         this.password = password;
         this.accountStatus = accountStatus;
         this.phoneNumber = phoneNumber;
         this.accountEmail = accountEmail;
+        this.role = role;
+        this.lastLogin = lastLogin;
     }
 
     // ===== Getter & Setter =====
@@ -40,6 +44,14 @@ public class Account {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getAccountName() {
+        return accountName;
+    }
+
+    public void setAccountName(String accountName) {
+        this.accountName = accountName;
     }
 
     public String getPassword() {

@@ -22,4 +22,23 @@ public class AccountDao extends BaseDao{
                 .bind("username", username)
                 .mapToBean(Account.class).stream().findFirst().orElse(null));
     }
+
+    public void update(Account acc) {
+        get().useHandle(handle ->
+                handle.createUpdate("""
+            UPDATE account
+            SET
+                username = :username,
+                account_status = :accountStatus,
+                phone_number = :phoneNumber,
+                account_email = :accountEmail,
+                account_name = :accountName,
+                last_login = :lastLogin
+            WHERE id = :id
+        """)
+                        .bindBean(acc)
+                        .execute()
+        );
+    }
+
 }

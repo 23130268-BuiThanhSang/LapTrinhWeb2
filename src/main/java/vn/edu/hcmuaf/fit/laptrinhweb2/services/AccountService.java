@@ -7,6 +7,23 @@ import java.util.List;
 
 public class AccountService {
     private AccountDao accountDao = new AccountDao();
+
+    public void update(Account acc) {
+        Account baseAcc = accountDao.getByID(acc.getId());
+        if (baseAcc == null) {
+            throw new IllegalArgumentException("aaaaaa");
+        }
+
+        // allowed updates
+        baseAcc.setUsername(acc.getUsername());
+        baseAcc.setAccountName(acc.getAccountName());
+        baseAcc.setPhoneNumber(acc.getPhoneNumber());
+        baseAcc.setAccountEmail(acc.getAccountEmail());
+        baseAcc.setAccountStatus(acc.getAccountStatus());
+
+        accountDao.update(baseAcc);
+    }
+
     public List<Account> getAllAccounts() {
         return accountDao.getAll();
     }

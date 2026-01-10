@@ -26,7 +26,7 @@
             </div>
             <div class="userInfo">
                 <c:forEach var="acc" items="${accounts}">
-                    <div class="userBox">
+                    <a class="userBox" href = "getAccountDetail?id=${acc.account.id}">
                         <div class="userGroup">
 
                             <!-- Username -->
@@ -74,7 +74,7 @@
                             </div>
 
                         </div>
-                    </div>
+                    </a>
                 </c:forEach>
             </div>
 
