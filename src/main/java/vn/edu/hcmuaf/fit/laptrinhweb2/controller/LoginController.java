@@ -29,7 +29,7 @@ public class LoginController extends HttpServlet {
         if(acc != null) {
             HttpSession session = request.getSession();
             session.setAttribute("auth", acc);
-            response.sendRedirect("index.jsp");
+            response.sendRedirect("HomePage.jsp");
         } else {
             request.setAttribute("error", "tên tài khoản hoặc mật khẩu không khớp!");
             request.getRequestDispatcher("login.jsp").forward(request, response);

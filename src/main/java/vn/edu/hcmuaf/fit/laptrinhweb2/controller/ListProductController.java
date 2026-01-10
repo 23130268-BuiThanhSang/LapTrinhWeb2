@@ -15,16 +15,10 @@ import java.util.List;
 public class ListProductController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // important load menu for page
-        MenuDAO menudao= new MenuDAO();
-        List<MainMenu> listMenu= menudao.getAllMenus();
-        request.setAttribute("listMenu", listMenu);
-
         ProductService productService = new ProductService();
         List<Product> list = productService.getAllProduct();
         request.setAttribute("list", list);
         request.getRequestDispatcher("PageListAllProduct.jsp").forward(request, response);
-
     }
 
     @Override

@@ -22,7 +22,7 @@
     </div>
     <button type="submit" class="loginBt">Đăng nhập</button><br>
     <div class="homeLink">
-        <a href="index.jsp">Trang chủ</a>
+        <a href="HomePage.jsp">Trang chủ</a>
     </div>
 </form>
 <div id= "registerPage" class="register page" style="display: none">

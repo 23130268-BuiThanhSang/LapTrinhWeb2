@@ -1,34 +1,26 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<%-- 1. LẤY ĐƯỜNG DẪN GỐC (Ví dụ: /TenProject) --%>
 <c:set var="root" value="${pageContext.request.contextPath}" />
 
-<%-- 2. QUAN TRỌNG: Link CSS phải nằm ở đây hoặc phải thêm ${root} vào file cha --%>
 <link rel="stylesheet" href="${root}/CSS/style.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <nav class="MainMenuBar">
     <div class="GroupLeft">
-        <%-- Link về trang chủ --%>
         <a href="${root}/" class="LogoWrap">
-            <%-- SỬA ẢNH: Thêm ${root} và xóa mấy dấu .. đi --%>
             <img src="${root}/lgImg/logo.png" alt="SPGYM Logo" class="Logo">
         </a>
         <span class="NameWebsite">SPGYM</span>
     </div>
-
     <ul class="GroupCenter">
         <c:forEach var="main" items="${listMenu}">
             <li class="MenuItem">
-                    <%-- SỬA LINK MENU: Thêm ${root} trước link --%>
                         <c:choose>
-                            <%-- Nếu link rỗng -> Dùng javascript:void(0) để bấm vào không bị nhảy trang --%>
                             <c:when test="${empty main.link}">
                                 <a href="javascript:void(0)" style="cursor: default;">${main.name}</a>
                             </c:when>
 
-                            <%-- Nếu có link -> Tạo đường dẫn bình thường --%>
                             <c:otherwise>
                                 <a href="${root}/${main.link}">${main.name}</a>
                             </c:otherwise>
@@ -42,7 +34,7 @@
                                 <ul>
                                     <c:forEach var="item" items="${sub.items}">
                                         <li>
-                                                <%-- SỬA LINK CON --%>
+
                                             <a href="${root}/${item.link}">${item.name}</a>
                                         </li>
                                     </c:forEach>
@@ -53,7 +45,7 @@
                 </c:if>
             </li>
         </c:forEach>
-        <li class="MenuItem"><a href="#">Hỗ trợ</a></li>
+        <li class="MenuItem"><a href="Policy.jsp">Chính Sách</a></li>
     </ul>
 
     <div class="GroupRight">
@@ -67,7 +59,6 @@
             <i class="fa-regular fa-user"></i>
         </button>
 
-        <%-- SỬA LINK GIỎ HÀNG --%>
         <a href="${root}/cart" class="IconBtn ShoppingCart" aria-label="Giỏ hàng">
             <i class="fa-solid fa-cart-shopping"></i>
         </a>
