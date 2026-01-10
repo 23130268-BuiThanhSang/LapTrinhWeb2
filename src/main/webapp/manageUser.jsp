@@ -22,7 +22,7 @@
                     <button class="TabButton" type="submit">
                         <i class="fa fa-search"></i>
                     </button>
-                    <a href="addUser.jsp" class="TabButton">
+                    <a href="manageUser_AddUser.jsp" class="TabButton">
                         Thêm người dùng
                     </a>
                 </form>

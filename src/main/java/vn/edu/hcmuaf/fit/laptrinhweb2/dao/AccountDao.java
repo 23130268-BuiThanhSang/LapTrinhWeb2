@@ -41,4 +41,31 @@ public class AccountDao extends BaseDao{
         );
     }
 
+    public void add(Account acc) {
+        get().useHandle(handle ->
+                handle.createUpdate("""
+        INSERT INTO account (
+            username,
+            account_status,
+            phone_number,
+            account_email,
+            account_name,
+            last_login,
+            role
+        )
+        VALUES (
+            :username,
+            :accountStatus,
+            :phoneNumber,
+            :accountEmail,
+            :accountName,
+            :lastLogin,
+            :role
+        )
+    """)
+                        .bindBean(acc)
+                        .execute()
+        );
+    }
+
 }
