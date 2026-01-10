@@ -9,7 +9,7 @@
         </div>
     </div>
     <div class="AccountLeftOption">
-        <a href="manageUser.jsp" class="OptionIcon">
+        <a href="getAllAccount" class="OptionIcon">
             <i class="fa-solid fa-user"></i>
             <div class="NameOption">Quản lí người dùng</div>
         </a>

@@ -1,4 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,58 +25,60 @@
                 <div id="userStatus">Trạng thái</div>
             </div>
             <div class="userInfo">
-                <div class="userBox">
-                    <div class="userGroup">
-                        <div class="userTxt">Edward Alter</div>
-                        <div class="userTxt1">id: 392014</div>
-                        <div class="userTxt2">Unactived</div>
-                        <div class="userTxt3">120.000đ</div>
-                        <div class="userTxt4">Hôm nay</div>
-                        <div class="userTxt5">Online</div>
-                    </div>
-                </div>
-                <div class="userBox">
-                    <div class="userGroup">
-                        <div class="userTxt">Olivia Alice</div>
-                        <div class="userTxt1">id: 192042</div>
-                        <div class="userTxt2">Actived</div>
-                        <div class="userTxt3">230.000đ</div>
-                        <div class="userTxt4">1 ngày trước</div>
-                        <div class="userTxt5">Offline</div>
-                    </div>
-                </div>
-                <div class="userBox">
-                    <div class="userGroup">
-                        <div class="userTxt">Marcus Hale</div>
-                        <div class="userTxt1">id: 391038</div>
-                        <div class="userTxt2">Actived</div>
-                        <div class="userTxt3">2.800.000đ</div>
-                        <div class="userTxt4">Hôm nay</div>
-                        <div class="userTxt5">Online</div>
-                    </div>
-                </div>
-                <div class="userBox">
-                    <div class="userGroup">
-                        <div class="userTxt">Maya Nova</div>
-                        <div class="userTxt1">id: 389143</div>
-                        <div class="userTxt2">Unactive</div>
-                        <div class="userTxt3">80.000đ</div>
-                        <div class="userTxt4">2 ngày trước</div>
-                        <div class="userTxt5">Offline</div>
-                    </div>
-                </div>
-                <div class="userBox">
-                    <div class="userGroup">
-                        <div class="userTxt">Renoa Dirge</div>
-                        <div class="userTxt1">id: 291054</div>
-                        <div class="userTxt2">Unactive</div>
-                        <div class="userTxt3">240.000đ</div>
-                        <div class="userTxt4">4 ngày trước</div>
-                        <div class="userTxt5">Offline</div>
-                    </div>
-                </div>
+                <c:forEach var="acc" items="${accounts}">
+                    <a class="userBox" href = "getAccountDetail?id=${acc.account.id}">
+                        <div class="userGroup">
 
+                            <!-- Username -->
+                            <div class="userTxt">
+                                    ${acc.account.username}
+                            </div>
+
+                            <!-- ID -->
+                            <div class="userTxt1">
+                                ${acc.account.id}
+                            </div>
+
+                            <!-- Account status -->
+                            <div class="userTxt2">
+                                <c:choose>
+                                    <c:when test="${acc.account.accountStatus == 1}">
+                                        Actived
+                                    </c:when>
+                                    <c:otherwise>
+                                        Unactive
+                                    </c:otherwise>
+                                </c:choose>
+                            </div>
+
+                            <!-- Total spending -->
+                            <div class="userTxt3">
+                                    ${acc.totalSpent}
+                            </div>
+
+                            <!-- Last activity (not implemented yet) -->
+                            <div class="userTxt4">
+                                    ${acc.account.lastLogin}
+                            </div>
+
+                            <!-- Online / Offline (TEMP logic) -->
+                            <div class="userTxt5">
+                                <c:choose>
+                                    <c:when test="${acc.account.accountStatus == 1}">
+                                        Online
+                                    </c:when>
+                                    <c:otherwise>
+                                        Offline
+                                    </c:otherwise>
+                                </c:choose>
+                            </div>
+
+                        </div>
+                    </a>
+                </c:forEach>
             </div>
+
+
             <div class="choosePage">
                 <div class="pageInfo"><</div>
                 <div class="pageInfoNumber">1/23</div>
