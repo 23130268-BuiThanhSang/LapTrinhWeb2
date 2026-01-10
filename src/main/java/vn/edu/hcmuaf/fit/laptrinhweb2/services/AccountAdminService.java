@@ -8,6 +8,7 @@ import vn.edu.hcmuaf.fit.laptrinhweb2.model.Order;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class AccountAdminService {
 
@@ -58,6 +59,62 @@ public class AccountAdminService {
         }
 
         return new AccountAdminView(acc, totalSpent);
+    }
+
+    public List<AccountAdminView> searchUser(String keyword) {
+        List<Account> accounts = accountDao.getAll();
+        List<AccountAdminView> result = new ArrayList<>();
+
+        if (keyword == null) {
+            keyword = "";
+        }
+        keyword = keyword.trim().toLowerCase();
+
+        Integer searchId = null;
+        try {
+            searchId = Integer.parseInt(keyword);
+        } catch (NumberFormatException ignored) {}
+
+        for (Account acc : accounts) {
+
+            boolean matched = false;
+
+            // Empty keyword → match all
+            if (keyword.isEmpty()) {
+                matched = true;
+            }
+
+            // ID match (if numeric)
+            if (!matched && searchId != null && acc.getId() == searchId) {
+                matched = true;
+            }
+
+            // Username contains
+            if (!matched && acc.getUsername() != null
+                    && acc.getUsername().toLowerCase().contains(keyword)) {
+                matched = true;
+            }
+
+            // Account name contains
+            if (!matched && acc.getAccountName() != null
+                    && acc.getAccountName().toLowerCase().contains(keyword)) {
+                matched = true;
+            }
+
+            if (!matched) {
+                continue;
+            }
+
+            double totalSpent = 0;
+            List<Order> orders = orderDao.getByUserId(acc.getId());
+            for (Order o : orders) {
+                totalSpent += o.calculateTotal();
+            }
+
+            result.add(new AccountAdminView(acc, totalSpent));
+        }
+
+        return result;
     }
 
 }

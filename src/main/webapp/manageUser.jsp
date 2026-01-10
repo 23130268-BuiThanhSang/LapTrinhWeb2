@@ -8,6 +8,7 @@
     <title>Title</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="CSS/manageUser.css">
+    <link rel="stylesheet" href="CSS/manageProduct.css">
 </head>
 <body>
 <div class="ManagerUser">
@@ -15,7 +16,18 @@
     <div class="manageUserUi">
         <div class="userHeader">
             <div id="mangeUserHeader">Quản Lí Người Dùng / Tất Cả</div>
-            <div><input type="text" placeholder="Tìm tên / id user..." id="adminSearch"></div>
+            <div class="userHeaderActions">
+                <form action="searchUser" method="get">
+                    <input type="text" name="keyword" placeholder="Tìm tên / id user..." id="adminSearch">
+                    <button class="TabButton" type="submit">
+                        <i class="fa fa-search"></i>
+                    </button>
+                    <a href="addUser.jsp" class="TabButton">
+                        Thêm người dùng
+                    </a>
+                </form>
+            </div>
+
             <div class="typeUser">
                 <div id="userTx">User</div>
                 <div id="userId">ID</div>
