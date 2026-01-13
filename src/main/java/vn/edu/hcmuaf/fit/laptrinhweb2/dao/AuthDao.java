@@ -2,10 +2,43 @@ package vn.edu.hcmuaf.fit.laptrinhweb2.dao;
 
 import vn.edu.hcmuaf.fit.laptrinhweb2.model.Account;
 
-public class AuthDao extends BaseDao{
+public class AuthDao extends BaseDao {
+
+    // dùng cho đăng nhập
     public Account getUserByUsername(String username) {
-        return get().withHandle(h -> h.createQuery("select * from account where username = :username")
-                .bind("username", username)
-                .mapToBean(Account.class).stream().findFirst().orElse(null));
+        return get().withHandle(h ->
+                h.createQuery("select * from account where username = :username")
+                        .bind("username", username)
+                        .mapToBean(Account.class)
+                        .stream()
+                        .findFirst()
+                        .orElse(null)
+        );
+    }
+
+    // dùng cho đăng ký: kiểm tra username đã tồn tại chưa
+    public boolean existsByUsername(String username) {
+        Integer count = get().withHandle(h ->
+                h.createQuery("select count(*) from account where username = :username")
+                        .bind("username", username)
+                        .mapTo(Integer.class)
+                        .one()
+        );
+        return count != null && count > 0;
+    }
+
+    // dùng cho đăng ký: thêm account mới
+    public void insert(Account acc) {
+        get().withHandle(h ->
+                h.createUpdate("insert into account " +
+                                "(username, password, account_status, phone_number, account_email) " +
+                                "values (:username, :password, :status, :phone, :email)")
+                        .bind("username", acc.getUsername())
+                        .bind("password", acc.getPassword())
+                        .bind("status", acc.getAccountStatus())
+                        .bind("phone", acc.getPhoneNumber())
+                        .bind("email", acc.getAccountEmail())
+                        .execute()
+        );
     }
 }

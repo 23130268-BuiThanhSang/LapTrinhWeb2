@@ -50,7 +50,7 @@ body{
     color: white;
     border-radius: 5px;
     width: 400px;
-    height: 540px;
+    height: 600px;
     text-align: center;
     align-items: center;
     margin: auto;
@@ -1129,10 +1129,23 @@ kết thúc */
     color: #1a73e8;
 }
 
+.page {
+    transition: padding-bottom 0.2s ease;
+}
+
+.page.has-message {
+    height: 630px;
+}
 .error{
     display: block;
     margin-bottom: 8px;
     font-size: 13px;
     color: orangered;
+}
+.success{
+    display: block;
+    margin-bottom: 8px;
+    font-size: 13px;
+    color: green;
 }
 
