@@ -36,14 +36,22 @@ public class RegisterController extends HttpServlet {
                 || confirm == null || confirm.isEmpty()) {
 
             request.setAttribute("regError", "Vui lòng nhập đầy đủ thông tin.");
+            //Không xóa các trường đã nhập
             request.setAttribute("activePage", "register");
+            request.setAttribute("reg_username", username);
+            request.setAttribute("reg_email", email);
+            request.setAttribute("reg_phone", phone);
             request.getRequestDispatcher("login.jsp").forward(request, response);
             return;
         }
 
         if (!pass.equals(confirm)) {
             request.setAttribute("regError", "Mật khẩu xác nhận không khớp.");
+            //Chỉ xóa phần mật khẩu
             request.setAttribute("activePage", "register");
+            request.setAttribute("reg_username", username);
+            request.setAttribute("reg_email", email);
+            request.setAttribute("reg_phone", phone);
             request.getRequestDispatcher("login.jsp").forward(request, response);
             return;
         }
@@ -52,6 +60,9 @@ public class RegisterController extends HttpServlet {
             request.setAttribute("regError",
                     "Mật khẩu phải chứa 1 chữ hoa, thường, số và ký tự đặc biệt.");
             request.setAttribute("activePage", "register");
+            request.setAttribute("reg_username", username);
+            request.setAttribute("reg_email", email);
+            request.setAttribute("reg_phone", phone);
             request.getRequestDispatcher("login.jsp").forward(request, response);
             return;
         }
@@ -59,6 +70,9 @@ public class RegisterController extends HttpServlet {
         if (authDao.existsByUsername(username)) {
             request.setAttribute("regError", "Tên tài khoản đã tồn tại.");
             request.setAttribute("activePage", "register");
+            request.setAttribute("reg_username", username);
+            request.setAttribute("reg_email", email);
+            request.setAttribute("reg_phone", phone);
             request.getRequestDispatcher("login.jsp").forward(request, response);
             return;
         }
@@ -76,8 +90,10 @@ public class RegisterController extends HttpServlet {
         System.out.println("Insert account: " + acc.getUsername());
 
         authDao.insert(acc);
+
         request.setAttribute("success", "Đăng ký thành công, hãy đăng nhập.");
-        request.setAttribute("activePage", "register"); // vẫn ở form đăng ký
+        request.setAttribute("activePage", "register");
+
         request.getRequestDispatcher("login.jsp").forward(request, response);
     }
 }

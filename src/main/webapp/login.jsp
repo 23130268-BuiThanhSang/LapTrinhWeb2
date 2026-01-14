@@ -15,7 +15,6 @@
     <input type="text" name="username" placeholder="nhập tên tài khoản" class="loginip">
     <input type="password" name="pass" placeholder="nhập mật khẩu" class="loginip"><br>
     <span class="error">${error}</span>
-    <span class="success">${success}</span>
     <div class="links">
         <div class="left">
             <a href="#" onclick="showPage('forgotPage')">Đổi mật khẩu</a>
@@ -33,12 +32,19 @@
       style="<c:if test='${activePage != "register"}'>display:none;</c:if>"
       action="${pageContext.request.contextPath}/Register" method="post">
     <h2 class="loginTxt">Đăng kí tài khoản</h2>
-    <input type="text" name="reg_username" placeholder="nhập tên tài khoản" class="loginip"><br>
-    <input type="email" name="reg_email" placeholder="nhập email" class="loginip"><br>
-    <input type="text" name="reg_phone" placeholder="nhập số điện thoại" class="loginip"><br>
+    <input type="text" name="reg_username" placeholder="nhập tên tài khoản"
+           class="loginip" value="${reg_username}"><br>
+
+    <input type="email" name="reg_email" placeholder="nhập email"
+           class="loginip" value="${reg_email}"><br>
+
+    <input type="text" name="reg_phone" placeholder="nhập số điện thoại"
+           class="loginip" value="${reg_phone}"><br>
+
     <input type="password" name="reg_pass" placeholder="nhập mật khẩu" class="loginip"><br>
     <input type="password" name="reg_confirm" placeholder="xác nhận mật khẩu" class="loginip"><br>
     <span class="error">${regError}</span>
+    <span class="success">${success}</span>
     <button type="submit" class="loginBt">Xác Nhận</button><br>
     <div class="homeLink">
         <a href="#" onclick="showPage('loginPage')">Quay lại đăng nhập</a>
