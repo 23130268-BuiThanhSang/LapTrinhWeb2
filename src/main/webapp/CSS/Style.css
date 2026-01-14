@@ -24,7 +24,7 @@ body{
     color: white;
     border-radius: 5px;
     width: 400px;
-    height: 400px;
+    height: 390px;
     text-align: center;
     align-items: center;
     margin: auto;
@@ -37,7 +37,7 @@ body{
     color: white;
     border-radius: 5px;
     width: 400px;
-    height: 450px;
+    height: 530px;
     text-align: center;
     align-items: center;
     margin: auto;
@@ -50,7 +50,7 @@ body{
     color: white;
     border-radius: 5px;
     width: 400px;
-    height: 600px;
+    height: 610px;
     text-align: center;
     align-items: center;
     margin: auto;
@@ -93,7 +93,7 @@ body{
     color: rgba(255,255,255,0.7);
     width: 230px;
     height: 50px;
-    margin-top: 20px;
+    margin-top: 8px;
     border: none;
     border-radius: 5px;
 }
@@ -1129,13 +1129,6 @@ kết thúc */
     color: #1a73e8;
 }
 
-.page {
-    transition: padding-bottom 0.2s ease;
-}
-
-.page.has-message {
-    height: 630px;
-}
 .error{
     display: block;
     margin-bottom: 8px;
@@ -1148,4 +1141,25 @@ kết thúc */
     font-size: 13px;
     color: greenyellow;
 }
+
+.message-login, .message-register, .message-forgot {
+    height: 25px;
+    overflow: hidden;
+    text-align: center;
+    font-size: 10px;
+    line-height: 20px;
+}
+
+.message-login .error, .message-register .error, .message-forgot .error {
+    color: orangered;
+    display: block;
+}
+
+.message-register .success, .message-forgot .success {
+    color: greenyellow;
+    display: block;
+    position: relative;
+    top: -10px;
+}
+
 

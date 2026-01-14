@@ -9,12 +9,15 @@
 </head>
 <body id = "LoginBody">
 <form id="loginPage" class="login page"
-      style="<c:if test='${activePage == "register"}'>display:none;</c:if>"
+      style="<c:if test='${activePage == "register" || activePage == "forgot"}'>display:none;</c:if>"
       action="${pageContext.request.contextPath}/Login" method="post">
     <h2 class="loginTxt">Đăng nhập</h2>
     <input type="text" name="username" placeholder="nhập tên tài khoản" class="loginip">
     <input type="password" name="pass" placeholder="nhập mật khẩu" class="loginip"><br>
-    <span class="error">${error}</span>
+
+    <div class="message-login">
+        <span class="error">${error}</span>
+    </div>
     <div class="links">
         <div class="left">
             <a href="#" onclick="showPage('forgotPage')">Đổi mật khẩu</a>
@@ -43,23 +46,38 @@
 
     <input type="password" name="reg_pass" placeholder="nhập mật khẩu" class="loginip"><br>
     <input type="password" name="reg_confirm" placeholder="xác nhận mật khẩu" class="loginip"><br>
-    <span class="error">${regError}</span>
-    <span class="success">${success}</span>
+    <div class="message-register">
+        <span class="error">${regError}</span>
+        <span class="success">${success}</span>
+    </div>
     <button type="submit" class="loginBt">Xác Nhận</button><br>
     <div class="homeLink">
         <a href="#" onclick="showPage('loginPage')">Quay lại đăng nhập</a>
     </div>
 </form>
-<div id= "forgotPage" class="forgotpw page" style="display:none;">
+<form id="forgotPage" class="forgotpw page"
+      style="<c:if test='${activePage != "forgot"}'>display:none;</c:if>"
+      action="${pageContext.request.contextPath}/ChangePassword" method="post">
     <h2 class="loginTxt">Đổi mật khẩu</h2>
-    <input type="email" placeholder="nhập email" class="loginip"><br>
-    <input type="password" placeholder="mật khẩu mới" class="loginip"><br>
-    <input type="password" placeholder="xác nhận mật khẩu mới" class="loginip">
-    <button class="loginBt">Xác Nhận</button><br>
+
+    <input type="text" name="cp_username" placeholder="nhập tên tài khoản"
+           class="loginip" value="${cp_username}"><br>
+
+    <input type="email" name="cp_email" placeholder="nhập email"
+           class="loginip" value="${cp_email}"><br>
+
+    <input type="password" name="cp_pass" placeholder="mật khẩu mới" class="loginip"><br>
+    <input type="password" name="cp_confirm" placeholder="xác nhận mật khẩu mới" class="loginip"><br>
+
+    <div class="message-forgot">
+        <span class="error">${cpError}</span>
+        <span class="success">${cpSuccess}</span>
+    </div>
+    <button class="loginBt" type="submit">Xác Nhận</button><br>
     <div class="homeLink">
         <a href="#" onclick="showPage('loginPage')">Quay lại đăng nhập</a>
     </div>
-</div>
+</form>
 <script src="JS/login.js"></script>
 </body>
 </html>

@@ -1,5 +1,6 @@
-package vn.edu.hcmuaf.fit.laptrinhweb2.dao;
+package vn.edu.hcmuaf.fit.laptrinhweb2.Auth;
 
+import vn.edu.hcmuaf.fit.laptrinhweb2.dao.BaseDao;
 import vn.edu.hcmuaf.fit.laptrinhweb2.model.Account;
 
 public class AuthDao extends BaseDao {
@@ -38,6 +39,26 @@ public class AuthDao extends BaseDao {
                         .bind("status", acc.getAccountStatus())
                         .bind("phone", acc.getPhoneNumber())
                         .bind("email", acc.getAccountEmail())
+                        .execute()
+        );
+    }
+
+    public Account getUserByUsernameAndEmail(String username, String email) {
+        return get().withHandle(h ->
+                h.createQuery("select * from account where username = :username and account_email = :email")
+                        .bind("username", username)
+                        .bind("email", email)
+                        .mapToBean(Account.class)
+                        .stream().findFirst().orElse(null)
+        );
+    }
+
+    public void updatePasswordByUsernameAndEmail(String username, String email, String newHashedPassword) {
+        get().withHandle(h ->
+                h.createUpdate("update account set password = :password where username = :username and account_email = :email")
+                        .bind("password", newHashedPassword)
+                        .bind("username", username)
+                        .bind("email", email)
                         .execute()
         );
     }

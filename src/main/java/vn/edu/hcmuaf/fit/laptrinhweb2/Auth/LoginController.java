@@ -1,15 +1,11 @@
-package vn.edu.hcmuaf.fit.laptrinhweb2.controller;
+package vn.edu.hcmuaf.fit.laptrinhweb2.Auth;
 
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
-import vn.edu.hcmuaf.fit.laptrinhweb2.dao.MenuDAO;
 import vn.edu.hcmuaf.fit.laptrinhweb2.model.Account;
-import vn.edu.hcmuaf.fit.laptrinhweb2.model.Menu.MainMenu;
-import vn.edu.hcmuaf.fit.laptrinhweb2.services.AuthService;
 
 import java.io.IOException;
-import java.util.List;
 
 @WebServlet(name = "LoginController", value = "/Login")
 public class LoginController extends HttpServlet {

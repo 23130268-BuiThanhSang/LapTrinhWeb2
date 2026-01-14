@@ -1,12 +1,10 @@
-package vn.edu.hcmuaf.fit.laptrinhweb2.controller;
+package vn.edu.hcmuaf.fit.laptrinhweb2.Auth;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import vn.edu.hcmuaf.fit.laptrinhweb2.Auth.PasswordUtils;
-import vn.edu.hcmuaf.fit.laptrinhweb2.dao.AuthDao;
 import vn.edu.hcmuaf.fit.laptrinhweb2.model.Account;
 
 import java.io.IOException;
