@@ -1,7 +1,18 @@
 function showPage(pageId) {
-    document.querySelectorAll(".page").forEach(p => {
+    document.querySelectorAll('.error, .success').forEach(span => {
+        span.innerText = '';
+    });
+
+    document.querySelectorAll('.page').forEach(p => {
         p.style.display = "none";
     });
 
-    document.getElementById(pageId).style.display = "block";
+    const page = document.getElementById(pageId);
+    if (page) {
+        page.style.display = "block";
+    }
 }
+
+
+window.addEventListener('load', function () {
+});

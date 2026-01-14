@@ -4,14 +4,20 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <link rel="stylesheet" href="CSS/Style.css?v=<%=System.currentTimeMillis()%>">
 </head>
 <body id = "LoginBody">
-<form id="loginPage" class="login page" action="${pageContext.request.contextPath}/Login" method="post">
+<form id="loginPage" class="login page"
+      style="<c:if test='${activePage == "register" || activePage == "forgot"}'>display:none;</c:if>"
+      action="${pageContext.request.contextPath}/Login" method="post">
     <h2 class="loginTxt">Đăng nhập</h2>
     <input type="text" name="username" placeholder="nhập tên tài khoản" class="loginip">
     <input type="password" name="pass" placeholder="nhập mật khẩu" class="loginip"><br>
-    <span class="error">${error}</span>
+
+    <div class="message-login">
+        <span class="error">${error}</span>
+    </div>
     <div class="links">
         <div class="left">
             <a href="#" onclick="showPage('forgotPage')">Đổi mật khẩu</a>
@@ -25,27 +31,53 @@
         <a href="HomePage.jsp">Trang chủ</a>
     </div>
 </form>
-<div id= "registerPage" class="register page" style="display: none">
+<form id="registerPage" class="register page"
+      style="<c:if test='${activePage != "register"}'>display:none;</c:if>"
+      action="${pageContext.request.contextPath}/Register" method="post">
     <h2 class="loginTxt">Đăng kí tài khoản</h2>
-    <input type="text" placeholder="nhập tên tài khoản" class="loginip"><br>
-    <input type="email" placeholder="nhập email" class="loginip"><br>
-    <input type="password" placeholder="nhập mật khẩu" class="loginip"><br>
-    <input type="password" placeholder="xác nhận mật khẩu" class="loginip">
-    <button class="loginBt">Xác Nhận</button><br>
+    <input type="text" name="reg_username" placeholder="nhập tên tài khoản"
+           class="loginip" value="${reg_username}"><br>
+
+    <input type="email" name="reg_email" placeholder="nhập email"
+           class="loginip" value="${reg_email}"><br>
+
+    <input type="text" name="reg_phone" placeholder="nhập số điện thoại"
+           class="loginip" value="${reg_phone}"><br>
+
+    <input type="password" name="reg_pass" placeholder="nhập mật khẩu" class="loginip"><br>
+    <input type="password" name="reg_confirm" placeholder="xác nhận mật khẩu" class="loginip"><br>
+    <div class="message-register">
+        <span class="error">${regError}</span>
+        <span class="success">${success}</span>
+    </div>
+    <button type="submit" class="loginBt">Xác Nhận</button><br>
     <div class="homeLink">
         <a href="#" onclick="showPage('loginPage')">Quay lại đăng nhập</a>
     </div>
-</div>
-<div id= "forgotPage" class="forgotpw page" style="display:none;">
+</form>
+<form id="forgotPage" class="forgotpw page"
+      style="<c:if test='${activePage != "forgot"}'>display:none;</c:if>"
+      action="${pageContext.request.contextPath}/ChangePassword" method="post">
     <h2 class="loginTxt">Đổi mật khẩu</h2>
-    <input type="email" placeholder="nhập email" class="loginip"><br>
-    <input type="password" placeholder="mật khẩu mới" class="loginip"><br>
-    <input type="password" placeholder="xác nhận mật khẩu mới" class="loginip">
-    <button class="loginBt">Xác Nhận</button><br>
+
+    <input type="text" name="cp_username" placeholder="nhập tên tài khoản"
+           class="loginip" value="${cp_username}"><br>
+
+    <input type="email" name="cp_email" placeholder="nhập email"
+           class="loginip" value="${cp_email}"><br>
+
+    <input type="password" name="cp_pass" placeholder="mật khẩu mới" class="loginip"><br>
+    <input type="password" name="cp_confirm" placeholder="xác nhận mật khẩu mới" class="loginip"><br>
+
+    <div class="message-forgot">
+        <span class="error">${cpError}</span>
+        <span class="success">${cpSuccess}</span>
+    </div>
+    <button class="loginBt" type="submit">Xác Nhận</button><br>
     <div class="homeLink">
         <a href="#" onclick="showPage('loginPage')">Quay lại đăng nhập</a>
     </div>
-</div>
+</form>
 <script src="JS/login.js"></script>
 </body>
 </html>
