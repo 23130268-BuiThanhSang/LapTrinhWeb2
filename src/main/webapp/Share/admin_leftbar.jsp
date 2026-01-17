@@ -29,6 +29,10 @@
             <i class="fa-solid fa-bullhorn"></i>
             <div class="NameOption">Quản lí thông báo</div>
         </a>
+        <a href="page_manageImage" class="OptionIcon">
+            <i class="fa-solid fa-image"></i>
+            <div class="NameOption">Quản lí ảnh</div>
+        </a>
         <div class = "button_container">
             <a href="login.jsp" class="sgoutAdmin">Đăng xuất</a>
         </div>
