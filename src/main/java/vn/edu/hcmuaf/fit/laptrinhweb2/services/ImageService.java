@@ -55,4 +55,20 @@ public class ImageService {
 
         return oldFile.renameTo(newFile);
     }
+
+
+    public void uploadImage(String relativePath, Part filePart) throws IOException {
+        if (filePart == null || filePart.getSize() == 0) {
+            return;
+        }
+
+        File uploadDir = getDirectory(relativePath);
+
+        String fileName = Path.of(filePart.getSubmittedFileName())
+                .getFileName().toString();
+
+        File dest = new File(uploadDir, fileName);
+        filePart.write(dest.getAbsolutePath());
+    }
+
 }
