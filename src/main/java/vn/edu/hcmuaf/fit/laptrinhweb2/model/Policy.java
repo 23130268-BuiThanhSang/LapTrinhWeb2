@@ -5,6 +5,8 @@ public class Policy {
     private String name;
     private String content;
     private int displayOrder;
+    public Policy() {
+    }
     public Policy(int id, String name, String content, int displayOrder) {
         this.id = id;
         this.name = name;
