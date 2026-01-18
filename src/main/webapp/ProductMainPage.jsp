@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="CSS/ProductMainPage.css">
     <link rel="stylesheet" href="CSS/Style.css">
+    <link rel="stylesheet" href="CSS/ProductMainPage.css?v=<%=System.currentTimeMillis()%>">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
@@ -39,8 +39,10 @@
     </div>
     <div class="ProductInfo">
         <div class = "HighlightBox">
-        <p class="ProductBrand">NIKE</p>
-
+        <p class="ProductTitle">Giày Chạy Bộ Nam Nike Pegasus 41</p>
+        <p class="ProductBrand">Thương hiệu: NIKE</p>
+        <p class="ProductBrand">Phân loại: Giày Nam</p>
+        <p class="ProductBrand">Màu Sắc: <span>XANH DƯƠNG (RACBLU/SAI)</span></p>
         <h1 class="ProductName">${product.name}</h1>
         <div class="Rating">
             <i class="fa-solid fa-star"></i>
@@ -48,12 +50,12 @@
             <i class="fa-solid fa-star"></i>
             <i class="fa-solid fa-star"></i>
             <i class="fa-solid fa-star"></i>
-            <span class="ReviewCount">2 đánh giá</span>
+            <span class="ReviewCount">5 đánh giá</span>
         </div>
         <p class="ProductPrice">${product.price}</p>
         </div>
         <div class="ProductColor">
-            <p class="SectionTitle">Màu Sắc: <span>XANH DƯƠNG (RACBLU/SAI)</span></p>
+            <p class="ProductBrand">Ảnh minh họa sản phẩm:</p>
             <div class="ColorOptions">
                 <button class="ColorButton"><img ></button>
                 <button class="ColorButton"><img ></button>
@@ -74,24 +76,25 @@
             </div>
         </div>
 
-        <div class="ProductLinks">
-            <a href="#">Hướng dẫn chọn kích thước</a><br>
-            <a href="#">Kiểm tra tồn kho tại cửa hàng</a>
+        <div class="ProductSize">
+            <p class="SectionTitle">Giá sản phẩm: 220.000đ</p>
+            <p class="SectionTitle">Tổng thành tiền: 220.000đ</p>
         </div>
+
         <div class="PurchaseSection">
             <div class = "HighlightBox">
             <div class="QuantityContainer">
-                <label for="quantity">Số lượng</label>
-                <div class="QuantityControl">
-                    <button class="QtyBtn">−</button>
-                    <input type="number" id="quantity" value="1" min="1">
-                    <button class="QtyBtn">+</button>
+                <div class="QuantityBoxForProduct">
+                    <label for="quantity" class="quantityText">Chọn số lượng:</label>
+                    <button class="qty-minus">-</button>
+                    <span class="quantity">1</span>
+                    <button class="qty-plus">+</button>
                 </div>
             </div>
 
             <div class="ActionButtons">
-                <button class="BuyNow">MUA NGAY</button>
                 <button class="AddToCart">THÊM VÀO GIỎ HÀNG</button>
+                <button class="BuyNow">MUA NGAY</button>
             </div>
             </div>
 <!--            <div class="ServiceList">-->
@@ -108,26 +111,31 @@
 
 </div>
 
-<div class = "LowerPart">
-    <div class = "LowerHighlightBox">
-    <div class="TabContainer">
-        <div class="TabButtons">
-            <button class="TabButton active">Thông tin sản phẩm</button>
-            <button class="TabButton">Quy định đổi trả</button>
-            <button class="TabButton">Hướng dẫn chăm sóc</button>
-        </div>
+<div class="LowerPart">
+    <div class="LowerHighlightBox">
+        <div class="TabContainer">
+            <div class="TabButtons">
+                <button class="TabButton active">Thông tin sản phẩm</button>
+                <button class="TabButton">Quy định đổi trả</button>
+                <button class="TabButton">Hướng dẫn chăm sóc</button>
+            </div>
 
-        <div class="TabWindow">
-            <div class="TabContents">
-                <p class="TabContent active">
-                    Thông tin cho vào đây.
-                </p>
-                <p class="TabContent">Nội dung quy định đổi trả ở đây.</p>
-                <p class="TabContent">Nội dung hướng dẫn chăm sóc ở đây.</p>
+            <div class="TabWindow">
+                <div class="TabContents">
+                    <div class="TabContent active">
+                        Thông tin cho vào đây.
+                    </div>
+                    <div class="TabContent">
+                        Nội dung quy định đổi trả ở đây.
+                    </div>
+                    <div class="TabContent">
+                        Nội dung hướng dẫn chăm sóc ở đây.
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    </div>
+</div>
 </div>
 <div class="RatingSection">
     <h3>ĐÁNH GIÁ CỦA BẢN THÂN</h3>
@@ -148,7 +156,7 @@
 
     <div class="RatingSummary">
         <div class="AverageRating">
-            <span class="Score" id="avgScore">5</span>
+            <span class="Score" id="avgScore">3</span>
             <span>trên 5</span>
         </div>
 
@@ -186,14 +194,7 @@
             </div>
             <div class="ReviewContent">
                 <p class="ReviewText">
-                    *Khen sản phẩm *Khen sản phẩm *Khen sản phẩm *Khen sản phẩm *Khen sản phẩm *Khen sản phẩm
-                    *Khen sản phẩm *Khen sản phẩm *Khen sản phẩm *Khen sản phẩm *Khen sản phẩm *Khen sản phẩm
-                    *Khen sản phẩm *Khen sản phẩm *Khen sản phẩm *Khen sản phẩm *Khen sản phẩm *Khen sản phẩm
-                    *Khen sản phẩm *Khen sản phẩm *Khen sản phẩm *Khen sản phẩm *Khen sản phẩm *Khen sản phẩm
-                    *Khen sản phẩm *Khen sản phẩm *Khen sản phẩm *Khen sản phẩm *Khen sản phẩm *Khen sản phẩm
-                    *Khen sản phẩm *Khen sản phẩm *Khen sản phẩm *Khen sản phẩm *Khen sản phẩm *Khen sản phẩm
-                    *Khen sản phẩm *Khen sản phẩm *Khen sản phẩm *Khen sản phẩm *Khen sản phẩm *Khen sản phẩm
-                    *Khen sản phẩm *Khen sản phẩm *Khen sản phẩm
+                    Chất lượng và độ bền vượt hơn kỳ vọng, rất đáng tiền mua.
                 </p>
             </div>
         </div>
@@ -201,7 +202,28 @@
         <!-- Review 2 -->
         <div class="ReviewItem">
             <div class="Reviewer">
-                <div class="Avatar"></div><span class="reviewUser">k**4</span>
+                <div class="Avatar">
+                </div><span class="reviewUser">k**4</span>
+                <div class="Stars reviewStars">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                </div>
+                <span class="ReviewDate">2025-04-3 19:24</span>
+            </div>
+            <div class="ReviewContent">
+                <p class="ReviewText">
+                    Giao hàng nhanh, chất liệu, màu sắc rất tốt, cảm giác khi mang vào không hề khó chịu.
+                </p>
+            </div>
+        </div>
+        <!-- Review 3 -->
+        <div class="ReviewItem">
+            <div class="Reviewer">
+                <div class="Avatar">
+                </div><span class="reviewUser">s**8</span>
                 <div class="Stars reviewStars">
                     <i class="fa-solid fa-star"></i>
                     <i class="fa-solid fa-star"></i>
@@ -213,17 +235,15 @@
             </div>
             <div class="ReviewContent">
                 <p class="ReviewText">
-                    *Khen sản phẩm
-                    *Khen sản phẩm
-                    *Khen sản phẩm
-                    *Khen sản phẩm
+                    Giá cả hợp lý, giao hàng đúng thời gian quy định, sản phẩm rất bền và đẹp, lần sau sẽ ủng hộ.
                 </p>
             </div>
         </div>
     </div>
 </div>
 <jsp:include page="/Share/footer.jsp" />
-<script src="JS/ProductMainPage.js"></script>
 <script src="JS/Notification.js"></script>
+<script src="${pageContext.request.contextPath}/JS/ProductMainPage.js?v=<%=System.currentTimeMillis()%>"></script>
+
 </body>
 </html>
