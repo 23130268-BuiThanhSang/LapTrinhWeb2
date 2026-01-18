@@ -1,17 +1,20 @@
 package vn.edu.hcmuaf.fit.laptrinhweb2.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class Product implements Serializable {
     private int id;
     private String name;
     private double price;
     private String img;
-    public Product(int id, String name, double price, String img) {
+    private List<String> subImgs;
+    public Product(int id, String name, double price, String img, List<String> subImgs) {
         this.id = id;
         this.name = name;
         this.price = price;
         this.img = img;
+        this.subImgs = subImgs;
     }
     public Product() {
     }
@@ -38,5 +41,9 @@ public class Product implements Serializable {
     }
     public void setImg(String img) {
         this.img = img;
+    }
+
+    public List<String> getSubImgs() {
+        return subImgs;
     }
 }

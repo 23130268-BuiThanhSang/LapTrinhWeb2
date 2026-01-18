@@ -17,8 +17,27 @@ public class ProductDao extends BaseDao{
 //        productMap.put(3,new Product(3,"Áo Thun Nam Venum Ufc Pro Line Black Jersey - Grey - Xám",300000,"https://supersports.com.vn/cdn/shop/files/VNMUFC-00059-030-1.jpg?v=1704354123&width=1600"));
 //        productMap.put(4,new Product(4,"Áo Thun Nam Venum Ufc Pro Line Black Jersey - Blue - Xanh Dương",300000,"https://supersports.com.vn/cdn/shop/files/VNMUFC-00059-400-1.jpg?v=1704354123&width=1600"));
 //    }
+static {
+    List<String> imgs1 = new ArrayList<>();
+    imgs1.add("lgImg/ProductSample/HQ1717-400-1.png");
+    imgs1.add("lgImg/ProductSample/HQ1717-400-2.png");
+    imgs1.add("lgImg/ProductSample/HQ1717-400-4.png");
+    imgs1.add("lgImg/ProductSample/HQ1717-400-6.png");
+
+    productMap.put(1, new Product(
+            1,
+            "Giày Chạy Bộ Nam Nike Pegasus 41",
+            2200000,
+            "lgImg/ProductSample/HQ1717-400-1.png",
+            imgs1
+    ));
+}
     public List<Product> getAllProduct() {
         return get().withHandle(h -> h.createQuery("select * from product").mapToBean(Product.class).list());
+    }
+
+    public Product getProductMap(int id) {
+        return productMap.get(id);
     }
 
     public Product getProduct(int id) {

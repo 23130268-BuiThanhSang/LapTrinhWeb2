@@ -55,3 +55,13 @@ function ProductQuantityHandlers() {
         }
     });
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+    const mainImg = document.querySelector(".MainImage");
+    document.querySelectorAll(".ThumbButton img").forEach(img => {
+        img.addEventListener("click", function () {
+            mainImg.src = this.src;
+        });
+    });
+});
+

@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,23 +28,19 @@
         <img src="lgImg/ProductSample/HQ1717-400-1.png" class="MainImage" alt="Main shoe image">
         </div>
         <div class="ImageSlider">
-            <button class="ThumbButton"><img src="${product.img}" alt=""></button>
-            <button class="ThumbButton"><img src="${product.img}" alt=""></button>
-            <button class="ThumbButton"><img src="${product.img}" alt=""></button>
-            <button class="ThumbButton"><img src="${product.img}" alt=""></button>
-            <button class="ThumbButton"><img src="${product.img}" alt=""></button>
-            <button class="ThumbButton"><img src="${product.img}" alt=""></button>
-            <button class="ThumbButton"><img src="${product.img}" alt=""></button>
-            <button class="ThumbButton"><img src="${product.img}" alt=""></button>
+            <c:forEach items="${product.subImgs}" var="img">
+                <button class="ThumbButton">
+                    <img src="${pageContext.request.contextPath}/${img}" alt="">
+                </button>
+            </c:forEach>
         </div>
     </div>
     <div class="ProductInfo">
         <div class = "HighlightBox">
-        <p class="ProductTitle">Giày Chạy Bộ Nam Nike Pegasus 41</p>
+            <h1 class="ProductName">${product.name}</h1>
         <p class="ProductBrand">Thương hiệu: NIKE</p>
         <p class="ProductBrand">Phân loại: Giày Nam</p>
         <p class="ProductBrand">Màu Sắc: <span>XANH DƯƠNG (RACBLU/SAI)</span></p>
-        <h1 class="ProductName">${product.name}</h1>
         <div class="Rating">
             <i class="fa-solid fa-star"></i>
             <i class="fa-solid fa-star"></i>
@@ -52,14 +49,15 @@
             <i class="fa-solid fa-star"></i>
             <span class="ReviewCount">5 đánh giá</span>
         </div>
-        <p class="ProductPrice">${product.price}</p>
         </div>
         <div class="ProductColor">
             <p class="ProductBrand">Ảnh minh họa sản phẩm:</p>
-            <div class="ColorOptions">
-                <button class="ColorButton"><img ></button>
-                <button class="ColorButton"><img ></button>
-                <button class="ColorButton"><img ></button>
+            <div class="ImageSlider">
+                <c:forEach items="${product.subImgs}" var="img">
+                    <button class="ThumbButton">
+                        <img src="${pageContext.request.contextPath}/${img}" alt="">
+                    </button>
+                </c:forEach>
             </div>
         </div>
 
@@ -77,8 +75,8 @@
         </div>
 
         <div class="ProductSize">
-            <p class="SectionTitle">Giá sản phẩm: 220.000đ</p>
-            <p class="SectionTitle">Tổng thành tiền: 220.000đ</p>
+            <p class="SectionTitle">Giá sản phẩm: ${product.price}</p>
+            <p class="SectionTitle">Tổng thành tiền: ${product.price}</p>
         </div>
 
         <div class="PurchaseSection">
@@ -159,15 +157,15 @@
             <span class="Score" id="avgScore">3</span>
             <span>trên 5</span>
         </div>
-
-        <select class="StarFilter" id="starFilter">
-            <option value="all">Tất cả</option>
-            <option value="5">5 Sao</option>
-            <option value="4">4 Sao</option>
-            <option value="3">3 Sao</option>
-            <option value="2">2 Sao</option>
-            <option value="1">1 Sao</option>
-        </select>
+        <div class = "Self_review">
+            <select class="self_rating" id="self_rating">
+                <option value="5">5 Sao</option>
+                <option value="4">4 Sao</option>
+                <option value="3">3 Sao</option>
+                <option value="2">2 Sao</option>
+                <option value="1">1 Sao</option>
+            </select>
+        </div>
     </div>
 
     <div class="Stars" id="avgStars">
