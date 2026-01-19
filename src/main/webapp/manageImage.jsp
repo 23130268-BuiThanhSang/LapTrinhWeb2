@@ -85,6 +85,18 @@
                                         <i class="fa-solid fa-pen"></i>
                                     </button>
                                 </form>
+                                <form method="post"
+                                      action="${pageContext.request.contextPath}/deleteImage"
+                                      class="DeleteForm"
+                                      onsubmit="return confirm('Delete this image?');">
+
+                                    <input type="hidden" name="path" value="${relativePath}">
+
+                                    <button type="submit" class="DeleteBtn">
+                                        <i class="fa-solid fa-trash"></i>
+                                    </button>
+                                </form>
+
                             </c:when>
                         </c:choose>
                     </div>

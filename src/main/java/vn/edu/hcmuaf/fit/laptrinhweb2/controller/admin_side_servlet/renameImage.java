@@ -21,7 +21,6 @@ public class renameImage extends HttpServlet {
         String newName = request.getParameter("newName");
 
         if (path == null || newName == null || newName.isBlank()) {
-            response.sendRedirect("manageImage.jsp");
             return;
         }
 
@@ -29,15 +28,15 @@ public class renameImage extends HttpServlet {
         try {
             success = imageService.renameImage(path, newName);
         } catch (Exception e) {
-            response.sendRedirect("manageImage.jsp");
+            response.sendRedirect("page_manageImage");
             return;
         }
 
         if (!success) {
-            response.sendRedirect("manageImage.jsp?error=exists");
+            response.sendRedirect("page_manageImage?error=exists");
             return;
         }
 
-        response.sendRedirect("manageImage.jsp");
+        response.sendRedirect("page_manageImage");
     }
 }

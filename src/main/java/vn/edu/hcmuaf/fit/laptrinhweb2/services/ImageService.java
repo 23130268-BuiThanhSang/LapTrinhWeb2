@@ -71,4 +71,18 @@ public class ImageService {
         filePart.write(dest.getAbsolutePath());
     }
 
+    public boolean deleteImage(String relativePath) {
+        if (relativePath == null || relativePath.isBlank()) {
+            return false;
+        }
+
+        File file = new File(ROOT, relativePath);
+
+        if (!file.exists() || !file.isFile()) {
+            return false;
+        }
+
+        return file.delete();
+    }
+
 }
