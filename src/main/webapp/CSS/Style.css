@@ -551,120 +551,313 @@ thanh điều hướng dùng cho nhiều trang nên để bên đây
 /**
 đây chính là phần hiển thị cho filter và sản phẩm sài cho nhiều trang khác nhau nên để ở đây
  */
-.ProductContainer{
-    margin: 30px 35px;
-    height:1170px;
-    display:flex;
-    flex-direction: row;
-    gap:20px;
-    justify-content:flex-start;
+.ProductContainer {
+    display: flex;
+    gap: 40px;
+    margin: 40px 40px 40px 80px;
+    font-family: 'Inter', sans-serif;
+    align-items: flex-start;
+    min-height: 80vh;
 }
-.Filter{
-    width: 300px;
-    padding-right:20px;
-}
-.ListProductForFilter{
-    width: 100%;
-}
-.FilterGroup{
-    border: 1px solid #0066cc;
-}
-.Filter details{
-    margin: 5px;
-    padding: 10px;
+
+.FilterSidebar {
+    width: 260px;
+    flex-shrink: 0;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    border: 1px solid #eee;
+    position: sticky;
+    top: 20px;
+    max-height: calc(100vh - 40px);
     display: flex;
     flex-direction: column;
-    background: rgba(0, 128, 255, 0.2);
-    border-radius: 10px;
-    white-space: nowrap;
+    overflow: hidden;
 }
-.FilterBody{
+
+.FilterHeader {
+    padding: 18px 20px;
+    background: #f8f9fa;
+    font-weight: 700;
+    font-size: 15px;
+    border-bottom: 1px solid #eee;
+    color: #333;
     display: flex;
-    flex-direction:column;
-    margin-top: 15px;
-    justify-items: flex-start;
+    align-items: center;
+    gap: 8px;
 }
-.FilterItem{
-    margin: 2px;
-    padding: 5px;
-    background:white;
-    border-radius: 15px;
-    border: 1px solid #0066cc;
+
+.FilterContent {
+    padding: 10px 20px 20px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #ddd transparent;
 }
-.FilterGroup summary{
-    font-weight: bold;
+
+.FilterContent::-webkit-scrollbar {
+    width: 4px;
 }
-.ColorBlack:hover{
-    color: white;
-    background-color: black;
+
+.FilterContent::-webkit-scrollbar-thumb {
+    background-color: #ddd;
+    border-radius: 4px;
 }
-.ColorWhite:hover{
-    background: white;
+
+.FilterGroup {
+    border-bottom: 1px solid #f1f1f1;
+    padding: 15px 0;
 }
-.ColorRed:hover{
-    background-color: red;
-    color: white;
+
+.FilterGroup:last-child {
+    border-bottom: none;
 }
-.ColorBlue:hover{
-    background-color: deepskyblue;
-    color: white;
-}
-.ColorYellow:hover{
-    background-color: yellow;
-    color: white;
-}
-.ColorGreen:hover{
-    background-color: green;
-    color: white;
-}
-.ColorGray:hover {
-    background: gray;
-    color: white;
-}
-.HeaderListProductForFilter{
+
+.FilterGroup summary {
+    list-style: none;
+    font-weight: 600;
+    font-size: 13px;
+    color: #111;
+    text-transform: uppercase;
+    cursor: pointer;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-bottom: 10px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
-.SortListProductForFilter{
+
+.FilterGroup summary::-webkit-details-marker {
+    display: none;
+}
+
+.FilterGroup summary::after {
+    content: '\f078';
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    font-size: 10px;
+    transition: 0.3s;
+}
+
+.FilterGroup[open] summary::after {
+    transform: rotate(180deg);
+}
+
+.FilterBody {
+    margin-top: 15px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.CustomCheckbox {
+    display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 6px;
-
-    padding: 8px 14px;
-    font-style: italic;
-    font-weight: bold;
-    color: #001A2D;
-    background: #fff;
-    border: 1px solid transparent;
-    border-radius: 12px;
     cursor: pointer;
-    transition: all 0.2s ease-in-out;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    font-size: 14px;
+    color: #555;
+    user-select: none;
 }
-.SortListProductForFilter:hover{
-    border-color: #007BFF;
-    background: rgba(0,123,255,0.05);
-    transform: translateY(-1px);
-    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+
+.CustomCheckbox:hover {
+    color: #000;
 }
-.bodyListProductForFilter{
-    margin-top: 30px;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+
+.CustomCheckbox input {
+    display: none;
+}
+
+.Checkmark {
+    width: 18px;
+    height: 18px;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    margin-right: 10px;
+    position: relative;
+    transition: 0.2s;
+}
+
+.CustomCheckbox input:checked ~ .Checkmark {
+    background: #222;
+    border-color: #222;
+}
+
+.Checkmark::after {
+    content: '';
+    position: absolute;
+    display: none;
+    left: 5px;
+    top: 1px;
+    width: 4px;
+    height: 9px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.CustomCheckbox input:checked ~ .Checkmark::after {
+    display: block;
+}
+
+.ColorGrid {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.ColorSwatch {
+    cursor: pointer;
+}
+
+.ColorSwatch input {
+    display: none;
+}
+
+.SwatchDot {
+    display: block;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    box-shadow: 0 0 0 2px transparent;
+    transition: 0.2s;
+}
+
+.ColorSwatch input:checked ~ .SwatchDot {
+    box-shadow: 0 0 0 2px white, 0 0 0 4px #222;
+    transform: scale(0.9);
+}
+
+.SizeGrid {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+
+.SizeBox span {
+    width: auto !important;
+    min-width: 60px;
+    padding: 0 10px;
+    cursor: pointer;
+}
+
+.SizeBox input {
+    display: none;
+}
+
+.SizeBox span {
+    display: block;
+    min-width: 35px;
+    height: 35px;
+    line-height: 33px;
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #333;
+    transition: 0.2s;
+}
+
+.SizeBox input:checked + span {
+    background: #222;
+    color: white;
+    border-color: #222;
+}
+
+.ProductMainArea {
+    flex-grow: 1;
+}
+
+.ProductToolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    background: white;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+}
+
+.SearchWrapper {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+}
+
+.SearchWrapper input {
+    width: 100%;
+    padding: 10px 15px 10px 40px;
+    border: 1px solid #eee;
+    border-radius: 50px;
+    background: #f9f9f9;
+    outline: none;
+    transition: 0.3s;
+}
+
+.SearchWrapper input:focus {
+    background: white;
+    border-color: #bbb;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.SearchWrapper i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #999;
+}
+
+.SortWrapper {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.ResultCount {
+    font-size: 14px;
+    color: #666;
+}
+
+.SelectContainer {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.SortSelect {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    padding: 8px 35px 8px 15px;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-weight: 500;
+    font-size: 13px;
+    color: #333;
+    cursor: pointer;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.SortSelect:hover {
+    background-color: #f9f9f9;
+    border-color: #ccc;
+}
+
+.SelectContainer i {
+    position: absolute;
+    right: 12px;
+    font-size: 11px;
+    color: #666;
+    pointer-events: none;
+}
+
+.ProductGrid {
+    display: flex;
+    flex-wrap: wrap;
     gap: 20px;
-    max-height: 1000px;
-    /*overflow: hidden;*/
-    overflow-y: scroll;
-    scroll-behavior: smooth;
-    transition: max-height 0.5s ease;
 }
-
-
 /*đây là chiều cao khi nhấn xem thêm nhưng mà web tĩnh nên chưa có bỏ hiện thực*/
 /*.bodyListProductForFilter.expanded {*/
 /*    max-height:500px;*/
@@ -716,6 +909,7 @@ kết thúc */
 
 /*PRODUCT CATEGORIES*/
 .ProductCategories {
+    margin-top: 15px;
     height: 350px;
     padding-top: 10px;
     font-weight: bolder;
@@ -785,7 +979,8 @@ kết thúc */
 
 /*CATEGORIES SHOWCASE*/
 .CategoriesShowcase{
-    height: 2500px;
+    /*height: 2500px;*/
+    height: auto;
     background:white;
 }
 .Hotdeal{

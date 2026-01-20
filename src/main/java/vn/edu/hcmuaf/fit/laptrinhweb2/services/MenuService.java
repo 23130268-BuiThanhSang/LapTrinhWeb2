@@ -6,8 +6,8 @@ import vn.edu.hcmuaf.fit.laptrinhweb2.model.Menu.MainMenu;
 import java.util.List;
 
 public class MenuService {
-    MenuDAO menoDao=new MenuDAO();
+    MenuDAO menuDao=new MenuDAO();
     public List<MainMenu> getAllMenus() {
-      return   menoDao.getAllMenus();
+      return   menuDao.getAllMenus();
     }
 }
