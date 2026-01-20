@@ -45,7 +45,6 @@
                 </c:if>
             </li>
         </c:forEach>
-        <li class="MenuItem"><a href="${root}/Policy">Chính Sách</a></li>
     </ul>
 
     <div class="GroupRight">

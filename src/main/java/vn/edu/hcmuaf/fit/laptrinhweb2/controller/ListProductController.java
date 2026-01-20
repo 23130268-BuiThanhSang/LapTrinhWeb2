@@ -18,7 +18,7 @@ public class ListProductController extends HttpServlet {
         ProductService productService = new ProductService();
         List<Product> list = productService.getAllProduct();
         request.setAttribute("list", list);
-        request.getRequestDispatcher("PageListAllProduct.jsp").forward(request, response);
+        request.getRequestDispatcher("PageAllProductShoes.jsp").forward(request, response);
     }
 
     @Override
