@@ -8,6 +8,6 @@ import java.util.List;
 public class MenuService {
     MenuDAO menoDao=new MenuDAO();
     public List<MainMenu> getAllMenus() {
-      return   menoDao.getAllMenusInMenuDao();
+      return   menoDao.getAllMenus();
     }
 }
