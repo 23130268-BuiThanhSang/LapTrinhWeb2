@@ -17,11 +17,19 @@ public class ProductMainPageController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        // test cứng id = 1
-        int id = 1;
+        int id = 1; // mặc định
+
+        String idRaw = request.getParameter("id");
+        if (idRaw != null) {
+            try {
+                id = Integer.parseInt(idRaw);
+            } catch (NumberFormatException e) {
+                id = 1;
+            }
+        }
 
         ProductDao dao = new ProductDao();
-        Product product = dao.getProductMap(id);
+        Product product = dao.getProduct(id);
 
         request.setAttribute("product", product);
 

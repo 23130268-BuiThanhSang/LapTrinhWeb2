@@ -6,17 +6,29 @@ import java.util.List;
 public class Product implements Serializable {
     private int id;
     private String name;
-    private double price;
-    private String img;
-    private List<String> subImgs;
-    public Product(int id, String name, double price, String img, List<String> subImgs) {
+    private String productType;
+    private String brand;
+    private String productInfor;
+    private String productCareInstruction;
+    private String productReturnInfor;
+    private String productGender;
+    private List<ProductVariant> variants;
+    public Product() {
+        super();
+    }
+    public Product(int id, String name, String productType, String brand, String productInfor,
+                   String productCareInstruction, String productReturnInfor, String productGender,
+                   List<ProductVariant> variants) {
+        super();
         this.id = id;
         this.name = name;
-        this.price = price;
-        this.img = img;
-        this.subImgs = subImgs;
-    }
-    public Product() {
+        this.productType = productType;
+        this.brand = brand;
+        this.productInfor = productInfor;
+        this.productCareInstruction = productCareInstruction;
+        this.productReturnInfor = productReturnInfor;
+        this.productGender = productGender;
+        this.variants = variants;
     }
     public int getId() {
         return id;
@@ -30,20 +42,49 @@ public class Product implements Serializable {
     public void setName(String name) {
         this.name = name;
     }
-    public double getPrice() {
-        return price;
+    public String getProductType() {
+        return productType;
     }
-    public void setPrice(double price) {
-        this.price = price;
+    public void setProductType(String productType) {
+        this.productType = productType;
     }
-    public String getImg() {
-        return img;
+    public String getBrand() {
+        return brand;
     }
-    public void setImg(String img) {
-        this.img = img;
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
+    public String getProductInfor() {
+        return productInfor;
+    }
+    public void setProductInfor(String productInfor) {
+        this.productInfor = productInfor;
+    }
+    public String getProductCareInstruction() {
+        return productCareInstruction;
+    }
+    public void setProductCareInstruction(String productCareInstruction) {
+        this.productCareInstruction = productCareInstruction;
+    }
+    public String getProductReturnInfor() {
+        return productReturnInfor;
+    }
+    public void setProductReturnInfor(String productReturnInfor) {
+        this.productReturnInfor = productReturnInfor;
+    }
+    public String getProductGender() {
+        return productGender;
+    }
+    public void setProductGender(String productGender) {
+        this.productGender = productGender;
+    }
+    public List<ProductVariant> getVariants() {
+        return variants;
+    }
+    public void setVariants(List<ProductVariant> variants) {
+        this.variants = variants;
     }
 
-    public List<String> getSubImgs() {
-        return subImgs;
-    }
+
 }
+

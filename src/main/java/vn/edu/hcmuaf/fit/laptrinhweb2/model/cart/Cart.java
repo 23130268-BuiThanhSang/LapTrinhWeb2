@@ -1,6 +1,7 @@
 package vn.edu.hcmuaf.fit.laptrinhweb2.model.cart;
 
 import vn.edu.hcmuaf.fit.laptrinhweb2.model.Product;
+import vn.edu.hcmuaf.fit.laptrinhweb2.model.ProductVariant;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -14,14 +15,14 @@ public class Cart implements Serializable {
     public Cart() {
         data = new HashMap<Integer, CartItem>();
     }
-    public void addItem(Product p, int qty) {
-        if (qty >= 0) {qty = 1;}
-        if (!data.containsKey(p.getId())) {
-            data.put(p.getId(), new CartItem(p,qty,p.getPrice()));
-        } else {
-            data.get(p.getId()).upQuantity(qty);
-        }
-    }
+//    public void addItem(Product p, int qty) {
+//        if (qty >= 0) {qty = 1;}
+//        if (!data.containsKey(p.getId())) {
+//            data.put(p.getId(), new CartItem(p,qty,p.getPrice()));
+//        } else {
+//            data.get(p.getId()).upQuantity(qty);
+//        }
+//    }
     public void updateItem(int id) {}
     public CartItem delItem(int id) {
         return data.remove(id);

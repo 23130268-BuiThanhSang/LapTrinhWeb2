@@ -45,6 +45,7 @@ body {
     border-radius: 10px;
     padding: 20px;
     box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+    min-width: 550px;
 }
 
 .MainImageContainer {
@@ -67,6 +68,18 @@ body {
     gap: 10px;
     overflow-x: auto;
 }
+
+.ImageSlider img {
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
+    object-fit: contain;
+    border: 1px solid #ddd;
+    background: #fff;
+    cursor: pointer;
+
+}
+
 
 .ThumbButton {
     border: none;
@@ -141,7 +154,7 @@ body {
 .SectionTitle {
     font-weight: bold;
     margin-bottom: 6px;
-    padding-top: 10px;
+
 }
 
 .ColorOptions {
@@ -479,5 +492,5 @@ body {
 }
 
 .ProductSize{
-    transform: translateY(25px);
+    transform: translateY(15px);
 }

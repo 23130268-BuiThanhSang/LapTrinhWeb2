@@ -1,67 +1,95 @@
 document.addEventListener("DOMContentLoaded", () => {
+
     // ====== TABS ======
     const tabButtons = document.querySelectorAll(".TabButton");
     const tabContents = document.querySelectorAll(".TabContent");
 
-    // Nếu không có tab (trang khác) thì bỏ qua
-    if (tabButtons.length > 0 && tabContents.length > 0) {
-        tabButtons.forEach((button, index) => {
-            button.addEventListener("click", () => {
-                // Bỏ active nút & nội dung cũ
-                tabButtons.forEach(b => b.classList.remove("active"));
-                tabContents.forEach(c => c.classList.remove("active"));
+    tabButtons.forEach((btn, i) => {
+        btn.addEventListener("click", () => {
+            tabButtons.forEach(b => b.classList.remove("active"));
+            tabContents.forEach(c => c.classList.remove("active"));
 
-                // Set active cho nút được click và tab nội dung cùng index
-                button.classList.add("active");
-                if (tabContents[index]) {
-                    tabContents[index].classList.add("active");
-                }
-            });
+            btn.classList.add("active");
+            tabContents[i]?.classList.add("active");
         });
-    }
+    });
 
-    // ====== IMAGE THUMBNAIL PREVIEW (giữ như cũ) ======
-    const mainImage = document.querySelector(".MainImage");
-    const thumbButtons = document.querySelectorAll(".ThumbButton img");
-
-    if (mainImage && thumbButtons.length > 0) {
-        thumbButtons.forEach(thumb => {
-            thumb.addEventListener("click", () => {
-                mainImage.src = thumb.src;
-            });
-        });
-        ProductQuantityHandlers();
-    }
+    ProductQuantityHandlers();
 });
 
+// ====== QUANTITY ======
 function ProductQuantityHandlers() {
     const minus = document.querySelector(".qty-minus");
     const plus = document.querySelector(".qty-plus");
     const quantityEl = document.querySelector(".quantity");
+    const unitPriceEl = document.getElementById("unitPrice");
+    const totalPriceEl = document.getElementById("totalPrice");
 
-    if (!minus || !plus || !quantityEl) return;
-
+    if (!minus || !plus || !quantityEl || !unitPriceEl || !totalPriceEl) return;
     let quantity = parseInt(quantityEl.innerText);
-
-    plus.addEventListener("click", () => {
+    const unitPrice = parseFloat(unitPriceEl.dataset.price);
+    function updateTotal() {
+        totalPriceEl.innerText = (unitPrice * quantity).toFixed(1);
+    }
+    plus.onclick = () => {
         quantity++;
         quantityEl.innerText = quantity;
-    });
-
-    minus.addEventListener("click", () => {
+        updateTotal();
+    };
+    minus.onclick = () => {
         if (quantity > 1) {
             quantity--;
             quantityEl.innerText = quantity;
+            updateTotal();
         }
-    });
+    };
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-    const mainImg = document.querySelector(".MainImage");
-    document.querySelectorAll(".ThumbButton img").forEach(img => {
-        img.addEventListener("click", function () {
-            mainImg.src = this.src;
-        });
+// ====== IMAGE PREVIEW ======
+function changeMainImage(el) {
+    document.getElementById("mainImage").src = el.src;
+
+    document.querySelectorAll(".GalleryThumb")
+        .forEach(img => img.classList.remove("active"));
+    el.classList.add("active");
+}
+
+
+function changeColor(el) {
+    const selectedColor = el.dataset.color;
+
+    console.log("Selected:", selectedColor);
+
+    // active màu
+    document.querySelectorAll(".ColorThumb")
+        .forEach(c => c.classList.remove("active"));
+    el.classList.add("active");
+
+    const thumbs = document.querySelectorAll(".GalleryThumb");
+    let firstVisible = null;
+
+    const colorText = document.getElementById("selectedColorText");
+    if (colorText) {
+        colorText.innerText = selectedColor;
+    }
+
+    thumbs.forEach(img => {
+        if (img.dataset.color === selectedColor) {
+            img.style.display = "";
+            if (!firstVisible) firstVisible = img;
+        } else {
+            img.style.display = "none";
+        }
     });
-});
+
+    // nếu KHÔNG tìm được ảnh nào → fallback
+    if (!firstVisible) {
+        console.warn("No image for color:", selectedColor);
+        thumbs.forEach(img => img.style.display = "");
+        return;
+    }
+
+    changeMainImage(firstVisible);
+}
+
 

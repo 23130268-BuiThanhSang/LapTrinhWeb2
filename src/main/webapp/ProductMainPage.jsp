@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
-<jsp:include page="/Share/header.jsp" />
+<jsp:include page="/Share/header.jsp"/>
 <nav class="breadcrumb">
     <a href="#">Trang chủ</a>
     <span class="separator">›</span>
@@ -18,30 +18,40 @@
     <span class="separator">›</span>
     <a href="#">Giày</a>
     <span class="separator">›</span>
-    <a href="#">Giày nam</a>
+    <a href="#">${product.productType}</a>
     <span class="separator">›</span>
-    <a href="#">Giày Chạy Bộ Nam Nike Pegasus 41</a>
+    <a href="#">${product.name}</a>
 </nav>
+<c:set var="defaultVariant" value="${product.variants[0]}" />
+<c:set var="displayedColors" value="${emptyList}" />
 <div class = "UpperPart">
     <div class="ProductPreview">
         <div class="MainImageContainer">
-        <img src="lgImg/ProductSample/HQ1717-400-1.png" class="MainImage" alt="Main shoe image">
+            <img src="${product.variants[0].images[0].imageUrl}" id="mainImage" class="MainImage">
         </div>
-        <div class="ImageSlider">
-            <c:forEach items="${product.subImgs}" var="img">
-                <button class="ThumbButton">
-                    <img src="${pageContext.request.contextPath}/${img}" alt="">
-                </button>
+        <div class="ImageSlider GallerySlider">
+            <c:forEach items="${product.variants}" var="variant">
+                <c:forEach items="${variant.images}" var="img" varStatus="i">
+                    <img src="${img.imageUrl}"
+                         class="GalleryThumb ${variant.color == defaultVariant.color && i.index == 0 ? 'active' : ''}"
+                         data-color="${variant.color}"
+                         style="${variant.color == defaultVariant.color ? '' : 'display:none'}"
+                         onclick="changeMainImage(this)">
+                </c:forEach>
             </c:forEach>
         </div>
+
     </div>
     <div class="ProductInfo">
         <div class = "HighlightBox">
             <h1 class="ProductName">${product.name}</h1>
-        <p class="ProductBrand">Thương hiệu: NIKE</p>
-        <p class="ProductBrand">Phân loại: Giày Nam</p>
-        <p class="ProductBrand">Màu Sắc: <span>XANH DƯƠNG (RACBLU/SAI)</span></p>
-        <div class="Rating">
+            <p class="ProductBrand">Thương hiệu: ${product.brand}</p>
+            <p class="ProductBrand">Phân loại: ${product.productType}</p>
+            <p class="ProductBrand">Giới tính: ${product.productGender}</p>
+            <p class="ProductBrand">
+                Màu sắc: <span id="selectedColorText">${defaultVariant.color}</span>
+            </p>
+            <div class="Rating">
             <i class="fa-solid fa-star"></i>
             <i class="fa-solid fa-star"></i>
             <i class="fa-solid fa-star"></i>
@@ -51,12 +61,19 @@
         </div>
         </div>
         <div class="ProductColor">
-            <p class="ProductBrand">Ảnh minh họa sản phẩm:</p>
-            <div class="ImageSlider">
-                <c:forEach items="${product.subImgs}" var="img">
-                    <button class="ThumbButton">
-                        <img src="${pageContext.request.contextPath}/${img}" alt="">
-                    </button>
+            <p class="ProductBrand">Màu sắc:</p>
+            <div class="ImageSlider ColorSlider">
+                <c:set var="shownColors" value="" />
+
+                <c:forEach items="${product.variants}" var="variant" varStatus="v">
+                    <c:if test="${!shownColors.contains(variant.color)}">
+                        <img src="${variant.images[0].imageUrl}"
+                             class="ColorThumb ${variant.color == defaultVariant.color ? 'active' : ''}"
+                             data-color="${variant.color}"
+                             onclick="changeColor(this)">
+
+                        <c:set var="shownColors" value="${shownColors}${variant.color}," />
+                    </c:if>
                 </c:forEach>
             </div>
         </div>
@@ -64,19 +81,30 @@
         <div class="ProductSize">
             <p class="SectionTitle">Kích Thước</p>
             <div class="SizeOptions">
-                <button class="SizeButton">UK 3.5</button>
-                <button class="SizeButton">UK 4</button>
-                <button class="SizeButton">UK 4.5</button>
-                <button class="SizeButton">UK 5</button>
-                <button class="SizeButton">UK 5.5</button>
-                <button class="SizeButton">UK 6</button>
-                <button class="SizeButton">UK 6.5</button>
+                <c:forEach items="${product.variants}" var="variant">
+                    <c:if test="${variant.color == defaultVariant.color}">
+                        <button class="SizeButton"
+                                data-price="${variant.price}"
+                                data-stock="${variant.stock}">
+                                ${variant.size}
+                        </button>
+                    </c:if>
+                </c:forEach>
             </div>
         </div>
 
+
         <div class="ProductSize">
-            <p class="SectionTitle">Giá sản phẩm: ${product.price}</p>
-            <p class="SectionTitle">Tổng thành tiền: ${product.price}</p>
+            <p class="SectionTitle">Giá sản phẩm:
+                <span id="unitPrice" data-price="${defaultVariant.price}">
+                    ${defaultVariant.price}
+                </span> VNĐ
+            </p>
+            <p class="SectionTitle">Tổng thành tiền:
+                <span id="totalPrice">
+                    ${defaultVariant.price}
+                </span> VNĐ
+            </p>
         </div>
 
         <div class="PurchaseSection">
@@ -121,13 +149,13 @@
             <div class="TabWindow">
                 <div class="TabContents">
                     <div class="TabContent active">
-                        Thông tin cho vào đây.
+                        ${product.productInfor}
                     </div>
                     <div class="TabContent">
-                        Nội dung quy định đổi trả ở đây.
+                        ${product.productReturnInfor}
                     </div>
                     <div class="TabContent">
-                        Nội dung hướng dẫn chăm sóc ở đây.
+                        ${product.productCareInstruction}
                     </div>
                 </div>
             </div>
@@ -158,7 +186,7 @@
             <span>trên 5</span>
         </div>
         <div class = "Self_review">
-            <select class="self_rating" id="self_rating">
+            <select class="self_rating">
                 <option value="5">5 Sao</option>
                 <option value="4">4 Sao</option>
                 <option value="3">3 Sao</option>
