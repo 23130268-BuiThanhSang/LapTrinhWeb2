@@ -1,6 +1,5 @@
-package vn.edu.hcmuaf.fit.laptrinhweb2.services;
+package vn.edu.hcmuaf.fit.laptrinhweb2.Product;
 
-import vn.edu.hcmuaf.fit.laptrinhweb2.dao.ProductGroupDao;
 import vn.edu.hcmuaf.fit.laptrinhweb2.enum_macro.GroupType;
 
 public class ProductGroupService {

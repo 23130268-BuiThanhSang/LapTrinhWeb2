@@ -1,6 +1,6 @@
 package vn.edu.hcmuaf.fit.laptrinhweb2.model.cart;
 
-import vn.edu.hcmuaf.fit.laptrinhweb2.model.Product;
+import vn.edu.hcmuaf.fit.laptrinhweb2.Product.Product;
 
 import java.io.Serializable;
 

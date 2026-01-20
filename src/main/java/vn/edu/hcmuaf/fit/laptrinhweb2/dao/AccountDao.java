@@ -7,18 +7,18 @@ import java.util.List;
 public class AccountDao extends BaseDao{
     public List<Account> getAll() {
         return get().withHandle(h ->
-                h.createQuery("SELECT * FROM account")
+                h.createQuery("SELECT * FROM accounts")
                         .mapToBean(Account.class)
                         .list()
         );
     }
     public Account getByID(int id) {
-        return get().withHandle(h -> h.createQuery("select * from account where id = :id")
+        return get().withHandle(h -> h.createQuery("select * from accounts where id = :id")
                 .bind("id", id)
                 .mapToBean(Account.class).stream().findFirst().orElse(null));
     }
     public Account getByUsername(String username) {
-        return get().withHandle(h -> h.createQuery("select * from account where username = :username")
+        return get().withHandle(h -> h.createQuery("select * from accounts where user_name = :username")
                 .bind("username", username)
                 .mapToBean(Account.class).stream().findFirst().orElse(null));
     }
@@ -26,9 +26,9 @@ public class AccountDao extends BaseDao{
     public void update(Account acc) {
         get().useHandle(handle ->
                 handle.createUpdate("""
-            UPDATE account
+            UPDATE accounts
             SET
-                username = :username,
+                user_name = :username,
                 account_status = :accountStatus,
                 phone_number = :phoneNumber,
                 account_email = :accountEmail,
@@ -45,7 +45,7 @@ public class AccountDao extends BaseDao{
         get().useHandle(handle ->
                 handle.createUpdate("""
         INSERT INTO account (
-            username,
+            user_name,
             account_status,
             phone_number,
             account_email,

@@ -182,17 +182,23 @@
 
     <div class="RatingSummary">
         <div class="AverageRating">
-            <span class="Score" id="avgScore">3</span>
-            <span>trên 5</span>
+            <span class="Score">${reviewCount}</span>
+            <span>Đánh giá</span>
         </div>
-        <div class = "Self_review">
-            <select class="self_rating">
-                <option value="5">5 Sao</option>
-                <option value="4">4 Sao</option>
-                <option value="3">3 Sao</option>
-                <option value="2">2 Sao</option>
-                <option value="1">1 Sao</option>
-            </select>
+
+        <div class="Self_review">
+            <form method="get" action="ProductMainPage">
+                <input type="hidden" name="id" value="${product.id}" />
+
+                <select name="rating" class="self_rating" onchange="this.form.submit()">
+                    <option value="">Tất cả</option>
+                    <option value="5" ${param.rating == '5' ? 'selected' : ''}>5 Sao</option>
+                    <option value="4" ${param.rating == '4' ? 'selected' : ''}>4 Sao</option>
+                    <option value="3" ${param.rating == '3' ? 'selected' : ''}>3 Sao</option>
+                    <option value="2" ${param.rating == '2' ? 'selected' : ''}>2 Sao</option>
+                    <option value="1" ${param.rating == '1' ? 'selected' : ''}>1 Sao</option>
+                </select>
+            </form>
         </div>
     </div>
 
@@ -205,66 +211,22 @@
     </div>
 
     <div class="ReviewList" id="reviewList">
-        <!-- Review 1 -->
-        <div class="ReviewItem">
-            <div class="Reviewer">
-                <div class="Avatar"></div> <span class="reviewUser">m**t</span>
-                <div class="Stars reviewStars">
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
+        <c:forEach items="${reviews}" var="r">
+            <div class="ReviewItem">
+                <div class="Reviewer">
+                    <img src="${r.avatarUrl}" class="Avatar"/>
+                    <span class="username">${r.userName}</span>
+                    <span class="date">${r.reviewDate}</span>
                 </div>
-                <span class="ReviewDate">2024-10-21 00:11</span>
-            </div>
-            <div class="ReviewContent">
-                <p class="ReviewText">
-                    Chất lượng và độ bền vượt hơn kỳ vọng, rất đáng tiền mua.
-                </p>
-            </div>
-        </div>
 
-        <!-- Review 2 -->
-        <div class="ReviewItem">
-            <div class="Reviewer">
-                <div class="Avatar">
-                </div><span class="reviewUser">k**4</span>
-                <div class="Stars reviewStars">
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
+                <div class="Stars">
+                    <c:forEach begin="1" end="${r.rating}">
+                        <i class="fa-solid fa-star"></i>
+                    </c:forEach>
                 </div>
-                <span class="ReviewDate">2025-04-3 19:24</span>
+                <p>${r.reviewText}</p>
             </div>
-            <div class="ReviewContent">
-                <p class="ReviewText">
-                    Giao hàng nhanh, chất liệu, màu sắc rất tốt, cảm giác khi mang vào không hề khó chịu.
-                </p>
-            </div>
-        </div>
-        <!-- Review 3 -->
-        <div class="ReviewItem">
-            <div class="Reviewer">
-                <div class="Avatar">
-                </div><span class="reviewUser">s**8</span>
-                <div class="Stars reviewStars">
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                </div>
-                <span class="ReviewDate">2025-06-12 12:15</span>
-            </div>
-            <div class="ReviewContent">
-                <p class="ReviewText">
-                    Giá cả hợp lý, giao hàng đúng thời gian quy định, sản phẩm rất bền và đẹp, lần sau sẽ ủng hộ.
-                </p>
-            </div>
-        </div>
+        </c:forEach>
     </div>
 </div>
 <jsp:include page="/Share/footer.jsp" />

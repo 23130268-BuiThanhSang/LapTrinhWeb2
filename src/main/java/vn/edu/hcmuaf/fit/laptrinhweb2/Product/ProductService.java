@@ -1,7 +1,4 @@
-package vn.edu.hcmuaf.fit.laptrinhweb2.services;
-
-import vn.edu.hcmuaf.fit.laptrinhweb2.dao.ProductDao;
-import vn.edu.hcmuaf.fit.laptrinhweb2.model.Product;
+package vn.edu.hcmuaf.fit.laptrinhweb2.Product;
 
 import java.util.List;
 

@@ -1,12 +1,8 @@
-package vn.edu.hcmuaf.fit.laptrinhweb2.controller;
+package vn.edu.hcmuaf.fit.laptrinhweb2.Product;
 
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
-import vn.edu.hcmuaf.fit.laptrinhweb2.dao.MenuDAO;
-import vn.edu.hcmuaf.fit.laptrinhweb2.model.Menu.MainMenu;
-import vn.edu.hcmuaf.fit.laptrinhweb2.model.Product;
-import vn.edu.hcmuaf.fit.laptrinhweb2.services.ProductService;
 
 import java.io.IOException;
 import java.util.List;

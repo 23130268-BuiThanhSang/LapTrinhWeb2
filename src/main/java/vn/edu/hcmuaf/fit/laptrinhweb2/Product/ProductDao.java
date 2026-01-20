@@ -1,14 +1,12 @@
-package vn.edu.hcmuaf.fit.laptrinhweb2.dao;
+package vn.edu.hcmuaf.fit.laptrinhweb2.Product;
 
 import org.jdbi.v3.core.Jdbi;
 import org.jdbi.v3.core.statement.PreparedBatch;
-import vn.edu.hcmuaf.fit.laptrinhweb2.model.Product;
-import vn.edu.hcmuaf.fit.laptrinhweb2.model.ProductVariant;
-import vn.edu.hcmuaf.fit.laptrinhweb2.model.ProductVariantImage;
+import vn.edu.hcmuaf.fit.laptrinhweb2.dao.BaseDao;
 
 import java.util.*;
 
-public class ProductDao extends BaseDao{
+public class ProductDao extends BaseDao {
     private static final String SQL =
             "SELECT p.id AS product_id, p.product_name, p.product_type, b.name AS brand_name, p.product_infor, " +
             "p.product_car_instruction, p.product_return_infor, p.product_gender, " +
@@ -88,6 +86,35 @@ public class ProductDao extends BaseDao{
         });
     }
 
+    public List<ProductReview> getReviewsByProduct(int productId, Integer rating) {
+        String sql = "SELECT r.id, r.user_id AS userId, " +
+                "                   r.product_id AS productId, " +
+                "                   r.review_date AS reviewDate, " +
+                "                   u.user_name AS userName, " +
+                "                   u.avatar_url AS avatarUrl, " +
+                "                   r.rating, r.review_text AS reviewText " +
+                "            FROM product_review r " +
+                "            JOIN accounts u ON r.user_id = u.id " +
+                "            WHERE r.product_id = :pid";
+        if (rating != null) {
+            sql += " AND r.rating = :rating";
+        }
+
+        sql += " ORDER BY r.review_date DESC";
+
+        final String finalSql = sql;
+
+        return get().withHandle(h -> {
+            var query = h.createQuery(finalSql)
+                    .bind("pid", productId);
+
+            if (rating != null) {
+                query.bind("rating", rating);
+            }
+
+            return query.mapToBean(ProductReview.class).list();
+        });
+    }
 
 
 

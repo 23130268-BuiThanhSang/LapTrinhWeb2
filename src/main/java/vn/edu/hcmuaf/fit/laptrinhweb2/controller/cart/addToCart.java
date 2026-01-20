@@ -4,8 +4,8 @@ import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 import vn.edu.hcmuaf.fit.laptrinhweb2.model.cart.Cart;
-import vn.edu.hcmuaf.fit.laptrinhweb2.model.Product;
-import vn.edu.hcmuaf.fit.laptrinhweb2.services.ProductService;
+import vn.edu.hcmuaf.fit.laptrinhweb2.Product.Product;
+import vn.edu.hcmuaf.fit.laptrinhweb2.Product.ProductService;
 
 import java.io.IOException;
 

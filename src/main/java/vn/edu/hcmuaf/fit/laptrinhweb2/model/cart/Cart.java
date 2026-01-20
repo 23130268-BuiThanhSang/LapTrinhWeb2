@@ -1,8 +1,5 @@
 package vn.edu.hcmuaf.fit.laptrinhweb2.model.cart;
 
-import vn.edu.hcmuaf.fit.laptrinhweb2.model.Product;
-import vn.edu.hcmuaf.fit.laptrinhweb2.model.ProductVariant;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;

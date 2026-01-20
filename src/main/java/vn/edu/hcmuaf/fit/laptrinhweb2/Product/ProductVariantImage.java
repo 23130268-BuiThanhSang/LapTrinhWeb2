@@ -1,6 +1,4 @@
-package vn.edu.hcmuaf.fit.laptrinhweb2.model;
-
-import java.util.List;
+package vn.edu.hcmuaf.fit.laptrinhweb2.Product;
 
 public class ProductVariantImage {
     private int id;

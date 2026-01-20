@@ -1,7 +1,7 @@
-package vn.edu.hcmuaf.fit.laptrinhweb2.dao;
+package vn.edu.hcmuaf.fit.laptrinhweb2.Product;
 
+import vn.edu.hcmuaf.fit.laptrinhweb2.dao.BaseDao;
 import vn.edu.hcmuaf.fit.laptrinhweb2.enum_macro.GroupType;
-import vn.edu.hcmuaf.fit.laptrinhweb2.model.ProductGroup;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package vn.edu.hcmuaf.fit.laptrinhweb2.model;
+package vn.edu.hcmuaf.fit.laptrinhweb2.Product;
 
 import java.util.ArrayList;
 import java.util.List;

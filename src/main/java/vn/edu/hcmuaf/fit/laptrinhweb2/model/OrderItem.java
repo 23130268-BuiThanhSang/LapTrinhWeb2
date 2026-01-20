@@ -1,5 +1,7 @@
 package vn.edu.hcmuaf.fit.laptrinhweb2.model;
 
+import vn.edu.hcmuaf.fit.laptrinhweb2.Product.Product;
+
 import java.io.Serializable;
 
 public class OrderItem implements Serializable {

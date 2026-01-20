@@ -1,7 +1,8 @@
 package vn.edu.hcmuaf.fit.laptrinhweb2.dao;
 
+import vn.edu.hcmuaf.fit.laptrinhweb2.Product.ProductDao;
 import vn.edu.hcmuaf.fit.laptrinhweb2.model.OrderItem;
-import vn.edu.hcmuaf.fit.laptrinhweb2.model.Product;
+import vn.edu.hcmuaf.fit.laptrinhweb2.Product.Product;
 
 import java.util.List;
 

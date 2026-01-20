@@ -6,7 +6,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import vn.edu.hcmuaf.fit.laptrinhweb2.enum_macro.GroupType;
-import vn.edu.hcmuaf.fit.laptrinhweb2.services.ProductGroupService;
+import vn.edu.hcmuaf.fit.laptrinhweb2.Product.ProductGroupService;
 
 import java.io.IOException;
 

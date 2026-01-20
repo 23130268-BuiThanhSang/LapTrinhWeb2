@@ -1,14 +1,13 @@
-package vn.edu.hcmuaf.fit.laptrinhweb2.controller;
+package vn.edu.hcmuaf.fit.laptrinhweb2.Product;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import vn.edu.hcmuaf.fit.laptrinhweb2.dao.ProductDao;
-import vn.edu.hcmuaf.fit.laptrinhweb2.model.Product;
 
 import java.io.IOException;
+import java.util.List;
 
 @WebServlet("/ProductMainPage")
 public class ProductMainPageController extends HttpServlet {
@@ -30,6 +29,18 @@ public class ProductMainPageController extends HttpServlet {
 
         ProductDao dao = new ProductDao();
         Product product = dao.getProduct(id);
+        String ratingRaw = request.getParameter("rating");
+        Integer rating = null;
+
+        if (ratingRaw != null && !ratingRaw.isEmpty()) {
+            rating = Integer.parseInt(ratingRaw);
+        }
+
+        List<ProductReview> reviews = dao.getReviewsByProduct(id, rating);
+
+        request.setAttribute("reviews", reviews);
+        request.setAttribute("reviewCount", reviews.size());
+        request.setAttribute("selectedRating", rating);
 
         request.setAttribute("product", product);
 
