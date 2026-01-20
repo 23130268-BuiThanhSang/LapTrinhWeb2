@@ -1,15 +1,16 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="CSS/ProductMainPage.css">
     <link rel="stylesheet" href="CSS/Style.css">
+    <link rel="stylesheet" href="CSS/ProductMainPage.css?v=<%=System.currentTimeMillis()%>">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
-<jsp:include page="/Share/header.jsp" />
+<jsp:include page="/Share/header.jsp"/>
 <nav class="breadcrumb">
     <a href="#">Trang chủ</a>
     <span class="separator">›</span>
@@ -17,81 +18,109 @@
     <span class="separator">›</span>
     <a href="#">Giày</a>
     <span class="separator">›</span>
-    <a href="#">Giày nam</a>
+    <a href="#">${product.productType}</a>
     <span class="separator">›</span>
-    <a href="#">Giày Chạy Bộ Nam Nike Pegasus 41</a>
+    <a href="#">${product.name}</a>
 </nav>
+<c:set var="defaultVariant" value="${product.variants[0]}" />
+<c:set var="displayedColors" value="${emptyList}" />
 <div class = "UpperPart">
     <div class="ProductPreview">
         <div class="MainImageContainer">
-        <img src="lgImg/ProductSample/HQ1717-400-1.png" class="MainImage" alt="Main shoe image">
+            <img src="${product.variants[0].images[0].imageUrl}" id="mainImage" class="MainImage">
         </div>
-        <div class="ImageSlider">
-            <button class="ThumbButton"><img src="${product.img}" alt=""></button>
-            <button class="ThumbButton"><img src="${product.img}" alt=""></button>
-            <button class="ThumbButton"><img src="${product.img}" alt=""></button>
-            <button class="ThumbButton"><img src="${product.img}" alt=""></button>
-            <button class="ThumbButton"><img src="${product.img}" alt=""></button>
-            <button class="ThumbButton"><img src="${product.img}" alt=""></button>
-            <button class="ThumbButton"><img src="${product.img}" alt=""></button>
-            <button class="ThumbButton"><img src="${product.img}" alt=""></button>
+        <div class="ImageSlider GallerySlider">
+            <c:forEach items="${product.variants}" var="variant">
+                <c:forEach items="${variant.images}" var="img" varStatus="i">
+                    <img src="${img.imageUrl}"
+                         class="GalleryThumb ${variant.color == defaultVariant.color && i.index == 0 ? 'active' : ''}"
+                         data-color="${variant.color}"
+                         style="${variant.color == defaultVariant.color ? '' : 'display:none'}"
+                         onclick="changeMainImage(this)">
+                </c:forEach>
+            </c:forEach>
         </div>
+
     </div>
     <div class="ProductInfo">
         <div class = "HighlightBox">
-        <p class="ProductBrand">NIKE</p>
-
-        <h1 class="ProductName">${product.name}</h1>
-        <div class="Rating">
+            <h1 class="ProductName">${product.name}</h1>
+            <p class="ProductBrand">Thương hiệu: ${product.brand}</p>
+            <p class="ProductBrand">Phân loại: ${product.productType}</p>
+            <p class="ProductBrand">Giới tính: ${product.productGender}</p>
+            <p class="ProductBrand">
+                Màu sắc: <span id="selectedColorText">${defaultVariant.color}</span>
+            </p>
+            <div class="Rating">
             <i class="fa-solid fa-star"></i>
             <i class="fa-solid fa-star"></i>
             <i class="fa-solid fa-star"></i>
             <i class="fa-solid fa-star"></i>
             <i class="fa-solid fa-star"></i>
-            <span class="ReviewCount">2 đánh giá</span>
+            <span class="ReviewCount">5 đánh giá</span>
         </div>
-        <p class="ProductPrice">${product.price}</p>
         </div>
         <div class="ProductColor">
-            <p class="SectionTitle">Màu Sắc: <span>XANH DƯƠNG (RACBLU/SAI)</span></p>
-            <div class="ColorOptions">
-                <button class="ColorButton"><img ></button>
-                <button class="ColorButton"><img ></button>
-                <button class="ColorButton"><img ></button>
+            <p class="ProductBrand">Màu sắc:</p>
+            <div class="ImageSlider ColorSlider">
+                <c:set var="shownColors" value="" />
+
+                <c:forEach items="${product.variants}" var="variant" varStatus="v">
+                    <c:if test="${!shownColors.contains(variant.color)}">
+                        <img src="${variant.images[0].imageUrl}"
+                             class="ColorThumb ${variant.color == defaultVariant.color ? 'active' : ''}"
+                             data-color="${variant.color}"
+                             onclick="changeColor(this)">
+
+                        <c:set var="shownColors" value="${shownColors}${variant.color}," />
+                    </c:if>
+                </c:forEach>
             </div>
         </div>
 
         <div class="ProductSize">
             <p class="SectionTitle">Kích Thước</p>
             <div class="SizeOptions">
-                <button class="SizeButton">UK 3.5</button>
-                <button class="SizeButton">UK 4</button>
-                <button class="SizeButton">UK 4.5</button>
-                <button class="SizeButton">UK 5</button>
-                <button class="SizeButton">UK 5.5</button>
-                <button class="SizeButton">UK 6</button>
-                <button class="SizeButton">UK 6.5</button>
+                <c:forEach items="${product.variants}" var="variant">
+                    <c:if test="${variant.color == defaultVariant.color}">
+                        <button class="SizeButton"
+                                data-price="${variant.price}"
+                                data-stock="${variant.stock}">
+                                ${variant.size}
+                        </button>
+                    </c:if>
+                </c:forEach>
             </div>
         </div>
 
-        <div class="ProductLinks">
-            <a href="#">Hướng dẫn chọn kích thước</a><br>
-            <a href="#">Kiểm tra tồn kho tại cửa hàng</a>
+
+        <div class="ProductSize">
+            <p class="SectionTitle">Giá sản phẩm:
+                <span id="unitPrice" data-price="${defaultVariant.price}">
+                    ${defaultVariant.price}
+                </span> VNĐ
+            </p>
+            <p class="SectionTitle">Tổng thành tiền:
+                <span id="totalPrice">
+                    ${defaultVariant.price}
+                </span> VNĐ
+            </p>
         </div>
+
         <div class="PurchaseSection">
             <div class = "HighlightBox">
             <div class="QuantityContainer">
-                <label for="quantity">Số lượng</label>
-                <div class="QuantityControl">
-                    <button class="QtyBtn">−</button>
-                    <input type="number" id="quantity" value="1" min="1">
-                    <button class="QtyBtn">+</button>
+                <div class="QuantityBoxForProduct">
+                    <label for="quantity" class="quantityText">Chọn số lượng:</label>
+                    <button class="qty-minus">-</button>
+                    <span class="quantity">1</span>
+                    <button class="qty-plus">+</button>
                 </div>
             </div>
 
             <div class="ActionButtons">
-                <button class="BuyNow">MUA NGAY</button>
                 <button class="AddToCart">THÊM VÀO GIỎ HÀNG</button>
+                <button class="BuyNow">MUA NGAY</button>
             </div>
             </div>
 <!--            <div class="ServiceList">-->
@@ -108,26 +137,31 @@
 
 </div>
 
-<div class = "LowerPart">
-    <div class = "LowerHighlightBox">
-    <div class="TabContainer">
-        <div class="TabButtons">
-            <button class="TabButton active">Thông tin sản phẩm</button>
-            <button class="TabButton">Quy định đổi trả</button>
-            <button class="TabButton">Hướng dẫn chăm sóc</button>
-        </div>
+<div class="LowerPart">
+    <div class="LowerHighlightBox">
+        <div class="TabContainer">
+            <div class="TabButtons">
+                <button class="TabButton active">Thông tin sản phẩm</button>
+                <button class="TabButton">Quy định đổi trả</button>
+                <button class="TabButton">Hướng dẫn chăm sóc</button>
+            </div>
 
-        <div class="TabWindow">
-            <div class="TabContents">
-                <p class="TabContent active">
-                    Thông tin cho vào đây.
-                </p>
-                <p class="TabContent">Nội dung quy định đổi trả ở đây.</p>
-                <p class="TabContent">Nội dung hướng dẫn chăm sóc ở đây.</p>
+            <div class="TabWindow">
+                <div class="TabContents">
+                    <div class="TabContent active">
+                        ${product.productInfor}
+                    </div>
+                    <div class="TabContent">
+                        ${product.productReturnInfor}
+                    </div>
+                    <div class="TabContent">
+                        ${product.productCareInstruction}
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    </div>
+</div>
 </div>
 <div class="RatingSection">
     <h3>ĐÁNH GIÁ CỦA BẢN THÂN</h3>
@@ -148,18 +182,18 @@
 
     <div class="RatingSummary">
         <div class="AverageRating">
-            <span class="Score" id="avgScore">5</span>
+            <span class="Score" id="avgScore">3</span>
             <span>trên 5</span>
         </div>
-
-        <select class="StarFilter" id="starFilter">
-            <option value="all">Tất cả</option>
-            <option value="5">5 Sao</option>
-            <option value="4">4 Sao</option>
-            <option value="3">3 Sao</option>
-            <option value="2">2 Sao</option>
-            <option value="1">1 Sao</option>
-        </select>
+        <div class = "Self_review">
+            <select class="self_rating">
+                <option value="5">5 Sao</option>
+                <option value="4">4 Sao</option>
+                <option value="3">3 Sao</option>
+                <option value="2">2 Sao</option>
+                <option value="1">1 Sao</option>
+            </select>
+        </div>
     </div>
 
     <div class="Stars" id="avgStars">
@@ -186,14 +220,7 @@
             </div>
             <div class="ReviewContent">
                 <p class="ReviewText">
-                    *Khen sản phẩm *Khen sản phẩm *Khen sản phẩm *Khen sản phẩm *Khen sản phẩm *Khen sản phẩm
-                    *Khen sản phẩm *Khen sản phẩm *Khen sản phẩm *Khen sản phẩm *Khen sản phẩm *Khen sản phẩm
-                    *Khen sản phẩm *Khen sản phẩm *Khen sản phẩm *Khen sản phẩm *Khen sản phẩm *Khen sản phẩm
-                    *Khen sản phẩm *Khen sản phẩm *Khen sản phẩm *Khen sản phẩm *Khen sản phẩm *Khen sản phẩm
-                    *Khen sản phẩm *Khen sản phẩm *Khen sản phẩm *Khen sản phẩm *Khen sản phẩm *Khen sản phẩm
-                    *Khen sản phẩm *Khen sản phẩm *Khen sản phẩm *Khen sản phẩm *Khen sản phẩm *Khen sản phẩm
-                    *Khen sản phẩm *Khen sản phẩm *Khen sản phẩm *Khen sản phẩm *Khen sản phẩm *Khen sản phẩm
-                    *Khen sản phẩm *Khen sản phẩm *Khen sản phẩm
+                    Chất lượng và độ bền vượt hơn kỳ vọng, rất đáng tiền mua.
                 </p>
             </div>
         </div>
@@ -201,7 +228,28 @@
         <!-- Review 2 -->
         <div class="ReviewItem">
             <div class="Reviewer">
-                <div class="Avatar"></div><span class="reviewUser">k**4</span>
+                <div class="Avatar">
+                </div><span class="reviewUser">k**4</span>
+                <div class="Stars reviewStars">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                </div>
+                <span class="ReviewDate">2025-04-3 19:24</span>
+            </div>
+            <div class="ReviewContent">
+                <p class="ReviewText">
+                    Giao hàng nhanh, chất liệu, màu sắc rất tốt, cảm giác khi mang vào không hề khó chịu.
+                </p>
+            </div>
+        </div>
+        <!-- Review 3 -->
+        <div class="ReviewItem">
+            <div class="Reviewer">
+                <div class="Avatar">
+                </div><span class="reviewUser">s**8</span>
                 <div class="Stars reviewStars">
                     <i class="fa-solid fa-star"></i>
                     <i class="fa-solid fa-star"></i>
@@ -213,17 +261,15 @@
             </div>
             <div class="ReviewContent">
                 <p class="ReviewText">
-                    *Khen sản phẩm
-                    *Khen sản phẩm
-                    *Khen sản phẩm
-                    *Khen sản phẩm
+                    Giá cả hợp lý, giao hàng đúng thời gian quy định, sản phẩm rất bền và đẹp, lần sau sẽ ủng hộ.
                 </p>
             </div>
         </div>
     </div>
 </div>
 <jsp:include page="/Share/footer.jsp" />
-<script src="JS/ProductMainPage.js"></script>
 <script src="JS/Notification.js"></script>
+<script src="${pageContext.request.contextPath}/JS/ProductMainPage.js?v=<%=System.currentTimeMillis()%>"></script>
+
 </body>
 </html>
