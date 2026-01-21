@@ -82,7 +82,6 @@ function changeColor(el) {
         }
     });
 
-    // nếu KHÔNG tìm được ảnh nào → fallback
     if (!firstVisible) {
         console.warn("No image for color:", selectedColor);
         thumbs.forEach(img => img.style.display = "");
@@ -91,5 +90,3 @@ function changeColor(el) {
 
     changeMainImage(firstVisible);
 }
-
-

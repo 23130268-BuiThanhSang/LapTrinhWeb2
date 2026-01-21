@@ -205,29 +205,22 @@
     background: #764ba2;
 }
 
-/* ===== RESPONSIVE ===== */
-@media (max-width: 1024px) {
-    .ImageManagerUI {
-        margin-left: 240px;
-        padding: 24px 28px;
-    }
+.DeleteForm {
+    margin-top: 6px;
 }
 
-@media (max-width: 768px) {
-    .ImageManagerUI {
-        margin-left: 72px;
-        padding: 20px;
-    }
+.DeleteBtn {
+    background: #fee2e2;
+    color: #b91c1c;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
 }
 
-@media (max-width: 480px) {
-    .ImageManagerUI {
-        margin-left: 0;
-        padding: 16px;
-    }
-
-    .UploadForm {
-        flex-direction: column;
-        align-items: stretch;
-    }
+.DeleteBtn:hover {
+    background: #fecaca;
 }
+
+

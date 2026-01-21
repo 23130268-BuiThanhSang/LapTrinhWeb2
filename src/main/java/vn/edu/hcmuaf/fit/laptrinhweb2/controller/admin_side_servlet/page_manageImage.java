@@ -38,6 +38,13 @@ public class page_manageImage extends HttpServlet {
         request.setAttribute("files", fileList);
         request.setAttribute("path", path);
 
+        File[] all = imageService.getAllFiles("");
+        List<File> folders = Arrays.stream(all)
+                .filter(File::isDirectory)
+                .toList();
+        request.setAttribute("folders", folders);
+
+
         request.getRequestDispatcher("/manageImage.jsp")
                 .forward(request, response);
     }
