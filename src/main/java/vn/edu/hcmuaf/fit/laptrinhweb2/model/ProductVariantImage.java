@@ -4,26 +4,38 @@ import java.util.List;
 
 public class ProductVariantImage {
     private int id;
+    private int variantId;
     private String imageUrl;
-    public ProductVariantImage(int id, String imageUrl) {
-        super();
-        this.id = id;
-        this.imageUrl = imageUrl;
-    }
     public ProductVariantImage() {
         super();
     }
-    public int getId() {
-        return id;
-    }
-    public void setId(int id) {
+    public ProductVariantImage(int id, int variantId, String imageUrl) {
         this.id = id;
-    }
-    public String getImageUrl() {
-        return imageUrl;
-    }
-    public void setImageUrl(String imageUrl) {
+        this.variantId = variantId;
         this.imageUrl = imageUrl;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getVariantId() {
+        return variantId;
+    }
+
+    public void setVariantId(int variantId) {
+        this.variantId = variantId;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
 }

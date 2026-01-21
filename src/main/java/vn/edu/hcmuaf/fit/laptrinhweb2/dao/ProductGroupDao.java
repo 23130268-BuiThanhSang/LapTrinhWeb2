@@ -34,7 +34,7 @@ public class ProductGroupDao extends BaseDao {
         );
     }
 
-    private String getInsertSql(GroupType type) {
+    public String getInsertSql(GroupType type) {
         switch (type) {
             case BRAND:
                 return "INSERT INTO brands (brand_name, thumbnail_url, image_url, display_order) " +
@@ -50,7 +50,7 @@ public class ProductGroupDao extends BaseDao {
         }
     }
 
-    private String getSelectSql(GroupType type) {
+    public String getSelectSql(GroupType type) {
         switch (type) {
             case BRAND:
                 return "SELECT brand_id AS id, brand_name AS name, thumbnail_url, image_url, display_order " +
@@ -61,6 +61,25 @@ public class ProductGroupDao extends BaseDao {
             case SPORT:
                 return "SELECT sport_id AS id, sport_name AS name, thumbnail_url, image_url, display_order " +
                         "FROM sports ORDER BY display_order";
+            default:
+                throw new IllegalArgumentException("Invalid group type");
+        }
+    }
+
+    public ProductGroup getProductGroup(GroupType type, int id) {
+        switch (type) {
+            case BRAND:
+                return get().withHandle(h -> h.createQuery("select * from brand where id = :id")
+                        .bind("id", id)
+                        .mapToBean(ProductGroup.class).findOne().orElse(null));
+            case COLLECTION:
+                return get().withHandle(h -> h.createQuery("select * from collection where id = :id")
+                        .bind("id", id)
+                        .mapToBean(ProductGroup.class).findOne().orElse(null));
+            case SPORT:
+                return get().withHandle(h -> h.createQuery("select * from sport where id = :id")
+                        .bind("id", id)
+                        .mapToBean(ProductGroup.class).findOne().orElse(null));
             default:
                 throw new IllegalArgumentException("Invalid group type");
         }

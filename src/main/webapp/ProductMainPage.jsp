@@ -48,8 +48,8 @@
     <div class="ProductInfo">
         <div class = "HighlightBox">
             <h1 class="ProductName">${product.name}</h1>
-            <p class="ProductBrand">Thương hiệu: ${product.brand}</p>
-            <p class="ProductBrand">Phân loại: ${product.productType}</p>
+            <p class="ProductBrand">Thương hiệu: ${product.brand.getName()}</p>
+            <p class="ProductBrand">Phân loại: ${product.productType.getName()}</p>
             <p class="ProductBrand">Giới tính: ${product.productGender}</p>
             <p class="ProductBrand">
                 Màu sắc: <span id="selectedColorText">${defaultVariant.color}</span>
@@ -126,15 +126,6 @@
                     <button class="BuyNow">MUA NGAY</button>
                 </div>
             </div>
-            <!--            <div class="ServiceList">-->
-            <!--                <p>Đăng ký nhận voucher 150K <a href="#">Đăng ký ngay</a></p>-->
-            <!--                <p>Miễn phí giao hàng đơn từ 699K <a href="#">Xem chi tiết</a></p>-->
-            <!--                <p>Đổi trả miễn phí đến 30 ngày <a href="#">Xem chi tiết</a></p>-->
-            <!--                <p>Trả góp 0% lãi suất từ 3.000.000 VNĐ <a href="#">Xem chi tiết</a></p>-->
-            <!--                <p>Thanh toán trực tuyến nhanh chóng và an toàn.</p>-->
-            <!--                <p>Sản phẩm chính hãng 100%.</p>-->
-            <!--            </div>-->
-
         </div>
     </div>
 
