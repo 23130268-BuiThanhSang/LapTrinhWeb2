@@ -3,6 +3,7 @@ package vn.edu.hcmuaf.fit.laptrinhweb2.dao;
 import org.jdbi.v3.core.Jdbi;
 import org.jdbi.v3.core.statement.PreparedBatch;
 import vn.edu.hcmuaf.fit.laptrinhweb2.model.Product;
+import vn.edu.hcmuaf.fit.laptrinhweb2.model.ProductReview;
 import vn.edu.hcmuaf.fit.laptrinhweb2.model.ProductVariant;
 import vn.edu.hcmuaf.fit.laptrinhweb2.model.ProductVariantImage;
 
@@ -88,7 +89,54 @@ public class ProductDao extends BaseDao{
         });
     }
 
+    public List<ProductReview> getReviewsByProduct(int productId, Integer rating) {
+        String sql = "SELECT r.id, r.user_id AS userId, " +
+                "                   r.product_id AS productId, " +
+                "                   r.review_date AS reviewDate, " +
+                "                   u.user_name AS userName, " +
+                "                   u.avatar_url AS avatarUrl, " +
+                "                   r.rating, r.review_text AS reviewText " +
+                "            FROM product_review r " +
+                "            JOIN accounts u ON r.user_id = u.id " +
+                "            WHERE r.product_id = :pid";
+        if (rating != null) {
+            sql += " AND r.rating = :rating";
+        }
 
+        sql += " ORDER BY r.review_date DESC";
+
+        final String finalSql = sql;
+
+        return get().withHandle(h -> {
+            var query = h.createQuery(finalSql)
+                    .bind("pid", productId);
+
+            if (rating != null) {
+                query.bind("rating", rating);
+            }
+
+            return query.mapToBean(ProductReview.class).list();
+        });
+    }
+
+    public void insertReview(int userId, int productId, int rating, String text) {
+        get().useHandle(h ->
+                h.createUpdate("""
+        INSERT INTO product_review(user_id, product_id, rating, review_text, review_date)
+        VALUES (:uid, :pid, :rating, :text, NOW())
+    """).bind("uid", userId).bind("pid", productId).bind("rating", rating).bind("text", text).execute()
+        );
+    }
+
+    public int countReviewsByProduct(int productId) {
+        return get().withHandle(h ->
+                h.createQuery("""
+            SELECT COUNT(*)
+            FROM product_review
+            WHERE product_id = :pid
+        """).bind("pid", productId).mapTo(int.class).one()
+        );
+    }
 
 
     public void insertProduct(List<Product> products) {
