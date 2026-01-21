@@ -5,8 +5,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="CSS/Style.css">
-    <link rel="stylesheet" href="CSS/ProductMainPage.css?v=<%=System.currentTimeMillis()%>">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/Style.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/ProductMainPage.css?v=<%=System.currentTimeMillis()%>">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
@@ -16,18 +16,21 @@
     <span class="separator">›</span>
     <a href="#">Trang sản phẩm</a>
     <span class="separator">›</span>
-    <a href="#">Giày</a>
-    <span class="separator">›</span>
     <a href="#">${product.productType}</a>
     <span class="separator">›</span>
     <a href="#">${product.name}</a>
 </nav>
-<c:set var="defaultVariant" value="${product.variants[0]}" />
-<c:set var="displayedColors" value="${emptyList}" />
+<c:if test="${not empty product.variants}">
+    <c:set var="defaultVariant" value="${product.variants[0]}" />
+</c:if>
+<c:set var="displayedColors" value="" />
 <div class = "UpperPart">
     <div class="ProductPreview">
         <div class="MainImageContainer">
-            <img src="${product.variants[0].images[0].imageUrl}" id="mainImage" class="MainImage">
+            <c:if test="${not empty product.variants and not empty product.variants[0].images}">
+                <img src="${product.variants[0].images[0].imageUrl}"
+                     id="mainImage" class="MainImage">
+            </c:if>
         </div>
         <div class="ImageSlider GallerySlider">
             <c:forEach items="${product.variants}" var="variant">
@@ -52,13 +55,13 @@
                 Màu sắc: <span id="selectedColorText">${defaultVariant.color}</span>
             </p>
             <div class="Rating">
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <span class="ReviewCount">5 đánh giá</span>
-        </div>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <span class="ReviewCount">5 đánh giá</span>
+            </div>
         </div>
         <div class="ProductColor">
             <p class="ProductBrand">Màu sắc:</p>
@@ -109,28 +112,28 @@
 
         <div class="PurchaseSection">
             <div class = "HighlightBox">
-            <div class="QuantityContainer">
-                <div class="QuantityBoxForProduct">
-                    <label for="quantity" class="quantityText">Chọn số lượng:</label>
-                    <button class="qty-minus">-</button>
-                    <span class="quantity">1</span>
-                    <button class="qty-plus">+</button>
+                <div class="QuantityContainer">
+                    <div class="QuantityBoxForProduct">
+                        <label for="quantity" class="quantityText">Chọn số lượng:</label>
+                        <button class="qty-minus">-</button>
+                        <span class="quantity">1</span>
+                        <button class="qty-plus">+</button>
+                    </div>
+                </div>
+
+                <div class="ActionButtons">
+                    <button class="AddToCart">THÊM VÀO GIỎ HÀNG</button>
+                    <button class="BuyNow">MUA NGAY</button>
                 </div>
             </div>
-
-            <div class="ActionButtons">
-                <button class="AddToCart">THÊM VÀO GIỎ HÀNG</button>
-                <button class="BuyNow">MUA NGAY</button>
-            </div>
-            </div>
-<!--            <div class="ServiceList">-->
-<!--                <p>Đăng ký nhận voucher 150K <a href="#">Đăng ký ngay</a></p>-->
-<!--                <p>Miễn phí giao hàng đơn từ 699K <a href="#">Xem chi tiết</a></p>-->
-<!--                <p>Đổi trả miễn phí đến 30 ngày <a href="#">Xem chi tiết</a></p>-->
-<!--                <p>Trả góp 0% lãi suất từ 3.000.000 VNĐ <a href="#">Xem chi tiết</a></p>-->
-<!--                <p>Thanh toán trực tuyến nhanh chóng và an toàn.</p>-->
-<!--                <p>Sản phẩm chính hãng 100%.</p>-->
-<!--            </div>-->
+            <!--            <div class="ServiceList">-->
+            <!--                <p>Đăng ký nhận voucher 150K <a href="#">Đăng ký ngay</a></p>-->
+            <!--                <p>Miễn phí giao hàng đơn từ 699K <a href="#">Xem chi tiết</a></p>-->
+            <!--                <p>Đổi trả miễn phí đến 30 ngày <a href="#">Xem chi tiết</a></p>-->
+            <!--                <p>Trả góp 0% lãi suất từ 3.000.000 VNĐ <a href="#">Xem chi tiết</a></p>-->
+            <!--                <p>Thanh toán trực tuyến nhanh chóng và an toàn.</p>-->
+            <!--                <p>Sản phẩm chính hãng 100%.</p>-->
+            <!--            </div>-->
 
         </div>
     </div>
@@ -164,35 +167,54 @@
 </div>
 </div>
 <div class="RatingSection">
-    <h3>ĐÁNH GIÁ CỦA BẢN THÂN</h3>
-    <div class = "HighlightBox">
-        <div class = "Self_review">
-            <select class="self_rating" id="self_rating">
-                <option value="5">5 Sao</option>
-                <option value="4">4 Sao</option>
-                <option value="3">3 Sao</option>
-                <option value="2">2 Sao</option>
-                <option value="1">1 Sao</option>
-            </select>
-            <textarea class = "review_input" placeholder="Nhập đánh giá..."></textarea>
-            <button class = "review_complete_button">Hoàn Thành</button>
-        </div>
-    </div>
-    <h3>ĐÁNH GIÁ CỦA MỌI NGƯỜI</h3>
+    <c:if test="${isLogin}">
+        <h3>ĐÁNH GIÁ CỦA BẢN THÂN</h3>
 
+        <div class="HighlightBox">
+            <div class="Reviewer">
+                <img src="${sessionScope.auth.avatarUrl}" class="Avatar"/>
+                <span class="username">${sessionScope.auth.username}</span>
+            </div>
+            <form method="post" action="${pageContext.request.contextPath}/AddReview" class="SelfReviewForm">
+                <input type="hidden" name="productId" value="${product.id}" />
+                <div class="Self_review">
+                    <textarea name="reviewText" placeholder="Nhập đánh giá..." required></textarea>
+                    <div class="ReviewActionRow">
+                        <select name="rating" class="self_rating">
+                            <option value="5">5 Sao</option>
+                            <option value="4">4 Sao</option>
+                            <option value="3">3 Sao</option>
+                            <option value="2">2 Sao</option>
+                            <option value="1">1 Sao</option>
+                        </select>
+                        <button type="submit" class="review_complete_button">
+                            Hoàn Thành
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </c:if>
+    <h3>ĐÁNH GIÁ CỦA MỌI NGƯỜI</h3>
     <div class="RatingSummary">
         <div class="AverageRating">
-            <span class="Score" id="avgScore">3</span>
-            <span>trên 5</span>
+            <span class="Score">${reviewCount}</span>
+            <span>Đánh giá</span>
         </div>
-        <div class = "Self_review">
-            <select class="self_rating">
-                <option value="5">5 Sao</option>
-                <option value="4">4 Sao</option>
-                <option value="3">3 Sao</option>
-                <option value="2">2 Sao</option>
-                <option value="1">1 Sao</option>
-            </select>
+
+        <div class="Self_review">
+            <form method="get" action="ProductMainPage">
+                <input type="hidden" name="id" value="${product.id}" />
+
+                <select name="rating" class="self_rating" onchange="this.form.submit()">
+                    <option value="">Tất cả</option>
+                    <option value="5" ${param.rating == '5' ? 'selected' : ''}>5 Sao</option>
+                    <option value="4" ${param.rating == '4' ? 'selected' : ''}>4 Sao</option>
+                    <option value="3" ${param.rating == '3' ? 'selected' : ''}>3 Sao</option>
+                    <option value="2" ${param.rating == '2' ? 'selected' : ''}>2 Sao</option>
+                    <option value="1" ${param.rating == '1' ? 'selected' : ''}>1 Sao</option>
+                </select>
+            </form>
         </div>
     </div>
 
@@ -205,71 +227,30 @@
     </div>
 
     <div class="ReviewList" id="reviewList">
-        <!-- Review 1 -->
-        <div class="ReviewItem">
-            <div class="Reviewer">
-                <div class="Avatar"></div> <span class="reviewUser">m**t</span>
-                <div class="Stars reviewStars">
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
+        <c:forEach items="${reviews}" var="r">
+            <div class="ReviewItem">
+                <div class="Reviewer">
+                    <img src="${r.avatarUrl}" class="Avatar"/>
+                    <span class="username">${r.userName}</span>
+                    <span class="date">${r.reviewDate}</span>
                 </div>
-                <span class="ReviewDate">2024-10-21 00:11</span>
-            </div>
-            <div class="ReviewContent">
-                <p class="ReviewText">
-                    Chất lượng và độ bền vượt hơn kỳ vọng, rất đáng tiền mua.
-                </p>
-            </div>
-        </div>
 
-        <!-- Review 2 -->
-        <div class="ReviewItem">
-            <div class="Reviewer">
-                <div class="Avatar">
-                </div><span class="reviewUser">k**4</span>
-                <div class="Stars reviewStars">
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
+                <div class="Stars">
+                    <c:forEach begin="1" end="${r.rating}">
+                        <i class="fa-solid fa-star"></i>
+                    </c:forEach>
                 </div>
-                <span class="ReviewDate">2025-04-3 19:24</span>
+                <p>${r.reviewText}</p>
             </div>
-            <div class="ReviewContent">
-                <p class="ReviewText">
-                    Giao hàng nhanh, chất liệu, màu sắc rất tốt, cảm giác khi mang vào không hề khó chịu.
-                </p>
-            </div>
-        </div>
-        <!-- Review 3 -->
-        <div class="ReviewItem">
-            <div class="Reviewer">
-                <div class="Avatar">
-                </div><span class="reviewUser">s**8</span>
-                <div class="Stars reviewStars">
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                </div>
-                <span class="ReviewDate">2025-06-12 12:15</span>
-            </div>
-            <div class="ReviewContent">
-                <p class="ReviewText">
-                    Giá cả hợp lý, giao hàng đúng thời gian quy định, sản phẩm rất bền và đẹp, lần sau sẽ ủng hộ.
-                </p>
-            </div>
-        </div>
+        </c:forEach>
     </div>
 </div>
 <jsp:include page="/Share/footer.jsp" />
+<script>
+    const IS_LOGGED_IN = ${sessionScope.auth != null};
+</script>
+
 <script src="JS/Notification.js"></script>
 <script src="${pageContext.request.contextPath}/JS/ProductMainPage.js?v=<%=System.currentTimeMillis()%>"></script>
-
 </body>
 </html>
