@@ -18,7 +18,14 @@
         <div class="FilterHeader">
             <i class="fa-solid fa-filter"></i> BỘ LỌC TÌM KIẾM
         </div>
-
+        <div class="FilterActions">
+            <button type="submit" class="ApplyFilterBtn">
+                Áp dụng bộ lọc
+            </button>
+            <a href="ListProduct" class="ClearFilterBtn">
+                Xóa bộ lọc
+            </a>
+        </div>
         <div class="FilterContent">
             <details class="FilterGroup" open>
                 <summary>Thương hiệu</summary>
