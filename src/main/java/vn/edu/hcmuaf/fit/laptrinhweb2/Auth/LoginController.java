@@ -22,13 +22,24 @@ public class LoginController extends HttpServlet {
         AuthService as = new AuthService();
         Account acc = as.login(username, pass);
 
-        if(acc != null) {
-            HttpSession session = request.getSession();
-            session.setAttribute("auth", acc);
-            response.sendRedirect("HomePage.jsp");
-        } else {
-            request.setAttribute("error", "tên tài khoản hoặc mật khẩu không khớp!");
+        if (acc == null) {
+            request.setAttribute("error", "Sai tài khoản hoặc mật khẩu");
             request.getRequestDispatcher("login.jsp").forward(request, response);
+            return;
         }
+
+        HttpSession session = request.getSession();
+        session.setAttribute("auth", acc);
+        session.setAttribute("isLogin", true);
+
+        String redirectUrl = (String) session.getAttribute("redirectAfterLogin");
+
+        if (redirectUrl != null) {
+            session.removeAttribute("redirectAfterLogin");
+            response.sendRedirect(redirectUrl);
+        } else {
+            response.sendRedirect(request.getContextPath() + "/Home");
+        }
+
     }
 }

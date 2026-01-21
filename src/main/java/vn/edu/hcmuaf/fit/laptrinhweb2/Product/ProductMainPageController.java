@@ -32,6 +32,11 @@ public class ProductMainPageController extends HttpServlet {
         String ratingRaw = request.getParameter("rating");
         Integer rating = null;
 
+        if (product == null) {
+            response.sendRedirect("Home");
+            return;
+        }
+
         if (ratingRaw != null && !ratingRaw.isEmpty()) {
             rating = Integer.parseInt(ratingRaw);
         }
@@ -39,9 +44,13 @@ public class ProductMainPageController extends HttpServlet {
         List<ProductReview> reviews = dao.getReviewsByProduct(id, rating);
 
         request.setAttribute("reviews", reviews);
-        request.setAttribute("reviewCount", reviews.size());
-        request.setAttribute("selectedRating", rating);
+        int totalReviewCount = dao.countReviewsByProduct(id);
 
+        request.setAttribute("reviewCount", totalReviewCount);
+
+        request.setAttribute("selectedRating", rating);
+        request.setAttribute("isLogin",
+                request.getSession().getAttribute("auth") != null);
         request.setAttribute("product", product);
 
         request.getRequestDispatcher("/ProductMainPage.jsp")

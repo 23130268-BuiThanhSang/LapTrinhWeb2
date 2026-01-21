@@ -116,7 +116,24 @@ public class ProductDao extends BaseDao {
         });
     }
 
+    public void insertReview(int userId, int productId, int rating, String text) {
+        get().useHandle(h ->
+                h.createUpdate("""
+        INSERT INTO product_review(user_id, product_id, rating, review_text, review_date)
+        VALUES (:uid, :pid, :rating, :text, NOW())
+    """).bind("uid", userId).bind("pid", productId).bind("rating", rating).bind("text", text).execute()
+        );
+    }
 
+    public int countReviewsByProduct(int productId) {
+        return get().withHandle(h ->
+                h.createQuery("""
+            SELECT COUNT(*)
+            FROM product_review
+            WHERE product_id = :pid
+        """).bind("pid", productId).mapTo(int.class).one()
+        );
+    }
 
     public void insertProduct(List<Product> products) {
         Jdbi jdbi= get();

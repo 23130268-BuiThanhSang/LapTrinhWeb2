@@ -355,7 +355,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 10px;
+    margin-top: 20px;
 }
 
 .AverageRating .Score {
@@ -433,6 +433,7 @@ body {
     margin-top: 10px;
     resize: vertical;
     font-size: 15px;
+    resize: none;
 }
 
 .review_complete_button {
@@ -449,14 +450,6 @@ body {
 
 .review_complete_button:hover {
     background: #028ac0;
-}
-
-.LowerHighlightBox {
-    background: #ffffff;
-}
-
-.Self_review textarea {
-    resize: none;
 }
 
 .QuantityContainer{
@@ -494,4 +487,18 @@ body {
 
 .ProductSize{
     transform: translateY(15px);
+}
+
+.ReviewActionRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 12px;
+}
+
+.self_rating {
+    padding: 6px 14px;
+    border-radius: 8px;
+    border: 1px solid #00aaff;
+    color: #0077cc;
 }
