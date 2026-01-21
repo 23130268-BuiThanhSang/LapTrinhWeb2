@@ -85,4 +85,31 @@ public class ImageService {
         return file.delete();
     }
 
+    public boolean moveImage(String fromPath, String toDirPath) {
+        if (fromPath == null || toDirPath == null) {
+            return false;
+        }
+
+        File source = new File(ROOT, fromPath);
+        File targetDir = new File(ROOT, toDirPath);
+
+        if (!source.exists() || !source.isFile()) {
+            return false;
+        }
+
+        if (!targetDir.exists() || !targetDir.isDirectory()) {
+            return false;
+        }
+
+        File targetFile = new File(targetDir, source.getName());
+
+        // prevent overwrite
+        if (targetFile.exists()) {
+            return false;
+        }
+
+        return source.renameTo(targetFile);
+    }
+
+
 }
