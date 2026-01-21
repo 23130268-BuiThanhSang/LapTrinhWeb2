@@ -25,6 +25,7 @@ public class addUser extends HttpServlet {
         acc.setAccountName(request.getParameter("accountName"));
         acc.setPhoneNumber(request.getParameter("phoneNumber"));
         acc.setAccountEmail(request.getParameter("accountEmail"));
+        acc.setPassword(request.getParameter("password"));
         acc.setAccountStatus(Integer.parseInt(request.getParameter("accountStatus")));
         // acc.setAvatarUrl(request.getParameter("avatarUrl")); // placeholder ok
 
