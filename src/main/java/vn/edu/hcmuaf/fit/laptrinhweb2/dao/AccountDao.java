@@ -4,66 +4,140 @@ import vn.edu.hcmuaf.fit.laptrinhweb2.model.Account;
 
 import java.util.List;
 
-public class AccountDao extends BaseDao{
+public class AccountDao extends BaseDao {
+
     public List<Account> getAll() {
         return get().withHandle(h ->
-                h.createQuery("SELECT * FROM account")
-                        .mapToBean(Account.class)
+                h.createQuery("SELECT * FROM accounts")
+                        .map((rs, ctx) -> {
+                            Account a = new Account();
+                            a.setId(rs.getInt("id"));
+                            a.setUsername(rs.getString("user_name"));
+                            a.setPassword(rs.getString("password"));
+                            a.setAccountStatus(rs.getInt("account_status"));
+                            a.setPhoneNumber(
+                                    rs.getObject("user_phone_number") == null
+                                            ? null
+                                            : rs.getString("user_phone_number")
+                            );
+                            a.setAccountEmail(rs.getString("user_email"));
+                            a.setAccountName(rs.getString("account_name"));
+                            a.setAvatarUrl(rs.getString("avatar_url"));
+                            a.setRole(rs.getString("role"));
+                            return a;
+                        })
                         .list()
         );
     }
-    public Account getByID(int id) {
-        return get().withHandle(h -> h.createQuery("select * from account where id = :id")
-                .bind("id", id)
-                .mapToBean(Account.class).stream().findFirst().orElse(null));
-    }
-    public Account getByUsername(String username) {
-        return get().withHandle(h -> h.createQuery("select * from account where username = :username")
-                .bind("username", username)
-                .mapToBean(Account.class).stream().findFirst().orElse(null));
-    }
 
-    public void update(Account acc) {
-        get().useHandle(handle ->
-                handle.createUpdate("""
-            UPDATE account
-            SET
-                username = :username,
-                account_status = :accountStatus,
-                phone_number = :phoneNumber,
-                account_email = :accountEmail,
-                account_name = :accountName,
-                last_login = :lastLogin
-            WHERE id = :id
-        """)
-                        .bindBean(acc)
-                        .execute()
+    public Account getByID(int id) {
+        return get().withHandle(h ->
+                h.createQuery("SELECT * FROM accounts WHERE id = :id")
+                        .bind("id", id)
+                        .map((rs, ctx) -> {
+                            Account a = new Account();
+                            a.setId(rs.getInt("id"));
+                            a.setUsername(rs.getString("user_name"));
+                            a.setPassword(rs.getString("password"));
+                            a.setAccountStatus(rs.getInt("account_status"));
+                            a.setPhoneNumber(
+                                    rs.getObject("user_phone_number") == null
+                                            ? null
+                                            : rs.getString("user_phone_number")
+                            );
+                            a.setAccountEmail(rs.getString("user_email"));
+                            a.setAccountName(rs.getString("account_name"));
+                            a.setAvatarUrl(rs.getString("avatar_url"));
+                            a.setRole(rs.getString("role"));
+                            return a;
+                        })
+                        .findFirst()
+                        .orElse(null)
         );
     }
 
+    public Account getByUsername(String username) {
+        return get().withHandle(h ->
+                h.createQuery("SELECT * FROM accounts WHERE user_name = :username")
+                        .bind("username", username)
+                        .map((rs, ctx) -> {
+                            Account a = new Account();
+                            a.setId(rs.getInt("id"));
+                            a.setUsername(rs.getString("user_name"));
+                            a.setPassword(rs.getString("password"));
+                            a.setAccountStatus(rs.getInt("account_status"));
+                            a.setPhoneNumber(
+                                    rs.getObject("user_phone_number") == null
+                                            ? null
+                                            : rs.getString("user_phone_number")
+                            );
+                            a.setAccountEmail(rs.getString("user_email"));
+                            a.setAccountName(rs.getString("account_name"));
+                            a.setAvatarUrl(rs.getString("avatar_url"));
+                            a.setRole(rs.getString("role"));
+                            return a;
+                        })
+                        .findFirst()
+                        .orElse(null)
+        );
+    }
+
+    public void update(Account acc) {
+        get().useHandle(h ->
+                h.createUpdate("""
+                    UPDATE accounts
+                    SET
+                        user_name = :username,
+                        account_status = :accountStatus,
+                        user_phone_number = :phoneNumber,
+                        user_email = :accountEmail,
+                        account_name = :accountName,
+                        avatar_url = :avatarUrl,
+                        role = :role
+                    WHERE id = :id
+                """)
+                        .bind("id", acc.getId())
+                        .bind("username", acc.getUsername())
+                        .bind("accountStatus", acc.getAccountStatus())
+                        .bind("phoneNumber", acc.getPhoneNumber())
+                        .bind("accountEmail", acc.getAccountEmail())
+                        .bind("accountName", acc.getAccountName())
+                        .bind("avatarUrl", acc.getAvatarUrl())
+                        .bind("role", acc.getRole())
+                        .execute()
+        );
+    }
     public void add(Account acc) {
-        get().useHandle(handle ->
-                handle.createUpdate("""
-        INSERT INTO account (
-            username,
-            account_status,
-            phone_number,
-            account_email,
-            account_name,
-            last_login,
-            role
-        )
-        VALUES (
-            :username,
-            :accountStatus,
-            :phoneNumber,
-            :accountEmail,
-            :accountName,
-            :lastLogin,
-            :role
-        )
-    """)
-                        .bindBean(acc)
+        get().useHandle(h ->
+                h.createUpdate("""
+                INSERT INTO accounts (
+                    user_name,
+                    password,
+                    account_name,
+                    account_status,
+                    user_phone_number,
+                    user_email,
+                    role,
+                    avatar_url
+                )
+                VALUES (
+                    :username,
+                    :password,
+                    :accountName,
+                    :accountStatus,
+                    :phoneNumber,
+                    :accountEmail,
+                    'USER',
+                    :avatarUrl
+                )
+            """)
+                        .bind("username", acc.getUsername())
+                        .bind("password", acc.getPassword())
+                        .bind("accountName", acc.getAccountName())
+                        .bind("accountStatus", acc.getAccountStatus())
+                        .bind("phoneNumber", acc.getPhoneNumber())
+                        .bind("accountEmail", acc.getAccountEmail())
+                        .bind("avatarUrl", acc.getAvatarUrl())
                         .execute()
         );
     }

@@ -60,10 +60,11 @@
                     </div>
 
                     <div class="userField">
-                        <label>Birth Year</label>
-                        <input type="number"
-                               placeholder="Not implemented yet"
-                               disabled>
+                        <label>Password</label>
+                        <input type="text"
+                               name="password"
+                               placeholder=""
+                               value="">
                     </div>
 
                     <div class="userField">

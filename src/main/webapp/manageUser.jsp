@@ -68,11 +68,6 @@
                                     ${acc.totalSpent}
                             </div>
 
-                            <!-- Last activity (not implemented yet) -->
-                            <div class="userTxt4">
-                                    ${acc.account.lastLogin}
-                            </div>
-
                             <!-- Online / Offline (TEMP logic) -->
                             <div class="userTxt5">
                                 <c:choose>

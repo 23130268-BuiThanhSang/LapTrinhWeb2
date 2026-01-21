@@ -11,10 +11,9 @@ public class Account {
     private String phoneNumber;
     private String accountEmail;
     private String role;
-    private Date lastLogin;
     private String avatarUrl;
     public Account(int id, String username, String accountName, String password, int accountStatus, String phoneNumber,
-                   String accountEmail, String role, Date lastLogin, String avatarUrl) {
+                   String accountEmail, String role, String avatarUrl) {
         super();
         this.id = id;
         this.username = username;
@@ -24,7 +23,6 @@ public class Account {
         this.phoneNumber = phoneNumber;
         this.accountEmail = accountEmail;
         this.role = role;
-        this.lastLogin = lastLogin;
         this.avatarUrl = avatarUrl;
     }
     public Account() {
@@ -77,12 +75,6 @@ public class Account {
     }
     public void setRole(String role) {
         this.role = role;
-    }
-    public Date getLastLogin() {
-        return lastLogin;
-    }
-    public void setLastLogin(Date lastLogin) {
-        this.lastLogin = lastLogin;
     }
     public String getAvatarUrl() {
         return avatarUrl;

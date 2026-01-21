@@ -11,7 +11,7 @@ public class AnnouncementDao extends BaseDao {
     public void insert(Announcement announcement) {
 
         String sql = """
-            INSERT INTO announcement
+            INSERT INTO announcements
             (customer_type, content, target_url, is_active, expires_at)
             VALUES (:customerType, :content, :targetUrl, :isActive, :expiresAt)
         """;
@@ -36,7 +36,7 @@ public class AnnouncementDao extends BaseDao {
 
         String sql = """
             SELECT *
-            FROM announcement
+            FROM announcements
             ORDER BY created_at DESC
         """;
 

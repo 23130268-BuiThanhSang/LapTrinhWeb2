@@ -9,7 +9,7 @@ public class BannerDao extends BaseDao {
     public void addBanner(Banner banner) {
         get().useHandle(handle ->
                 handle.createUpdate("""
-                INSERT INTO banners (target_url, image_url, display_order, is_active)
+                INSERT INTO main_banner (target_url, image_url, display_order, is_active)
                 VALUES (:targetUrl, :imageUrl, :displayOrder, :isActive)
             """)
                         .bind("targetUrl", banner.getTargetUrl())
@@ -24,7 +24,7 @@ public class BannerDao extends BaseDao {
         return get().withHandle(handle ->
                 handle.createQuery("""
                 SELECT id, target_url, image_url, display_order, is_active
-                FROM banners
+                FROM main_banner
                 ORDER BY display_order ASC
             """)
                         .map((rs, ctx) -> {
@@ -44,7 +44,7 @@ public class BannerDao extends BaseDao {
         return get().withHandle(handle ->
                 handle.createQuery("""
                 SELECT id, target_url, image_url, display_order, is_active
-                FROM banners
+                FROM main_banner
                 WHERE id = :id
             """)
                         .bind("id", id)
