@@ -75,6 +75,7 @@ public class ProductDao extends BaseDao {
 
             return p;
         }).findOne().orElse(null));
+    }
     public List<ProductReview> getReviewsByProduct(int productId, Integer rating) {
         String sql = "SELECT r.id, r.user_id AS userId, " +
                 "                   r.product_id AS productId, " +
@@ -123,7 +124,5 @@ public class ProductDao extends BaseDao {
         """).bind("pid", productId).mapTo(int.class).one()
         );
     }
-    }
-
 
 }
