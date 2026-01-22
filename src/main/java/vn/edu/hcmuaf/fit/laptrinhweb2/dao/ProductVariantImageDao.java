@@ -31,4 +31,21 @@ public class ProductVariantImageDao extends BaseDao {
                         .list()
         );
     }
+
+    public int insert(ProductVariantImage image) {
+        String sql = """
+        INSERT INTO product_variant_image (variant_id, image_url)
+        VALUES (:variantId, :imageUrl)
+    """;
+
+        return get().withHandle(handle ->
+                handle.createUpdate(sql)
+                        .bind("variantId", image.getVariantId())
+                        .bind("imageUrl", image.getImageUrl())
+                        .executeAndReturnGeneratedKeys("id")
+                        .mapTo(int.class)
+                        .one()
+        );
+    }
+
 }
