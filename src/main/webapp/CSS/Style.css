@@ -764,6 +764,11 @@ thanh điều hướng dùng cho nhiều trang nên để bên đây
 
 .ProductMainArea {
     flex-grow: 1;
+    min-width: 0;
+    min-height: 75vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
 }
 
 .ProductToolbar {
@@ -854,9 +859,14 @@ thanh điều hướng dùng cho nhiều trang nên để bên đây
 }
 
 .ProductGrid {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
     gap: 20px;
+    width: 100%;
+}
+
+.ProductCard {
+    width: 100%;
 }
 
 .FilterActions {
@@ -878,7 +888,6 @@ thanh điều hướng dùng cho nhiều trang nên để bên đây
     font-size: 13px;
     cursor: pointer;
     transition: all 0.2s ease;
-
     width: 100%;
     max-width: 200px;
     align-self: center;
@@ -900,7 +909,35 @@ thanh điều hướng dùng cho nhiều trang nên để bên đây
     color: #0b2a4a;
     text-decoration: underline;
 }
-
+.Pagination {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 64px;
+    margin-bottom: 80px;
+}
+.PageNum {
+    padding: 8px 18px;
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 6px;
+    color: #222;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background 0.2s, border-color 0.2s;
+    cursor: pointer;
+}
+.PageNum:hover {
+    background: #0b2a4a;
+    color: #fff;
+    border-color: #0b2a4a;
+}
+.PageNum.Active {
+    background: #0b2a4a;
+    color: #fff;
+    border-color: #0b2a4a;
+    pointer-events: none;
+}
 /*đây là chiều cao khi nhấn xem thêm nhưng mà web tĩnh nên chưa có bỏ hiện thực*/
 /*.bodyListProductForFilter.expanded {*/
 /*    max-height:500px;*/
@@ -1025,6 +1062,7 @@ kết thúc */
     /*height: 2500px;*/
     height: auto;
     background:white;
+    margin-left: 20px;
 }
 .Hotdeal{
     padding-bottom: 45px;

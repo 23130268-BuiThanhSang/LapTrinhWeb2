@@ -1,5 +1,10 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%
+    request.setAttribute("totalPages", 5);
+    request.setAttribute("currentPage", 2);
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -87,7 +92,7 @@
             </div>
 
             <div class="SortWrapper">
-                <span class="ResultCount">Hiển thị <b>${list.size()}</b> sản phẩm</span>
+                <span class="ResultCount">Hiển thị <b>${products.size()}</b> sản phẩm</span>
                 <div class="SelectContainer">
                     <select class="SortSelect">
                         <option value="default">Sắp xếp: Mặc định</option>
@@ -100,18 +105,18 @@
         </div>
 
         <div class="ProductGrid">
-            <c:forEach var="p" items="${list}">
+            <c:forEach var="p" items="${products}">
                 <div class="ProductCard">
                     <div class="ProductImage">
-                        <img src="${p.img}" alt="${p.name}">
-                        <div class="ProductTag">
-                            <div class="SpecialOffer">ƯU ĐÃI<br>ĐẶC BIỆT</div>
-                            <div class="Discount">-60%</div>
-                        </div>
-                        <div class="BestPrice">GIÁ TỐT NHẤT NĂM</div>
+                        <img src="${p.imageUrl}" alt="${p.name}">
+                        <c:if test="${ p.discountPercent >0 }">
+                            <div class="ProductTag">
+                                <div class="Discount">${p.discountPercent}%</div>
+                            </div>
+                        </c:if>
                     </div>
                     <div class="ProductInfo">
-                        <span class="BrandProduct">ADIDAS</span>
+                        <span class="BrandProduct">${p.brandName}</span>
                         <p class="ProductName"><a href="Product?id=${p.id}">${p.name}</a></p>
                         <div class="Rating">
                             <i class="fa-solid fa-star"></i>
@@ -119,14 +124,26 @@
                             <i class="fa-solid fa-star"></i>
                             <i class="fa-solid fa-star"></i>
                             <i class="fa-regular fa-star"></i>
-                            <span class="ReviewCount">3 đánh giá</span>
+                            <span class="ReviewCount">${p.reviewCount} đánh giá</span>
                         </div>
                         <div class="Price">
-                            <span class="NewPrice">${p.price}</span>
-                            <span class="OldPrice">1.600.000₫</span>
+                            <span class="NewPrice">
+                                <fmt:formatNumber value="${p.price}" type="number" groupingUsed="true"/> VNĐ
+                            </span>
+                            <c:if test="${ p.oldPrice != null }">
+                                <span class="OldPrice">
+                                    <fmt:formatNumber value="${p.oldPrice}" type="number" groupingUsed="true"/> VNĐ
+                                </span>
+                            </c:if>
                         </div>
+
                     </div>
                 </div>
+            </c:forEach>
+        </div>
+        <div class="Pagination">
+            <c:forEach begin="1" end="${totalPages}" var="i">
+                <a href="?page=${i}" class="PageNum${i == currentPage ? ' Active' : ''}">${i}</a>
             </c:forEach>
         </div>
     </main>
