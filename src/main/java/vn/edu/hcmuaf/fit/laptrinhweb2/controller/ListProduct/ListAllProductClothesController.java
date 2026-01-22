@@ -16,8 +16,17 @@ public class ListAllProductClothesController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int productTypeId = 3;
         int page = 1;
+        String pageParam = request.getParameter("page");
+        if (pageParam != null) {
+            try { page = Integer.parseInt(pageParam); } catch (Exception ignored) {}
+        }
         List<ProductCard> products = productCardService.getProductCardsByType(productTypeId, page);
+        int totalPages = productCardService.getTotalPagesByType(productTypeId);
+
         request.setAttribute("products", products);
+        request.setAttribute("totalPages", totalPages);
+        request.setAttribute("currentPage", page);
+
         request.getRequestDispatcher("PageAllProductClothes.jsp").forward(request, response);
     }
 
