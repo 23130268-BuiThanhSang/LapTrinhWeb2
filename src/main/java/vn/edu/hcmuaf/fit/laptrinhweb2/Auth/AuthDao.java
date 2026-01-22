@@ -8,7 +8,14 @@ public class AuthDao extends BaseDao {
     // dùng cho đăng nhập
     public Account getUserByUsername(String username) {
         return get().withHandle(h ->
-                h.createQuery("select * from accounts where user_name = :username")
+                h.createQuery("SELECT id, user_name AS username, " +
+                                "   account_name AS accountName, " +
+                                "   password, account_status   AS accountStatus, " +
+                                "   user_phone_number AS phoneNumber, " +
+                                "   user_email AS accountEmail, " +
+                                "   role, avatar_url AS avatarUrl " +
+                                "FROM accounts " +
+                                "WHERE user_name = :username ")
                         .bind("username", username)
                         .mapToBean(Account.class)
                         .stream()
@@ -32,8 +39,8 @@ public class AuthDao extends BaseDao {
     public void insert(Account acc) {
         get().withHandle(h ->
                 h.createUpdate("insert into accounts " +
-                                "(user_name, password, account_status, user_phone_number, user_email, account_name,role) " +
-                                "values (:username, :password, :status, :phone, :email, :account_name, :role)")
+                                "(user_name, password, account_status, user_phone_number, user_email, account_name,role, avatar_url) " +
+                                "values (:username, :password, :status, :phone, :email, :account_name, :role, :avatar)")
                         .bind("username", acc.getUsername())
                         .bind("password", acc.getPassword())
                         .bind("status", acc.getAccountStatus())
@@ -41,6 +48,7 @@ public class AuthDao extends BaseDao {
                         .bind("email", acc.getAccountEmail())
                         .bind("account_name", acc.getUsername())
                         .bind("role", "USER")
+                        .bind("avatar", acc.getAvatarUrl())
                         .execute()
         );
     }
@@ -64,5 +72,15 @@ public class AuthDao extends BaseDao {
                         .execute()
         );
     }
+
+    public void updatePasswordById(int id, String newHashedPassword) {
+        get().withHandle(h ->
+                h.createUpdate("UPDATE accounts SET password = :password WHERE id = :id")
+                        .bind("password", newHashedPassword)
+                        .bind("id", id)
+                        .execute()
+        );
+    }
+
 }
 

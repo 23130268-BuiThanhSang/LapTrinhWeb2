@@ -1,5 +1,7 @@
 package vn.edu.hcmuaf.fit.laptrinhweb2.model;
 
+import org.jdbi.v3.core.mapper.reflect.ColumnName;
+
 import java.util.Date;
 
 public class Account {
@@ -8,7 +10,9 @@ public class Account {
     private String accountName;
     private String password;
     private int accountStatus;
+    @ColumnName("user_phone_number")
     private String phoneNumber;
+    @ColumnName("user_email")
     private String accountEmail;
     private String role;
     private String avatarUrl;

@@ -142,4 +142,23 @@ public class AccountDao extends BaseDao {
         );
     }
 
+    public void updateProfile(int id, String accountName, String avatarUrl, String phoneNumber) {
+        get().useHandle(h ->
+                h.createUpdate("""
+                UPDATE accounts
+                SET
+                    account_name = :accountName,
+                    avatar_url = :avatarUrl,
+                    user_phone_number = :phoneNumber
+                WHERE id = :id
+            """)
+                        .bind("id", id)
+                        .bind("accountName", accountName)
+                        .bind("avatarUrl", avatarUrl)
+                        .bind("phoneNumber", phoneNumber)
+                        .execute()
+        );
+    }
+
+
 }

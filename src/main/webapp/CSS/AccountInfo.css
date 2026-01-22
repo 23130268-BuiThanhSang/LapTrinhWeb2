@@ -212,26 +212,30 @@
     transform: translateY(-15px);
     flex-wrap: wrap;
 }
-.addressList > div {
+.addressList .adr {
     margin-top: 20px;
 }
-.addressList > div > input {
-    margin-left: 10px;
+.addressList .adr input {
     height: 30px;
     width: 920px;
+    margin-top: 10px;
+    padding-left: 10px;
 }
 
 .addressButton{
     font-size: 15px;
-    margin-top: 15px;
     display: flex;
     text-align: center;
     justify-content: center;
     margin-left: 10px;
-    border-radius: 10px;
+    border-radius: 7px;
     padding: 10px;
-    background: #01A0DA;
+    background: #2B7AE6;
     color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    outline: none;
 }
 /*ChangePassword*/
 .ChangePassword{
@@ -263,10 +267,13 @@
     text-align: center;
     justify-content: center;
     margin-left: 10px;
-    border-radius: 10px;
-    padding: 7px;
-    background: #01A0DA;
+    border-radius: 7px;
+    padding: 10px;
+    background: #2B7AE6;
     color: white;
+    border: none;
+    cursor: pointer;
+    outline: none;
 }
 /*Credit Card*/
 .chooseOption{
@@ -426,6 +433,36 @@ thực hiện css cho combobox của các tình/ thành phố
 .backgroundWhite{
     background: white;
 }
+
+.addressList form {
+    width: 100%;
+}
+
+.addressButton {
+    margin-top: 25px;
+}
+
+.msg-success {
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 8px;
+    background: #ecfdf5;
+    color: #065f46;
+    border: 1px solid #34d399;
+    font-weight: 500;
+}
+
+.msg-error {
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 8px;
+    background: #fef2f2;
+    color: #991b1b;
+    border: 1px solid #f87171;
+    font-weight: 500;
+}
+
+
 
 
 
