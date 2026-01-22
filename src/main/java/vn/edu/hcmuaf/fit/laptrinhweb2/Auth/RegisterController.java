@@ -84,7 +84,7 @@ public class RegisterController extends HttpServlet {
         acc.setAccountEmail(email);
         acc.setPhoneNumber(phone);
         acc.setAccountStatus(1); // active
-
+        acc.setAvatarUrl("https://t4.ftcdn.net/jpg/07/03/86/11/360_F_703861114_7YxIPnoH8NfmbyEffOziaXy0EO1NpRHD.jpg");
         System.out.println("Insert account: " + acc.getUsername());
 
         authDao.insert(acc);

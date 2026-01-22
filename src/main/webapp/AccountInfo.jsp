@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link rel="stylesheet" href="CSS/AccountInfo.css">
+    <link rel="stylesheet" href="CSS/AccountInfo.css?v=<%=System.currentTimeMillis()%>">
     <link rel="stylesheet" href="CSS/Style.css">
 </head>
 <body>
@@ -15,10 +15,10 @@
     <main class="layout layout-scroll">
         <aside class="AccountLeft">
             <div class="AvatarAccount">
-                <img src="lgImg/avt.png" class="avtr" alt="avatar">
+                <img src="${sessionScope.auth.avatarUrl}" class="avtr" alt="avatar">
                 <div class="AccountName">
-                    <div class="nameus">Bùi Thanh Sang</div>
-                    <div class="stk">Số tài khoản: 3820581034</div>
+                    <div class="nameus">${sessionScope.auth.accountName}</div>
+                    <div class="stk">ID tài khoản: ${sessionScope.auth.id}</div>
                 </div>
             </div>
             <div class="AccountLeftOption">
@@ -39,7 +39,7 @@
                     <div class="NameOptionBoldText">Lịch sử mua hàng</div>
                 </a>
                 <div class="SignOut">
-                    <a href="login.jsp" class="OptionSignOut">Đăng xuất</a>
+                    <a href="${pageContext.request.contextPath}/Logout" class="OptionSignOut">Đăng xuất</a>
                 </div>
             </div>
         </aside>
@@ -47,28 +47,28 @@
                 <div id="PasswordHeader">Thông tin tài khoản</div>
                 <div class="PasswordText">
                     <div class="ChangePasswordText">Tên tài khoản</div>
-                    <input type="text" placeholder="Bùi Thanh Sang" disabled>
+                    <input type="text" value="${sessionScope.auth.accountName}" disabled>
                 </div>
+<%--                <div class="PasswordText">--%>
+<%--                    <div class="ChangePasswordText">Năm sinh</div>--%>
+<%--                    <input type="text" placeholder="2005" disabled>--%>
+<%--                </div>--%>
                 <div class="PasswordText">
-                    <div class="ChangePasswordText">Năm sinh</div>
-                    <input type="text" placeholder="2005" disabled>
-                </div>
-                <div class="PasswordText">
-                    <div class="ChangePasswordText">Số tài khoản</div>
-                    <input type="text" placeholder="3820581034" disabled>
+                    <div class="ChangePasswordText">ID tài khoản</div>
+                    <input type="text" value="${sessionScope.auth.id}" disabled>
                 </div>
                 <div class="PasswordText">
                     <div class="ChangePasswordText">Số điện thoại</div>
-                    <input type="text" placeholder="0829811312" disabled>
+                    <input type="text" value="${sessionScope.auth.phoneNumber}" disabled>
                 </div>
                 <div class="PasswordText">
                     <div class="ChangePasswordText">Email</div>
-                    <input type="text" placeholder="23130268@st.hcmuaf.edu.vn" disabled>
+                    <input type="text" value="${sessionScope.auth.accountEmail}" disabled>
                 </div>
-                <div class="PasswordText">
-                    <div class="ChangePasswordText">Địa chỉ</div>
-                    <input type="text" placeholder="123 Lý Thường Kiệt, P.7, Q.10, TP.HCM" disabled>
-                </div>
+<%--                <div class="PasswordText">--%>
+<%--                    <div class="ChangePasswordText">Địa chỉ</div>--%>
+<%--                    <input type="text" placeholder="123 Lý Thường Kiệt, P.7, Q.10, TP.HCM" disabled>--%>
+<%--                </div>--%>
             </div>
     </main>
 </div>

@@ -6,22 +6,19 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link rel="stylesheet" href="CSS/AccountInfo.css">
+    <link rel="stylesheet" href="CSS/AccountInfo.css?v=<%=System.currentTimeMillis()%>">
     <link rel="stylesheet" href="CSS/Style.css">
     <link rel="stylesheet" href="CSS/StyleForHistorySale.css">
-
-
-
 </head>
 <body>
 <jsp:include page="/Share/header.jsp" />
 <main class="layout layout-scroll">
     <aside class="AccountLeft">
         <div class="AvatarAccount">
-            <img src="lgImg/avt.png" class="avtr" alt="avatar">
+            <img src="${sessionScope.auth.avatarUrl}" class="avtr" alt="avatar">
             <div class="AccountName">
-                <div class="nameus">Bùi Thanh Sang</div>
-                <div class="stk">Số tài khoản: 3820581034</div>
+                <div class="nameus">${sessionScope.auth.accountName}</div>
+                <div class="stk">ID tài khoản: ${sessionScope.auth.id}</div>
             </div>
         </div>
         <div class="AccountLeftOption">
@@ -42,7 +39,7 @@
                 <div class="NameOptionBoldText">Lịch sử mua hàng</div>
             </div>
             <div class="SignOut">
-                <a href="login.jsp" class="OptionSignOut">Đăng xuất</a>
+                <a href="${pageContext.request.contextPath}/Logout" class="OptionSignOut">Đăng xuất</a>
             </div>
         </div>
     </aside>
