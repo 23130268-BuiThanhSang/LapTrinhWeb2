@@ -12,42 +12,47 @@ import vn.edu.hcmuaf.fit.laptrinhweb2.model.ProductVariantImage;
 import java.util.*;
 
 public class ProductDao extends BaseDao {
-
+    /**
+     * Lấy danh sách ProductCard
+     *
+     * @param limit
+     * @param offset
+     * @return
+     */
     public List<ProductCard> getProductCardRaw(int limit, int offset) {
         return get().withHandle(h ->
                 h.createQuery("""
-            SELECT 
-                p.id,
-                p.product_name      AS name,
-                b.name              AS brandName,
-                v.price             AS price,
-                hd.discount_per     AS discountPercent,
-                img.image_url       AS imageUrl
-            FROM product p
-            JOIN brand b ON p.brand_id = b.id
-            JOIN product_variant v 
-                ON v.product_id = p.id
-               AND v.id = (
-                    SELECT MIN(id)
-                    FROM product_variant
-                    WHERE product_id = p.id
-               )
-            LEFT JOIN hot_deal hd
-                ON p.hot_deal_id = hd.id
-            LEFT JOIN product_variant_image img
-                ON img.variant_id = v.id
-               AND img.id = (
-                    SELECT MIN(id)
-                    FROM product_variant_image
-                    WHERE variant_id = v.id
-               )
-
-            -- Chỉ lấy sản phẩm đang hoạt động (dựa trên schema)
-            WHERE p.is_active = 1
-
-            ORDER BY p.id DESC
-            LIMIT :limit OFFSET :offset
-        """)
+                                    SELECT 
+                                        p.id,
+                                        p.product_name      AS name,
+                                        b.name              AS brandName,
+                                        v.price             AS price,
+                                        hd.discount_per     AS discountPercent,
+                                        img.image_url       AS imageUrl
+                                    FROM product p
+                                    JOIN brand b ON p.brand_id = b.id
+                                    JOIN product_variant v 
+                                        ON v.product_id = p.id
+                                       AND v.id = (
+                                            SELECT MIN(id)
+                                            FROM product_variant
+                                            WHERE product_id = p.id
+                                       )
+                                    LEFT JOIN hot_deal hd
+                                        ON p.hot_deal_id = hd.id
+                                    LEFT JOIN product_variant_image img
+                                        ON img.variant_id = v.id
+                                       AND img.id = (
+                                            SELECT MIN(id)
+                                            FROM product_variant_image
+                                            WHERE variant_id = v.id
+                                       )
+                                
+                                    WHERE p.is_active = 1
+                                
+                                    ORDER BY p.id DESC
+                                    LIMIT :limit OFFSET :offset
+                                """)
                         .bind("limit", limit)
                         .bind("offset", offset)
                         .mapToBean(ProductCard.class)
@@ -55,39 +60,46 @@ public class ProductDao extends BaseDao {
         );
     }
 
+    /**
+     * `Lấy danh sách ProductCard theo loại sản phẩm
+     * @param productTypeId
+     * @param limit
+     * @param offset
+     * @return
+     */
     public List<ProductCard> getProductCardByType(int productTypeId, int limit, int offset) {
         return get().withHandle(h ->
                 h.createQuery("""
-        SELECT 
-            p.id,
-            p.product_name      AS name,
-            b.name              AS brandName,
-            v.price             AS price,
-            hd.discount_per     AS discountPercent,
-            img.image_url       AS imageUrl
-        FROM product p
-        JOIN brand b ON p.brand_id = b.id
-        JOIN product_variant v 
-            ON v.product_id = p.id
-           AND v.id = (
-                SELECT MIN(id)
-                FROM product_variant
-                WHERE product_id = p.id
-           )
-        LEFT JOIN hot_deal hd
-            ON p.hot_deal_id = hd.id
-        LEFT JOIN product_variant_image img
-            ON img.variant_id = v.id
-           AND img.id = (
-                SELECT MIN(id)
-                FROM product_variant_image
-                WHERE variant_id = v.id
-           )
-        WHERE p.is_active = 1
-          AND p.product_type_id = :typeId
-        ORDER BY p.id DESC
-        LIMIT :limit OFFSET :offset
-    """)
+                                    SELECT 
+                                        p.id,
+                                        p.product_name      AS name,
+                                        b.name              AS brandName,
+                                        v.price             AS price,
+                                        hd.discount_per     AS discountPercent,
+                                        img.image_url       AS imageUrl
+                                    FROM product p
+                                    JOIN brand b ON p.brand_id = b.id
+                                    JOIN product_variant v 
+                                        ON v.product_id = p.id
+                                       AND v.id = (
+                                            SELECT MIN(id)
+                                            FROM product_variant
+                                            WHERE product_id = p.id
+                                       )
+                                    LEFT JOIN hot_deal hd
+                                        ON p.hot_deal_id = hd.id
+                                    LEFT JOIN product_variant_image img
+                                        ON img.variant_id = v.id
+                                       AND img.id = (
+                                            SELECT MIN(id)
+                                            FROM product_variant_image
+                                            WHERE variant_id = v.id
+                                       )
+                                    WHERE p.is_active = 1
+                                      AND p.product_type_id = :typeId
+                                    ORDER BY p.id DESC
+                                    LIMIT :limit OFFSET :offset
+                                """)
                         .bind("typeId", productTypeId)
                         .bind("limit", limit)
                         .bind("offset", offset)
@@ -95,17 +107,153 @@ public class ProductDao extends BaseDao {
                         .list()
         );
     }
+
+    /**
+     * Đếm số lượng sản phẩm theo loại sản phẩm
+     *
+     * @param productTypeId
+     * @return
+     */
     public int countProductByType(int productTypeId) {
         return get().withHandle(h ->
                 h.createQuery("""
-            SELECT COUNT(*) FROM product
-            WHERE is_active = 1 AND product_type_id = :typeId
-        """)
+                                    SELECT COUNT(*) FROM product
+                                    WHERE is_active = 1 AND product_type_id = :typeId
+                                """)
                         .bind("typeId", productTypeId)
                         .mapTo(int.class)
                         .one()
         );
     }
+
+    /**
+     * Lấy danh sách ProductCard theo loại sản phẩm và bộ lọc
+     *
+     * @param productTypeId
+     * @param limit
+     * @param offset
+     * @param color
+     * @param gender
+     * @param brandId
+     * @param size
+     * @return
+     */
+    public List<ProductCard> getProductCardByTypeAndFilter(
+            int productTypeId, int limit, int offset,
+            String color, String gender, Integer brandId, Integer size) {
+
+        StringBuilder sql = new StringBuilder("""
+                SELECT 
+                    p.id,
+                    p.product_name      AS name,
+                    b.name              AS brandName,
+                    v.price             AS price,
+                    hd.discount_per     AS discountPercent,
+                    img.image_url       AS imageUrl
+                FROM product p
+                JOIN brand b ON p.brand_id = b.id
+                JOIN product_variant v ON v.product_id = p.id AND v.id = (
+                    SELECT MIN(v2.id) FROM product_variant v2 WHERE v2.product_id = p.id
+                )
+                LEFT JOIN hot_deal hd ON p.hot_deal_id = hd.id
+                LEFT JOIN product_variant_image img ON img.variant_id = v.id AND img.id = (
+                    SELECT MIN(img2.id) FROM product_variant_image img2 WHERE img2.variant_id = v.id
+                )
+                WHERE p.is_active = 1
+                  AND p.product_type_id = :typeId
+                """);
+
+        /**
+         * Dùng EXISTS để đảm bảo chỉ lấy product nếu có ít nhất 1 variant
+         */
+        sql.append("""
+                  AND EXISTS (
+                      SELECT 1 FROM product_variant vfilter
+                      WHERE vfilter.product_id = p.id
+                """);
+        if (color != null && !color.isEmpty()) sql.append(" AND vfilter.color = :color ");
+        if (size != null) sql.append(" AND vfilter.size = :size ");
+        if (brandId != null) sql.append(" AND vfilter.brand_id = :brandId ");
+        sql.append(") ");
+
+        if (gender != null && !gender.isEmpty()) sql.append(" AND p.product_gender = :gender ");
+        if (brandId != null) sql.append(" AND b.id = :brandId ");
+
+        sql.append("""
+                 ORDER BY p.id DESC
+                 LIMIT :limit OFFSET :offset
+                """);
+
+        return get().withHandle(h -> {
+            var query = h.createQuery(sql.toString())
+                    .bind("typeId", productTypeId)
+                    .bind("limit", limit)
+                    .bind("offset", offset);
+
+            if (color != null && !color.isEmpty()) query.bind("color", color);
+            if (gender != null && !gender.isEmpty()) query.bind("gender", gender);
+            if (brandId != null) query.bind("brandId", brandId);
+            if (size != null) query.bind("size", size);
+
+            return query.mapToBean(ProductCard.class).list();
+        });
+    }
+
+    /**
+     * đây là phương thức thực hiện đếm số sản phẩm theo bộ lọc
+     *
+     * @param productTypeId
+     * @param color
+     * @param gender
+     * @param brandId
+     * @param size
+     * @return
+     */
+    public int countProductByTypeAndFilter(
+            int productTypeId,
+            String color, String gender, Integer brandId, Integer size
+    ) {
+        StringBuilder sql = new StringBuilder("""
+                    SELECT COUNT(*) FROM product p
+                    JOIN brand b ON p.brand_id = b.id
+                    WHERE p.is_active = 1
+                      AND p.product_type_id = :typeId
+                """);
+
+        /**
+         * Dùng EXISTS để đảm bảo chỉ lấy product nếu có ít nhất 1 variant
+         */
+        sql.append("""
+                  AND EXISTS (
+                    SELECT 1 FROM product_variant v
+                    WHERE v.product_id = p.id
+                """);
+
+        if (color != null && !color.isEmpty()) sql.append(" AND v.color = :color ");
+        if (size != null) sql.append(" AND v.size = :size ");
+        if (brandId != null) sql.append(" AND v.brand_id = :brandId ");
+        sql.append(") ");
+
+        if (gender != null && !gender.isEmpty()) sql.append(" AND p.product_gender = :gender ");
+        if (brandId != null) sql.append(" AND b.id = :brandId ");
+
+        return get().withHandle(h -> {
+            var query = h.createQuery(sql.toString())
+                    .bind("typeId", productTypeId);
+            if (color != null && !color.isEmpty()) query.bind("color", color);
+            if (gender != null && !gender.isEmpty()) query.bind("gender", gender);
+            if (brandId != null) query.bind("brandId", brandId);
+            if (size != null) query.bind("size", size);
+            return query.mapTo(int.class).one();
+        });
+    }
+
+    /**
+     * Lấy thông tin chi tiết sản phẩm theo id
+     *
+     * @param id
+     * @return
+     */
     public Product getProduct(int id) {
         ProductGroupDao groupDao = new ProductGroupDao();
         ProductTypeDao typeDao = new ProductTypeDao();
