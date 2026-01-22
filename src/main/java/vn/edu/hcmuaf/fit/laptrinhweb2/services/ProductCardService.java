@@ -38,5 +38,8 @@ public class ProductCardService {
             card.setOldPrice(null);
         }
     }
-
+    public int getTotalPagesByType(int productTypeId) {
+        int total = productDao.countProductByType(productTypeId);
+        return (int) Math.ceil((double) total / pageSize);
+    }
 }

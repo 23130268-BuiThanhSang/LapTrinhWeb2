@@ -95,7 +95,17 @@ public class ProductDao extends BaseDao {
                         .list()
         );
     }
-
+    public int countProductByType(int productTypeId) {
+        return get().withHandle(h ->
+                h.createQuery("""
+            SELECT COUNT(*) FROM product
+            WHERE is_active = 1 AND product_type_id = :typeId
+        """)
+                        .bind("typeId", productTypeId)
+                        .mapTo(int.class)
+                        .one()
+        );
+    }
     public Product getProduct(int id) {
         ProductGroupDao groupDao = new ProductGroupDao();
         ProductTypeDao typeDao = new ProductTypeDao();
