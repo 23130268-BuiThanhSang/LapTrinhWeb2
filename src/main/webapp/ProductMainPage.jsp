@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -54,17 +55,24 @@
             <p class="ProductBrand">
                 Màu sắc: <span id="selectedColorText">${defaultVariant.color}</span>
             </p>
-            <div class="Rating">
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <span class="ReviewCount">5 đánh giá</span>
+            <div class="Stars" id="avgStars">
+                <c:forEach begin="1" end="${fullStars}">
+                    <i class="fa-solid fa-star"></i>
+                </c:forEach>
+
+                <c:if test="${hasHalfStar}">
+                    <i class="fa-solid fa-star-half-stroke"></i>
+                </c:if>
+
+                <c:forEach begin="1" end="${5 - fullStars - (hasHalfStar ? 1 : 0)}">
+                    <i class="fa-regular fa-star"></i>
+                </c:forEach>
+
+                <span style="margin-left:8px">(${avgRating}) sao, ${reviewCount} lượt đánh giá</span>
             </div>
         </div>
         <div class="ProductColor">
-            <p class="ProductBrand">Màu sắc:</p>
+            <p class="ProductBrand">Danh sách màu:</p>
             <div class="ImageSlider ColorSlider">
                 <c:set var="shownColors" value="" />
 
@@ -83,19 +91,8 @@
 
         <div class="ProductSize">
             <p class="SectionTitle">Kích Thước</p>
-            <div class="SizeOptions">
-                <c:forEach items="${product.variants}" var="variant">
-                    <c:if test="${variant.color == defaultVariant.color}">
-                        <button class="SizeButton"
-                                data-price="${variant.price}"
-                                data-stock="${variant.stock}">
-                                ${variant.size}
-                        </button>
-                    </c:if>
-                </c:forEach>
-            </div>
+            <div class="SizeOptions"></div>
         </div>
-
 
         <div class="ProductSize">
             <p class="SectionTitle">Giá sản phẩm:
@@ -209,14 +206,6 @@
         </div>
     </div>
 
-    <div class="Stars" id="avgStars">
-        <i class="fa-solid fa-star"></i>
-        <i class="fa-solid fa-star"></i>
-        <i class="fa-solid fa-star"></i>
-        <i class="fa-solid fa-star"></i>
-        <i class="fa-solid fa-star"></i>
-    </div>
-
     <div class="ReviewList" id="reviewList">
         <c:forEach items="${reviews}" var="r">
             <div class="ReviewItem">
@@ -240,7 +229,19 @@
 <script>
     const IS_LOGGED_IN = ${sessionScope.auth != null};
 </script>
-
+<script>
+    const VARIANTS = [
+        <c:forEach items="${product.variants}" var="v" varStatus="i">
+        {
+            color: "${v.color}",
+            size: ${v.size},
+            sizeText: "${sizeMap[v.size]}",
+            price: ${v.price},
+            stock: ${v.stock}
+        }${i.last ? "" : ","}
+        </c:forEach>
+    ];
+</script>
 <script src="JS/Notification.js"></script>
 <script src="${pageContext.request.contextPath}/JS/ProductMainPage.js?v=<%=System.currentTimeMillis()%>"></script>
 </body>

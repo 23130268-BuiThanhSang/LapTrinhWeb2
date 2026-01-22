@@ -15,6 +15,11 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     ProductQuantityHandlers();
+
+    const firstColor = document.querySelector(".ColorThumb.active");
+    if (firstColor) {
+        renderSizesByColor(firstColor.dataset.color);
+    }
 });
 
 // ====== QUANTITY ======
@@ -27,9 +32,10 @@ function ProductQuantityHandlers() {
 
     if (!minus || !plus || !quantityEl || !unitPriceEl || !totalPriceEl) return;
     let quantity = parseInt(quantityEl.innerText);
-    const unitPrice = parseFloat(unitPriceEl.dataset.price);
+
     function updateTotal() {
-        totalPriceEl.innerText = (unitPrice * quantity).toFixed(1);
+        const unitPrice = parseFloat(unitPriceEl.dataset.price);
+        totalPriceEl.innerText = (unitPrice * quantity).toLocaleString("vi-VN");
     }
     plus.onclick = () => {
         quantity++;
@@ -87,6 +93,44 @@ function changeColor(el) {
         thumbs.forEach(img => img.style.display = "");
         return;
     }
-
     changeMainImage(firstVisible);
+    renderSizesByColor(selectedColor);
 }
+
+function selectSize(btn) {
+    document.querySelectorAll(".SizeButton")
+        .forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+
+    const price = parseFloat(btn.dataset.price);
+    const unitPriceEl = document.getElementById("unitPrice");
+    const totalPriceEl = document.getElementById("totalPrice");
+    const quantity = parseInt(document.querySelector(".quantity").innerText);
+
+    unitPriceEl.dataset.price = price;
+    unitPriceEl.innerText = price.toLocaleString("vi-VN");
+
+    totalPriceEl.innerText = (price * quantity).toLocaleString("vi-VN");
+}
+
+function renderSizesByColor(color) {
+    const sizeBox = document.querySelector(".SizeOptions");
+    sizeBox.innerHTML = "";
+
+    const list = VARIANTS.filter(v => v.color === color);
+
+    list.forEach((v, index) => {
+        const btn = document.createElement("button");
+        btn.className = "SizeButton";
+        btn.innerText = v.sizeText;
+        btn.dataset.price = v.price;
+        btn.dataset.stock = v.stock;
+
+        btn.addEventListener("click", () => selectSize(btn));
+
+        sizeBox.appendChild(btn);
+
+        if (index === 0) btn.click(); // auto chọn size đầu
+    });
+}
+
