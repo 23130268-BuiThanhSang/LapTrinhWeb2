@@ -261,6 +261,15 @@ public class ProductDao extends BaseDao {
                         .one()
         );
     }
+    public double getAverageRatingByProduct(int productId) {
+        return get().withHandle(h ->
+                h.createQuery("""
+                    SELECT COALESCE(AVG(rating), 0)
+                    FROM product_review
+                    WHERE product_id = :pid
+                """).bind("pid", productId).mapTo(double.class).one()
+        );
+    }
 
 
 }
