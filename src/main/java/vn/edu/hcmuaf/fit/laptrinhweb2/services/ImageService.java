@@ -80,18 +80,18 @@ public class ImageService {
     }
 
 
-    public int uploadImage(String relativeDir, Part filePart) throws IOException {
+    public String uploadImage(String relativeDir, Part filePart) throws IOException {
         if (relativeDir == null) {
             relativeDir = "";
         }
 
         File dir = new File(ROOT, relativeDir);
         if (!dir.exists() || !dir.isDirectory()) {
-            return -1;
+            return "";
         }
 
         if (filePart == null || filePart.getSize() == 0) {
-            return -1;
+            return "";
         }
 
         String fileName = Path.of(filePart.getSubmittedFileName())
@@ -109,7 +109,7 @@ public class ImageService {
         }
         image.setImage_url(image_url);
 
-        return imageDao.insert(image);
+        return image_url;
     }
 
     public boolean deleteImage(String relativePath) {

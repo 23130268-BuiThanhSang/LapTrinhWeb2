@@ -5,7 +5,10 @@ import java.util.List;
 
 public class ProductVariant{
     private int id;
+
+    private int product_id;
     private String color;
+    //Tím , Nâu, Đen, Trắng, Bạc, Hồng, Xanh Navy, Xanh Dương, Xanh Lục, Vàng, Đỏ, Cam
     private int size;
     private double price;
     private int stock;
@@ -13,9 +16,10 @@ public class ProductVariant{
     public ProductVariant() {
         super();
     }
-    public ProductVariant(int id, String color, int size, double price, int stock) {
+    public ProductVariant(int id, int product_id, String color, int size, double price, int stock) {
         super();
         this.id = id;
+        this.product_id = product_id;
         this.color = color;
         this.size = size;
         this.price = price;
@@ -28,6 +32,15 @@ public class ProductVariant{
     public void setId(int id) {
         this.id = id;
     }
+
+    public int getProduct_id() {
+        return product_id;
+    }
+
+    public void setProduct_id(int product_id) {
+        this.product_id = product_id;
+    }
+
     public String getColor() {
         return color;
     }

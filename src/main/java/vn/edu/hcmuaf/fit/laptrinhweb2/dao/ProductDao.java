@@ -143,7 +143,7 @@ public class ProductDao extends BaseDao {
              * variants lấy theo nhiều dòng
              */
             List<ProductVariant> variants = handle.createQuery("""
-                        SELECT id, color, size, price, stock
+                        SELECT id,product_id, color, size, price, stock
                         FROM product_variant
                         WHERE product_id = :productId
                     """).bind("productId", p.getId()).mapToBean(ProductVariant.class).list();
@@ -215,6 +215,52 @@ public class ProductDao extends BaseDao {
         );
     }
 
+    public int insertProduct(Product product) {
+
+        String sql = """
+        INSERT INTO product (
+            brand_id,
+            collection_id,
+            sport_id,
+            product_name,
+            product_infor,
+            product_car_instruction,
+            product_return_infor,
+            product_gender,
+            enter_date,
+            product_type_id
+        ) VALUES (
+            :brandId,
+            :collectionId,
+            :sportId,
+            :productName,
+            :productInfor,
+            :productCareInstruction,
+            :productReturnInfor,
+            :productGender,
+            NOW(),
+            :productTypeId
+        )
+    """;
+
+        return get().withHandle(handle ->
+                handle.createUpdate(sql)
+                        .bind("brandId", product.getBrand().getId())
+                        .bind("collectionId",
+                                product.getCollection() != null ? product.getCollection().getId() : null)
+                        .bind("sportId",
+                                product.getSport() != null ? product.getSport().getId() : null)
+                        .bind("productName", product.getName())
+                        .bind("productInfor", product.getProductInfor())
+                        .bind("productCareInstruction", product.getProductCareInstruction())
+                        .bind("productReturnInfor", product.getProductReturnInfor())
+                        .bind("productGender", product.getProductGender())
+                        .bind("productTypeId", product.getProductType().getId())
+                        .executeAndReturnGeneratedKeys("id")
+                        .mapTo(int.class)
+                        .one()
+        );
+    }
     public double getAverageRatingByProduct(int productId) {
         return get().withHandle(h ->
                 h.createQuery("""

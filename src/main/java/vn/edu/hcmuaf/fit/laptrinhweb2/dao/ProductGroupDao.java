@@ -6,6 +6,7 @@ import vn.edu.hcmuaf.fit.laptrinhweb2.model.ProductGroup;
 import java.util.List;
 
 public class ProductGroupDao extends BaseDao {
+
     public void addGroup(
             GroupType type,
             String name,
@@ -18,12 +19,13 @@ public class ProductGroupDao extends BaseDao {
         get().useHandle(handle ->
                 handle.createUpdate(sql)
                         .bind("name", name)
-                        .bind("thumbnail_url", thumbnailUrl)
-                        .bind("image_url", imageUrl)
+                        .bind("thumbnail_image_url", thumbnailUrl)
+                        .bind("main_image_url", imageUrl)
                         .bind("display_order", displayOrder)
                         .execute()
         );
     }
+
     public List<ProductGroup> getGroups(GroupType type) {
         String sql = getSelectSql(type);
 
@@ -34,33 +36,33 @@ public class ProductGroupDao extends BaseDao {
         );
     }
 
-    public String getInsertSql(GroupType type) {
+    private String getInsertSql(GroupType type) {
         switch (type) {
             case BRAND:
-                return "INSERT INTO brands (brand_name, thumbnail_url, image_url, display_order) " +
-                        "VALUES (:name, :thumbnail_url, :image_url, :display_order)";
+                return "INSERT INTO brand (name, thumbnail_image_url, main_image_url, display_order) " +
+                        "VALUES (:name, :thumbnail_image_url, :main_image_url, :display_order)";
             case COLLECTION:
-                return "INSERT INTO collections (collection_name, thumbnail_url, image_url, display_order) " +
-                        "VALUES (:name, :thumbnail_url, :image_url, :display_order)";
+                return "INSERT INTO collection (name, thumbnail_image_url, main_image_url, display_order) " +
+                        "VALUES (:name, :thumbnail_image_url, :main_image_url, :display_order)";
             case SPORT:
-                return "INSERT INTO sports (sport_name, thumbnail_url, image_url, display_order) " +
-                        "VALUES (:name, :thumbnail_url, :image_url, :display_order)";
+                return "INSERT INTO sport (name, thumbnail_image_url, main_image_url, display_order) " +
+                        "VALUES (:name, :thumbnail_image_url, :main_image_url, :display_order)";
             default:
                 throw new IllegalArgumentException("Invalid group type");
         }
     }
 
-    public String getSelectSql(GroupType type) {
+    private String getSelectSql(GroupType type) {
         switch (type) {
             case BRAND:
-                return "SELECT brand_id AS id, brand_name AS name, thumbnail_url, image_url, display_order " +
-                        "FROM brands ORDER BY display_order";
+                return "SELECT id, name, thumbnail_image_url, main_image_url, display_order " +
+                        "FROM brand ORDER BY display_order";
             case COLLECTION:
-                return "SELECT collection_id AS id, collection_name AS name, thumbnail_url, image_url, display_order " +
-                        "FROM collections ORDER BY display_order";
+                return "SELECT id, name, thumbnail_image_url, main_image_url, display_order " +
+                        "FROM collection ORDER BY display_order";
             case SPORT:
-                return "SELECT sport_id AS id, sport_name AS name, thumbnail_url, image_url, display_order " +
-                        "FROM sports ORDER BY display_order";
+                return "SELECT id, name, thumbnail_image_url, main_image_url, display_order " +
+                        "FROM sport ORDER BY display_order";
             default:
                 throw new IllegalArgumentException("Invalid group type");
         }
@@ -69,17 +71,29 @@ public class ProductGroupDao extends BaseDao {
     public ProductGroup getProductGroup(GroupType type, int id) {
         switch (type) {
             case BRAND:
-                return get().withHandle(h -> h.createQuery("select * from brand where id = :id")
-                        .bind("id", id)
-                        .mapToBean(ProductGroup.class).findOne().orElse(null));
+                return get().withHandle(h ->
+                        h.createQuery("SELECT id, name, thumbnail_image_url, main_image_url, display_order FROM brand WHERE id = :id")
+                                .bind("id", id)
+                                .mapToBean(ProductGroup.class)
+                                .findOne()
+                                .orElse(null)
+                );
             case COLLECTION:
-                return get().withHandle(h -> h.createQuery("select * from collection where id = :id")
-                        .bind("id", id)
-                        .mapToBean(ProductGroup.class).findOne().orElse(null));
+                return get().withHandle(h ->
+                        h.createQuery("SELECT id, name, thumbnail_image_url, main_image_url, display_order FROM collection WHERE id = :id")
+                                .bind("id", id)
+                                .mapToBean(ProductGroup.class)
+                                .findOne()
+                                .orElse(null)
+                );
             case SPORT:
-                return get().withHandle(h -> h.createQuery("select * from sport where id = :id")
-                        .bind("id", id)
-                        .mapToBean(ProductGroup.class).findOne().orElse(null));
+                return get().withHandle(h ->
+                        h.createQuery("SELECT id, name, thumbnail_image_url, main_image_url, display_order FROM sport WHERE id = :id")
+                                .bind("id", id)
+                                .mapToBean(ProductGroup.class)
+                                .findOne()
+                                .orElse(null)
+                );
             default:
                 throw new IllegalArgumentException("Invalid group type");
         }
