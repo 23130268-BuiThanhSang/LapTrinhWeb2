@@ -8,7 +8,7 @@ import java.util.List;
 public class AccountService {
     private AccountDao accountDao = new AccountDao();
 
-    public void update(Account acc) {
+    public void update(Account acc, Boolean skipPass) {
         Account baseAcc = accountDao.getByID(acc.getId());
         if (baseAcc == null) {
             throw new IllegalArgumentException("aaaaaa");
@@ -16,12 +16,15 @@ public class AccountService {
 
         // allowed updates
         baseAcc.setUsername(acc.getUsername());
+        if (!skipPass) {
+            baseAcc.setPassword(acc.getPassword());
+        }
         baseAcc.setAccountName(acc.getAccountName());
         baseAcc.setPhoneNumber(acc.getPhoneNumber());
         baseAcc.setAccountEmail(acc.getAccountEmail());
         baseAcc.setAccountStatus(acc.getAccountStatus());
 
-        accountDao.update(baseAcc);
+        accountDao.update(baseAcc,skipPass);
     }
 
     public List<Account> getAllAccounts() {

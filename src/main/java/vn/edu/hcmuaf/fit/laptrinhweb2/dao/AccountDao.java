@@ -82,9 +82,36 @@ public class AccountDao extends BaseDao {
         );
     }
 
-    public void update(Account acc) {
-        get().useHandle(h ->
-                h.createUpdate("""
+    public void update(Account acc, Boolean skipPass) {
+        if (!skipPass) {
+            get().useHandle(h ->
+                    h.createUpdate("""
+                    UPDATE accounts
+                    SET
+                        user_name = :username,
+                        password = :password,
+                        account_status = :accountStatus,
+                        user_phone_number = :phoneNumber,
+                        user_email = :accountEmail,
+                        account_name = :accountName,
+                        avatar_url = :avatarUrl,
+                        role = :role
+                    WHERE id = :id
+                """)
+                .bind("id", acc.getId())
+                .bind("username", acc.getUsername())
+                .bind("password", acc.getPassword())
+                .bind("accountStatus", acc.getAccountStatus())
+                .bind("phoneNumber", acc.getPhoneNumber())
+                .bind("accountEmail", acc.getAccountEmail())
+                .bind("accountName", acc.getAccountName())
+                .bind("avatarUrl", acc.getAvatarUrl())
+                .bind("role", acc.getRole())
+                .execute()
+            );
+        } else {
+            get().useHandle(h ->
+                    h.createUpdate("""
                     UPDATE accounts
                     SET
                         user_name = :username,
@@ -96,16 +123,17 @@ public class AccountDao extends BaseDao {
                         role = :role
                     WHERE id = :id
                 """)
-                        .bind("id", acc.getId())
-                        .bind("username", acc.getUsername())
-                        .bind("accountStatus", acc.getAccountStatus())
-                        .bind("phoneNumber", acc.getPhoneNumber())
-                        .bind("accountEmail", acc.getAccountEmail())
-                        .bind("accountName", acc.getAccountName())
-                        .bind("avatarUrl", acc.getAvatarUrl())
-                        .bind("role", acc.getRole())
-                        .execute()
-        );
+                .bind("id", acc.getId())
+                .bind("username", acc.getUsername())
+                .bind("accountStatus", acc.getAccountStatus())
+                .bind("phoneNumber", acc.getPhoneNumber())
+                .bind("accountEmail", acc.getAccountEmail())
+                .bind("accountName", acc.getAccountName())
+                .bind("avatarUrl", acc.getAvatarUrl())
+                .bind("role", acc.getRole())
+                .execute()
+            );
+        }
     }
     public void add(Account acc) {
         get().useHandle(h ->

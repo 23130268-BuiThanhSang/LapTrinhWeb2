@@ -1,3 +1,5 @@
+<%@ page import="vn.edu.hcmuaf.fit.laptrinhweb2.BreadcrumbItem" %>
+<%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <div class="AccountLeft">
@@ -13,7 +15,7 @@
             <i class="fa-solid fa-user"></i>
             <div class="NameOption">Quản lí người dùng</div>
         </a>
-        <a href="ManageProduct.jsp" class="OptionIcon">
+        <a href="page_add_product" class="OptionIcon">
             <i class="fa-solid fa-box-open"></i>
             <div class="NameOption">Quản lí sản phẩm</div>
         </a>
@@ -33,6 +35,26 @@
             <i class="fa-solid fa-image"></i>
             <div class="NameOption">Quản lí ảnh</div>
         </a>
+
+<%--        <%--%>
+<%--            List<BreadcrumbItem> breadcrumb =--%>
+<%--                    (List<BreadcrumbItem>) session.getAttribute("breadcrumb");--%>
+<%--        %>--%>
+
+<%--        <nav>--%>
+<%--            <%--%>
+<%--                if (breadcrumb != null) {--%>
+<%--                    for (int i = 0; i < breadcrumb.size(); i++) {--%>
+<%--                        BreadcrumbItem b = breadcrumb.get(i);--%>
+<%--            %>--%>
+<%--            <a href="<%= b.getUrl() %>"><%= b.getLabel() %></a>--%>
+<%--            <% if (i < breadcrumb.size() - 1) { %> &gt; <% } %>--%>
+<%--            <%--%>
+<%--                    }--%>
+<%--                }--%>
+<%--            %>--%>
+<%--        </nav>--%>
+
         <div class = "button_container">
             <a href="login.jsp" class="sgoutAdmin">Đăng xuất</a>
         </div>

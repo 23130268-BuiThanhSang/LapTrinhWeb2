@@ -23,6 +23,8 @@ public class getAccountDetail extends HttpServlet {
             return;
         }
         request.setAttribute("account", account);
+        request.setAttribute("base_username",account.getAccount().getUsername());
+        request.setAttribute("base_mail",account.getAccount().getAccountEmail());
         request.getRequestDispatcher("manageUser_UserDetail.jsp")
                 .forward(request, response);
     }

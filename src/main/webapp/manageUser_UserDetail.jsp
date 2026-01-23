@@ -22,8 +22,10 @@
         <!-- FORM START -->
         <form action="updateAccount" method="post">
 
-            <!-- Hidden ID (important) -->
+            <!-- Hidden stuff -->
             <input type="hidden" name="id" value="${account.account.id}">
+            <input type="hidden" name="base_username" value="${base_username}" />
+            <input type="hidden" name="base_mail" value="${base_mail}" />
 
             <div class="userDetailCard">
 
@@ -36,8 +38,19 @@
                 <div class="userInfoSection">
 
                     <div class="userField">
-                        <label>User ID</label>
-                        <input type="text" value="${account.account.id}" readonly>
+                        <label>User Role</label>
+                        <select name="accountRole">
+                            <option value="USER"
+                            ${account.account.role == 'USER' ? 'selected' : ''}>
+                                USER
+                            </option>
+
+                            <option value="ADMIN"
+                            ${account.account.role == 'ADMIN' ? 'selected' : ''}>
+                                ADMIN
+                            </option>
+
+                        </select>
                     </div>
 
                     <div class="userField">
@@ -53,10 +66,11 @@
                     </div>
 
                     <div class="userField">
-                        <label>Birth Year</label>
-                        <input type="number"
-                               placeholder="Not implemented yet"
-                               disabled>
+                        <label>Password</label>
+                        <input type="text"
+                               name="password"
+                               placeholder=""
+                               value="">
                     </div>
 
                     <div class="userField">
@@ -96,7 +110,11 @@
 
                 </div>
             </div>
-
+            <c:if test="${not empty error}">
+                <div class="error-message">
+                        ${error}
+                </div>
+            </c:if>
             <div class="userActionBar">
                 <button type="submit" class="btnSave">
                     <i class="fa-solid fa-floppy-disk"></i> Save Changes
