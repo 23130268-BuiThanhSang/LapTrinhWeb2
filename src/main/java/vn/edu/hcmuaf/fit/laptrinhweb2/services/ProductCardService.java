@@ -13,7 +13,7 @@ public class ProductCardService {
     int pageSize = 12;
 
     /**
-     * đây là phương thức thực hiện láy danh sách sản phẩm dưới dạng productCard
+     * đây là phương thức thực hiện láy danh sách sản phẩm dưới dạng productCard chưa xóa vì có thể sử dụng cho trang khác
      * @param page
      * @return
      */
@@ -29,7 +29,7 @@ public class ProductCardService {
     }
 
     /**
-     *  đây là phương thức thực hiện láy danh sách sản phẩm dưới dạng productCard theo loại sản phẩm
+     *  đây là phương thức thực hiện láy danh sách sản phẩm dưới dạng productCard theo loại sản phẩm phương thức chưa bỏ đi do có thể có trang sử dụng
      * @param productTypeId
      * @param page
      * @return
@@ -60,7 +60,7 @@ public class ProductCardService {
         }
     }
     /**
-     * đây là phương thức thực hiện tính tổng số trang sản phẩm theo loại sản phẩm
+     * đây là phương thức thực hiện tính tổng số trang sản phẩm theo loại sản phẩm chưa xóa do có thể có trang sử dụng
      * @param productTypeId
      * @return
      */
@@ -70,20 +70,20 @@ public class ProductCardService {
     }
 
     /**
-     * đây là phương thức thực hiện điền thông tin đánh giá vào productCard
+     * đây là phương thức thực hiện tính số sao để hiên thị lên productCard
      * @param p
      */
     public void fillRating(ProductCard p) {
         double avg = productDao.getAverageRatingByProduct(p.getId());
         int full = (int) avg;
         boolean half = (avg - full) > 0;
-//        p.setRating(Math.round(avg * 10.0) / 10.0); // 4.3
         p.setFullStars(full);
         p.setHasHalfStar(half);
     }
 
     /**
      * đây là phương thức thực hiện láy danh sách sản phẩm dưới dạng productCard theo loại sản phẩm và bộ lọc
+     * chưa thực hiện bỏ do có thể có trang sử dụng
      * @param productTypeId
      * @param page
      * @param color
@@ -99,6 +99,7 @@ public class ProductCardService {
 
     /**
      * đây là phương thức thực hiện tính tổng số trang sản phẩm theo loại sản phẩm và bộ lọc
+     * chưa thực hiện bỏ do có thể có trang sử dụng
      * @param productTypeId
      * @param color
      * @param gender
@@ -112,35 +113,42 @@ public class ProductCardService {
     }
 
     /**
-     * đây là phương thức thực hiện láy danh sách sản phẩm dưới dạng productCard theo loại sản phẩm, bộ lọc và từ khóa tìm kiếm
-     * @param productTypeId
-     * @param keyword
-     * @param color
-     * @param gender
-     * @param brandId
-     * @param size
-     * @return
-     */
-    public int getTotalPagesByTypeFilterAndSearch(int productTypeId, String keyword, String color, String gender, Integer brandId, Integer size) {
-        int total = productDao.countProductByTypeFilterAndSearch(productTypeId, keyword, color, gender, brandId, size);
-        return (int) Math.ceil((double) total / pageSize);
-    }
-
-    /**
-     * đây là phương thức thực hiện láy danh sách sản phẩm dưới dạng productCard theo loại sản phẩm, bộ lọc và từ khóa tìm kiếm
+     * đây là phương thức thực hiện láy danh sách sản phẩm dưới dạng productCard theo loại sản phẩm và bộ lọc và tìm kiếm
+     * đặc biệt phương thức có thể sử dụng lấy tất cả sản phẩm nếu chưa chọn danh mục phục vụ cho trang tất cả sản phẩm
+     * dùng cho trang tất cả sản phẩm
      * @param productTypeId
      * @param page
      * @param keyword
      * @param color
      * @param gender
      * @param brandId
+     * @param collectionId
      * @param size
      * @return
      */
-    public List<ProductCard> getProductCardsByTypeFilterAndSearch(int productTypeId, int page, String keyword, String color, String gender, Integer brandId, Integer size) {
+    public List<ProductCard> getAllProductCardForListProductAndFilterAndSearch(
+            Integer productTypeId,
+            int page,
+            String keyword,
+            String color,
+            String gender,
+            Integer brandId,
+            Integer collectionId,
+            Integer size
+    ) {
         int offset = (page - 1) * pageSize;
 
-        List<ProductCard> cards = productDao.getProductCardByTypeFilterAndSearch(productTypeId, pageSize, offset, keyword, color, gender, brandId, size);
+        List<ProductCard> cards = productDao.getProductCardsByFullFilter(
+                productTypeId,
+                pageSize,
+                offset,
+                keyword,
+                color,
+                gender,
+                brandId,
+                collectionId,
+                size
+        );
 
         for (ProductCard card : cards) {
             applyDiscount(card);
@@ -148,6 +156,42 @@ public class ProductCardService {
 
         return cards;
     }
+
+    /**
+     * đây là phương thức thực hiện tính tổng số trang sản phẩm theo loại sản phẩm và bộ lọc và tìm kiếm
+     * đặc biệt phương thức có thể sử dụng lấy tất cả sản phẩm nếu chưa chọn danh mục phục vụ cho trang tất cả sản phẩm
+     * dùng cho trang tất cả sản phẩm
+     * @param productTypeId
+     * @param keyword
+     * @param color
+     * @param gender
+     * @param brandId
+     * @param collectionId
+     * @param size
+     * @return
+     */
+    public int getTotalPagesForListProductFilterAndSearch(
+            Integer productTypeId,
+            String keyword,
+            String color,
+            String gender,
+            Integer brandId,
+            Integer collectionId,
+            Integer size
+    ) {
+        int total = productDao.countProductByFullFilter(
+                productTypeId,
+                keyword,
+                color,
+                gender,
+                brandId,
+                collectionId,
+                size
+        );
+
+        return (int) Math.ceil((double) total / pageSize);
+    }
+
 
 
 }

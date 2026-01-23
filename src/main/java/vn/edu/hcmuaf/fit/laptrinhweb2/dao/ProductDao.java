@@ -13,8 +13,8 @@ import java.util.*;
 
 public class ProductDao extends BaseDao {
     /**
-     * Lấy danh sách ProductCard
-     *
+     * lấy danh sách ProductCard chưa lọc
+     * hiện tại có thể bỏ đi nhưng để dành cho trang khác có thể sử dụng
      * @param limit
      * @param offset
      * @return
@@ -59,6 +59,7 @@ public class ProductDao extends BaseDao {
 
     /**
      * `Lấy danh sách ProductCard theo loại sản phẩm
+     * hiện tại có thể bỏ đi nhưng để dành cho trang khác có thể sử dụng
      * @param productTypeId
      * @param limit
      * @param offset
@@ -105,8 +106,8 @@ public class ProductDao extends BaseDao {
     }
 
     /**
-     * Đếm số lượng sản phẩm theo loại sản phẩm
-     *
+     * đếm số lượng sản phẩm theo loại sản phẩm nhằm mục đích phân trang
+     * có thể bỏ đi nhưng để dành cho trang khác có thể sử dụng
      * @param productTypeId
      * @return
      */
@@ -125,7 +126,7 @@ public class ProductDao extends BaseDao {
 
     /**
      * Lấy danh sách ProductCard theo loại sản phẩm và bộ lọc
-     *
+     * có thể bỏ đi những để dành cho trang khác sử dụng
      * @param productTypeId
      * @param limit
      * @param offset
@@ -197,7 +198,7 @@ public class ProductDao extends BaseDao {
 
     /**
      * đây là phương thức thực hiện đếm số sản phẩm theo bộ lọc
-     *
+     * có thể bỏ đi những để dành cho trang khác sử dụng
      * @param productTypeId
      * @param color
      * @param gender
@@ -244,7 +245,8 @@ public class ProductDao extends BaseDao {
     }
 
     /**
-     * Lấy danh sách ProductCard theo loại sản phẩm, bộ lọc và từ khóa tìm kiếm
+     * Lấy danh sách sản phẩm (toàn bộ hoặc theo loại) cho phép filter/tìm kiếm
+     * phương thức quan trọng dùng cho trang tất cả sản phẩm
      * @param productTypeId
      * @param limit
      * @param offset
@@ -252,17 +254,19 @@ public class ProductDao extends BaseDao {
      * @param color
      * @param gender
      * @param brandId
+     * @param collectionId
      * @param size
      * @return
      */
-    public List<ProductCard> getProductCardByTypeFilterAndSearch(
-            int productTypeId,
+    public List<ProductCard> getProductCardsByFullFilter(
+            Integer productTypeId,
             int limit,
             int offset,
             String keyword,
             String color,
             String gender,
             Integer brandId,
+            Integer collectionId,
             Integer size
     ) {
         StringBuilder sql = new StringBuilder("""
@@ -288,31 +292,24 @@ public class ProductDao extends BaseDao {
                 FROM product_variant_image img2
                 WHERE img2.variant_id = v.id
             )
-        WHERE  p.product_type_id = :typeId
+        WHERE 1=1
     """);
 
-        /**
-         * filter từ khóa tìm kiếm trên tên sản phẩm
-         */
-        if (keyword != null && !keyword.isBlank()) {
-            sql.append(" AND p.product_name LIKE :keyword ");
-        }
-        // Filter brand trên bảng cha (product hoặc brand)
-        if (brandId != null) {
-            sql.append(" AND b.id = :brandId ");
-        }
+        if (productTypeId != null) sql.append(" AND p.product_type_id = :typeId ");
+        if (keyword != null && !keyword.isBlank()) sql.append(" AND p.product_name LIKE :keyword ");
+        if (brandId != null) sql.append(" AND b.id = :brandId ");
+        if (collectionId != null) sql.append(" AND p.collection_id = :collectionId ");
 
-        // Filter variant (color/size)
         sql.append("""
         AND EXISTS (
             SELECT 1 FROM product_variant vf
             WHERE vf.product_id = p.id
+            AND vf.stock > 0
     """);
         if (color != null && !color.isEmpty()) sql.append(" AND vf.color = :color ");
         if (size != null) sql.append(" AND vf.size = :size ");
         sql.append(") ");
 
-        // Filter gender trên bảng cha
         if (gender != null && !gender.isEmpty()) sql.append(" AND p.product_gender = :gender ");
 
         sql.append("""
@@ -322,57 +319,58 @@ public class ProductDao extends BaseDao {
 
         return get().withHandle(h -> {
             var query = h.createQuery(sql.toString())
-                    .bind("typeId", productTypeId)
                     .bind("limit", limit)
                     .bind("offset", offset);
 
-            if (keyword != null && !keyword.isBlank())
-                query.bind("keyword", "%" + keyword + "%");
-
-            if (color != null && !color.isEmpty()) query.bind("color", color);
-            if (gender != null && !gender.isEmpty()) query.bind("gender", gender);
+            if (productTypeId != null) query.bind("typeId", productTypeId);
+            if (keyword != null && !keyword.isBlank()) query.bind("keyword", "%" + keyword + "%");
             if (brandId != null) query.bind("brandId", brandId);
+            if (collectionId != null) query.bind("collectionId", collectionId);
+            if (color != null && !color.isEmpty()) query.bind("color", color);
             if (size != null) query.bind("size", size);
+            if (gender != null && !gender.isEmpty()) query.bind("gender", gender);
 
             return query.mapToBean(ProductCard.class).list();
         });
     }
 
     /**
-     * Đếm số lượng sản phẩm theo loại sản phẩm, bộ lọc và từ khóa tìm kiếm
+     * Đếm số lượng sản phẩm (toàn bộ hoặc theo loại) cho phép filter/tìm kiếm
+     * phương thức quan trọng dùng cho trang tất cả sản phẩm phục vụ phân trang
      * @param productTypeId
      * @param keyword
      * @param color
      * @param gender
      * @param brandId
+     * @param collectionId
      * @param size
      * @return
      */
-    public int countProductByTypeFilterAndSearch(
-            int productTypeId,
+    public int countProductByFullFilter(
+            Integer productTypeId,
             String keyword,
             String color,
             String gender,
             Integer brandId,
+            Integer collectionId,
             Integer size
     ) {
         StringBuilder sql = new StringBuilder("""
         SELECT COUNT(*) FROM product p
         JOIN brand b ON p.brand_id = b.id
-        WHERE p.product_type_id = :typeId
+        WHERE 1=1
     """);
 
-        if (keyword != null && !keyword.isBlank()) {
-            sql.append(" AND p.product_name LIKE :keyword ");
-        }
-
-        // BRAND_ID filter ĐÚNG CHỖ (trên cha)
+        if (productTypeId != null) sql.append(" AND p.product_type_id = :typeId ");
+        if (keyword != null && !keyword.isBlank()) sql.append(" AND p.product_name LIKE :keyword ");
         if (brandId != null) sql.append(" AND b.id = :brandId ");
+        if (collectionId != null) sql.append(" AND p.collection_id = :collectionId ");
 
         sql.append("""
         AND EXISTS (
             SELECT 1 FROM product_variant v
             WHERE v.product_id = p.id
+            AND v.stock > 0
     """);
         if (color != null && !color.isEmpty()) sql.append(" AND v.color = :color ");
         if (size != null) sql.append(" AND v.size = :size ");
@@ -381,25 +379,22 @@ public class ProductDao extends BaseDao {
         if (gender != null && !gender.isEmpty()) sql.append(" AND p.product_gender = :gender ");
 
         return get().withHandle(h -> {
-            var query = h.createQuery(sql.toString())
-                    .bind("typeId", productTypeId);
+            var query = h.createQuery(sql.toString());
 
-            if (keyword != null && !keyword.isBlank())
-                query.bind("keyword", "%" + keyword + "%");
-
-            if (color != null && !color.isEmpty()) query.bind("color", color);
-            if (gender != null && !gender.isEmpty()) query.bind("gender", gender);
+            if (productTypeId != null) query.bind("typeId", productTypeId);
+            if (keyword != null && !keyword.isBlank()) query.bind("keyword", "%" + keyword + "%");
             if (brandId != null) query.bind("brandId", brandId);
+            if (collectionId != null) query.bind("collectionId", collectionId);
+            if (color != null && !color.isEmpty()) query.bind("color", color);
             if (size != null) query.bind("size", size);
+            if (gender != null && !gender.isEmpty()) query.bind("gender", gender);
 
             return query.mapTo(int.class).one();
         });
     }
 
-
     /**
      * Lấy thông tin chi tiết sản phẩm theo id
-     *
      * @param id
      * @return
      */
