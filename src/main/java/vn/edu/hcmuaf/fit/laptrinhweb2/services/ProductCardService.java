@@ -95,4 +95,44 @@ public class ProductCardService {
         int total = productDao.countProductByTypeAndFilter(productTypeId, color, gender, brandId, size);
         return (int) Math.ceil((double) total / pageSize);
     }
+
+    /**
+     * đây là phương thức thực hiện láy danh sách sản phẩm dưới dạng productCard theo loại sản phẩm, bộ lọc và từ khóa tìm kiếm
+     * @param productTypeId
+     * @param keyword
+     * @param color
+     * @param gender
+     * @param brandId
+     * @param size
+     * @return
+     */
+    public int getTotalPagesByTypeFilterAndSearch(int productTypeId, String keyword, String color, String gender, Integer brandId, Integer size) {
+        int total = productDao.countProductByTypeFilterAndSearch(productTypeId, keyword, color, gender, brandId, size);
+        return (int) Math.ceil((double) total / pageSize);
+    }
+
+    /**
+     * đây là phương thức thực hiện láy danh sách sản phẩm dưới dạng productCard theo loại sản phẩm, bộ lọc và từ khóa tìm kiếm
+     * @param productTypeId
+     * @param page
+     * @param keyword
+     * @param color
+     * @param gender
+     * @param brandId
+     * @param size
+     * @return
+     */
+    public List<ProductCard> getProductCardsByTypeFilterAndSearch(int productTypeId, int page, String keyword, String color, String gender, Integer brandId, Integer size) {
+        int offset = (page - 1) * pageSize;
+
+        List<ProductCard> cards = productDao.getProductCardByTypeFilterAndSearch(productTypeId, pageSize, offset, keyword, color, gender, brandId, size);
+
+        for (ProductCard card : cards) {
+            applyDiscount(card);
+        }
+
+        return cards;
+    }
+
+
 }

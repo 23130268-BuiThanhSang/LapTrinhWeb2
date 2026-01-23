@@ -4,7 +4,9 @@ import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 import vn.edu.hcmuaf.fit.laptrinhweb2.model.DTO.ProductCard;
+import vn.edu.hcmuaf.fit.laptrinhweb2.model.ProductGroup;
 import vn.edu.hcmuaf.fit.laptrinhweb2.services.ProductCardService;
+import vn.edu.hcmuaf.fit.laptrinhweb2.services.ProductGroupService;
 
 import java.io.IOException;
 import java.util.List;
@@ -12,7 +14,7 @@ import java.util.List;
 @WebServlet(name = "ListAllProductClothesController", value = "/ListProductClothes")
 public class ListAllProductClothesController extends HttpServlet {
     ProductCardService productCardService = new ProductCardService();
-
+    ProductGroupService productGroupService = new ProductGroupService();
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int productTypeId = 3;
@@ -21,7 +23,6 @@ public class ListAllProductClothesController extends HttpServlet {
         if (pageParam != null) {
             try { page = Integer.parseInt(pageParam); } catch (Exception ignored) {}
         }
-
         /**
          * thực hiện lấy tham số từ filter
          */
@@ -32,15 +33,20 @@ public class ListAllProductClothesController extends HttpServlet {
         String sizeStr = request.getParameter("size");
         Integer size = (sizeStr != null && !sizeStr.isEmpty()) ? Integer.parseInt(sizeStr) : null;
         request.setAttribute("size", size);
+        /**
+         * thực hiện lấy tham số từ ô search
+         */
+        String keyword = request.getParameter("keyword");
+        if (keyword != null) {
+            keyword = keyword.trim();
+        }
 
         /**
-         * thực hiện gọi xuống service để lấy danh sách sản phẩm theo filter
+         * thực hiện gọi xuống service để lấy danh sách sản phẩm theo filter va search
          */
-        List<ProductCard> products = productCardService.getProductCardsByTypeAndFilter(
-                productTypeId, page, color, gender, brandId, size);
+        List<ProductCard> products = productCardService.getProductCardsByTypeFilterAndSearch( productTypeId, page, keyword, color, gender, brandId, size);
 
-        int totalPages = productCardService.getTotalPagesByTypeAndFilter(
-                productTypeId, color, gender, brandId, size);
+        int totalPages = productCardService.getTotalPagesByTypeFilterAndSearch( productTypeId, keyword, color, gender, brandId, size);
 
         /**
          * truyền dữ liệu lên jsp
@@ -50,12 +56,16 @@ public class ListAllProductClothesController extends HttpServlet {
         request.setAttribute("currentPage", page);
 
         /**
-         * truyền lại các tham số filter để giữ trạng thái lọc trên giao diện
+         * truyền lại các tham số filter để giữ trạng thái lọc trên giao diện và search
          */
+        request.setAttribute("keyword", keyword);
         request.setAttribute("color", color);
         request.setAttribute("gender", gender);
         request.setAttribute("brandId", brandId);
         request.setAttribute("size", size);
+        /**
+         * lấy danh sách brand để hiển thị trên filter
+         */
 
         request.getRequestDispatcher("PageAllProductClothes.jsp").forward(request, response);
     }

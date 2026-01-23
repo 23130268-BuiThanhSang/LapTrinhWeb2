@@ -130,25 +130,30 @@
                     </label>
                 </div>
             </details>
+            <input type="hidden" name="keyword" value="${keyword}">
         </form>
     </aside>
 
     <main class="ProductMainArea">
         <div class="ProductToolbar">
-            <div class="SearchWrapper">
-                <i class="fa fa-search"></i>
-                <input type="text" placeholder="Tìm kiếm sản phẩm theo tên...">
-            </div>
+            <form method="get" action="ListProductClothes" id="searchForm">
+                <div class="SearchWrapper">
+                    <i class="fa fa-search"></i>
+                    <input type="text" name="keyword"
+                           placeholder="Tìm kiếm sản phẩm theo tên..."
+                           value="${keyword}">
+                </div>
+
+<%--                giữ nguyên bộ lọc khi tìm kiếm--%>
+                <input type="hidden" name="gender" value="${gender}">
+                <input type="hidden" name="color" value="${color}">
+                <input type="hidden" name="brandId" value="${brandId}">
+                <input type="hidden" name="size" value="${size}">
+            </form>
+
+
             <div class="SortWrapper">
                 <span class="ResultCount">Hiển thị <b>${products.size()}</b> sản phẩm</span>
-<%--                <div class="SelectContainer">--%>
-<%--                    <select class="SortSelect">--%>
-<%--                        <option value="default">Sắp xếp: Mặc định</option>--%>
-<%--                        <option value="price_asc">Giá: Thấp đến Cao</option>--%>
-<%--                        <option value="price_desc">Giá: Cao đến Thấp</option>--%>
-<%--                    </select>--%>
-<%--                    <i class="fa-solid fa-chevron-down"></i>--%>
-<%--                </div>--%>
             </div>
         </div>
 
@@ -213,6 +218,6 @@
 
 <jsp:include page="/Share/footer.jsp" />
 <script src="JS/Notification.js"></script>
-<script src="JS/AutoSubmitFilterProduct.js"></script>
+<script src="JS/JSForListProduct.js"></script>
 </body>
 </html>

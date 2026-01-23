@@ -31,3 +31,26 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
 });
+/**
+ * thực hiện auto submit search form khi mất focus hoặc nhấn Enter
+ */
+document.addEventListener('DOMContentLoaded', function () {
+    const searchForm = document.getElementById('searchForm');
+    const searchInput = searchForm?.querySelector('input[name="keyword"]');
+
+    if (!searchForm || !searchInput) return;
+
+    // Mất focus → submit searchForm
+    searchInput.addEventListener('blur', function () {
+        searchForm.submit();
+    });
+
+    // Nhấn Enter → submit searchForm
+    searchInput.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            searchForm.submit();
+        }
+    });
+});
+
