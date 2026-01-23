@@ -9,76 +9,69 @@ import vn.edu.hcmuaf.fit.laptrinhweb2.Auth.PasswordUtils;
 import vn.edu.hcmuaf.fit.laptrinhweb2.model.Account;
 
 import java.io.IOException;
-@WebServlet(name = "ChangePasswordController", value = "/ChangePassword")
+@WebServlet("/ChangePassword")
 public class ChangePasswordController extends HttpServlet {
 
     private AuthDao authDao = new AuthDao();
 
-    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        String username = request.getParameter("cp_username");
-        String email    = request.getParameter("cp_email");
-        String newPass  = request.getParameter("cp_pass");
-        String confirm  = request.getParameter("cp_confirm");
+        String step = request.getParameter("step");
 
-        // 1. Kiểm tra rỗng
-        if (username == null || username.isEmpty()
-                || email == null || email.isEmpty()
-                || newPass == null || newPass.isEmpty()
-                || confirm == null || confirm.isEmpty()) {
+        /* ===== STEP 1: EMAIL ===== */
+        if ("email".equals(step)) {
 
-            request.setAttribute("cpError", "Vui lòng nhập đầy đủ thông tin.");
-            request.setAttribute("activePage", "forgot");
-            request.setAttribute("cp_username", username);
-            request.setAttribute("cp_email", email);
-            request.getRequestDispatcher("login.jsp").forward(request, response);
-            return;
+            String email = request.getParameter("cp_email");
+
+            Account acc = authDao.getUserByEmail(email);
+            if (acc == null) {
+                request.setAttribute("cpError","Email không tồn tại");
+                request.setAttribute("activeStep","forgot-step1");
+                request.getRequestDispatcher("login.jsp").forward(request,response);
+                return;
+            }
+
+            String otp = String.valueOf((int)(Math.random()*900000 + 100000));
+            request.getSession().setAttribute("forgotOTP", otp);
+            request.getSession().setAttribute("forgotEmail", email);
+
+            MailUtils.sendOTP(email, otp);
+
+            request.setAttribute("activeStep","forgot-step2");
+            request.getRequestDispatcher("login.jsp").forward(request,response);
         }
 
-        // 2. Kiểm tra mật khẩu mới = xác nhận
-        if (!newPass.equals(confirm)) {
-            request.setAttribute("cpError", "Mật khẩu xác nhận không khớp.");
-            request.setAttribute("activePage", "forgot");
-            // GIỮ username, email
-            request.setAttribute("cp_username", username);
-            request.setAttribute("cp_email", email);
-            request.getRequestDispatcher("login.jsp").forward(request, response);
-            return;
+        /* ===== STEP 2: OTP ===== */
+        else if ("otp".equals(step)) {
+
+            String input = request.getParameter("otp");
+            String real  = (String) request.getSession().getAttribute("forgotOTP");
+
+            if (!input.equals(real)) {
+                request.setAttribute("cpError","OTP không khớp");
+                request.setAttribute("activeStep","forgot-step2");
+                request.getRequestDispatcher("login.jsp").forward(request,response);
+                return;
+            }
+
+            request.setAttribute("activeStep","forgot-step3");
+            request.getRequestDispatcher("login.jsp").forward(request,response);
         }
 
-        // 3. Kiểm tra độ mạnh mật khẩu
-        if (!PasswordUtils.isStrongPassword(newPass)) {
-            request.setAttribute("cpError",
-                    "Mật khẩu phải chứa 1 chữ hoa, thường, số và ký tự đặc biệt.");
-            request.setAttribute("activePage", "forgot");
-            request.setAttribute("cp_username", username);
-            request.setAttribute("cp_email", email);
-            request.getRequestDispatcher("login.jsp").forward(request, response);
-            return;
+        /* ===== STEP 3: PASSWORD ===== */
+        else if ("password".equals(step)) {
+
+            String pass = request.getParameter("cp_pass");
+            String email = (String) request.getSession().getAttribute("forgotEmail");
+
+            authDao.updatePasswordByEmail(email, PasswordUtils.md5(pass));
+            request.getSession().invalidate();
+
+            request.setAttribute("cpSuccess","Đổi mật khẩu thành công");
+            request.setAttribute("activeStep","loginPage");
+            request.getRequestDispatcher("login.jsp").forward(request,response);
         }
-
-        // 4. Kiểm tra username + email có tồn tại và khớp nhau không
-        Account acc = authDao.getUserByUsernameAndEmail(username, email);
-        if (acc == null) {
-            request.setAttribute("cpError", "Tên tài khoản hoặc email không đúng.");
-            request.setAttribute("activePage", "forgot");
-            request.setAttribute("cp_username", username);
-            request.setAttribute("cp_email", email);
-            request.getRequestDispatcher("login.jsp").forward(request, response);
-            return;
-        }
-
-        // 5. Mã hóa MD5 và update DB
-        String hashed = PasswordUtils.md5(newPass);
-        authDao.updatePasswordByUsernameAndEmail(username, email, hashed);
-
-        // 6. Ở LẠI TRANG ĐỔI MẬT KHẨU, báo thành công
-        request.setAttribute("cpSuccess", "Đổi mật khẩu thành công, hãy đăng nhập bằng mật khẩu mới.");
-        request.setAttribute("activePage", "forgot");
-        request.setAttribute("cp_username", username);
-        request.setAttribute("cp_email", email);
-        request.getRequestDispatcher("login.jsp").forward(request, response);
     }
 }
+
