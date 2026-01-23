@@ -1,14 +1,16 @@
 package vn.edu.hcmuaf.fit.laptrinhweb2.services;
 
 import jakarta.servlet.http.Part;
+import vn.edu.hcmuaf.fit.laptrinhweb2.dao.ImageDao;
+import vn.edu.hcmuaf.fit.laptrinhweb2.model.Image;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 
 public class ImageService {
-    private static final String ROOT = "D:/lgImg";
-
+    private static final String ROOT = "D:/lgImg/";
+    private final ImageDao imageDao = new ImageDao();
     public File getDirectory(String relativePath) {
         if (relativePath == null) {
             relativePath = "";
@@ -42,47 +44,90 @@ public class ImageService {
     }
 
     public boolean renameImage(String relativePath, String newName) {
-        File oldFile = getImageFile(relativePath);
+        File oldFile = new File(ROOT, relativePath);
+
+        if (!oldFile.exists() || !oldFile.isFile()) {
+            return false;
+        }
 
         String oldName = oldFile.getName();
-        int dotIndex = oldName.lastIndexOf(".");
-        if (dotIndex == -1) return false;
+        int dot = oldName.lastIndexOf(".");
+        if (dot == -1) {
+            return false;
+        }
 
-        String extension = oldName.substring(dotIndex);
+        String extension = oldName.substring(dot);
         File newFile = new File(oldFile.getParent(), newName + extension);
 
-        if (newFile.exists()) return false;
+        if (newFile.exists()) {
+            return false;
+        }
 
-        return oldFile.renameTo(newFile);
+        boolean ok = oldFile.renameTo(newFile);
+        if (!ok) return false;
+
+        Image image = imageDao.getByUrl(relativePath);
+        if (image != null) {
+            String parent = new File(relativePath).getParent();
+            String newUrl = (parent == null ? "" : parent + "/")
+                    + newName + extension;
+
+            image.setImage_url(newUrl);
+            imageDao.update(image);
+        }
+
+        return true;
     }
 
 
-    public void uploadImage(String relativePath, Part filePart) throws IOException {
-        if (filePart == null || filePart.getSize() == 0) {
-            return;
+    public String uploadImage(String relativeDir, Part filePart) throws IOException {
+        if (relativeDir == null) {
+            relativeDir = "";
         }
 
-        File uploadDir = getDirectory(relativePath);
+        File dir = new File(ROOT, relativeDir);
+        if (!dir.exists() || !dir.isDirectory()) {
+            return "";
+        }
+
+        if (filePart == null || filePart.getSize() == 0) {
+            return "";
+        }
 
         String fileName = Path.of(filePart.getSubmittedFileName())
                 .getFileName().toString();
 
-        File dest = new File(uploadDir, fileName);
+        File dest = new File(dir, fileName);
         filePart.write(dest.getAbsolutePath());
+
+        Image image = new Image();
+        String image_url = "";
+        if (relativeDir.equals("")) {
+            image_url = fileName;
+        } else {
+            image_url = relativeDir + "/" + fileName;
+        }
+        image.setImage_url(image_url);
+
+        return image_url;
     }
 
     public boolean deleteImage(String relativePath) {
-        if (relativePath == null || relativePath.isBlank()) {
-            return false;
-        }
-
-        File file = new File(ROOT, relativePath);
+        File file = new  File(ROOT, relativePath);
 
         if (!file.exists() || !file.isFile()) {
             return false;
         }
 
-        return file.delete();
+        boolean deleted = file.delete();
+        if (!deleted) return false;
+        System.out.println("DELETE IMAGE URL = [" + relativePath + "]");
+        Image image = imageDao.getByUrl(relativePath);
+        if (image != null) {
+            imageDao.deleteById(image.getId());
+        }
+
+        return true;
     }
 
     public boolean moveImage(String fromPath, String toDirPath) {
@@ -108,7 +153,21 @@ public class ImageService {
             return false;
         }
 
-        return source.renameTo(targetFile);
+        boolean moved = source.renameTo(targetFile);
+        if (!moved) return false;
+
+        // ===== DB SYNC =====
+        Image image = imageDao.getByUrl(fromPath);
+        if (image != null) {
+            String newUrl = toDirPath.isEmpty()
+                    ? source.getName()
+                    : toDirPath + "/" + source.getName();
+
+            image.setImage_url(newUrl);
+            imageDao.update(image);
+        }
+
+        return true;
     }
 
 

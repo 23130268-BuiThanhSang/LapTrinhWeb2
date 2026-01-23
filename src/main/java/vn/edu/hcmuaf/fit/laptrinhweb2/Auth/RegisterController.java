@@ -9,7 +9,7 @@ import vn.edu.hcmuaf.fit.laptrinhweb2.model.Account;
 
 import java.io.IOException;
 
-@WebServlet(name = "RegisterController", value = "/Register")
+@WebServlet("/Register")
 public class RegisterController extends HttpServlet {
 
     private AuthDao authDao = new AuthDao();
@@ -18,80 +18,100 @@ public class RegisterController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        String username = request.getParameter("reg_username");
-        String email    = request.getParameter("reg_email");
-        String phone    = request.getParameter("reg_phone");
-        String pass     = request.getParameter("reg_pass");
-        String confirm  = request.getParameter("reg_confirm");
+        String step = request.getParameter("step");
 
-        System.out.println("RegisterController called");
-        System.out.println("username=" + username + ", email=" + email);
+        /* ================= STEP 1: NHẬP INFO ================= */
+        if ("info".equals(step)) {
 
-        // validate cơ bản
-        if (username == null || username.isEmpty()
-                || email == null || email.isEmpty()
-                || pass == null || pass.isEmpty()
-                || confirm == null || confirm.isEmpty()) {
+            String username = request.getParameter("reg_username");
+            String email    = request.getParameter("reg_email");
+            String phone    = request.getParameter("reg_phone");
 
-            request.setAttribute("regError", "Vui lòng nhập đầy đủ thông tin.");
-            //Không xóa các trường đã nhập
-            request.setAttribute("activePage", "register");
-            request.setAttribute("reg_username", username);
-            request.setAttribute("reg_email", email);
-            request.setAttribute("reg_phone", phone);
-            request.getRequestDispatcher("login.jsp").forward(request, response);
-            return;
+            if (username == null || username.isBlank() || email == null || email.isBlank()) {
+                request.setAttribute("regError", "Nhập đầy đủ thông tin");
+                request.setAttribute("activeStep", "register-step1");
+                request.getRequestDispatcher("login.jsp").forward(request,response);
+                return;
+            }
+
+            if (authDao.existsByUsername(username)) {
+                request.setAttribute("regError", "Username đã tồn tại");
+                request.setAttribute("activeStep", "register-step1");
+                request.getRequestDispatcher("login.jsp").forward(request,response);
+                return;
+            }
+
+            if (authDao.existsByEmail(email)) {
+                request.setAttribute("regError", "Email đã được sử dụng");
+                request.setAttribute("activeStep", "register-step1");
+                request.getRequestDispatcher("login.jsp").forward(request,response);
+                return;
+            }
+
+
+            String otp = String.valueOf((int)(Math.random()*900000 + 100000));
+
+            request.getSession().setAttribute("registerOTP", otp);
+            request.getSession().setAttribute("reg_username", username);
+            request.getSession().setAttribute("reg_email", email);
+            request.getSession().setAttribute("reg_phone", phone);
+
+            MailUtils.sendOTP(email, otp);
+
+            request.setAttribute("activeStep", "register-step2");
+            request.getRequestDispatcher("login.jsp").forward(request,response);
         }
 
-        if (!pass.equals(confirm)) {
-            request.setAttribute("regError", "Mật khẩu xác nhận không khớp.");
-            //Chỉ xóa phần mật khẩu
-            request.setAttribute("activePage", "register");
-            request.setAttribute("reg_username", username);
-            request.setAttribute("reg_email", email);
-            request.setAttribute("reg_phone", phone);
-            request.getRequestDispatcher("login.jsp").forward(request, response);
-            return;
+        /* ================= STEP 2: OTP ================= */
+        else if ("otp".equals(step)) {
+
+            String inputOtp = request.getParameter("otp");
+            String realOtp  = (String) request.getSession().getAttribute("registerOTP");
+
+            if (inputOtp == null || realOtp == null || !inputOtp.equals(realOtp)) {
+                request.setAttribute("regError", "OTP không đúng hoặc đã hết hạn");
+                request.setAttribute("activeStep", "register-step2");
+                request.getRequestDispatcher("login.jsp").forward(request,response);
+                return;
+            }
+
+            request.setAttribute("activeStep", "register-step3");
+            request.getRequestDispatcher("login.jsp").forward(request,response);
         }
 
-        if (!PasswordUtils.isStrongPassword(pass)) {
-            request.setAttribute("regError",
-                    "Mật khẩu phải chứa 1 chữ hoa, thường, số và ký tự đặc biệt.");
-            request.setAttribute("activePage", "register");
-            request.setAttribute("reg_username", username);
-            request.setAttribute("reg_email", email);
-            request.setAttribute("reg_phone", phone);
-            request.getRequestDispatcher("login.jsp").forward(request, response);
-            return;
+        /* ================= STEP 3: PASSWORD ================= */
+        else if ("password".equals(step)) {
+
+            String pass = request.getParameter("reg_pass");
+            String confirm = request.getParameter("reg_confirm");
+
+            if (pass == null || confirm == null || !pass.equals(confirm)) {
+                request.setAttribute("regError", "Mật khẩu không khớp");
+                request.setAttribute("activeStep", "register-step3");
+                request.getRequestDispatcher("login.jsp").forward(request,response);
+                return;
+            }
+
+            String username = (String) request.getSession().getAttribute("reg_username");
+            String email    = (String) request.getSession().getAttribute("reg_email");
+            String phone    = (String) request.getSession().getAttribute("reg_phone");
+
+            Account acc = new Account();
+            acc.setUsername(username);
+            acc.setAccountEmail(email);
+            acc.setPhoneNumber(phone);
+            acc.setPassword(PasswordUtils.md5(pass));
+            acc.setAccountStatus(1);
+            acc.setAvatarUrl("https://t4.ftcdn.net/jpg/07/03/86/11/360_F_703861114_7YxIPnoH8NfmbyEffOziaXy0EO1NpRHD.jpg");
+
+            authDao.insert(acc);
+
+            request.getSession().invalidate();
+
+            request.setAttribute("success", "Đăng ký thành công");
+            request.setAttribute("activeStep", "loginPage");
+            request.getRequestDispatcher("login.jsp").forward(request,response);
         }
-
-        if (authDao.existsByUsername(username)) {
-            request.setAttribute("regError", "Tên tài khoản đã tồn tại.");
-            request.setAttribute("activePage", "register");
-            request.setAttribute("reg_username", username);
-            request.setAttribute("reg_email", email);
-            request.setAttribute("reg_phone", phone);
-            request.getRequestDispatcher("login.jsp").forward(request, response);
-            return;
-        }
-
-        // mã hóa MD5 rồi lưu DB
-        String hashed = PasswordUtils.md5(pass);
-
-        Account acc = new Account();
-        acc.setUsername(username);
-        acc.setPassword(hashed);
-        acc.setAccountEmail(email);
-        acc.setPhoneNumber(phone);
-        acc.setAccountStatus(1); // active
-
-        System.out.println("Insert account: " + acc.getUsername());
-
-        authDao.insert(acc);
-
-        request.setAttribute("success", "Đăng ký thành công, hãy đăng nhập.");
-        request.setAttribute("activePage", "register");
-
-        request.getRequestDispatcher("login.jsp").forward(request, response);
     }
 }
+

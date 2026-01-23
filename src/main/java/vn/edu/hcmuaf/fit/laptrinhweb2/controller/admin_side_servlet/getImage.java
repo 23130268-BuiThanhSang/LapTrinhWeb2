@@ -11,7 +11,7 @@ import java.io.IOException;
 
 @WebServlet(name = "getImage", value = "/getImage")
 public class getImage extends HttpServlet {
-    private static final String ROOT = "D:/lgImg";
+    private static final String ROOT = "D:/lgImg/";
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String path = request.getParameter("path");

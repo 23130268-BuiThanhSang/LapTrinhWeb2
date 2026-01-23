@@ -1,157 +1,191 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Quản lý sản phẩm</title>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="CSS/manageUser.css">
     <link rel="stylesheet" href="CSS/manageProduct.css">
 </head>
-<body>
+
+<body data-default-tab="${defaultTab}">
 <div class="MainUI">
-    <jsp:include page="/Share/admin_leftbar.jsp" />
+
+    <jsp:include page="/Share/admin_leftbar.jsp"/>
+
     <div class="MainManagerForProduct">
+
+        <!-- ===================== TAB BUTTONS ===================== -->
         <div class="TabButtons">
-            <button id="btnAddProduct" class="TabButton">Thêm sản phẩm</button>
-            <button id="btnAddGroup" class="TabButton">Thêm nhóm sản phẩm</button>
-            <button id="btnSearchProduct" class="TabButton">Tìm kiếm sản phẩm</button>
+            <button id="btnAddProduct"
+                    class="TabButton ${defaultTab == 'ADD_PRODUCT' ? 'activeTab' : ''}">
+                Thêm sản phẩm
+            </button>
+            <button id="btnAddGroup"
+                    class="TabButton ${defaultTab == 'ADD_GROUP' ? 'activeTab' : ''}">
+                Thêm nhóm sản phẩm
+            </button>
+            <button id="btnSearchProduct"
+                    class="TabButton ${defaultTab == 'SEARCH' || defaultTab == null ? 'activeTab' : ''}">
+                Tìm kiếm sản phẩm
+            </button>
         </div>
+        <!-- ===================== ADD PRODUCT ===================== -->
+        <div id="AddProductSection"
+             class="AddProductSection"
+             style="${defaultTab == 'ADD_PRODUCT' ? 'display:block' : 'display:none'}">
+        <div class="HeaderForManageProduct">Thêm Sản Phẩm Mới</div>
+            <form class="AddProductForm"
+                  action="addProduct"
+                  method="post"
+                  enctype="multipart/form-data">
 
-        <!-- ===================== ADD PRODUCT SECTION ===================== -->
-        <div id="AddProductSection" class="AddProductSection">
-            <div class="HeaderForManageProduct">Thêm Sản Phẩm Mới</div>
-
-            <form class="AddProductForm">
-                <div class="FormRow">
+            <div class="FormRow">
                     <label>Tên sản phẩm:</label>
                     <input type="text" name="product_name">
                 </div>
-
                 <div class="FormRow">
                     <label>Phân loại:</label>
-                    <input type="text" name="category">
+                    <select name="category" required>
+                        <option value="1">Dụng cụ gym</option>
+                        <option value="2">Phụ kiện</option>
+                        <option value="3">Đồ</option>
+                        <option value="4" selected>Giày</option>
+                    </select>
                 </div>
-
                 <div class="FormRow">
-                    <label>Giá bán:</label>
-                    <input type="number" name="price">
+                    <label>Thông tin sản phẩm:</label>
+                    <textarea name="product_info" rows="4"></textarea>
                 </div>
-
                 <div class="FormRow">
-                    <label>Số lượng:</label>
-                    <input type="number" name="quantity">
+                    <label>Hướng dẫn bảo quản:</label>
+                    <textarea name="product_care_instruction" rows="4"></textarea>
                 </div>
-
-                <div class="FormRow">
-                    <label>Ngày nhập kho:</label>
-                    <input type="date" name="import_date">
-                </div>
-
-                <div class="FormRow">
-                    <label>Hạn sử dụng:</label>
-                    <input type="date" name="expire_date">
-                </div>
-
+                <!-- Brand -->
                 <div class="FormRow">
                     <label>Thương hiệu <span class="required">*</span>:</label>
                     <div class="RadioContainer">
-                        <label><input type="radio" name="brand" value="Nike" required> Nike</label>
-                        <label><input type="radio" name="brand" value="Adidas" required> Adidas</label>
-                        <label><input type="radio" name="brand" value="Puma" required> Puma</label>
-                        <!-- Add more brands if needed -->
+                        <c:forEach var="brand" items="${brandList}">
+                            <label>
+                                <input type="radio"
+                                       name="brand_id"
+                                       value="${brand.id}"
+                                       required>
+                                    ${brand.name}
+                            </label>
+                        </c:forEach>
                     </div>
                 </div>
-
+                <!-- Collection -->
                 <div class="FormRow">
-                    <label>Bộ Sưu tập:</label>
+                    <label>Bộ sưu tập:</label>
                     <div class="CheckboxContainer">
-                        <label><input type="checkbox" name="collection" value="Summer"> Summer</label>
-                        <label><input type="checkbox" name="collection" value="Winter"> Winter</label>
-                        <!-- Add more collections if needed -->
+                        <c:forEach var="collection" items="${collectionList}">
+                            <label>
+                                <input type="radio"
+                                       name="collection_ids"
+                                       value="${collection.id}">
+                                    ${collection.name}
+                            </label>
+                        </c:forEach>
                     </div>
                 </div>
-
+                <!-- Sport -->
                 <div class="FormRow">
                     <label>Môn thể thao:</label>
                     <div class="CheckboxContainer">
-                        <label><input type="checkbox" name="sport" value="Football"> Football</label>
-                        <label><input type="checkbox" name="sport" value="Yoga"> Yoga</label>
-                        <!-- Add more sports if needed -->
+                        <c:forEach var="sport" items="${sportList}">
+                            <label>
+                                <input type="radio"
+                                       name="sport_ids"
+                                       value="${sport.id}">
+                                    ${sport.name}
+                            </label>
+                        </c:forEach>
                     </div>
                 </div>
-
-                <div class="FormRow">
-                    <label>Ưu đãi:</label>
-                    <div class="CheckboxContainer">
-                        <label><input type="checkbox" name="hotdeal" value="Yes"> Có</label>
-                    </div>
-                </div>
-
+                <!-- Gender -->
                 <div class="FormRow">
                     <label>Giới tính:</label>
-                    <div class="RadioContainer">
-                        <label><input type="radio" name="gender" value="Nam"> Nam</label>
-                        <label><input type="radio" name="gender" value="Nữ"> Nữ</label>
-                        <!-- Not required, so users can skip -->
+                    <div class="CheckboxContainer">
+                        <label><input type="radio" name="genders" value="nam"> Nam</label>
+                        <label><input type="radio" name="genders" value="nu"> Nữ</label>
+                        <label><input type="radio" name="genders" value="unisex"> Khác</label>
                     </div>
                 </div>
+                <div class="FormRow">
+                    <label>Thông tin trả hàng:</label>
+                    <textarea name="product_return_info" rows="4"></textarea>
+                </div>
+                <!-- ================= VARIANTS SECTION ================= -->
+                <div class="VariantSection">
 
-                <button type="submit" class="SubmitAddProduct">Thêm sản phẩm</button>
+                    <div class="VariantHeader">
+                        <span>Biến thể sản phẩm</span>
+                    </div>
+
+                    <div id="VariantContainer">
+                        <!-- JS will insert variant cards here -->
+                    </div>
+
+                    <button type="button"
+                            id="btnAddVariant"
+                            class="AddVariantButton">
+                        + Thêm biến thể
+                    </button>
+                </div>
+
+                <button type="submit" class="SubmitAddProduct">
+                    Thêm sản phẩm
+                </button>
+
             </form>
         </div>
-        <!-- ===================== ADD PRODUCT GROUP SECTION ===================== -->
-        <div id="AddGroupSection" class="AddGroupSection">
 
-            <div class="HeaderForManageProduct">Thêm Nhóm Sản Phẩm</div>
+        <!-- ===================== ADD GROUP ===================== -->
+        <div id="AddGroupSection"
+             class="AddGroupSection"
+             style="${defaultTab == 'ADD_GROUP' ? 'display:block' : 'display:none'}">
+
+
+        <div class="HeaderForManageProduct">Thêm Nhóm Sản Phẩm</div>
 
             <form class="AddGroupForm"
                   action="servlet_addProductGroup"
                   method="post">
 
-                <!-- Group type -->
                 <div class="FormRow">
                     <label>Loại nhóm:</label>
                     <select name="group_type" required>
-                        <option value="thuong_hieu">Thương Hiệu</option>
-                        <option value="bo_suu_tap">Bộ Sưu Tập</option>
-                        <option value="mon_the_thao">Môn Thể Thao</option>
-                        <option value="uu_dai">Ưu Đãi</option>
+                        <option value="thuong_hieu">Thương hiệu</option>
+                        <option value="bo_suu_tap">Bộ sưu tập</option>
+                        <option value="mon_the_thao">Môn thể thao</option>
+                        <option value="uu_dai">Ưu đãi</option>
                     </select>
                 </div>
 
-                <!-- Group name -->
                 <div class="FormRow">
                     <label>Tên nhóm:</label>
-                    <input type="text"
-                           name="group_name"
-                           placeholder="Nhập tên nhóm"
-                           required>
+                    <input type="text" name="group_name" required>
                 </div>
 
-                <!-- Thumbnail URL -->
                 <div class="FormRow">
                     <label>Thumbnail URL:</label>
-                    <input type="text"
-                           name="thumbnail_url"
-                           placeholder="https://...">
+                    <input type="text" name="thumbnail_url">
                 </div>
 
-                <!-- Image URL -->
                 <div class="FormRow">
                     <label>Image URL:</label>
-                    <input type="text"
-                           name="image_url"
-                           placeholder="https://...">
+                    <input type="text" name="image_url">
                 </div>
 
-                <!-- Display order -->
                 <div class="FormRow">
                     <label>Thứ tự hiển thị:</label>
-                    <input type="number"
-                           name="display_order"
-                           min="1"
-                           value="1">
+                    <input type="number" name="display_order" min="1" value="1">
                 </div>
 
                 <button type="submit" class="SubmitAddProduct">
@@ -161,54 +195,26 @@
             </form>
         </div>
 
+        <!-- ===================== SEARCH ===================== -->
+        <div id="SearchProductSection"
+             class="SearchProductSection"
+             style="${defaultTab == 'SEARCH' || defaultTab == null ? 'display:block' : 'display:none'}">
 
-        <!-- ===================== SEARCH / VIEW PRODUCT SECTION ===================== -->
-        <div id="SearchProductSection" class="SearchProductSection">
 
-            <div class="HeaderForManageProduct">Tìm Kiếm & Quản Lý Sản Phẩm</div>
+        <div class="HeaderForManageProduct">Tìm Kiếm & Quản Lý Sản Phẩm</div>
 
-            <!-- Search Controls -->
             <div class="SearchControls">
+                <input type="text" class="SearchInput" placeholder="Nhập từ khóa...">
 
-                <!-- Search text -->
-                <input type="text" class="SearchInput" placeholder="Nhập từ khóa..." name="search_text">
-
-                <!-- Filter: search by -->
-                <select class="SearchFilter" name="search_by">
+                <select class="SearchFilter">
                     <option value="name">Tên sản phẩm</option>
                     <option value="id">Mã sản phẩm</option>
                     <option value="variant_id">Variant ID</option>
                 </select>
 
-                <!-- Filter: categories -->
-                <select class="CategoryFilter" name="category_filter">
-                    <option value="">Tất cả</option>
-                    <option value="Đồ thể thao">Đồ thể thao</option>
-                    <option value="Công sở">Máy Gym</option>
-                    <option value="Đồ nam">Thực phẩm chức năng</option>
-                    <option value="Đồ nữ">Phụ kiện thể thao</option>
-                </select>
-
-                <!-- Filter: gender -->
-                <select class="GenderFilter" name="gender_filter">
-                    <option value="">Giới tính: Tất cả</option>
-                    <option value="nam">Nam</option>
-                    <option value="nu">Nữ</option>
-                </select>
-
-                <!-- Filter: price range -->
-                <select class="PriceFilter" name="price_filter">
-                    <option value="">Khoảng giá</option>
-                    <option value="0-200k">0 - 200k</option>
-                    <option value="200k-500k">200k - 500k</option>
-                    <option value="500k-1000k">500k - 1tr</option>
-                    <option value="500k-1000k">> 1tr</option>
-                </select>
-
                 <button class="SearchButton">Tìm kiếm</button>
             </div>
 
-            <!-- Results table -->
             <table class="TableProductManage">
                 <thead>
                 <tr>
@@ -224,55 +230,8 @@
                     <th>Hành động</th>
                 </tr>
                 </thead>
-
                 <tbody>
-                <!-- Backend will generate rows here -->
-                <tr>
-                    <td>101</td>
-                    <td>VR001</td>
-                    <td>Áo ADIDAS</td>
-                    <td>Đồ thể thao</td>
-                    <td>200.000đ</td>
-                    <td>50</td>
-                    <td>23/2/2023</td>
-                    <td>Không</td>
-                    <td>Hiển thị</td>
-                    <td>
-                        <button class="ButtonEditProduct">Sửa</button>
-                        <button class="ButtonDeleteProduct">Xóa</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>101</td>
-                    <td>VR001</td>
-                    <td>Áo ADIDAS</td>
-                    <td>Đồ thể thao</td>
-                    <td>200.000đ</td>
-                    <td>50</td>
-                    <td>23/2/2023</td>
-                    <td>Không</td>
-                    <td>Hiển thị</td>
-                    <td>
-                        <button class="ButtonEditProduct">Sửa</button>
-                        <button class="ButtonDeleteProduct">Xóa</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>101</td>
-                    <td>VR001</td>
-                    <td>Áo ADIDAS</td>
-                    <td>Đồ thể thao</td>
-                    <td>200.000đ</td>
-                    <td>50</td>
-                    <td>23/2/2023</td>
-                    <td>Không</td>
-                    <td>Hiển thị</td>
-                    <td>
-                        <button class="ButtonEditProduct">Sửa</button>
-                        <button class="ButtonDeleteProduct">Xóa</button>
-                    </td>
-                </tr>
-
+                <!-- backend render here -->
                 </tbody>
             </table>
 
@@ -280,7 +239,7 @@
 
     </div>
 </div>
+
 <script src="JS/manageProductTabSw.js"></script>
 </body>
 </html>
-

@@ -54,9 +54,27 @@
                 <i class="fa fa-search"></i>
             </button>
         </form>
-        <button class="IconBtn User" aria-label="Tài khoản">
-            <i class="fa-regular fa-user"></i>
-        </button>
+        <div class="UserWrap">
+            <!-- Chưa Login -->
+            <c:if test="${empty sessionScope.auth}">
+                <a href="${root}/Login" class="IconBtn User">
+                    <i class="fa-regular fa-user"></i>
+                </a>
+                <div class="UserHoverBox">
+                    <div class="HoverItem">Đăng nhập / Đăng ký</div>
+                </div>
+            </c:if>
+            <!-- Đã Login -->
+            <c:if test="${not empty sessionScope.auth}">
+                <a href="${root}/AccountInfo.jsp" class="IconBtn User">
+                    <img src="${sessionScope.auth.avatarUrl}" alt="avatar" class="UserAvatar">
+                </a>
+                <div class="UserHoverBox">
+                    <div class="HoverUsername">Tên tài khoản: ${sessionScope.auth.username}</div>
+                    <a href="${root}/Logout" class="HoverLogout">Đăng xuất</a>
+                </div>
+            </c:if>
+        </div>
 
         <a href="${root}/cart" class="IconBtn ShoppingCart" aria-label="Giỏ hàng">
             <i class="fa-solid fa-cart-shopping"></i>
