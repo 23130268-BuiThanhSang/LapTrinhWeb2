@@ -8,6 +8,7 @@ import vn.edu.hcmuaf.fit.laptrinhweb2.model.DTO.ProductCard;
 import vn.edu.hcmuaf.fit.laptrinhweb2.model.ProductGroup;
 import vn.edu.hcmuaf.fit.laptrinhweb2.services.ProductCardService;
 import vn.edu.hcmuaf.fit.laptrinhweb2.services.ProductGroupService;
+import vn.edu.hcmuaf.fit.laptrinhweb2.services.ProductService;
 
 import java.io.IOException;
 import java.util.List;
@@ -16,7 +17,7 @@ import java.util.List;
 public class ListAllProductClothesController extends HttpServlet {
     ProductCardService productCardService = new ProductCardService();
     ProductGroupService productGroupService = new ProductGroupService();
-
+    ProductService productService = new ProductService();
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int productTypeId = 3;
@@ -47,7 +48,10 @@ public class ListAllProductClothesController extends HttpServlet {
          * thực hiện gọi xuống service để lấy danh sách sản phẩm theo filter va search
          */
         List<ProductCard> products = productCardService.getProductCardsByTypeFilterAndSearch( productTypeId, page, keyword, color, gender, brandId, size);
-
+        for (ProductCard productCard : products) {
+            productCard.setReviewCount( productService.countReviews(productCard.getId()));
+            productCardService.fillRating(productCard);
+        }
         int totalPages = productCardService.getTotalPagesByTypeFilterAndSearch( productTypeId, keyword, color, gender, brandId, size);
 
         /**

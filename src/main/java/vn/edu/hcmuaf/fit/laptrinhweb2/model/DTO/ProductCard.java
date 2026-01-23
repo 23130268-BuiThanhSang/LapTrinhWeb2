@@ -10,11 +10,12 @@ public class ProductCard {
     private double discountPercent;
     private double rating;
     private int reviewCount;
-
+    private int fullStars;
+    private boolean hasHalfStar;
     public ProductCard() {
     }
 
-    public ProductCard(int id, String name, String brandName, double price, Double oldPrice, String imageUrl, double discountPercent, double rating, int reviewCount) {
+    public ProductCard(int id, String name, String brandName, double price, Double oldPrice, String imageUrl, double discountPercent, double rating, int reviewCount, int fullStars, boolean hasHalfStar) {
         this.id = id;
         this.name = name;
         this.brandName = brandName;
@@ -24,6 +25,8 @@ public class ProductCard {
         this.discountPercent = discountPercent;
         this.rating = rating;
         this.reviewCount = reviewCount;
+        this.fullStars = fullStars;
+        this.hasHalfStar = hasHalfStar;
     }
 
     public int getId() {
@@ -96,6 +99,22 @@ public class ProductCard {
 
     public void setReviewCount(int reviewCount) {
         this.reviewCount = reviewCount;
+    }
+
+    public int getFullStars() {
+        return fullStars;
+    }
+
+    public void setFullStars(int fullStars) {
+        this.fullStars = fullStars;
+    }
+
+    public boolean isHasHalfStar() {
+        return hasHalfStar;
+    }
+
+    public void setHasHalfStar(boolean hasHalfStar) {
+        this.hasHalfStar = hasHalfStar;
     }
 }
 

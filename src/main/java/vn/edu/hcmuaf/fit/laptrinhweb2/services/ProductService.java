@@ -46,9 +46,6 @@ public class ProductService {
         return productDao.getReviewsByProduct(id, rating);
     }
 
-    public double getAverageRating(int id) {
-        return productDao.getAverageRatingByProduct(id);
-    }
 
     public int countReviews(int id) {
         return productDao.countReviewsByProduct(id);
@@ -70,12 +67,12 @@ public class ProductService {
             case 4: return "XL";
             case 5: return "XXL";
 
-            case 38: return "US 7";
-            case 39: return "US 8";
-            case 40: return "US 9";
-            case 41: return "US 10";
-            case 42: return "US 11";
-            case 43: return "US 12";
+            case 38: return "38";
+            case 39: return "39";
+            case 40: return "40";
+            case 41: return "41";
+            case 42: return "42";
+            case 43: return "43";
         }
 
         if (sizeID >= 100) {
@@ -93,7 +90,7 @@ public class ProductService {
 
         double avgRating = productDao.getAverageRatingByProduct(productId);
         int fullStars = (int) avgRating;
-        boolean hasHalfStar = (avgRating - fullStars) >= 0.5;
+        boolean hasHalfStar = (avgRating - fullStars) >0;
 
         map.put("avgRating", String.format("%.1f", avgRating));
         map.put("fullStars", fullStars);
