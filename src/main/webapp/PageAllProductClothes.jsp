@@ -1,12 +1,12 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-
     <link rel="stylesheet" href="CSS/Style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="CSS/StyleForProductCard.css">
@@ -19,84 +19,127 @@
         <div class="FilterHeader">
             <i class="fa-solid fa-filter"></i> BỘ LỌC TÌM KIẾM
         </div>
-        <div class="FilterActions">
-            <button type="submit" class="ApplyFilterBtn">
-                Áp dụng bộ lọc
-            </button>
-            <a href="ListProduct" class="ClearFilterBtn">
-                Xóa bộ lọc
-            </a>
-        </div>
-        <div class="FilterContent">
+        <form method="get" action="ListProductClothes" id="filterForm" class="FilterContent">
+            <!-- GIỚI TÍNH -->
             <details class="FilterGroup" open>
                 <summary>GIỚI TÍNH</summary>
                 <div class="FilterBody">
-                    <label class="CustomCheckbox">
-                        <input type="checkbox">
-                        <span class="Checkmark"></span>
+                    <label class="CustomRadio">
+                        <input type="radio" name="gender" value="Nam" <c:if test="${gender eq 'Nam'}">checked</c:if>>
+                        <span class="RadioDot"></span>
                         <span class="LabelText">Nam</span>
                     </label>
-                    <label class="CustomCheckbox">
-                        <input type="checkbox">
-                        <span class="Checkmark"></span>
+                    <label class="CustomRadio">
+                        <input type="radio" name="gender" value="Nữ" <c:if test="${gender eq 'Nữ'}">checked</c:if>>
+                        <span class="RadioDot"></span>
                         <span class="LabelText">Nữ</span>
                     </label>
                 </div>
             </details>
 
+            <!-- MÀU SẮC -->
             <details class="FilterGroup" open>
                 <summary>MÀU SẮC</summary>
                 <div class="FilterBody ColorGrid">
-                    <label class="ColorSwatch" title="Đen"><input type="checkbox"><span class="SwatchDot" style="background:#000"></span></label>
-                    <label class="ColorSwatch" title="Trắng"><input type="checkbox"><span class="SwatchDot" style="background:#fff; border:1px solid #ddd"></span></label>
-                    <label class="ColorSwatch" title="Đỏ"><input type="checkbox"><span class="SwatchDot" style="background:#d0021b"></span></label>
-                    <label class="ColorSwatch" title="Xanh Dương"><input type="checkbox"><span class="SwatchDot" style="background:#007bff"></span></label>
-                    <label class="ColorSwatch" title="Vàng"><input type="checkbox"><span class="SwatchDot" style="background:#f5a623"></span></label>
-                    <label class="ColorSwatch" title="Xanh Lá"><input type="checkbox"><span class="SwatchDot" style="background:#7ed321"></span></label>
-                    <label class="ColorSwatch" title="Xám"><input type="checkbox"><span class="SwatchDot" style="background:#9b9b9b"></span></label>
+                    <label class="ColorSwatch" title="Đen">
+                        <input type="radio" name="color" value="Đen" <c:if test="${color eq 'Đen'}">checked</c:if>>
+                        <span class="SwatchDot" style="background:#000"></span>
+                    </label>
+                    <label class="ColorSwatch" title="Trắng">
+                        <input type="radio" name="color" value="Trắng" <c:if test="${color eq 'Trắng'}">checked</c:if>>
+                        <span class="SwatchDot" style="background:#fff; border:1px solid #ddd"></span>
+                    </label>
+                    <label class="ColorSwatch" title="Đỏ">
+                        <input type="radio" name="color" value="Đỏ" <c:if test="${color eq 'Đỏ'}">checked</c:if>>
+                        <span class="SwatchDot" style="background:#d0021b"></span>
+                    </label>
+                    <label class="ColorSwatch" title="Xanh Dương">
+                        <input type="radio" name="color" value="Xanh Dương" <c:if test="${color eq 'Xanh Dương'}">checked</c:if>>
+                        <span class="SwatchDot" style="background:#007bff"></span>
+                    </label>
+                    <label class="ColorSwatch" title="Vàng">
+                        <input type="radio" name="color" value="Vàng" <c:if test="${color eq 'Vàng'}">checked</c:if>>
+                        <span class="SwatchDot" style="background:#f5a623"></span>
+                    </label>
+                    <label class="ColorSwatch" title="Xanh Lá">
+                        <input type="radio" name="color" value="Xanh Lá" <c:if test="${color eq 'Xanh Lá'}">checked</c:if>>
+                        <span class="SwatchDot" style="background:#7ed321"></span>
+                    </label>
+                    <label class="ColorSwatch" title="Xám">
+                        <input type="radio" name="color" value="Xám" <c:if test="${color eq 'Xám'}">checked</c:if>>
+                        <span class="SwatchDot" style="background:#9b9b9b"></span>
+                    </label>
                 </div>
             </details>
 
+            <!-- THƯƠNG HIỆU -->
             <details class="FilterGroup" open>
                 <summary>Thương hiệu</summary>
                 <div class="FilterBody">
-                    <label class="CustomCheckbox"><input type="checkbox"><span class="Checkmark"></span><span class="LabelText">Thương hiệu 1</span></label>
-                    <label class="CustomCheckbox"><input type="checkbox"><span class="Checkmark"></span><span class="LabelText">Thương hiệu 2</span></label>
-                    <label class="CustomCheckbox"><input type="checkbox"><span class="Checkmark"></span><span class="LabelText">Thương hiệu 3</span></label>
-                    <label class="CustomCheckbox"><input type="checkbox"><span class="Checkmark"></span><span class="LabelText">Thương hiệu 4</span></label>
-                    <label class="CustomCheckbox"><input type="checkbox"><span class="Checkmark"></span><span class="LabelText">Thương hiệu 5</span></label>
+                    <c:forEach var="b" items="${brands}">
+                        <label class="CustomRadio">
+                            <input type="radio"
+                                   name="brandId"
+                                   value="${b.id}"
+                                   <c:if test="${brandId == b.id}">checked</c:if>>
+                            <span class="RadioDot"></span>
+                            <span class="LabelText">${b.name}</span>
+                        </label>
+                    </c:forEach>
                 </div>
+
             </details>
+
+            <!-- KÍCH CỠ -->
             <details class="FilterGroup">
                 <summary>KÍCH CỠ</summary>
                 <div class="FilterBody SizeGrid">
-                    <label class="SizeBox"><input type="checkbox"><span>S</span></label>
-                    <label class="SizeBox"><input type="checkbox"><span>M</span></label>
-                    <label class="SizeBox"><input type="checkbox"><span>L</span></label>
-                    <label class="SizeBox"><input type="checkbox"><span>XL</span></label>
-                    <label class="SizeBox"><input type="checkbox"><span>2XL</span></label>
+                    <label class="SizeBox">
+                        <input type="radio" name="size" value="1" <c:if test="${size == 1}">checked</c:if>>
+                        <span>S</span>
+                    </label>
+                    <label class="SizeBox">
+                        <input type="radio" name="size" value="2" <c:if test="${size == 2}">checked</c:if>>
+                        <span>M</span>
+                    </label>
+                    <label class="SizeBox">
+                        <input type="radio" name="size" value="3" <c:if test="${size == 3}">checked</c:if>>
+                        <span>L</span>
+                    </label>
+                    <label class="SizeBox">
+                        <input type="radio" name="size" value="4" <c:if test="${size == 4}">checked</c:if>>
+                        <span>XL</span>
+                    </label>
+                    <label class="SizeBox">
+                        <input type="radio" name="size" value="5" <c:if test="${size == 5}">checked</c:if>>
+                        <span>2XL</span>
+                    </label>
                 </div>
             </details>
-        </div>
+            <input type="hidden" name="keyword" value="${keyword}">
+        </form>
     </aside>
 
     <main class="ProductMainArea">
         <div class="ProductToolbar">
-            <div class="SearchWrapper">
-                <i class="fa fa-search"></i>
-                <input type="text" placeholder="Tìm kiếm trong trang...">
-            </div>
+            <form method="get" action="ListProductClothes" id="searchForm">
+                <div class="SearchWrapper">
+                    <i class="fa fa-search"></i>
+                    <input type="text" name="keyword"
+                           placeholder="Tìm kiếm sản phẩm theo tên..."
+                           value="${keyword}">
+                </div>
+
+<%--                giữ nguyên bộ lọc khi tìm kiếm--%>
+                <input type="hidden" name="gender" value="${gender}">
+                <input type="hidden" name="color" value="${color}">
+                <input type="hidden" name="brandId" value="${brandId}">
+                <input type="hidden" name="size" value="${size}">
+            </form>
+
 
             <div class="SortWrapper">
                 <span class="ResultCount">Hiển thị <b>${products.size()}</b> sản phẩm</span>
-                <div class="SelectContainer">
-                    <select class="SortSelect">
-                        <option value="default">Sắp xếp: Mặc định</option>
-                        <option value="price_asc">Giá: Thấp đến Cao</option>
-                        <option value="price_desc">Giá: Cao đến Thấp</option>
-                    </select>
-                    <i class="fa-solid fa-chevron-down"></i>
-                </div>
             </div>
         </div>
 
@@ -132,14 +175,28 @@
                                 </span>
                             </c:if>
                         </div>
-
                     </div>
                 </div>
             </c:forEach>
         </div>
+
+        <%-- Tạo chuỗi filterParams để giữ filter khi chuyển trang --%>
+        <c:set var="filterParams" value="" />
+        <c:if test="${not empty gender}">
+            <c:set var="filterParams" value="${filterParams}&gender=${gender}" />
+        </c:if>
+        <c:if test="${not empty color}">
+            <c:set var="filterParams" value="${filterParams}&color=${color}" />
+        </c:if>
+        <c:if test="${not empty brandId}">
+            <c:set var="filterParams" value="${filterParams}&brandId=${brandId}" />
+        </c:if>
+        <c:if test="${not empty size}">
+            <c:set var="filterParams" value="${filterParams}&size=${size}" />
+        </c:if>
         <div class="Pagination">
             <c:forEach begin="1" end="${totalPages}" var="i">
-                <a href="?page=${i}" class="PageNum${i == currentPage ? ' Active' : ''}">${i}</a>
+                <a href="?page=${i}${filterParams}" class="PageNum${i == currentPage ? ' Active' : ''}">${i}</a>
             </c:forEach>
         </div>
     </main>
@@ -147,5 +204,6 @@
 
 <jsp:include page="/Share/footer.jsp" />
 <script src="JS/Notification.js"></script>
+<script src="JS/JSForListProduct.js"></script>
 </body>
 </html>

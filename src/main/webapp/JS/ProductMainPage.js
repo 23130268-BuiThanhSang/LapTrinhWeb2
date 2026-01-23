@@ -123,6 +123,7 @@ function renderSizesByColor(color) {
         const btn = document.createElement("button");
         btn.className = "SizeButton";
         btn.innerText = v.sizeText;
+        alert(v.sizeText);
         btn.dataset.price = v.price;
         btn.dataset.stock = v.stock;
 
