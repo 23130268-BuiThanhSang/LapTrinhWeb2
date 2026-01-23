@@ -356,13 +356,7 @@ body {
 .AverageRating .Score {
     font-size: 34px;
     font-weight: bold;
-    color: #01A0DA;
-}
-
-
-.Stars {
-    color: #01A0DA;
-    margin: 10px 0;
+    color: #f5a623;
 }
 
 /* ===== REVIEW ===== */
@@ -478,6 +472,11 @@ body {
 
 .fa-star {
     color: #f5a623;
+}
+
+.Stars {
+    color: #f5a623;
+    margin: 10px 0;
 }
 
 .Stars i{
