@@ -35,6 +35,16 @@ public class AuthDao extends BaseDao {
         return count != null && count > 0;
     }
 
+    public boolean existsByEmail(String email) {
+        Integer count = get().withHandle(h ->
+                h.createQuery("select count(*) from accounts where user_email = :email")
+                        .bind("email", email)
+                        .mapTo(Integer.class)
+                        .one()
+        );
+        return count != null && count > 0;
+    }
+
     // dùng cho đăng ký: thêm account mới
     public void insert(Account acc) {
         get().withHandle(h ->
@@ -53,21 +63,19 @@ public class AuthDao extends BaseDao {
         );
     }
 
-    public Account getUserByUsernameAndEmail(String username, String email) {
+    public Account getUserByEmail(String email) {
         return get().withHandle(h ->
-                h.createQuery("select * from accounts where user_name = :username and user_email = :email")
-                        .bind("username", username)
+                h.createQuery("select * from accounts where user_email = :email")
                         .bind("email", email)
                         .mapToBean(Account.class)
                         .stream().findFirst().orElse(null)
         );
     }
 
-    public void updatePasswordByUsernameAndEmail(String username, String email, String newHashedPassword) {
+    public void updatePasswordByEmail(String email, String newHashedPassword) {
         get().withHandle(h ->
-                h.createUpdate("update accounts set password = :password where user_name = :username and user_email = :email")
+                h.createUpdate("update accounts set password = :password where user_email = :email")
                         .bind("password", newHashedPassword)
-                        .bind("username", username)
                         .bind("email", email)
                         .execute()
         );

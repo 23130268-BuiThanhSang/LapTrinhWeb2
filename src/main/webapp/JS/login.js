@@ -1,18 +1,34 @@
-function showPage(pageId) {
-    document.querySelectorAll('.error, .success').forEach(span => {
-        span.innerText = '';
-    });
-
+function showPage(stepId) {
     document.querySelectorAll('.page').forEach(p => {
         p.style.display = "none";
     });
 
-    const page = document.getElementById(pageId);
-    if (page) {
-        page.style.display = "block";
+    const step = document.getElementById(stepId);
+    if (step) {
+        step.style.display = "block";
     }
 }
 
+window.addEventListener("load", function () {
+    const step = document.body.getAttribute("data-step");
+    if (step) {
+        showPage(step);
+    } else {
+        showPage("loginPage");
+    }
+});
 
-window.addEventListener('load', function () {
+document.addEventListener("DOMContentLoaded", function () {
+
+    document.querySelectorAll("form").forEach(form => {
+        form.addEventListener("submit", function () {
+
+            this.querySelectorAll(".error, .success").forEach(e => e.innerText = "");
+
+            const loading = this.querySelector(".loading");
+            if (loading) {
+                loading.style.display = "inline";
+            }
+        });
+    });
 });
