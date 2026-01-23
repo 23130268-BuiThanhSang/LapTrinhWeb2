@@ -3,6 +3,7 @@ package vn.edu.hcmuaf.fit.laptrinhweb2.controller.ListProduct;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
+import vn.edu.hcmuaf.fit.laptrinhweb2.enum_macro.GroupType;
 import vn.edu.hcmuaf.fit.laptrinhweb2.model.DTO.ProductCard;
 import vn.edu.hcmuaf.fit.laptrinhweb2.model.ProductGroup;
 import vn.edu.hcmuaf.fit.laptrinhweb2.services.ProductCardService;
@@ -15,6 +16,7 @@ import java.util.List;
 public class ListAllProductClothesController extends HttpServlet {
     ProductCardService productCardService = new ProductCardService();
     ProductGroupService productGroupService = new ProductGroupService();
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int productTypeId = 3;
@@ -66,7 +68,8 @@ public class ListAllProductClothesController extends HttpServlet {
         /**
          * lấy danh sách brand để hiển thị trên filter
          */
-
+        List<ProductGroup> brands = productGroupService.getGroups(GroupType.BRAND);
+        request.setAttribute("brands", brands);
         request.getRequestDispatcher("PageAllProductClothes.jsp").forward(request, response);
     }
 

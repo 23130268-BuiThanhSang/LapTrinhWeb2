@@ -76,32 +76,18 @@
             <details class="FilterGroup" open>
                 <summary>Thương hiệu</summary>
                 <div class="FilterBody">
-                    <label class="CustomRadio">
-                        <input type="radio" name="brandId" value="1" <c:if test="${brandId == 1}">checked</c:if>>
-                        <span class="RadioDot"></span>
-                        <span class="LabelText">Thương hiệu 1</span>
-                    </label>
-                    <label class="CustomRadio">
-                        <input type="radio" name="brandId" value="2" <c:if test="${brandId == 2}">checked</c:if>>
-                        <span class="RadioDot"></span>
-                        <span class="LabelText">Thương hiệu 2</span>
-                    </label>
-                    <label class="CustomRadio">
-                        <input type="radio" name="brandId" value="3" <c:if test="${brandId == 3}">checked</c:if>>
-                        <span class="RadioDot"></span>
-                        <span class="LabelText">Thương hiệu 3</span>
-                    </label>
-                    <label class="CustomRadio">
-                        <input type="radio" name="brandId" value="4" <c:if test="${brandId == 4}">checked</c:if>>
-                        <span class="RadioDot"></span>
-                        <span class="LabelText">Thương hiệu 4</span>
-                    </label>
-                    <label class="CustomRadio">
-                        <input type="radio" name="brandId" value="5" <c:if test="${brandId == 5}">checked</c:if>>
-                        <span class="RadioDot"></span>
-                        <span class="LabelText">Thương hiệu 5</span>
-                    </label>
+                    <c:forEach var="b" items="${brands}">
+                        <label class="CustomRadio">
+                            <input type="radio"
+                                   name="brandId"
+                                   value="${b.id}"
+                                   <c:if test="${brandId == b.id}">checked</c:if>>
+                            <span class="RadioDot"></span>
+                            <span class="LabelText">${b.name}</span>
+                        </label>
+                    </c:forEach>
                 </div>
+
             </details>
 
             <!-- KÍCH CỠ -->

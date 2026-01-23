@@ -269,7 +269,6 @@ public class ProductDao extends BaseDao {
             Integer brandId,
             Integer size
     ) {
-
         StringBuilder sql = new StringBuilder("""
         SELECT 
             p.id,
@@ -297,25 +296,29 @@ public class ProductDao extends BaseDao {
           AND p.product_type_id = :typeId
     """);
 
-        /** SEARCH */
+        /**
+         * filter từ khóa tìm kiếm trên tên sản phẩm
+         */
         if (keyword != null && !keyword.isBlank()) {
             sql.append(" AND p.product_name LIKE :keyword ");
         }
+        // Filter brand trên bảng cha (product hoặc brand)
+        if (brandId != null) {
+            sql.append(" AND b.id = :brandId ");
+        }
 
-        /** FILTER VARIANT */
+        // Filter variant (color/size)
         sql.append("""
         AND EXISTS (
             SELECT 1 FROM product_variant vf
             WHERE vf.product_id = p.id
     """);
-
         if (color != null && !color.isEmpty()) sql.append(" AND vf.color = :color ");
         if (size != null) sql.append(" AND vf.size = :size ");
-        if (brandId != null) sql.append(" AND vf.brand_id = :brandId ");
         sql.append(") ");
 
+        // Filter gender trên bảng cha
         if (gender != null && !gender.isEmpty()) sql.append(" AND p.product_gender = :gender ");
-        if (brandId != null) sql.append(" AND b.id = :brandId ");
 
         sql.append("""
         ORDER BY p.id DESC
@@ -369,19 +372,19 @@ public class ProductDao extends BaseDao {
             sql.append(" AND p.product_name LIKE :keyword ");
         }
 
+        // BRAND_ID filter ĐÚNG CHỖ (trên cha)
+        if (brandId != null) sql.append(" AND b.id = :brandId ");
+
         sql.append("""
         AND EXISTS (
             SELECT 1 FROM product_variant v
             WHERE v.product_id = p.id
     """);
-
         if (color != null && !color.isEmpty()) sql.append(" AND v.color = :color ");
         if (size != null) sql.append(" AND v.size = :size ");
-        if (brandId != null) sql.append(" AND v.brand_id = :brandId ");
         sql.append(") ");
 
         if (gender != null && !gender.isEmpty()) sql.append(" AND p.product_gender = :gender ");
-        if (brandId != null) sql.append(" AND b.id = :brandId ");
 
         return get().withHandle(h -> {
             var query = h.createQuery(sql.toString())
