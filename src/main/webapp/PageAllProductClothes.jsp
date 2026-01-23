@@ -156,14 +156,22 @@
                     </div>
                     <div class="ProductInfo">
                         <span class="BrandProduct">${p.brandName}</span>
-                        <p class="ProductName"><a href="Product?id=${p.id}">${p.name}</a></p>
+                        <p class="ProductName"><a href="ProductMainPage?id=${p.id}">${p.name}</a></p>
                         <div class="Rating">
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-regular fa-star"></i>
-                            <span class="ReviewCount">${p.reviewCount} đánh giá</span>
+                            <c:forEach begin="1" end="${p.fullStars}">
+                                <i class="fa-solid fa-star"></i>
+                            </c:forEach>
+
+                            <c:if test="${p.hasHalfStar}">
+                                <i class="fa-solid fa-star-half-stroke"></i>
+                            </c:if>
+
+                            <c:forEach begin="1" end="${5 - p.fullStars - (p.hasHalfStar ? 1 : 0)}">
+                                <i class="fa-regular fa-star"></i>
+                            </c:forEach>
+                            <span class="ReviewCount">
+                    ${p.reviewCount} đánh giá
+                </span>
                         </div>
                         <div class="Price">
                             <span class="NewPrice">

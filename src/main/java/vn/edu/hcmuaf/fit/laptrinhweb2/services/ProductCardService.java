@@ -3,7 +3,9 @@ package vn.edu.hcmuaf.fit.laptrinhweb2.services;
 import vn.edu.hcmuaf.fit.laptrinhweb2.dao.ProductDao;
 import vn.edu.hcmuaf.fit.laptrinhweb2.model.DTO.ProductCard;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ProductCardService {
 
@@ -65,6 +67,19 @@ public class ProductCardService {
     public int getTotalPagesByType(int productTypeId) {
         int total = productDao.countProductByType(productTypeId);
         return (int) Math.ceil((double) total / pageSize);
+    }
+
+    /**
+     * đây là phương thức thực hiện điền thông tin đánh giá vào productCard
+     * @param p
+     */
+    public void fillRating(ProductCard p) {
+        double avg = productDao.getAverageRatingByProduct(p.getId());
+        int full = (int) avg;
+        boolean half = (avg - full) > 0;
+//        p.setRating(Math.round(avg * 10.0) / 10.0); // 4.3
+        p.setFullStars(full);
+        p.setHasHalfStar(half);
     }
 
     /**

@@ -46,8 +46,7 @@ public class ProductDao extends BaseDao {
                                             SELECT MIN(id)
                                             FROM product_variant_image
                                             WHERE variant_id = v.id
-                                       )
-                                    WHERE p.is_active = 1                            
+                                       )                           
                                     ORDER BY p.id DESC
                                     LIMIT :limit OFFSET :offset
                                 """)
@@ -93,8 +92,7 @@ public class ProductDao extends BaseDao {
                                             FROM product_variant_image
                                             WHERE variant_id = v.id
                                        )
-                                    WHERE p.is_active = 1
-                                      AND p.product_type_id = :typeId
+                                    WHERE  p.product_type_id = :typeId
                                     ORDER BY p.id DESC
                                     LIMIT :limit OFFSET :offset
                                 """)
@@ -116,7 +114,7 @@ public class ProductDao extends BaseDao {
         return get().withHandle(h ->
                 h.createQuery("""
                                     SELECT COUNT(*) FROM product
-                                    WHERE is_active = 1 AND product_type_id = :typeId
+                                    WHERE product_type_id = :typeId
                                 """)
                         .bind("typeId", productTypeId)
                         .mapTo(int.class)
@@ -158,8 +156,7 @@ public class ProductDao extends BaseDao {
                 LEFT JOIN product_variant_image img ON img.variant_id = v.id AND img.id = (
                     SELECT MIN(img2.id) FROM product_variant_image img2 WHERE img2.variant_id = v.id
                 )
-                WHERE p.is_active = 1
-                  AND p.product_type_id = :typeId
+                WHERE p.product_type_id = :typeId
                 """);
 
         /**
@@ -215,8 +212,7 @@ public class ProductDao extends BaseDao {
         StringBuilder sql = new StringBuilder("""
                     SELECT COUNT(*) FROM product p
                     JOIN brand b ON p.brand_id = b.id
-                    WHERE p.is_active = 1
-                      AND p.product_type_id = :typeId
+                    WHERE p.product_type_id = :typeId
                 """);
 
         /**
@@ -292,8 +288,7 @@ public class ProductDao extends BaseDao {
                 FROM product_variant_image img2
                 WHERE img2.variant_id = v.id
             )
-        WHERE p.is_active = 1
-          AND p.product_type_id = :typeId
+        WHERE  p.product_type_id = :typeId
     """);
 
         /**
@@ -364,8 +359,7 @@ public class ProductDao extends BaseDao {
         StringBuilder sql = new StringBuilder("""
         SELECT COUNT(*) FROM product p
         JOIN brand b ON p.brand_id = b.id
-        WHERE p.is_active = 1
-          AND p.product_type_id = :typeId
+        WHERE p.product_type_id = :typeId
     """);
 
         if (keyword != null && !keyword.isBlank()) {
