@@ -97,3 +97,4 @@
         </button>
     </div>
 </nav>
+<script src="${root}/JS/MenuBrightItem.js"></script>
