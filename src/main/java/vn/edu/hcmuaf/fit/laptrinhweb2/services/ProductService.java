@@ -15,6 +15,7 @@ import java.util.Map;
 
 public class ProductService {
     ProductDao productDao = new ProductDao();
+    ProductVariantDao productVariantDao = new ProductVariantDao();
 
     public Product getProduct(int id) {
         return productDao.getProduct(id);
@@ -46,10 +47,6 @@ public class ProductService {
         return productDao.getReviewsByProduct(id, rating);
     }
 
-    public double getAverageRating(int id) {
-        return productDao.getAverageRatingByProduct(id);
-    }
-
     public int countReviews(int id) {
         return productDao.countReviewsByProduct(id);
     }
@@ -62,7 +59,7 @@ public class ProductService {
         return sizeMap;
     }
 
-    private String getSizeText(int sizeID) {
+    public String getSizeText(int sizeID) {
         switch (sizeID) {
             case 1: return "S";
             case 2: return "M";
@@ -101,5 +98,11 @@ public class ProductService {
 
         return map;
     }
+
+    public ProductVariant getVariantById(int variantId) {
+        ProductVariantDao dao = new ProductVariantDao();
+        return dao.getById(variantId);
+    }
+
 
 }

@@ -20,7 +20,66 @@ document.addEventListener("DOMContentLoaded", () => {
     if (firstColor) {
         renderSizesByColor(firstColor.dataset.color);
     }
+
+    const addBtn = document.querySelector(".AddToCart");
+    if (addBtn) {
+        addBtn.addEventListener("click", addToCartHandler);
+    }
 });
+
+function addToCartHandler() {
+
+    if (!IS_LOGGED_IN) {
+        alert("Vui lòng đăng nhập để thêm vào giỏ hàng");
+        return;
+    }
+
+    let quantity = parseInt(document.querySelector(".quantity").innerText);
+    let color = document.getElementById("selectedColorText").innerText;
+    let size = selectedSize;
+
+    let variant = VARIANTS.find(v => v.color === color && v.size === size);
+
+    if (!variant) {
+        alert("Vui lòng chọn màu và size");
+        return;
+    }
+
+    // 🔥 LẤY ẢNH ĐANG HIỂN THỊ
+    let mainImage = document.getElementById("mainImage")?.src;
+
+    if (!mainImage) {
+        alert("Không xác định được ảnh sản phẩm");
+        return;
+    }
+
+    fetch("add-to-cart", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded"
+        },
+        body: new URLSearchParams({
+            variantId: variant.id,
+            productId: variant.productId,
+            productName: variant.productName,
+            color: variant.color,
+            size: variant.size,
+            price: variant.price,
+            selectedImage: mainImage,
+            quantity: quantity
+        })
+    })
+        .then(res => res.text())
+        .then(data => {
+            alert("Đã thêm vào giỏ hàng");
+        })
+        .catch(err => {
+            console.error(err);
+            alert("Lỗi khi thêm vào giỏ");
+        });
+}
+
+
 
 // ====== QUANTITY ======
 function ProductQuantityHandlers() {
@@ -97,10 +156,14 @@ function changeColor(el) {
     renderSizesByColor(selectedColor);
 }
 
+let selectedSize = null;
+
 function selectSize(btn) {
     document.querySelectorAll(".SizeButton")
         .forEach(b => b.classList.remove("active"));
     btn.classList.add("active");
+
+    selectedSize = parseInt(btn.dataset.size);
 
     const price = parseFloat(btn.dataset.price);
     const unitPriceEl = document.getElementById("unitPrice");
@@ -109,9 +172,9 @@ function selectSize(btn) {
 
     unitPriceEl.dataset.price = price;
     unitPriceEl.innerText = price.toLocaleString("vi-VN");
-
     totalPriceEl.innerText = (price * quantity).toLocaleString("vi-VN");
 }
+
 
 function renderSizesByColor(color) {
     const sizeBox = document.querySelector(".SizeOptions");
@@ -123,15 +186,18 @@ function renderSizesByColor(color) {
         const btn = document.createElement("button");
         btn.className = "SizeButton";
         btn.innerText = v.sizeText;
-        alert(v.sizeText);
         btn.dataset.price = v.price;
         btn.dataset.stock = v.stock;
+        btn.dataset.size = v.size;
 
         btn.addEventListener("click", () => selectSize(btn));
 
         sizeBox.appendChild(btn);
 
-        if (index === 0) btn.click(); // auto chọn size đầu
+        if (index === 0) btn.click();
     });
 }
+
+
+
 
