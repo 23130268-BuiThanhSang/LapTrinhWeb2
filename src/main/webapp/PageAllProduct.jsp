@@ -19,7 +19,40 @@
         <div class="FilterHeader">
             <i class="fa-solid fa-filter"></i> BỘ LỌC TÌM KIẾM
         </div>
-        <form method="get" action="ListProductClothes" id="filterForm" class="FilterContent">
+        <form method="get" action="ListAllProduct" id="filterForm" class="FilterContent">
+            <!-- DANH MỤC -->
+            <details class="FilterGroup" open>
+                <summary>DANH MỤC</summary>
+                <div class="FilterBody">
+                    <label class="CustomRadio">
+                        <input type="radio" name="productType" value="1"
+                               <c:if test="${productType == 1}">checked</c:if>>
+                        <span class="RadioDot"></span>
+                        <span class="LabelText">Dụng cụ gym</span>
+                    </label>
+
+                    <label class="CustomRadio">
+                        <input type="radio" name="productType" value="2"
+                               <c:if test="${productType == 2}">checked</c:if>>
+                        <span class="RadioDot"></span>
+                        <span class="LabelText">Phụ kiện</span>
+                    </label>
+
+                    <label class="CustomRadio">
+                        <input type="radio" name="productType" value="3"
+                               <c:if test="${productType == 3}">checked</c:if>>
+                        <span class="RadioDot"></span>
+                        <span class="LabelText">Đồ thể thao</span>
+                    </label>
+
+                    <label class="CustomRadio">
+                        <input type="radio" name="productType" value="4"
+                               <c:if test="${productType == 4}">checked</c:if>>
+                        <span class="RadioDot"></span>
+                        <span class="LabelText">giày</span>
+                    </label>
+                </div>
+            </details>
             <!-- GIỚI TÍNH -->
             <details class="FilterGroup" open>
                 <summary>GIỚI TÍNH</summary>
@@ -34,44 +67,103 @@
                         <span class="RadioDot"></span>
                         <span class="LabelText">Nữ</span>
                     </label>
+                    <label class="CustomRadio">
+                        <input type="radio" name="gender" value="Khác" <c:if test="${gender eq 'Khác'}">checked</c:if>>
+                        <span class="RadioDot"></span>
+                        <span class="LabelText">Khác</span>
+                    </label>
                 </div>
             </details>
-
             <!-- MÀU SẮC -->
             <details class="FilterGroup" open>
                 <summary>MÀU SẮC</summary>
                 <div class="FilterBody ColorGrid">
+                    <!-- Tím -->
+                    <label class="ColorSwatch" title="Tím">
+                        <input type="radio" name="color" value="Tím"
+                               <c:if test="${color eq 'Tím'}">checked</c:if>>
+                        <span class="SwatchDot" style="background:#800080"></span>
+                    </label>
+
+                    <!-- Nâu -->
+                    <label class="ColorSwatch" title="Nâu">
+                        <input type="radio" name="color" value="Nâu"
+                               <c:if test="${color eq 'Nâu'}">checked</c:if>>
+                        <span class="SwatchDot" style="background:#8b4513"></span>
+                    </label>
+
+                    <!-- Đen -->
                     <label class="ColorSwatch" title="Đen">
-                        <input type="radio" name="color" value="Đen" <c:if test="${color eq 'Đen'}">checked</c:if>>
+                        <input type="radio" name="color" value="Đen"
+                               <c:if test="${color eq 'Đen'}">checked</c:if>>
                         <span class="SwatchDot" style="background:#000"></span>
                     </label>
+
+                    <!-- Trắng -->
                     <label class="ColorSwatch" title="Trắng">
-                        <input type="radio" name="color" value="Trắng" <c:if test="${color eq 'Trắng'}">checked</c:if>>
+                        <input type="radio" name="color" value="Trắng"
+                               <c:if test="${color eq 'Trắng'}">checked</c:if>>
                         <span class="SwatchDot" style="background:#fff; border:1px solid #ddd"></span>
                     </label>
-                    <label class="ColorSwatch" title="Đỏ">
-                        <input type="radio" name="color" value="Đỏ" <c:if test="${color eq 'Đỏ'}">checked</c:if>>
-                        <span class="SwatchDot" style="background:#d0021b"></span>
+
+                    <!-- Bạc -->
+                    <label class="ColorSwatch" title="Bạc">
+                        <input type="radio" name="color" value="Bạc"
+                               <c:if test="${color eq 'Bạc'}">checked</c:if>>
+                        <span class="SwatchDot" style="background:#c0c0c0"></span>
                     </label>
+
+                    <!-- Hồng -->
+                    <label class="ColorSwatch" title="Hồng">
+                        <input type="radio" name="color" value="Hồng"
+                               <c:if test="${color eq 'Hồng'}">checked</c:if>>
+                        <span class="SwatchDot" style="background:#ff69b4"></span>
+                    </label>
+
+                    <!-- Xanh Navy -->
+                    <label class="ColorSwatch" title="Xanh Navy">
+                        <input type="radio" name="color" value="Xanh Navy"
+                               <c:if test="${color eq 'Xanh Navy'}">checked</c:if>>
+                        <span class="SwatchDot" style="background:#001f3f"></span>
+                    </label>
+
+                    <!-- Xanh Dương -->
                     <label class="ColorSwatch" title="Xanh Dương">
-                        <input type="radio" name="color" value="Xanh Dương" <c:if test="${color eq 'Xanh Dương'}">checked</c:if>>
+                        <input type="radio" name="color" value="Xanh Dương"
+                               <c:if test="${color eq 'Xanh Dương'}">checked</c:if>>
                         <span class="SwatchDot" style="background:#007bff"></span>
                     </label>
+
+                    <!-- Xanh Lục -->
+                    <label class="ColorSwatch" title="Xanh Lục">
+                        <input type="radio" name="color" value="Xanh Lục"
+                               <c:if test="${color eq 'Xanh Lục'}">checked</c:if>>
+                        <span class="SwatchDot" style="background:#2ecc71"></span>
+                    </label>
+
+                    <!-- Vàng -->
                     <label class="ColorSwatch" title="Vàng">
-                        <input type="radio" name="color" value="Vàng" <c:if test="${color eq 'Vàng'}">checked</c:if>>
+                        <input type="radio" name="color" value="Vàng"
+                               <c:if test="${color eq 'Vàng'}">checked</c:if>>
                         <span class="SwatchDot" style="background:#f5a623"></span>
                     </label>
-                    <label class="ColorSwatch" title="Xanh Lá">
-                        <input type="radio" name="color" value="Xanh Lá" <c:if test="${color eq 'Xanh Lá'}">checked</c:if>>
-                        <span class="SwatchDot" style="background:#7ed321"></span>
+
+                    <!-- Đỏ -->
+                    <label class="ColorSwatch" title="Đỏ">
+                        <input type="radio" name="color" value="Đỏ"
+                               <c:if test="${color eq 'Đỏ'}">checked</c:if>>
+                        <span class="SwatchDot" style="background:#d0021b"></span>
                     </label>
-                    <label class="ColorSwatch" title="Xám">
-                        <input type="radio" name="color" value="Xám" <c:if test="${color eq 'Xám'}">checked</c:if>>
-                        <span class="SwatchDot" style="background:#9b9b9b"></span>
+
+                    <!-- Cam -->
+                    <label class="ColorSwatch" title="Cam">
+                        <input type="radio" name="color" value="Cam"
+                               <c:if test="${color eq 'Cam'}">checked</c:if>>
+                        <span class="SwatchDot" style="background:#ff851b"></span>
                     </label>
+
                 </div>
             </details>
-
             <!-- THƯƠNG HIỆU -->
             <details class="FilterGroup" open>
                 <summary>Thương hiệu</summary>
@@ -89,40 +181,46 @@
                 </div>
 
             </details>
-
-            <!-- KÍCH CỠ -->
-            <details class="FilterGroup">
-                <summary>KÍCH CỠ</summary>
-                <div class="FilterBody SizeGrid">
-                    <label class="SizeBox">
-                        <input type="radio" name="size" value="1" <c:if test="${size == 1}">checked</c:if>>
-                        <span>S</span>
-                    </label>
-                    <label class="SizeBox">
-                        <input type="radio" name="size" value="2" <c:if test="${size == 2}">checked</c:if>>
-                        <span>M</span>
-                    </label>
-                    <label class="SizeBox">
-                        <input type="radio" name="size" value="3" <c:if test="${size == 3}">checked</c:if>>
-                        <span>L</span>
-                    </label>
-                    <label class="SizeBox">
-                        <input type="radio" name="size" value="4" <c:if test="${size == 4}">checked</c:if>>
-                        <span>XL</span>
-                    </label>
-                    <label class="SizeBox">
-                        <input type="radio" name="size" value="5" <c:if test="${size == 5}">checked</c:if>>
-                        <span>2XL</span>
-                    </label>
+            <!-- Collection -->
+            <details class="FilterGroup" open>
+                <summary>Bộ sưu tập</summary>
+                <div class="FilterBody">
+                    <c:forEach var="c" items="${collections}">
+                        <label class="CustomRadio">
+                            <input type="radio"
+                                   name="collectionId"
+                                   value="${c.id}"
+                                   <c:if test="${collectionId == c.id}">checked</c:if>>
+                            <span class="RadioDot"></span>
+                            <span class="LabelText">${c.name}</span>
+                        </label>
+                    </c:forEach>
                 </div>
+
             </details>
+            <!-- KÍCH CỠ -->
+            <c:if test="${not empty sizeOptions}">
+                <details class="FilterGroup">
+                    <summary>KÍCH CỠ</summary>
+                    <div class="FilterBody SizeGrid">
+                        <c:forEach var="s" items="${sizeOptions}">
+                            <label class="SizeBox">
+                                <input type="radio" name="size" value="${s.value}"
+                                       <c:if test="${size == s.value}">checked</c:if>>
+                                <span>${s.label}</span>
+                            </label>
+                        </c:forEach>
+                    </div>
+                </details>
+            </c:if>
+
             <input type="hidden" name="keyword" value="${keyword}">
+
         </form>
     </aside>
-
     <main class="ProductMainArea">
         <div class="ProductToolbar">
-            <form method="get" action="ListProductClothes" id="searchForm">
+            <form method="get" action="ListAllProduct" id="searchForm">
                 <div class="SearchWrapper">
                     <i class="fa fa-search"></i>
                     <input type="text" name="keyword"
@@ -135,6 +233,9 @@
                 <input type="hidden" name="color" value="${color}">
                 <input type="hidden" name="brandId" value="${brandId}">
                 <input type="hidden" name="size" value="${size}">
+                <input type="hidden" name="productType" value="${productType}">
+                <input type="hidden" name="collectionId" value="${collectionId}">
+
             </form>
 
 
@@ -190,6 +291,9 @@
 
         <%-- Tạo chuỗi filterParams để giữ filter khi chuyển trang --%>
         <c:set var="filterParams" value="" />
+        <c:if test="${not empty keyword}">
+            <c:set var="filterParams" value="${filterParams}&keyword=${keyword}" />
+        </c:if>
         <c:if test="${not empty gender}">
             <c:set var="filterParams" value="${filterParams}&gender=${gender}" />
         </c:if>
@@ -201,6 +305,12 @@
         </c:if>
         <c:if test="${not empty size}">
             <c:set var="filterParams" value="${filterParams}&size=${size}" />
+        </c:if>
+        <c:if test="${not empty productType}">
+            <c:set var="filterParams" value="${filterParams}&productType=${productType}" />
+        </c:if>
+        <c:if test="${not empty collectionId}">
+            <c:set var="filterParams" value="${filterParams}&collectionId=${collectionId}" />
         </c:if>
         <div class="Pagination">
             <c:forEach begin="1" end="${totalPages}" var="i">
