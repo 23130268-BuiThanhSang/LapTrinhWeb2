@@ -272,6 +272,91 @@ public class ProductCardService {
         return (int) Math.ceil((double) total / pageSize);
     }
 
+    /**
+     * đây là phương thức thực hiện láy danh sách sản phẩm giảm giá dưới dạng productCard theo loại sản phẩm và bộ lọc và tìm kiếm
+     * đặc biệt phương thức có thể sử dụng lấy tất cả sản phẩm nếu chưa chọn danh
+     * mục phục vụ cho san phẩm giảm giá
+     * dùng cho trang sản phẩm giảm giá
+     * @param productTypeId
+     * @param page
+     * @param keyword
+     * @param color
+     * @param gender
+     * @param brandId
+     * @param collectionId
+     * @param size
+     * @return
+     */
+    public List<ProductCard> getAllExistProductCardForListProductAndFilterAndSearch(
+            Integer productTypeId,
+            int page,
+            String keyword,
+            String color,
+            String gender,
+            Integer brandId,
+            Integer collectionId,
+            Integer size
+    ) {
+        int offset = (page - 1) * pageSize;
+
+        List<ProductCard> cards = productDao.getHotDealProductCards(
+                productTypeId,
+                pageSize,
+                offset,
+                keyword,
+                color,
+                gender,
+                brandId,
+                collectionId,
+                size
+        );
+
+        for (ProductCard card : cards) {
+            applyDiscount(card);
+        }
+
+        return cards;
+    }
+
+    /**
+     * đây là phương thức thực hiện tính tổng số trang sản phẩm giảm giá theo loại sản phẩm và bộ lọc và tìm kiếm
+     * đặc biệt phương thức có thể sử dụng lấy tất cả sản phẩm nếu chưa chọn danh
+     * mục phục vụ phân trang cho san phẩm giảm giá
+     * dùng cho trang sản phẩm giảm giá
+     * @param productTypeId
+     * @param keyword
+     * @param color
+     * @param gender
+     * @param brandId
+     * @param collectionId
+     * @param size
+     * @return
+     */
+
+    public int getTotalPagesForListHotDealProductFilterAndSearch(
+            Integer productTypeId,
+            String keyword,
+            String color,
+            String gender,
+            Integer brandId,
+            Integer collectionId,
+            Integer size
+    ) {
+        int total = productDao.countHotDealProducts(
+                productTypeId,
+                keyword,
+                color,
+                gender,
+                brandId,
+                collectionId,
+                size
+        );
+
+        return (int) Math.ceil((double) total / pageSize);
+    }
+
+
+
 
 
 
