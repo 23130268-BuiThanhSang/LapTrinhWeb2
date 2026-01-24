@@ -233,11 +233,15 @@
     const VARIANTS = [
         <c:forEach items="${product.variants}" var="v" varStatus="i">
         {
+            id: ${v.id},
+            productId: ${product.id},
+            productName: "${product.name}",
             color: "${v.color}",
             size: ${v.size},
             sizeText: "${sizeMap[v.size]}",
             price: ${v.price},
-            stock: ${v.stock}
+            stock: ${v.stock},
+            image: "${v.images[0].imageUrl}"
         }${i.last ? "" : ","}
         </c:forEach>
     ];
