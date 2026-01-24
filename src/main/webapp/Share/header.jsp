@@ -48,11 +48,11 @@
     </ul>
 
     <div class="GroupRight">
-        <form class="SearchBox" role="search">
-            <input type="search" placeholder="Tìm sản phẩm..." aria-label="Tìm kiếm">
-            <button type="submit" aria-label ="Tìm kiếm">
-                <i class="fa fa-search"></i>
-            </button>
+        <form class="SearchBox" role="search" action="${root}/ListAllProduct" method="GET" id="searchForm">
+            <input type="search" name="keyword" id="searchInput" placeholder="Tìm sản phẩm..." aria-label="Tìm kiếm" autocomplete="off">
+            <button type="submit" aria-label="Tìm kiếm">
+            <i class="fa fa-search"></i>
+        </button>
         </form>
         <div class="UserWrap">
             <!-- Chưa Login -->
