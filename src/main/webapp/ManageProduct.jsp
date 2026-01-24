@@ -112,9 +112,9 @@
                 <div class="FormRow">
                     <label>Giới tính:</label>
                     <div class="CheckboxContainer">
-                        <label><input type="radio" name="genders" value="nam"> Nam</label>
-                        <label><input type="radio" name="genders" value="nu"> Nữ</label>
-                        <label><input type="radio" name="genders" value="unisex"> Khác</label>
+                        <label><input type="radio" name="genders" value="Nam"> Nam</label>
+                        <label><input type="radio" name="genders" value="Nữ"> Nữ</label>
+                        <label><input type="radio" name="genders" value="Khác"> Khác</label>
                     </div>
                 </div>
                 <div class="FormRow">

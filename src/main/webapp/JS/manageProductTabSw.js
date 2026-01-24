@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", function () {
         4: [35, 36, 37, 38, 39, 40, 41, 42, 43],
         3: ["S", "M", "L", "XL", "XXL"],
         2: ["Free Size"],
-        1: null
+        1: ["Nhỏ","Vừa","Lớn"]
     };
 
     btnAddVariant.addEventListener("click", function () {
