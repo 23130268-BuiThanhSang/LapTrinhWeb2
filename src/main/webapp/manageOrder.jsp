@@ -28,21 +28,21 @@
             <a class = "DetailPageLink" href="servlet_getOrder?action=all">Xem chi tiết</a>
             <div class="OrdersDisplay">
                 <c:forEach var="o" items="${orders}">
-                    <a href="manageOrder_OrderDetail.jsp?orderId=${o.id}" class="OrderItem">
+                    <a href="page_orderDetail?orderId=${o.id}" class="OrderItem">
 
                         <div class="OrderHeader">
-                            <span class="OrderID">#ORD-${o.id}</span>
+                            <span class="OrderID">ID: ${o.id}</span>
                             <span class="OrderDate">${o.orderDate}</span>
 
                             <span class="OrderStatus
-                    <c:choose>
-                        <c:when test="${o.status == 'PENDING'}">status-pending</c:when>
-                        <c:when test="${o.status == 'PAID'}">status-processing</c:when>
-                        <c:when test="${o.status == 'SHIPPED'}">status-approved</c:when>
-                        <c:when test="${o.status == 'DELIVERED'}">status-completed</c:when>
-                        <c:when test="${o.status == 'CANCELLED'}">status-cancelled</c:when>
-                    </c:choose>
-                ">
+                                <c:choose>
+                                    <c:when test="${o.status == 'PENDING'}">status-pending</c:when>
+                                    <c:when test="${o.status == 'PROCESSING'}">status-processing</c:when>
+                                    <c:when test="${o.status == 'SHIPPED'}">status-shipped</c:when>
+<%--                                    <c:when test="${o.status == 'DELIVERED'}">status-completed</c:when>--%>
+                                    <c:when test="${o.status == 'CANCELLED'}">status-cancelled</c:when>
+                                </c:choose>
+                            ">
                                     ${o.status}
                             </span>
                         </div>

@@ -33,7 +33,6 @@ public class getOrderList extends HttpServlet {
 
         // ===== ALL ORDERS =====
         if (action.equals("all")) {
-
             orders = orderService.getAll();
             request.setAttribute("orders", orders);
             request.getRequestDispatcher("manageOrder_AllOrders.jsp")
@@ -43,7 +42,6 @@ public class getOrderList extends HttpServlet {
 
         // ===== FILTER =====
         if (action.equals("filter")) {
-
             String dayStr = request.getParameter("day");
             Integer day = null;
             if (dayStr != null && !dayStr.isBlank()) {

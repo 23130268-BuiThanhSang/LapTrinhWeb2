@@ -9,13 +9,16 @@ public class OrderItem implements Serializable {
     private int quantity;
     private double price;
 
+    private String size,color;
     public OrderItem() {
     }
 
-    public OrderItem(Product product, int quantity, double price) {
+    public OrderItem(Product product, int quantity, double price,String size,String color) {
         this.product = product;
         this.quantity = quantity;
         this.price = price;
+        this.size = size;
+        this.color = color;
     }
 
     public int getId() { return id; }
@@ -28,5 +31,21 @@ public class OrderItem implements Serializable {
     public void setQuantity(int quantity) { this.quantity = quantity; }
     public double getPrice() { return price; }
     public void setPrice(double price) { this.price = price; }
+
+    public String getSize() {
+        return size;
+    }
+
+    public void setSize(String size) {
+        this.size = size;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
 }
 
