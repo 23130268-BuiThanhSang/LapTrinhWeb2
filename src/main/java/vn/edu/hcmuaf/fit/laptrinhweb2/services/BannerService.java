@@ -20,4 +20,12 @@ public class BannerService {
     public Banner getById(int id) {
         return bannerDao.getById(id);
     }
+
+    public boolean update(Banner banner) {
+        return bannerDao.update(banner);
+    }
+
+    public boolean delete(int id) {
+        return bannerDao.deleteById(id);
+    }
 }
