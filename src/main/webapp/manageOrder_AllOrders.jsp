@@ -56,10 +56,10 @@
                 <label class="FilterLabel">Trạng thái:</label>
                 <select name="status" class="FilterSelect">
                     <option value="all" ${status == null || status == 'all' ? "selected" : ""}>Tất cả</option>
-                    <option value="PENDING" ${status == 'PENDING' ? "selected" : ""}>Đang xử lý</option>
-                    <option value="DELIVERED" ${status == 'DELIVERED' ? "selected" : ""}>Đã giao</option>
+                    <option value="PENDING" ${status == 'PENDING' ? "selected" : ""}>Tạm ngưng</option>
+                    <option value="SHIPPED" ${status == 'SHIPPED' ? "selected" : ""}>Đã giao</option>
                     <option value="CANCELLED" ${status == 'CANCELLED' ? "selected" : ""}>Đã hủy</option>
-                    <option value="COMPLETED" ${status == 'COMPLETED' ? "selected" : ""}>Hoàn tất</option>
+                    <option value="PROCESSING" ${status == 'PROCESSING' ? "selected" : ""}>Đang xử lý</option>
                 </select>
 
                 <button type="submit" class="FilterBtn">Filter</button>
@@ -68,18 +68,18 @@
 
             <div class = OrdersDetailDisplay>
                 <c:forEach var="o" items="${orders}">
-                    <a href="manageOrder_OrderDetail.jsp?orderId=${o.id}" class="OrderItem">
+                    <a href="page_orderDetail?orderId=${o.id}" class="OrderItem">
 
                         <div class="OrderHeader">
-                            <span class="OrderID">#ORD-${o.id}</span>
+                            <span class="OrderID">ID: ${o.id}</span>
                             <span class="OrderDate">${o.orderDate}</span>
 
                             <span class="OrderStatus
                     <c:choose>
                         <c:when test="${o.status == 'PENDING'}">status-pending</c:when>
-                        <c:when test="${o.status == 'PAID'}">status-processing</c:when>
-                        <c:when test="${o.status == 'SHIPPED'}">status-approved</c:when>
-                        <c:when test="${o.status == 'DELIVERED'}">status-completed</c:when>
+                        <c:when test="${o.status == 'PROCESSING'}">status-processing</c:when>
+                        <c:when test="${o.status == 'SHIPPED'}">status-shipped</c:when>
+<%--                        <c:when test="${o.status == 'DELIVERED'}">status-completed</c:when>--%>
                         <c:when test="${o.status == 'CANCELLED'}">status-cancelled</c:when>
                     </c:choose>
                 ">

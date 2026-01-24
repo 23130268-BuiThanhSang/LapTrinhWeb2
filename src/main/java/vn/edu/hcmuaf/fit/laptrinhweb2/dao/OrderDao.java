@@ -82,4 +82,16 @@ public class OrderDao extends BaseDao {
         });
     }
 
+    public void updateStatus(int orderId, String status) {
+        get().withHandle(handle ->
+                handle.createUpdate(
+                                "UPDATE orders " +
+                                        "SET order_status = :status " +
+                                        "WHERE id = :id"
+                        )
+                        .bind("status", status)
+                        .bind("id", orderId)
+                        .execute()
+        );
+    }
 }

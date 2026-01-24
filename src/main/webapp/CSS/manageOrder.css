@@ -247,7 +247,7 @@
     box-shadow: 0 2px 8px rgba(79, 70, 229, 0.25);
 }
 
-.status-approved {
+.status-shipped {
     background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
     color: #047857;
     box-shadow: 0 2px 8px rgba(5, 150, 105, 0.25);
