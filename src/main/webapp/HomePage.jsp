@@ -79,7 +79,11 @@
                 <div class="ProductCard">
                     <div class="ProductImage">
                         <img src="https://supersports.com.vn/cdn/shop/files/1376781-464-1.jpg?v=1721123496&width=1000" alt="Giày HOKA">
+
                         <div class="ProductTag">
+                            <div class="ProductTag LeftTag">
+                                <div class="NewBadge">NEW</div>
+                            </div>
                             <div class="Discount">-60%</div>
                         </div>
                     </div>

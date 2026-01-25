@@ -576,6 +576,21 @@ ul {
     .MegaBox { position: fixed; left: 50% !important; min-width: 92vw; max-width: 92vw; top: 70px; }
     .SearchBox input { width: 120px; }
 }
+
+
+/* Khi thẻ li có class Active (do JS thêm vào), thẻ a sẽ đổi màu */
+.MenuItem.Active > a {
+    color: #1fb6ff !important;            /* Màu xanh thương hiệu */
+    background: rgba(31, 182, 255, 0.1) !important; /* Nền mờ nhạt */
+    border-bottom: 3px solid #1fb6ff !important;    /* Gạch chân */
+    font-weight: bold;
+}
+
+
+
+
+
+
 /*MAIN BANNER*/
 .banner {
     /*margin-top: 58px;*/
