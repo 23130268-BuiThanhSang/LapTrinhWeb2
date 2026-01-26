@@ -46,4 +46,16 @@ public class ProductGroupService {
                 finalDisplayOrder
         );
     }
+
+    /**
+     * Lấy danh sách nhóm sản phẩm hàng đầu theo loại nhóm lấy 10 collection hoặc 12 brand cso display order thấp nhất
+     * @param type
+     * @return
+     */
+    public List<ProductGroup> getTopProductGroupsByType(GroupType type) {
+       if (type == null) {
+           throw new IllegalArgumentException("GroupType cannot be null");
+       }
+       return productGroupDao.getTopProductGroups(type);
+    }
 }

@@ -26,6 +26,11 @@ public class ListAllProductHotDealController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         /**
+         * thực hiện lấy tham số hotdeal id từ banner hotdeal ở trang chủ để thực hiện lọc theo hotdeal id
+         */
+        String hotDealIdStr = request.getParameter("hotDealId");
+        Integer hotDealId = (hotDealIdStr != null && !hotDealIdStr.isEmpty()) ? Integer.parseInt(hotDealIdStr) : null;
+        /**
          * thực hiện lây tham số loại sản phẩm, để là Integer để có thể nhận null khi người dùng chưa thực hiện chọn kiểu sản phẩm
          */
         Integer productTypeId = null;
@@ -118,12 +123,12 @@ public class ListAllProductHotDealController extends HttpServlet {
         /**
          * thực hiện gọi xuống service để lấy danh sách sản phẩm theo filter va search
          */
-        List<ProductCard> products = productCardService.getAllExistProductCardForListProductAndFilterAndSearch(productTypeId, page, keyword, color, gender, brandId,collectionId, size);
+        List<ProductCard> products = productCardService.getAllHotDealProductCardForListProductAndFilterAndSearch(productTypeId, page, keyword, color, gender, brandId,collectionId, size, hotDealId );
         for (ProductCard productCard : products) {
             productCard.setReviewCount(productService.countReviews(productCard.getId()));
             productCardService.fillRating(productCard);
         }
-        int totalPages = productCardService.getTotalPagesForListHotDealProductFilterAndSearch(productTypeId, keyword, color, gender, brandId,collectionId, size);
+        int totalPages = productCardService.getTotalPagesForListHotDealProductFilterAndSearch(productTypeId, keyword, color, gender, brandId,collectionId, size, hotDealId);
 
         /**
          * truyền dữ liệu lên jsp
@@ -131,7 +136,10 @@ public class ListAllProductHotDealController extends HttpServlet {
         request.setAttribute("products", products);
         request.setAttribute("totalPages", totalPages);
         request.setAttribute("currentPage", page);
-
+        /**
+         * tham số ẩn do chuyển từ trang chủ hoặc từ các banner để lọc hotdeal theo hotdeal id
+         */
+        request.setAttribute("hotDealId", hotDealId);
         /**
          * truyền lại các tham số filter để giữ trạng thái lọc trên giao diện và search
          */

@@ -1181,11 +1181,10 @@ kết thúc */
     /*height: 2500px;*/
     height: auto;
     background:white;
-    margin-left: 20px;
+
 }
 .Hotdeal{
     padding-bottom: 45px;
-    border-bottom: gray solid 1px;
 }
 .HotdealTitle{
     padding: 25px 0;
@@ -1214,6 +1213,9 @@ kết thúc */
     padding-top: 15px;
     gap: 15px;
 }
+.CategoriesShowcaseHotDealNormal> a{
+    display: contents;
+}
 .HotDeal1, .HotDeal2{
     width:35%;
     border-radius: 15px;
@@ -1223,9 +1225,8 @@ kết thúc */
     background: white;
     width: 100%;
     color: black;
-    padding: 50px 0;
-    border-bottom: #777777 solid 1px;
-
+    padding: 35px 0;
+    margin-left: 30px;
 }
 
 /*đề mục sản phẩm ưu đãi*/
@@ -1234,6 +1235,7 @@ kết thúc */
     justify-content: space-between;
     align-items: center;
     padding-bottom: 20px;
+    padding-right: 35px;
 }
 
 .ProductDealTitle {
@@ -1250,6 +1252,7 @@ kết thúc */
     font-weight: bold;
     cursor: pointer;
     transition: 0.2s;
+    margin-right: 20px;
 }
 
 .SubProductDealButton:hover {

@@ -20,4 +20,8 @@ public class BannerService {
     public Banner getById(int id) {
         return bannerDao.getById(id);
     }
+
+    public List<Banner> getTop5BannersActive(){
+        return bannerDao.getTop5ActiveBanners();
+    }
 }
