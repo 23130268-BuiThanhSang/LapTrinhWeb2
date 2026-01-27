@@ -15,6 +15,7 @@ public class ProductDao extends BaseDao {
     /**
      * lấy danh sách ProductCard chưa lọc
      * hiện tại có thể bỏ đi nhưng để dành cho trang khác có thể sử dụng
+     *
      * @param limit
      * @param offset
      * @return
@@ -60,6 +61,7 @@ public class ProductDao extends BaseDao {
     /**
      * `Lấy danh sách ProductCard theo loại sản phẩm
      * hiện tại có thể bỏ đi nhưng để dành cho trang khác có thể sử dụng
+     *
      * @param productTypeId
      * @param limit
      * @param offset
@@ -108,6 +110,7 @@ public class ProductDao extends BaseDao {
     /**
      * đếm số lượng sản phẩm theo loại sản phẩm nhằm mục đích phân trang
      * có thể bỏ đi nhưng để dành cho trang khác có thể sử dụng
+     *
      * @param productTypeId
      * @return
      */
@@ -127,6 +130,7 @@ public class ProductDao extends BaseDao {
     /**
      * Lấy danh sách ProductCard theo loại sản phẩm và bộ lọc
      * có thể bỏ đi những để dành cho trang khác sử dụng
+     *
      * @param productTypeId
      * @param limit
      * @param offset
@@ -199,6 +203,7 @@ public class ProductDao extends BaseDao {
     /**
      * đây là phương thức thực hiện đếm số sản phẩm theo bộ lọc
      * có thể bỏ đi những để dành cho trang khác sử dụng
+     *
      * @param productTypeId
      * @param color
      * @param gender
@@ -247,6 +252,7 @@ public class ProductDao extends BaseDao {
     /**
      * Lấy danh sách sản phẩm (toàn bộ hoặc theo loại) cho phép filter/tìm kiếm
      * phương thức quan trọng dùng cho trang tất cả sản phẩm
+     *
      * @param productTypeId
      * @param limit
      * @param offset
@@ -270,30 +276,31 @@ public class ProductDao extends BaseDao {
             Integer size
     ) {
         StringBuilder sql = new StringBuilder("""
-        SELECT 
-            p.id,
-            p.product_name      AS name,
-            b.name              AS brandName,
-            v.price             AS price,
-            hd.discount_per     AS discountPercent,
-            img.image_url       AS imageUrl
-        FROM product p
-        JOIN brand b ON p.brand_id = b.id
-        JOIN product_variant v ON v.product_id = p.id
-            AND v.id = (
-                SELECT MIN(v2.id)
-                FROM product_variant v2
-                WHERE v2.product_id = p.id
-            )
-        LEFT JOIN hot_deal hd ON p.hot_deal_id = hd.id
-        LEFT JOIN product_variant_image img ON img.variant_id = v.id
-            AND img.id = (
-                SELECT MIN(img2.id)
-                FROM product_variant_image img2
-                WHERE img2.variant_id = v.id
-            )
-        WHERE 1=1
-    """);
+                    SELECT 
+                        p.id,
+                        p.product_name      AS name,
+                        b.name              AS brandName,
+                        v.price             AS price,
+                        hd.discount_per     AS discountPercent,
+                        img.image_url       AS imageUrl,
+                        (DATEDIFF(NOW(), p.enter_date) <= 10) AS isNewProduct
+                    FROM product p
+                    JOIN brand b ON p.brand_id = b.id
+                    JOIN product_variant v ON v.product_id = p.id
+                        AND v.id = (
+                            SELECT MIN(v2.id)
+                            FROM product_variant v2
+                            WHERE v2.product_id = p.id
+                        )
+                    LEFT JOIN hot_deal hd ON p.hot_deal_id = hd.id
+                    LEFT JOIN product_variant_image img ON img.variant_id = v.id
+                        AND img.id = (
+                            SELECT MIN(img2.id)
+                            FROM product_variant_image img2
+                            WHERE img2.variant_id = v.id
+                        )
+                    WHERE 1=1
+                """);
 
         if (productTypeId != null) sql.append(" AND p.product_type_id = :typeId ");
         if (keyword != null && !keyword.isBlank()) sql.append(" AND p.product_name LIKE :keyword ");
@@ -301,11 +308,11 @@ public class ProductDao extends BaseDao {
         if (collectionId != null) sql.append(" AND p.collection_id = :collectionId ");
 
         sql.append("""
-        AND EXISTS (
-            SELECT 1 FROM product_variant vf
-            WHERE vf.product_id = p.id
-            AND vf.stock > 0
-    """);
+                    AND EXISTS (
+                        SELECT 1 FROM product_variant vf
+                        WHERE vf.product_id = p.id
+                        AND vf.stock > 0
+                """);
         if (color != null && !color.isEmpty()) sql.append(" AND vf.color = :color ");
         if (size != null) sql.append(" AND vf.size = :size ");
         sql.append(") ");
@@ -313,9 +320,9 @@ public class ProductDao extends BaseDao {
         if (gender != null && !gender.isEmpty()) sql.append(" AND p.product_gender = :gender ");
 
         sql.append("""
-        ORDER BY p.id DESC
-        LIMIT :limit OFFSET :offset
-    """);
+                    ORDER BY p.id DESC
+                    LIMIT :limit OFFSET :offset
+                """);
 
         return get().withHandle(h -> {
             var query = h.createQuery(sql.toString())
@@ -335,8 +342,9 @@ public class ProductDao extends BaseDao {
     }
 
     /**
-     * Đếm số lượng sản phẩm (toàn bộ hoặc theo loại) cho phép filter/tìm kiếm
+     * Đếm số lượng sản phẩm tất cả (toàn bộ hoặc theo loại) cho phép filter/tìm kiếm
      * phương thức quan trọng dùng cho trang tất cả sản phẩm phục vụ phân trang
+     *
      * @param productTypeId
      * @param keyword
      * @param color
@@ -356,10 +364,10 @@ public class ProductDao extends BaseDao {
             Integer size
     ) {
         StringBuilder sql = new StringBuilder("""
-        SELECT COUNT(*) FROM product p
-        JOIN brand b ON p.brand_id = b.id
-        WHERE 1=1
-    """);
+                    SELECT COUNT(*) FROM product p
+                    JOIN brand b ON p.brand_id = b.id
+                    WHERE 1=1
+                """);
 
         if (productTypeId != null) sql.append(" AND p.product_type_id = :typeId ");
         if (keyword != null && !keyword.isBlank()) sql.append(" AND p.product_name LIKE :keyword ");
@@ -367,11 +375,11 @@ public class ProductDao extends BaseDao {
         if (collectionId != null) sql.append(" AND p.collection_id = :collectionId ");
 
         sql.append("""
-        AND EXISTS (
-            SELECT 1 FROM product_variant v
-            WHERE v.product_id = p.id
-            AND v.stock > 0
-    """);
+                    AND EXISTS (
+                        SELECT 1 FROM product_variant v
+                        WHERE v.product_id = p.id
+                        AND v.stock > 0
+                """);
         if (color != null && !color.isEmpty()) sql.append(" AND v.color = :color ");
         if (size != null) sql.append(" AND v.size = :size ");
         sql.append(") ");
@@ -394,7 +402,442 @@ public class ProductDao extends BaseDao {
     }
 
     /**
+     * Lấy danh sách sản phẩm mới (toàn bộ hoặc theo loại) cho phép filter/tìm kiếm
+     * phương thức quan trọng dùng cho trang san phẩm mới
+     *
+     * @param productTypeId
+     * @param limit
+     * @param offset
+     * @param keyword
+     * @param color
+     * @param gender
+     * @param brandId
+     * @param collectionId
+     * @param size
+     * @return
+     */
+    public List<ProductCard> getNewProductCardsByFullFilter(
+            Integer productTypeId,
+            int limit,
+            int offset,
+            String keyword,
+            String color,
+            String gender,
+            Integer brandId,
+            Integer collectionId,
+            Integer size
+    ) {
+        StringBuilder sql = new StringBuilder("""
+                    SELECT 
+                        p.id,
+                        p.product_name      AS name,
+                        b.name              AS brandName,
+                        v.price             AS price,
+                        hd.discount_per     AS discountPercent,
+                        img.image_url       AS imageUrl,
+                        (DATEDIFF(NOW(), p.enter_date) <= 10) AS isNewProduct
+                    FROM product p
+                    JOIN brand b ON p.brand_id = b.id
+                    JOIN product_variant v ON v.product_id = p.id
+                        AND v.id = (
+                            SELECT MIN(v2.id)
+                            FROM product_variant v2
+                            WHERE v2.product_id = p.id
+                        )
+                    LEFT JOIN hot_deal hd ON p.hot_deal_id = hd.id
+                    LEFT JOIN product_variant_image img ON img.variant_id = v.id
+                        AND img.id = (
+                            SELECT MIN(img2.id)
+                            FROM product_variant_image img2
+                            WHERE img2.variant_id = v.id
+                        )
+                    WHERE 1=1
+                """);
+
+        if (productTypeId != null) sql.append(" AND p.product_type_id = :typeId ");
+        if (keyword != null && !keyword.isBlank()) sql.append(" AND p.product_name LIKE :keyword ");
+        if (brandId != null) sql.append(" AND b.id = :brandId ");
+        if (collectionId != null) sql.append(" AND p.collection_id = :collectionId ");
+        sql.append(" AND DATEDIFF(NOW(), p.enter_date) <= 10 ");
+        sql.append("""
+                    AND EXISTS (
+                        SELECT 1 FROM product_variant vf
+                        WHERE vf.product_id = p.id
+                        AND vf.stock > 0
+                """);
+        if (color != null && !color.isEmpty()) sql.append(" AND vf.color = :color ");
+        if (size != null) sql.append(" AND vf.size = :size ");
+        sql.append(") ");
+
+        if (gender != null && !gender.isEmpty()) sql.append(" AND p.product_gender = :gender ");
+
+        sql.append("""
+                    ORDER BY p.id DESC
+                    LIMIT :limit OFFSET :offset
+                """);
+
+        return get().withHandle(h -> {
+            var query = h.createQuery(sql.toString())
+                    .bind("limit", limit)
+                    .bind("offset", offset);
+
+            if (productTypeId != null) query.bind("typeId", productTypeId);
+            if (keyword != null && !keyword.isBlank()) query.bind("keyword", "%" + keyword + "%");
+            if (brandId != null) query.bind("brandId", brandId);
+            if (collectionId != null) query.bind("collectionId", collectionId);
+            if (color != null && !color.isEmpty()) query.bind("color", color);
+            if (size != null) query.bind("size", size);
+            if (gender != null && !gender.isEmpty()) query.bind("gender", gender);
+
+            return query.mapToBean(ProductCard.class).list();
+        });
+    }
+
+    /**
+     * Đếm số lượng sản phẩm mới (toàn bộ hoặc theo loại) cho phép filter/tìm kiếm
+     * phương thức quan trọng dùng cho trang sản phẩm mới phục vụ phân trang
+     *
+     * @param productTypeId
+     * @param keyword
+     * @param color
+     * @param gender
+     * @param brandId
+     * @param collectionId
+     * @param size
+     * @return
+     */
+    public int countNewProductByFullFilter(
+            Integer productTypeId,
+            String keyword,
+            String color,
+            String gender,
+            Integer brandId,
+            Integer collectionId,
+            Integer size
+    ) {
+        StringBuilder sql = new StringBuilder("""
+                    SELECT COUNT(*) FROM product p
+                    JOIN brand b ON p.brand_id = b.id
+                    WHERE 1=1
+                """);
+
+        if (productTypeId != null) sql.append(" AND p.product_type_id = :typeId ");
+        if (keyword != null && !keyword.isBlank()) sql.append(" AND p.product_name LIKE :keyword ");
+        if (brandId != null) sql.append(" AND b.id = :brandId ");
+        if (collectionId != null) sql.append(" AND p.collection_id = :collectionId ");
+        sql.append(" AND DATEDIFF(NOW(), p.enter_date) <= 10 ");
+        sql.append("""
+                    AND EXISTS (
+                        SELECT 1 FROM product_variant v
+                        WHERE v.product_id = p.id
+                        AND v.stock > 0
+                """);
+        if (color != null && !color.isEmpty()) sql.append(" AND v.color = :color ");
+        if (size != null) sql.append(" AND v.size = :size ");
+        sql.append(") ");
+
+        if (gender != null && !gender.isEmpty()) sql.append(" AND p.product_gender = :gender ");
+
+        return get().withHandle(h -> {
+            var query = h.createQuery(sql.toString());
+
+            if (productTypeId != null) query.bind("typeId", productTypeId);
+            if (keyword != null && !keyword.isBlank()) query.bind("keyword", "%" + keyword + "%");
+            if (brandId != null) query.bind("brandId", brandId);
+            if (collectionId != null) query.bind("collectionId", collectionId);
+            if (color != null && !color.isEmpty()) query.bind("color", color);
+            if (size != null) query.bind("size", size);
+            if (gender != null && !gender.isEmpty()) query.bind("gender", gender);
+
+            return query.mapTo(int.class).one();
+        });
+    }
+
+    /**
+     * thực hiện lấy danh sách sản phẩm hot deal với bộ lọc và tìm kiếm toàn diện
+     * phương thức quan trọng dùng cho trang sản phẩm hot deal
+     * đặc biệt ưu tiên sắp xếp theo phần trăm giảm giá cao nhất nhằm phục vụ trải nghiệm người dùng
+     *
+     * @param productTypeId
+     * @param limit
+     * @param offset
+     * @param keyword
+     * @param color
+     * @param gender
+     * @param brandId
+     * @param collectionId
+     * @param size
+     * @return
+     */
+    public List<ProductCard> getHotDealProductCards(
+            Integer productTypeId,
+            int limit,
+            int offset,
+            String keyword,
+            String color,
+            String gender,
+            Integer brandId,
+            Integer collectionId,
+            Integer size,
+            Integer hotDealId
+    ) {
+        StringBuilder sql = new StringBuilder("""
+                    SELECT 
+                        p.id,
+                        p.product_name      AS name,
+                        b.name              AS brandName,
+                        v.price             AS price,
+                        hd.discount_per     AS discountPercent,
+                        img.image_url       AS imageUrl,
+                        (DATEDIFF(NOW(), p.enter_date) <= 10) AS isNewProduct
+                    FROM product p
+                    JOIN brand b ON p.brand_id = b.id
+                    JOIN product_variant v ON v.product_id = p.id
+                        AND v.id = (
+                            SELECT MIN(v2.id)
+                            FROM product_variant v2
+                            WHERE v2.product_id = p.id
+                        )
+                
+                    JOIN hot_deal hd ON p.hot_deal_id = hd.id
+                
+                    LEFT JOIN product_variant_image img ON img.variant_id = v.id
+                        AND img.id = (
+                            SELECT MIN(img2.id)
+                            FROM product_variant_image img2
+                            WHERE img2.variant_id = v.id
+                        )
+                    WHERE 1=1
+                    AND p.hot_deal_id IS NOT NULL 
+                    AND hd.discount_per > 0
+                """);
+
+        /**
+         * thực hiện giữ bộ lọc để người dùng có thể lọc trong trang hot deal
+         */
+        if (hotDealId != null) {
+            sql.append(" AND hd.id = :hotDealId ");
+        }
+        if (productTypeId != null) sql.append(" AND p.product_type_id = :typeId ");
+        if (keyword != null && !keyword.isBlank()) sql.append(" AND p.product_name LIKE :keyword ");
+        if (brandId != null) sql.append(" AND b.id = :brandId ");
+        if (collectionId != null) sql.append(" AND p.collection_id = :collectionId ");
+
+        sql.append("""
+                    AND EXISTS (
+                        SELECT 1 FROM product_variant vf
+                        WHERE vf.product_id = p.id
+                        AND vf.stock > 0
+                """);
+        if (color != null && !color.isEmpty()) sql.append(" AND vf.color = :color ");
+        if (size != null) sql.append(" AND vf.size = :size ");
+        sql.append(") ");
+
+        if (gender != null && !gender.isEmpty()) sql.append(" AND p.product_gender = :gender ");
+
+        /**
+         * sắp xếp ưu tiên theo phần trăm giảm giá cao nhất trước phục vụ trải nghiệm người dùng
+         */
+        sql.append("""
+                    ORDER BY hd.discount_per DESC, p.id DESC
+                    LIMIT :limit OFFSET :offset
+                """);
+
+        return get().withHandle(h -> {
+            var query = h.createQuery(sql.toString())
+                    .bind("limit", limit)
+                    .bind("offset", offset);
+
+            if (hotDealId != null) query.bind("hotDealId", hotDealId);
+            if (productTypeId != null) query.bind("typeId", productTypeId);
+            if (keyword != null && !keyword.isBlank()) query.bind("keyword", "%" + keyword + "%");
+            if (brandId != null) query.bind("brandId", brandId);
+            if (collectionId != null) query.bind("collectionId", collectionId);
+            if (color != null && !color.isEmpty()) query.bind("color", color);
+            if (size != null) query.bind("size", size);
+            if (gender != null && !gender.isEmpty()) query.bind("gender", gender);
+
+
+            return query.mapToBean(ProductCard.class).list();
+        });
+    }
+
+    /**
+     * đếm số lượng sản phẩm hot deal với bộ lọc và tìm kiếm toàn diện
+     * phương thức quan trọng dùng cho trang sản phẩm hot deal phục vụ phân trang
+     * @param productTypeId
+     * @param keyword
+     * @param color
+     * @param gender
+     * @param brandId
+     * @param collectionId
+     * @param size
+     * @return
+     */
+    public int countHotDealProducts(
+            Integer productTypeId,
+            String keyword,
+            String color,
+            String gender,
+            Integer brandId,
+            Integer collectionId,
+            Integer size,
+            Integer hotDealId
+    ) {
+        StringBuilder sql = new StringBuilder("""
+                SELECT COUNT(p.id)
+                FROM product p
+                JOIN brand b ON p.brand_id = b.id
+                JOIN hot_deal hd ON p.hot_deal_id = hd.id
+            
+                WHERE 1=1
+                AND p.hot_deal_id IS NOT NULL 
+                AND hd.discount_per > 0
+            """);
+
+        if (hotDealId != null) sql.append(" AND hd.id = :hotDealId ");
+        if (productTypeId != null) sql.append(" AND p.product_type_id = :typeId ");
+        if (keyword != null && !keyword.isBlank()) sql.append(" AND p.product_name LIKE :keyword ");
+        if (brandId != null) sql.append(" AND b.id = :brandId ");
+        if (collectionId != null) sql.append(" AND p.collection_id = :collectionId ");
+
+       /**
+         * giữ bộ lọc để người dùng có thể lọc trong trang hot deal
+         */
+        sql.append("""
+                AND EXISTS (
+                    SELECT 1 FROM product_variant vf
+                    WHERE vf.product_id = p.id
+                    AND vf.stock > 0
+            """);
+        if (color != null && !color.isEmpty()) sql.append(" AND vf.color = :color ");
+        if (size != null) sql.append(" AND vf.size = :size ");
+        sql.append(") ");
+
+        if (gender != null && !gender.isEmpty()) sql.append(" AND p.product_gender = :gender ");
+
+        return get().withHandle(h -> {
+            var query = h.createQuery(sql.toString());
+
+            if (hotDealId != null) query.bind("hotDealId", hotDealId);
+            if (productTypeId != null) query.bind("typeId", productTypeId);
+            if (keyword != null && !keyword.isBlank()) query.bind("keyword", "%" + keyword + "%");
+            if (brandId != null) query.bind("brandId", brandId);
+            if (collectionId != null) query.bind("collectionId", collectionId);
+            if (color != null && !color.isEmpty()) query.bind("color", color);
+            if (size != null) query.bind("size", size);
+            if (gender != null && !gender.isEmpty()) query.bind("gender", gender);
+
+            return query.mapTo(Integer.class).one();
+        });
+    }
+
+    /**
+     * thực hiện lấy danh sách 10 sản phẩm có phần trăm giảm giá cao nhất
+     * phục vụ cho trang chủ
+     *
+     * @return
+     */
+    public List<ProductCard> getTopDiscountProductCardsForHome() {
+        return get().withHandle(h ->
+                h.createQuery("""
+                SELECT 
+                    p.id,
+                    p.product_name      AS name,
+                    b.name              AS brandName,
+                    v.price             AS price,
+                    hd.discount_per     AS discountPercent,
+                    img.image_url       AS imageUrl,
+                    (DATEDIFF(NOW(), p.enter_date) <= 10) AS isNewProduct
+                FROM product p
+                JOIN hot_deal hd 
+                    ON p.hot_deal_id = hd.id
+                JOIN brand b 
+                    ON p.brand_id = b.id
+
+                -- CHỈ LẤY VARIANT CÓ STOCK > 0
+                JOIN product_variant v 
+                    ON v.product_id = p.id
+                   AND v.stock > 0
+                   AND v.id = (
+                        SELECT MIN(v2.id)
+                        FROM product_variant v2
+                        WHERE v2.product_id = p.id
+                          AND v2.stock > 0
+                   )
+
+                LEFT JOIN product_variant_image img
+                    ON img.variant_id = v.id
+                   AND img.id = (
+                        SELECT MIN(img2.id)
+                        FROM product_variant_image img2
+                        WHERE img2.variant_id = v.id
+                   )
+
+                WHERE hd.discount_per > 0
+                ORDER BY hd.discount_per DESC, p.id DESC
+                LIMIT 10
+            """)
+                        .mapToBean(ProductCard.class)
+                        .list()
+        );
+    }
+
+    /**
+     * phương thức thực hiện lấy 10 sản phẩm mới nhất cho trang chủ
+     * Phục vụ cho hiển thị ở trang chủ ở nới sản phẩm mới
+     * @return
+     */
+    public List<ProductCard> getNewestProductCardsForHome() {
+        return get().withHandle(h ->
+                h.createQuery("""
+            SELECT 
+                p.id,
+                p.product_name      AS name,
+                b.name              AS brandName,
+                v.price             AS price,
+                hd.discount_per     AS discountPercent,
+                img.image_url       AS imageUrl,
+                (DATEDIFF(NOW(), p.enter_date) <= 10) AS isNewProduct
+            FROM product p
+            JOIN brand b 
+                ON p.brand_id = b.id
+            
+            LEFT JOIN hot_deal hd 
+                ON p.hot_deal_id = hd.id
+
+            JOIN product_variant v 
+                ON v.product_id = p.id
+               AND v.stock > 0
+               AND v.id = (
+                    SELECT MIN(v2.id)
+                    FROM product_variant v2
+                    WHERE v2.product_id = p.id
+                      AND v2.stock > 0
+               )
+
+            LEFT JOIN product_variant_image img
+                ON img.variant_id = v.id
+               AND img.id = (
+                    SELECT MIN(img2.id)
+                    FROM product_variant_image img2
+                    WHERE img2.variant_id = v.id
+               )
+
+            ORDER BY p.enter_date DESC, p.id DESC
+            LIMIT 10
+        """)
+                        .mapToBean(ProductCard.class)
+                        .list()
+        );
+    }
+
+
+
+
+    /**
      * Lấy thông tin chi tiết sản phẩm theo id
+     *
      * @param id
      * @return
      */
@@ -510,30 +953,30 @@ public class ProductDao extends BaseDao {
     public int insertProduct(Product product) {
 
         String sql = """
-        INSERT INTO product (
-            brand_id,
-            collection_id,
-            sport_id,
-            product_name,
-            product_infor,
-            product_car_instruction,
-            product_return_infor,
-            product_gender,
-            enter_date,
-            product_type_id
-        ) VALUES (
-            :brandId,
-            :collectionId,
-            :sportId,
-            :productName,
-            :productInfor,
-            :productCareInstruction,
-            :productReturnInfor,
-            :productGender,
-            NOW(),
-            :productTypeId
-        )
-    """;
+                    INSERT INTO product (
+                        brand_id,
+                        collection_id,
+                        sport_id,
+                        product_name,
+                        product_infor,
+                        product_car_instruction,
+                        product_return_infor,
+                        product_gender,
+                        enter_date,
+                        product_type_id
+                    ) VALUES (
+                        :brandId,
+                        :collectionId,
+                        :sportId,
+                        :productName,
+                        :productInfor,
+                        :productCareInstruction,
+                        :productReturnInfor,
+                        :productGender,
+                        NOW(),
+                        :productTypeId
+                    )
+                """;
 
         return get().withHandle(handle ->
                 handle.createUpdate(sql)
@@ -553,13 +996,14 @@ public class ProductDao extends BaseDao {
                         .one()
         );
     }
+
     public double getAverageRatingByProduct(int productId) {
         return get().withHandle(h ->
                 h.createQuery("""
-                    SELECT COALESCE(AVG(rating), 0)
-                    FROM product_review
-                    WHERE product_id = :pid
-                """).bind("pid", productId).mapTo(double.class).one()
+                            SELECT COALESCE(AVG(rating), 0)
+                            FROM product_review
+                            WHERE product_id = :pid
+                        """).bind("pid", productId).mapTo(double.class).one()
         );
     }
 

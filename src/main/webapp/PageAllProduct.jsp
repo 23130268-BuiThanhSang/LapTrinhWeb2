@@ -249,6 +249,11 @@
                 <div class="ProductCard">
                     <div class="ProductImage">
                         <img src="${p.imageUrl}" alt="${p.name}">
+                        <c:if test="${p.isNewProduct}">
+                            <div class="ProductTag LeftTag">
+                                <div class="NewBadge">NEW</div>
+                            </div>
+                        </c:if>
                         <c:if test="${ p.discountPercent >0 }">
                             <div class="ProductTag">
                                 <div class="Discount">${p.discountPercent}%</div>

@@ -3,9 +3,7 @@ package vn.edu.hcmuaf.fit.laptrinhweb2.services;
 import vn.edu.hcmuaf.fit.laptrinhweb2.dao.ProductDao;
 import vn.edu.hcmuaf.fit.laptrinhweb2.model.DTO.ProductCard;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class ProductCardService {
 
@@ -191,6 +189,203 @@ public class ProductCardService {
 
         return (int) Math.ceil((double) total / pageSize);
     }
+
+    /**
+     * đây là phương thức thực hiện láy danh sách sản phẩm mới dưới dạng productCard theo loại sản phẩm và bộ lọc và tìm kiếm
+     * đặc biệt phương thức có thể sử dụng lấy tất cả sản phẩm nếu chưa chọn danh mục phục vụ cho san phẩm mới
+     * dùng cho trang sản phẩm mới
+     * @param productTypeId
+     * @param page
+     * @param keyword
+     * @param color
+     * @param gender
+     * @param brandId
+     * @param collectionId
+     * @param size
+     * @return
+     */
+    public List<ProductCard> getAllNewProductCardForListProductAndFilterAndSearch(
+            Integer productTypeId,
+            int page,
+            String keyword,
+            String color,
+            String gender,
+            Integer brandId,
+            Integer collectionId,
+            Integer size
+    ) {
+        int offset = (page - 1) * pageSize;
+
+        List<ProductCard> cards = productDao.getNewProductCardsByFullFilter(
+                productTypeId,
+                pageSize,
+                offset,
+                keyword,
+                color,
+                gender,
+                brandId,
+                collectionId,
+                size
+        );
+
+        for (ProductCard card : cards) {
+            applyDiscount(card);
+        }
+
+        return cards;
+    }
+
+    /**
+     * đây là phương thức thực hiện tính tổng số trang sản phẩm mới theo loại sản phẩm và bộ lọc và tìm kiếm
+     * đặc biệt phương thức có thể sử dụng lấy tất cả sản phẩm nếu chưa chọn danh mục phục vụ cho san phẩm mới
+     * dùng cho trang sản phẩm mới
+     * @param productTypeId
+     * @param keyword
+     * @param color
+     * @param gender
+     * @param brandId
+     * @param collectionId
+     * @param size
+     * @return
+     */
+    public int getTotalPagesForListNewProductFilterAndSearch(
+            Integer productTypeId,
+            String keyword,
+            String color,
+            String gender,
+            Integer brandId,
+            Integer collectionId,
+            Integer size
+    ) {
+        int total = productDao.countNewProductByFullFilter(
+                productTypeId,
+                keyword,
+                color,
+                gender,
+                brandId,
+                collectionId,
+                size
+        );
+
+        return (int) Math.ceil((double) total / pageSize);
+    }
+
+    /**
+     * đây là phương thức thực hiện láy danh sách sản phẩm giảm giá dưới dạng productCard theo loại sản phẩm và bộ lọc và tìm kiếm
+     * đặc biệt phương thức có thể sử dụng lấy tất cả sản phẩm nếu chưa chọn danh
+     * mục phục vụ cho san phẩm giảm giá
+     * dùng cho trang sản phẩm giảm giá
+     * @param productTypeId
+     * @param page
+     * @param keyword
+     * @param color
+     * @param gender
+     * @param brandId
+     * @param collectionId
+     * @param size
+     * @return
+     */
+    public List<ProductCard> getAllHotDealProductCardForListProductAndFilterAndSearch(
+            Integer productTypeId,
+            int page,
+            String keyword,
+            String color,
+            String gender,
+            Integer brandId,
+            Integer collectionId,
+            Integer size,
+            Integer hotDealId
+    ) {
+        int offset = (page - 1) * pageSize;
+
+        List<ProductCard> cards = productDao.getHotDealProductCards(
+                productTypeId,
+                pageSize,
+                offset,
+                keyword,
+                color,
+                gender,
+                brandId,
+                collectionId,
+                size,
+                hotDealId
+        );
+
+        for (ProductCard card : cards) {
+            applyDiscount(card);
+        }
+        return cards;
+    }
+
+
+    /**
+     * đây là phương thức thực hiện tính tổng số trang sản phẩm giảm giá theo loại sản phẩm và bộ lọc và tìm kiếm
+     * đặc biệt phương thức có thể sử dụng lấy tất cả sản phẩm nếu chưa chọn danh
+     * mục phục vụ phân trang cho san phẩm giảm giá
+     * dùng cho trang sản phẩm giảm giá
+     * @param productTypeId
+     * @param keyword
+     * @param color
+     * @param gender
+     * @param brandId
+     * @param collectionId
+     * @param size
+     * @return
+     */
+
+    public int getTotalPagesForListHotDealProductFilterAndSearch(
+            Integer productTypeId,
+            String keyword,
+            String color,
+            String gender,
+            Integer brandId,
+            Integer collectionId,
+            Integer size,
+            Integer hotDealId
+    ) {
+        int total = productDao.countHotDealProducts(
+                productTypeId,
+                keyword,
+                color,
+                gender,
+                brandId,
+                collectionId,
+                size,
+                hotDealId
+        );
+
+        return (int) Math.ceil((double) total / pageSize);
+    }
+
+
+    /**
+     * đây là phương thức thực hiện láy danh sách sản phẩm giảm giá nhiều nhất để hiển thị trên trang chủ
+     * @return
+     */
+    public List<ProductCard> getTopDiscountProductsForHome() {
+        List<ProductCard> cards =
+                productDao.getTopDiscountProductCardsForHome();
+        for (ProductCard card : cards) {
+            applyDiscount(card);
+        }
+        return cards;
+    }
+
+    /**
+     * đây là phương thức thực hiện láy danh sách sản phẩm mới nhất để hiển thị trên trang chủ
+     * @return
+     */
+    public List<ProductCard> getNewestProductsForHome() {
+        List<ProductCard> cards =
+                productDao.getNewestProductCardsForHome();
+        for (ProductCard card : cards) {
+            applyDiscount(card);
+        }
+        return cards;
+    }
+
+
+
 
 
 

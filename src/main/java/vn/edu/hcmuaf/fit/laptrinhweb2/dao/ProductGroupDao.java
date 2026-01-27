@@ -136,4 +136,49 @@ public class ProductGroupDao extends BaseDao {
         String table = getTableName(type);
         return "DELETE FROM " + table + " WHERE id = :id";
     }
+    /**
+     * Lấy danh sách nhóm sản phẩm (thương hiệu hoặc bộ sưu tập) có display order cao nhất để hiển thị trên trang chủ
+     * @param type
+     * @return
+     */
+    public List<ProductGroup> getTopProductGroups(GroupType type) {
+        switch (type) {
+            case BRAND:
+                return get().withHandle(h ->
+                        h.createQuery("""
+                        SELECT 
+                            id, 
+                            name, 
+                            thumbnail_image_url AS thumbnailUrl,  
+                            main_image_url      AS imageUrl,      
+                            display_order       AS displayOrder  
+                        FROM brand 
+                        ORDER BY display_order DESC 
+                        LIMIT 12
+                    """)
+                                .mapToBean(ProductGroup.class)
+                                .list()
+                );
+
+            case COLLECTION:
+                return get().withHandle(h ->
+                        h.createQuery("""
+                        SELECT 
+                            id, 
+                            name, 
+                            thumbnail_image_url AS thumbnailUrl, 
+                            main_image_url      AS imageUrl, 
+                            display_order       AS displayOrder 
+                        FROM collection 
+                        ORDER BY display_order DESC 
+                        LIMIT 10
+                    """)
+                                .mapToBean(ProductGroup.class)
+                                .list()
+                );
+
+            default:
+                throw new IllegalArgumentException("Invalid group type");
+        }
+    }
 }

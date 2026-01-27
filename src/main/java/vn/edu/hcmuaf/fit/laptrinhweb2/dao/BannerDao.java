@@ -62,6 +62,30 @@ public class BannerDao extends BaseDao {
         );
     }
 
+    /**
+     * Lấy về danh sách 5 banner đang hoạt động (is_active = 1) có thứ tự hiển thị cao nhất
+     * phực hiện phục vụ cho trang chủ
+     * @return
+     */
+    public List<Banner> getTop5ActiveBanners() {
+        return get().withHandle(handle -> {
+            String sql = "SELECT * FROM main_banner WHERE is_active = 1 ORDER BY display_order DESC LIMIT 5";
+
+            return handle.createQuery(sql)
+                    .map((rs, ctx) -> new Banner(
+                            rs.getInt("id"),
+                            rs.getString("target_url"),
+                            rs.getString("image_url"),
+                            rs.getInt("display_order"),
+                            rs.getBoolean("is_active")
+                    ))
+                    .list();
+        });
+    }
+
+
+
+
     public boolean update(Banner banner) {
         return get().withHandle(handle ->
                 handle.createUpdate("""
