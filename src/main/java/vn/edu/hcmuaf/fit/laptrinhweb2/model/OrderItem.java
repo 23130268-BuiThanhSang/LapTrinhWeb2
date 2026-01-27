@@ -5,20 +5,19 @@ import java.io.Serializable;
 public class OrderItem implements Serializable {
     private int id;
     private int orderId;
+    private ProductVariant variant;
     private Product product;
     private int quantity;
     private double price;
 
-    private String size,color;
     public OrderItem() {
     }
 
-    public OrderItem(Product product, int quantity, double price,String size,String color) {
+    public OrderItem(Product product, int quantity, double price, ProductVariant variant) {
         this.product = product;
+        this.variant = variant;
         this.quantity = quantity;
         this.price = price;
-        this.size = size;
-        this.color = color;
     }
 
     public int getId() { return id; }
@@ -32,20 +31,12 @@ public class OrderItem implements Serializable {
     public double getPrice() { return price; }
     public void setPrice(double price) { this.price = price; }
 
-    public String getSize() {
-        return size;
+    public ProductVariant getVariant() {
+        return variant;
     }
 
-    public void setSize(String size) {
-        this.size = size;
-    }
-
-    public String getColor() {
-        return color;
-    }
-
-    public void setColor(String color) {
-        this.color = color;
+    public void setVariant(ProductVariant variant) {
+        this.variant = variant;
     }
 }
 

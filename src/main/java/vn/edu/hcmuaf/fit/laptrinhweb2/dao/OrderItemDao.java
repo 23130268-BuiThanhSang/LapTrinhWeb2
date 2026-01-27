@@ -23,27 +23,29 @@ public class OrderItemDao extends BaseDao {
                             ProductVariant productVariant = productVariantDao.getById(variantId);
                             Product product = productDao.getProduct(productVariant.getProduct_id());
                             item.setProduct(product);
-                            item.setColor(productVariant.getColor());
-                            int fake_size = productVariant.getSize();
-                            String real_size = String.valueOf(fake_size);
-                            switch (fake_size) {
-                                case -1: real_size = "Free Size"; break;
-                                case 1: real_size = "S"; break;
-                                case 2: real_size = "M"; break;
-                                case 3: real_size = "L"; break;
-                                case 4: real_size = "XL"; break;
-                                case 5: real_size = "XXL"; break;
-                                case 100: real_size = "Nhỏ"; break;
-                                case 200: real_size = "Vừa"; break;
-                                case 300: real_size = "Lớn"; break;
-                            }
-                            item.setSize(real_size);
+                            item.setVariant(productVariant);
                             item.setQuantity(rs.getInt("quantity"));
                             item.setPrice(rs.getDouble("price"));
 
                             return item;
                         })
                         .list()
+        );
+    }
+
+    public int insert(OrderItem item) {
+        return get().withHandle(h ->
+                h.createUpdate("""
+                INSERT INTO order_detail (order_id, variant_id, price, quantity)
+                VALUES (:orderId, :variantId, :price, :quantity)
+            """)
+                        .bind("orderId", item.getOrderId())
+                        .bind("variantId", item.getVariant().getId())
+                        .bind("price", item.getPrice())
+                        .bind("quantity", item.getQuantity())
+                        .executeAndReturnGeneratedKeys("id")
+                        .mapTo(int.class)
+                        .one()
         );
     }
 }

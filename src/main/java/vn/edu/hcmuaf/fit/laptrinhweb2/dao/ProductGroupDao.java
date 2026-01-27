@@ -36,66 +36,104 @@ public class ProductGroupDao extends BaseDao {
         );
     }
 
-    private String getInsertSql(GroupType type) {
+    public ProductGroup getProductGroup(GroupType type, int id) {
+        String sql = getSelectByIdSql(type);
+
+        return get().withHandle(handle ->
+                handle.createQuery(sql)
+                        .bind("id", id)
+                        .mapToBean(ProductGroup.class)
+                        .findOne()
+                        .orElse(null)
+        );
+    }
+
+    public void updateGroup(
+            GroupType type,
+            int id,
+            String name,
+            String thumbnailUrl,
+            String imageUrl,
+            int displayOrder
+    ) {
+        String sql = getUpdateSql(type);
+
+        get().useHandle(handle ->
+                handle.createUpdate(sql)
+                        .bind("id", id)
+                        .bind("name", name)
+                        .bind("thumbnail_image_url", thumbnailUrl)
+                        .bind("main_image_url", imageUrl)
+                        .bind("display_order", displayOrder)
+                        .execute()
+        );
+    }
+
+    public void deleteGroup(GroupType type, int id) {
+        String sql = getDeleteSql(type);
+
+        get().useHandle(handle ->
+                handle.createUpdate(sql)
+                        .bind("id", id)
+                        .execute()
+        );
+    }
+
+    // Sup method
+
+    private String getTableName(GroupType type) {
         switch (type) {
             case BRAND:
-                return "INSERT INTO brand (name, thumbnail_image_url, main_image_url, display_order) " +
-                        "VALUES (:name, :thumbnail_image_url, :main_image_url, :display_order)";
+                return "brand";
             case COLLECTION:
-                return "INSERT INTO collection (name, thumbnail_image_url, main_image_url, display_order) " +
-                        "VALUES (:name, :thumbnail_image_url, :main_image_url, :display_order)";
+                return "collection";
             case SPORT:
-                return "INSERT INTO sport (name, thumbnail_image_url, main_image_url, display_order) " +
-                        "VALUES (:name, :thumbnail_image_url, :main_image_url, :display_order)";
+                return "sport";
             default:
                 throw new IllegalArgumentException("Invalid group type");
         }
+    }
+
+    private String getInsertSql(GroupType type) {
+        String table = getTableName(type);
+        return "INSERT INTO " + table + " (name, thumbnail_image_url, main_image_url, display_order) " +
+                "VALUES (:name, :thumbnail_image_url, :main_image_url, :display_order)";
     }
 
     private String getSelectSql(GroupType type) {
-        switch (type) {
-            case BRAND:
-                return "SELECT id, name, thumbnail_image_url, main_image_url, display_order " +
-                        "FROM brand ORDER BY display_order";
-            case COLLECTION:
-                return "SELECT id, name, thumbnail_image_url, main_image_url, display_order " +
-                        "FROM collection ORDER BY display_order";
-            case SPORT:
-                return "SELECT id, name, thumbnail_image_url, main_image_url, display_order " +
-                        "FROM sport ORDER BY display_order";
-            default:
-                throw new IllegalArgumentException("Invalid group type");
-        }
+        String table = getTableName(type);
+        // Use aliases to match model property names
+        return "SELECT id, " +
+                "name, " +
+                "thumbnail_image_url AS thumbnailUrl, " +
+                "main_image_url AS imageUrl, " +
+                "display_order AS displayOrder " +
+                "FROM " + table + " ORDER BY display_order";
     }
 
-    public ProductGroup getProductGroup(GroupType type, int id) {
-        switch (type) {
-            case BRAND:
-                return get().withHandle(h ->
-                        h.createQuery("SELECT id, name, thumbnail_image_url, main_image_url, display_order FROM brand WHERE id = :id")
-                                .bind("id", id)
-                                .mapToBean(ProductGroup.class)
-                                .findOne()
-                                .orElse(null)
-                );
-            case COLLECTION:
-                return get().withHandle(h ->
-                        h.createQuery("SELECT id, name, thumbnail_image_url, main_image_url, display_order FROM collection WHERE id = :id")
-                                .bind("id", id)
-                                .mapToBean(ProductGroup.class)
-                                .findOne()
-                                .orElse(null)
-                );
-            case SPORT:
-                return get().withHandle(h ->
-                        h.createQuery("SELECT id, name, thumbnail_image_url, main_image_url, display_order FROM sport WHERE id = :id")
-                                .bind("id", id)
-                                .mapToBean(ProductGroup.class)
-                                .findOne()
-                                .orElse(null)
-                );
-            default:
-                throw new IllegalArgumentException("Invalid group type");
-        }
+    private String getSelectByIdSql(GroupType type) {
+        String table = getTableName(type);
+        // Use aliases to match model property names
+        return "SELECT id, " +
+                "name, " +
+                "thumbnail_image_url AS thumbnailUrl, " +
+                "main_image_url AS imageUrl, " +
+                "display_order AS displayOrder " +
+                "FROM " + table + " WHERE id = :id";
+    }
+
+    private String getUpdateSql(GroupType type) {
+        String table = getTableName(type);
+        return "UPDATE " + table + " SET " +
+                "name = :name, " +
+                "thumbnail_image_url = :thumbnail_image_url, " +
+                "main_image_url = :main_image_url, " +
+                "display_order = :display_order " +
+                "WHERE id = :id";
+    }
+
+    private String getDeleteSql(GroupType type) {
+        String table = getTableName(type);
+        return "DELETE FROM " + table + " WHERE id = :id";
     }
 }
