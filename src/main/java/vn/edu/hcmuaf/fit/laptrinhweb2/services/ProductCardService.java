@@ -3,9 +3,7 @@ package vn.edu.hcmuaf.fit.laptrinhweb2.services;
 import vn.edu.hcmuaf.fit.laptrinhweb2.dao.ProductDao;
 import vn.edu.hcmuaf.fit.laptrinhweb2.model.DTO.ProductCard;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class ProductCardService {
 
@@ -287,7 +285,7 @@ public class ProductCardService {
      * @param size
      * @return
      */
-    public List<ProductCard> getAllExistProductCardForListProductAndFilterAndSearch(
+    public List<ProductCard> getAllHotDealProductCardForListProductAndFilterAndSearch(
             Integer productTypeId,
             int page,
             String keyword,
@@ -295,7 +293,8 @@ public class ProductCardService {
             String gender,
             Integer brandId,
             Integer collectionId,
-            Integer size
+            Integer size,
+            Integer hotDealId
     ) {
         int offset = (page - 1) * pageSize;
 
@@ -308,15 +307,16 @@ public class ProductCardService {
                 gender,
                 brandId,
                 collectionId,
-                size
+                size,
+                hotDealId
         );
 
         for (ProductCard card : cards) {
             applyDiscount(card);
         }
-
         return cards;
     }
+
 
     /**
      * đây là phương thức thực hiện tính tổng số trang sản phẩm giảm giá theo loại sản phẩm và bộ lọc và tìm kiếm
@@ -340,7 +340,8 @@ public class ProductCardService {
             String gender,
             Integer brandId,
             Integer collectionId,
-            Integer size
+            Integer size,
+            Integer hotDealId
     ) {
         int total = productDao.countHotDealProducts(
                 productTypeId,
@@ -349,10 +350,38 @@ public class ProductCardService {
                 gender,
                 brandId,
                 collectionId,
-                size
+                size,
+                hotDealId
         );
 
         return (int) Math.ceil((double) total / pageSize);
+    }
+
+
+    /**
+     * đây là phương thức thực hiện láy danh sách sản phẩm giảm giá nhiều nhất để hiển thị trên trang chủ
+     * @return
+     */
+    public List<ProductCard> getTopDiscountProductsForHome() {
+        List<ProductCard> cards =
+                productDao.getTopDiscountProductCardsForHome();
+        for (ProductCard card : cards) {
+            applyDiscount(card);
+        }
+        return cards;
+    }
+
+    /**
+     * đây là phương thức thực hiện láy danh sách sản phẩm mới nhất để hiển thị trên trang chủ
+     * @return
+     */
+    public List<ProductCard> getNewestProductsForHome() {
+        List<ProductCard> cards =
+                productDao.getNewestProductCardsForHome();
+        for (ProductCard card : cards) {
+            applyDiscount(card);
+        }
+        return cards;
     }
 
 

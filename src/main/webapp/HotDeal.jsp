@@ -9,7 +9,6 @@
     <title>Title</title>
     <link rel="stylesheet" href="CSS/Style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-<%--    <link rel="stylesheet" href="CSS/StyleForHotDeal.css">--%>
     <link rel="stylesheet" href="CSS/StyleForProductCard.css">
 
 </head>
@@ -216,7 +215,7 @@
             </c:if>
 
             <input type="hidden" name="keyword" value="${keyword}">
-
+            <input type="hidden" name="hotDealId" value="${hotDealId}">
         </form>
     </aside>
     <main class="ProductMainArea">
@@ -225,7 +224,7 @@
                 <div class="SearchWrapper">
                     <i class="fa fa-search"></i>
                     <input type="text" name="keyword"
-                           placeholder="Tìm kiếm sản phẩm theo tên..."
+                           placeholder="Tìm kiếm theo tên..."
                            value="${keyword}">
                 </div>
 
@@ -236,7 +235,7 @@
                 <input type="hidden" name="size" value="${size}">
                 <input type="hidden" name="productType" value="${productType}">
                 <input type="hidden" name="collectionId" value="${collectionId}">
-
+                <input type="hidden" name="hotDealId" value="${hotDealId}">
             </form>
 
 
@@ -317,6 +316,9 @@
         </c:if>
         <c:if test="${not empty collectionId}">
             <c:set var="filterParams" value="${filterParams}&collectionId=${collectionId}" />
+        </c:if>
+        <c:if test="${not empty hotDealId}">
+            <c:set var="filterParams" value="${filterParams}&hotDealId=${hotDealId}" />
         </c:if>
         <div class="Pagination">
             <c:forEach begin="1" end="${totalPages}" var="i">

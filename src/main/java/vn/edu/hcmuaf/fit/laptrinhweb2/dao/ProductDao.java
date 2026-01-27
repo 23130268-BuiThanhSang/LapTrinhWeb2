@@ -578,7 +578,8 @@ public class ProductDao extends BaseDao {
             String gender,
             Integer brandId,
             Integer collectionId,
-            Integer size
+            Integer size,
+            Integer hotDealId
     ) {
         StringBuilder sql = new StringBuilder("""
                     SELECT 
@@ -614,6 +615,9 @@ public class ProductDao extends BaseDao {
         /**
          * thực hiện giữ bộ lọc để người dùng có thể lọc trong trang hot deal
          */
+        if (hotDealId != null) {
+            sql.append(" AND hd.id = :hotDealId ");
+        }
         if (productTypeId != null) sql.append(" AND p.product_type_id = :typeId ");
         if (keyword != null && !keyword.isBlank()) sql.append(" AND p.product_name LIKE :keyword ");
         if (brandId != null) sql.append(" AND b.id = :brandId ");
@@ -644,6 +648,7 @@ public class ProductDao extends BaseDao {
                     .bind("limit", limit)
                     .bind("offset", offset);
 
+            if (hotDealId != null) query.bind("hotDealId", hotDealId);
             if (productTypeId != null) query.bind("typeId", productTypeId);
             if (keyword != null && !keyword.isBlank()) query.bind("keyword", "%" + keyword + "%");
             if (brandId != null) query.bind("brandId", brandId);
@@ -651,6 +656,7 @@ public class ProductDao extends BaseDao {
             if (color != null && !color.isEmpty()) query.bind("color", color);
             if (size != null) query.bind("size", size);
             if (gender != null && !gender.isEmpty()) query.bind("gender", gender);
+
 
             return query.mapToBean(ProductCard.class).list();
         });
@@ -675,7 +681,8 @@ public class ProductDao extends BaseDao {
             String gender,
             Integer brandId,
             Integer collectionId,
-            Integer size
+            Integer size,
+            Integer hotDealId
     ) {
         StringBuilder sql = new StringBuilder("""
                 SELECT COUNT(p.id)
@@ -688,7 +695,7 @@ public class ProductDao extends BaseDao {
                 AND hd.discount_per > 0
             """);
 
-
+        if (hotDealId != null) sql.append(" AND hd.id = :hotDealId ");
         if (productTypeId != null) sql.append(" AND p.product_type_id = :typeId ");
         if (keyword != null && !keyword.isBlank()) sql.append(" AND p.product_name LIKE :keyword ");
         if (brandId != null) sql.append(" AND b.id = :brandId ");
@@ -712,6 +719,7 @@ public class ProductDao extends BaseDao {
         return get().withHandle(h -> {
             var query = h.createQuery(sql.toString());
 
+            if (hotDealId != null) query.bind("hotDealId", hotDealId);
             if (productTypeId != null) query.bind("typeId", productTypeId);
             if (keyword != null && !keyword.isBlank()) query.bind("keyword", "%" + keyword + "%");
             if (brandId != null) query.bind("brandId", brandId);
@@ -723,6 +731,108 @@ public class ProductDao extends BaseDao {
             return query.mapTo(Integer.class).one();
         });
     }
+
+    /**
+     * thực hiện lấy danh sách 10 sản phẩm có phần trăm giảm giá cao nhất
+     * phục vụ cho trang chủ
+     *
+     * @return
+     */
+    public List<ProductCard> getTopDiscountProductCardsForHome() {
+        return get().withHandle(h ->
+                h.createQuery("""
+                SELECT 
+                    p.id,
+                    p.product_name      AS name,
+                    b.name              AS brandName,
+                    v.price             AS price,
+                    hd.discount_per     AS discountPercent,
+                    img.image_url       AS imageUrl,
+                    (DATEDIFF(NOW(), p.enter_date) <= 10) AS isNewProduct
+                FROM product p
+                JOIN hot_deal hd 
+                    ON p.hot_deal_id = hd.id
+                JOIN brand b 
+                    ON p.brand_id = b.id
+
+                -- CHỈ LẤY VARIANT CÓ STOCK > 0
+                JOIN product_variant v 
+                    ON v.product_id = p.id
+                   AND v.stock > 0
+                   AND v.id = (
+                        SELECT MIN(v2.id)
+                        FROM product_variant v2
+                        WHERE v2.product_id = p.id
+                          AND v2.stock > 0
+                   )
+
+                LEFT JOIN product_variant_image img
+                    ON img.variant_id = v.id
+                   AND img.id = (
+                        SELECT MIN(img2.id)
+                        FROM product_variant_image img2
+                        WHERE img2.variant_id = v.id
+                   )
+
+                WHERE hd.discount_per > 0
+                ORDER BY hd.discount_per DESC, p.id DESC
+                LIMIT 10
+            """)
+                        .mapToBean(ProductCard.class)
+                        .list()
+        );
+    }
+
+    /**
+     * phương thức thực hiện lấy 10 sản phẩm mới nhất cho trang chủ
+     * Phục vụ cho hiển thị ở trang chủ ở nới sản phẩm mới
+     * @return
+     */
+    public List<ProductCard> getNewestProductCardsForHome() {
+        return get().withHandle(h ->
+                h.createQuery("""
+            SELECT 
+                p.id,
+                p.product_name      AS name,
+                b.name              AS brandName,
+                v.price             AS price,
+                hd.discount_per     AS discountPercent,
+                img.image_url       AS imageUrl,
+                (DATEDIFF(NOW(), p.enter_date) <= 10) AS isNewProduct
+            FROM product p
+            JOIN brand b 
+                ON p.brand_id = b.id
+            
+            LEFT JOIN hot_deal hd 
+                ON p.hot_deal_id = hd.id
+
+            JOIN product_variant v 
+                ON v.product_id = p.id
+               AND v.stock > 0
+               AND v.id = (
+                    SELECT MIN(v2.id)
+                    FROM product_variant v2
+                    WHERE v2.product_id = p.id
+                      AND v2.stock > 0
+               )
+
+            LEFT JOIN product_variant_image img
+                ON img.variant_id = v.id
+               AND img.id = (
+                    SELECT MIN(img2.id)
+                    FROM product_variant_image img2
+                    WHERE img2.variant_id = v.id
+               )
+
+            ORDER BY p.enter_date DESC, p.id DESC
+            LIMIT 10
+        """)
+                        .mapToBean(ProductCard.class)
+                        .list()
+        );
+    }
+
+
 
 
     /**
