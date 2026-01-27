@@ -47,5 +47,12 @@ public class ProductVariantImageDao extends BaseDao {
                         .one()
         );
     }
-
+    public void deleteImages(List<Integer> ids) {
+        if (ids == null || ids.isEmpty()) return;
+        get().useHandle(handle ->
+                handle.createUpdate("DELETE FROM product_variant_image WHERE id IN (<ids>)")
+                        .bindList("ids", ids)
+                        .execute()
+        );
+    }
 }

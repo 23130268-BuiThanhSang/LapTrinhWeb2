@@ -23,4 +23,23 @@ public class HotDealService {
     public List<HotDeal> getSubHotdeal(){
         return hotDealDao.getSubHotDeal();
     }
+
+    public List<HotDeal> getAllHotDeals(){
+        return hotDealDao.getAllHotDeals();
+    }
+    public boolean updateHotDeal(HotDeal hotDeal){
+        return hotDealDao.updateHotDeal(hotDeal);
+    }
+    public boolean deleteHotDeal(int id){
+        return hotDealDao.deleteHotDeal(id);
+    }
+
+    public HotDeal getHotDealById(int id){
+        return hotDealDao.getHotDealById(id);
+    }
+
+    public int addHotDeal(HotDeal hotDeal) {
+        return hotDealDao.addHotDeal(hotDeal);
+    }
+
 }

@@ -73,4 +73,28 @@ public class ProductVariantDao extends BaseDao {
 
         variant.setImages(images);
     }
+
+    // Update existing variant
+    public void updateVariant(ProductVariant v) {
+        String sql = "UPDATE product_variant SET color = :color, size = :size, price = :price, stock = :stock WHERE id = :id";
+        get().useHandle(handle ->
+                handle.createUpdate(sql)
+                        .bind("color", v.getColor())
+                        .bind("size", v.getSize())
+                        .bind("price", v.getPrice())
+                        .bind("stock", v.getStock())
+                        .bind("id", v.getId())
+                        .execute()
+        );
+    }
+
+    // Delete list of variants (bulk delete)
+    public void deleteVariants(List<Integer> ids) {
+        if (ids == null || ids.isEmpty()) return;
+        get().useHandle(handle ->
+                handle.createUpdate("DELETE FROM product_variant WHERE id IN (<ids>)")
+                        .bindList("ids", ids)
+                        .execute()
+        );
+    }
 }

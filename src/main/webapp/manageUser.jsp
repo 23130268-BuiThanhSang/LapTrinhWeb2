@@ -15,7 +15,7 @@
     <jsp:include page="/Share/admin_leftbar.jsp" />
     <div class="manageUserUi">
         <div class="userHeader">
-            <div id="mangeUserHeader">Quản Lí Người Dùng / Tất Cả</div>
+            <div id="mangeUserHeader">Quản lý Người Dùng / Tất Cả</div>
             <div class="userHeaderActions">
                 <form action="searchAccount" method="get">
                     <input type="text" name="keyword" placeholder="Tìm tên / id user..." id="adminSearch">

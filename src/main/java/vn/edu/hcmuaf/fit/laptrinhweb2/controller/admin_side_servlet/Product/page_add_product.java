@@ -35,7 +35,7 @@ public class page_add_product extends HttpServlet {
         request.setAttribute("collectionList", collectionList);
         request.setAttribute("sportList", sportList);
         request.setAttribute("defaultTab", "addProduct");
-        request.getRequestDispatcher("ManageProduct.jsp")
+        request.getRequestDispatcher("ManageProduct_AddProduct.jsp")
                 .forward(request, response);
     }
 

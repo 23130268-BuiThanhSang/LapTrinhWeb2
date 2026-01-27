@@ -1,77 +1,54 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const addSection = document.getElementById("AddProductSection");
-    const searchSection = document.getElementById("SearchProductSection");
-    const groupSection = document.getElementById("AddGroupSection");
 
-    const btnAdd = document.getElementById("btnAddProduct");
-    const btnSearch = document.getElementById("btnSearchProduct");
-    const btnGroup = document.getElementById("btnAddGroup");
-
-    // Helper: hide all sections
-    function hideAllSections() {
-        addSection.style.display = "none";
-        searchSection.style.display = "none";
-        groupSection.style.display = "none";
-    }
-
-    // Helper: remove active class from all buttons
-    function clearActiveTabs() {
-        btnAdd.classList.remove("activeTab");
-        btnSearch.classList.remove("activeTab");
-        btnGroup.classList.remove("activeTab");
-    }
-
-    // Add product
-    btnAdd.addEventListener("click", function () {
-        hideAllSections();
-        clearActiveTabs();
-
-        addSection.style.display = "block";
-        btnAdd.classList.add("activeTab");
-    });
-
-    // Search product
-    btnSearch.addEventListener("click", function () {
-        hideAllSections();
-        clearActiveTabs();
-
-        searchSection.style.display = "block";
-        btnSearch.classList.add("activeTab");
-    });
-
-    // Add product group
-    btnGroup.addEventListener("click", function () {
-        hideAllSections();
-        clearActiveTabs();
-
-        groupSection.style.display = "block";
-        btnGroup.classList.add("activeTab");
-    });
-
+    // --- VARIANT LOGIC ---
     const variantContainer = document.getElementById("VariantContainer");
     const btnAddVariant = document.getElementById("btnAddVariant");
     const productTypeSelect = document.querySelector("select[name='category']");
 
     let variantIndex = 0;
 
+    // Define size options for different categories
     const SIZE_OPTIONS_BY_TYPE = {
-        4: [35, 36, 37, 38, 39, 40, 41, 42, 43],
-        3: ["S", "M", "L", "XL", "XXL"],
-        2: ["Free Size"],
-        1: ["Nhỏ","Vừa","Lớn"]
+        4: [35, 36, 37, 38, 39, 40, 41, 42, 43], // Shoes
+        3: ["S", "M", "L", "XL", "XXL"],         // Clothes
+        2: ["Free Size"],                        // Accessories
+        1: ["Nhỏ", "Vừa", "Lớn"]                 // Gym Tools
     };
 
-    btnAddVariant.addEventListener("click", function () {
-        addVariantCard();
-    });
+    // Initialize listeners
+    if (btnAddVariant) {
+        btnAddVariant.addEventListener("click", function () {
+            addVariantCard();
+        });
+    }
+
+    // When product category changes, update existing variant dropdowns
+    if (productTypeSelect) {
+        productTypeSelect.addEventListener("change", function () {
+            if (!variantContainer) return;
+            variantContainer.querySelectorAll(".VariantCard").forEach((card, i) => {
+                const sizeField = card.querySelector(".VariantField:nth-child(2)");
+                // Re-render the size field based on new category
+                sizeField.innerHTML = `
+                    <label>Kích cỡ:</label>
+                    ${buildSizeField(i)}
+                `;
+            });
+        });
+    }
+
+    // --- HELPER FUNCTIONS ---
 
     function getSizeOptions() {
+        if (!productTypeSelect) return null;
         const type = productTypeSelect.value;
         return SIZE_OPTIONS_BY_TYPE[type];
     }
 
     function buildSizeField(index, selectedValue = "") {
         const sizes = getSizeOptions();
+
+        // If no predefined sizes (or unknown type), return text input
         if (sizes == null) {
             return `
             <input type="text"
@@ -79,13 +56,14 @@ document.addEventListener("DOMContentLoaded", function () {
                    placeholder="Nhập kích thước"
                    value="${selectedValue || ""}"
                    required>
-        `;
+            `;
         }
 
+        // Otherwise return select dropdown
         let html = `
         <select name="variants[${index}].size" required>
             <option value="">-- Chọn size --</option>
-    `;
+        `;
 
         sizes.forEach(size => {
             const selected = size == selectedValue ? "selected" : "";
@@ -96,13 +74,14 @@ document.addEventListener("DOMContentLoaded", function () {
         return html;
     }
 
-
     function getLastVariantData() {
+        if (!variantContainer) return null;
         const cards = variantContainer.querySelectorAll(".VariantCard");
         if (cards.length === 0) return null;
 
         const last = cards[cards.length - 1];
 
+        // Copy data from the last card to make entry easier
         return {
             color: last.querySelector("select[name*='.color']")?.value || "",
             size: last.querySelector("select[name*='.size']")?.value || "",
@@ -112,6 +91,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function addVariantCard() {
+        if (!variantContainer) return;
+
         const index = variantIndex++;
         const lastData = getLastVariantData();
 
@@ -124,16 +105,15 @@ document.addEventListener("DOMContentLoaded", function () {
                 <button type="button" class="RemoveVariantBtn">✕</button>
             </div>
         
-            <!-- Row 1: color, size, price, stock -->
             <div class="VariantRow VariantRow-Top">
         
                 <div class="VariantField">
                     <label>Màu sắc:</label>
                     <select name="variants[${index}].color" required>
                         <option value="">-- Chọn màu --</option>
-                        ${["Tím","Nâu","Đen","Trắng","Bạc","Hồng","Xanh Navy","Xanh Dương","Xanh Lục","Vàng","Đỏ","Cam"]
-                    .map(c => `<option value="${c}" ${lastData?.color === c ? "selected" : ""}>${c}</option>`)
-                    .join("")}
+                        ${["Tím", "Nâu", "Đen", "Trắng", "Bạc", "Hồng", "Xanh Navy", "Xanh Dương", "Xanh Lục", "Vàng", "Đỏ", "Cam"]
+            .map(c => `<option value="${c}" ${lastData?.color === c ? "selected" : ""}>${c}</option>`)
+            .join("")}
                     </select>
                 </div>
         
@@ -142,7 +122,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     ${buildSizeField(index, lastData?.size)}
                 </div>
 
-        
                 <div class="VariantField">
                     <label>Giá:</label>
                     <input type="number"
@@ -163,7 +142,6 @@ document.addEventListener("DOMContentLoaded", function () {
         
             </div>
         
-            <!-- Row 2: images -->
             <div class="VariantRow VariantRow-Bottom">
                 <div class="VariantField">
                     <label>Hình ảnh:</label>
@@ -175,22 +153,11 @@ document.addEventListener("DOMContentLoaded", function () {
             </div>
         `;
 
+        // Add delete functionality to the X button
         card.querySelector(".RemoveVariantBtn").addEventListener("click", function () {
             card.remove();
         });
 
         variantContainer.appendChild(card);
     }
-
-    // When product type changes → update ALL variant size dropdowns
-    productTypeSelect.addEventListener("change", function () {
-        variantContainer.querySelectorAll(".VariantCard").forEach((card, i) => {
-            const sizeField = card.querySelector(".VariantField:nth-child(2)");
-            sizeField.innerHTML = `
-            <label>Kích cỡ:</label>
-            ${buildSizeField(i)}
-        `;
-        });
-    });
-
 });
