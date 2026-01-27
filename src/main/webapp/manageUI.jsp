@@ -1,4 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,28 +17,34 @@
         <div class="HighlightBox">
             <label class="BoxTitle">Add New Banner</label>
 
-            <form action="admin-banner" method="post" class="banner-editor">
-                <!-- ===== IMAGE ===== -->
+            <form action="addBanner"
+                  method="post"
+                  class="banner-editor"
+                  enctype="multipart/form-data">
+
+            <!-- ===== IMAGE ===== -->
                 <label>Banner Image</label>
                 <div class="banner-box">
-                    <input
-                            class="banner-text-left"
-                            name="imageUrl"
-                            id="imageUrl"
-                            placeholder="Image URL will be filled after upload"
-                            readonly
-                            required
-                    >
-                    <button type="button" class="add-banner-id-btn">
-                        Upload Image
-                    </button>
+                    <label>Banner Image</label>
+                    <div class="banner-box">
+                        <input
+                                type="file"
+                                name="bannerImage"
+                                accept="image/*"
+                                required
+                        >
+                    </div>
+
+<%--                    <button type="button" class="add-banner-id-btn">--%>
+<%--                        Upload Image--%>
+<%--                    </button>--%>
                 </div>
                 <!-- ===== TARGET URL ===== -->
                 <label>Target URL</label>
                 <div class="banner-box">
                     <input
                             class="banner-text-right"
-                            name="targetUrl"
+                            name="target_url"
                             placeholder="https://example.com/page"
                             required
                     >
@@ -49,7 +57,7 @@
                     </label>
                     <input
                             class="banner-text-order"
-                            name="displayOrder"
+                            name="display_order"
                             type="number"
                             min="1"
                             placeholder="1"
@@ -57,7 +65,7 @@
                     >
                     <label class="checkbox-inline">
                         Kích Hoạt:
-                        <input type="checkbox" name="isActive" value="1" checked>
+                        <input type="checkbox" name="is_active" value="1" checked>
                     </label>
                     <button type="submit" class="add-banner-id-btn">
                         Thêm Banner
@@ -94,47 +102,36 @@
                 <div class="banner-row">
                     <label class="banner-label-left">Hiển thị theo dạng: URL Hình ảnh | URL Trang đích | Mức ưu tiên hiển thị</label>
                 </div>
-                <div class = "Banner-container">
-                    <div class="banner-box">
-                        <span class="banner-text-left">lgImg/331.png</span>
-                        <div class="divider"></div>
-                        <span class="banner-text-right">https://example.com/page1</span>
-                        <div class="divider"></div>
-                        <span class="banner-text-order">1</span>
-                        <button class="remove-banner-btn">Remove</button>
-                    </div>
-                    <div class="banner-box">
-                        <span class="banner-text-left">lgImg/images.jpeg</span>
-                        <div class="divider"></div>
-                        <span class="banner-text-right">https://example.com/page1</span>
-                        <div class="divider"></div>
-                        <span class="banner-text-order">2</span>
-                        <button class="remove-banner-btn">Remove</button>
-                    </div>
-                    <div class="banner-box">
-                        <span class="banner-text-left">lgImg/vua-gym-black-friday.png</span>
-                        <div class="divider"></div>
-                        <span class="banner-text-right">https://example.com/page1</span>
-                        <div class="divider"></div>
-                        <span class="banner-text-order">2</span>
-                        <button class="remove-banner-btn">Remove</button>
-                    </div>
-                    <div class="banner-box">
-                        <span class="banner-text-left">lgImg/images%20(1).jpeg</span>
-                        <div class="divider"></div>
-                        <span class="banner-text-right">https://example.com/page1</span>
-                        <div class="divider"></div>
-                        <span class="banner-text-order">3</span>
-                        <button class="remove-banner-btn">Remove</button>
-                    </div>
-                    <div class="banner-box">
-                        <span class="banner-text-left">lgImg/images%20(1).jpeg</span>
-                        <div class="divider"></div>
-                        <span class="banner-text-right">https://example.com/page1</span>
-                        <div class="divider"></div>
-                        <span class="banner-text-order">3</span>
-                        <button class="remove-banner-btn">Remove</button>
-                    </div>
+                <div class="Banner-container">
+                    <c:forEach var="b" items="${banners}">
+                        <div class="banner-box">
+                            <a href="getImage?path=${b.imageUrl}" target="_blank" class = "banner-thumbnail">
+                            <img src="getImage?path=${b.imageUrl}">
+                            </a>
+                        <span class="banner-text-left">
+                                ${b.imageUrl}
+                        </span>
+
+                            <div class="divider"></div>
+
+                            <span class="banner-text-right">
+                                    ${b.targetUrl}
+                            </span>
+
+                            <div class="divider"></div>
+
+                            <span class="banner-text-order">
+                                    ${b.displayOrder}
+                            </span>
+
+                            <a
+                                    href="page_bannerDetail?id=${b.id}"
+                                    class="add-banner-id-btn"
+                            >
+                                Detail
+                            </a>
+                        </div>
+                    </c:forEach>
                 </div>
             </div>
         </div>

@@ -4,14 +4,24 @@ import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 import vn.edu.hcmuaf.fit.laptrinhweb2.model.Banner;
+import vn.edu.hcmuaf.fit.laptrinhweb2.model.ProductVariantImage;
 import vn.edu.hcmuaf.fit.laptrinhweb2.services.BannerService;
+import vn.edu.hcmuaf.fit.laptrinhweb2.services.ImageService;
 
 import java.io.IOException;
 import java.util.List;
 
+
 @WebServlet(name = "addBanner", value = "/addBanner")
+@MultipartConfig(
+        fileSizeThreshold = 1024 * 1024,
+        maxFileSize = 5 * 1024 * 1024,
+        maxRequestSize = 10 * 1024 * 1024
+)
 public class addBanner extends HttpServlet {
     private final BannerService bannerService = new BannerService();
+    ImageService imageService = new ImageService();
+
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -20,11 +30,17 @@ public class addBanner extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws IOException {
+            throws IOException, ServletException {
 
         Banner banner = new Banner();
         banner.setTargetUrl(request.getParameter("target_url"));
-        banner.setImageUrl(request.getParameter("image_url"));
+
+        Part imagePart = request.getPart("bannerImage");
+        if (imagePart != null && imagePart.getSize() > 0) {
+            String imageUrl = imageService.uploadImage(null, imagePart);
+            banner.setImageUrl(imageUrl);
+        }
+
         banner.setDisplayOrder(
                 Integer.parseInt(request.getParameter("display_order"))
         );
@@ -35,6 +51,6 @@ public class addBanner extends HttpServlet {
         bannerService.addBanner(banner);
 
         // PRG pattern
-        response.sendRedirect(request.getContextPath() + "/admin/banners");
+        response.sendRedirect(request.getContextPath() + "/getAllBanner");
     }
 }

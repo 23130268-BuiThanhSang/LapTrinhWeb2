@@ -24,4 +24,11 @@ public class BannerService {
     public List<Banner> getTop5BannersActive(){
         return bannerDao.getTop5ActiveBanners();
     }
+    public boolean update(Banner banner) {
+        return bannerDao.update(banner);
+    }
+
+    public boolean delete(int id) {
+        return bannerDao.deleteById(id);
+    }
 }

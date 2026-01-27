@@ -86,5 +86,35 @@ public class BannerDao extends BaseDao {
 
 
 
+    public boolean update(Banner banner) {
+        return get().withHandle(handle ->
+                handle.createUpdate("""
+                UPDATE main_banner
+                SET target_url   = :targetUrl,
+                    image_url    = :imageUrl,
+                    display_order = :displayOrder,
+                    is_active    = :isActive
+                WHERE id = :id
+            """)
+                        .bind("id", banner.getId())
+                        .bind("targetUrl", banner.getTargetUrl())
+                        .bind("imageUrl", banner.getImageUrl())
+                        .bind("displayOrder", banner.getDisplayOrder())
+                        .bind("isActive", banner.isActive())
+                        .execute()
+        ) > 0;
+    }
+
+
+    public boolean deleteById(int id) {
+        return get().withHandle(handle ->
+                handle.createUpdate("""
+                DELETE FROM main_banner
+                WHERE id = :id
+            """)
+                        .bind("id", id)
+                        .execute()
+        ) > 0;
+    }
 
 }

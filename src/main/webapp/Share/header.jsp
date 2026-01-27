@@ -76,7 +76,7 @@
             </c:if>
         </div>
 
-        <a href="${root}/cart" class="IconBtn ShoppingCart" aria-label="Giỏ hàng">
+        <a href="${root}/Cart.jsp" class="IconBtn ShoppingCart" aria-label="Giỏ hàng">
             <i class="fa-solid fa-cart-shopping"></i>
         </a>
 

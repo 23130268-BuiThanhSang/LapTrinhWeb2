@@ -1,4 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,85 +29,47 @@
                 </label>
             </div>
             <div class="ListProductInnerScroll">
-                <div class="ItemProductInshoppingCart">
-                    <label class="CheckboxItem">
-                        <input type="checkbox" class="item-checkbox">
-                    </label>
-                    <img src="https://supersports.com.vn/cdn/shop/products/BW-460-15KG-1.jpg?v=1703644838&width=1600" alt="Sản phẩm" class="ProductItemImage">
-                    <div class="ProductItemInfor">
-                        <div class="ProductItemName">Tên sản phẩm</div>
-                        <div class="ProductItemBrand">Thương hiệu</div>
-                        <div class="ProductItemBrand">Giá: 220.000đ</div>
+                <c:if test="${empty sessionScope.cart || sessionScope.cart.items.size() == 0}">
+                    <div id="emptyCartMessage" style="margin-left: 10px">
+                        Hiện chưa có sản phẩm nào trong giỏ hàng.
                     </div>
-                    <div class="ProductItemControl">
-                        <div class="QuantityBoxForProduct">
-                            <button>-</button>
-                            <span class="quantity">1</span>
-                            <button>+</button>
-                            <span class="delProduct">Xóa</span>
+                </c:if>
+                <c:if test="${not empty sessionScope.cart && sessionScope.cart.items.size() > 0}">
+                <c:forEach var="item" items="${sessionScope.cart.items}">
+                    <div class="ItemProductInshoppingCart" data-price="${item.price}"
+                         data-quantity="${item.quantity}">
+                        <label class="CheckboxItem">
+                            <input type="checkbox" class="item-checkbox">
+                        </label>
+
+                        <img src="${item.image}" class="ProductItemImage">
+
+                        <div class="ProductItemInfor">
+                            <div class="ProductItemName">${item.productName}</div>
+                            <div class="ProductItemBrand">Màu sắc: ${item.color}</div>
+                            <div class="ProductItemBrand">Kích cỡ: ${item.size}</div>
+                            <div class="ProductItemBrand">
+                                Giá: <fmt:formatNumber value="${item.price}" type="number"/> đ
+                            </div>
+                        </div>
+
+                        <div class="ProductItemControl">
+                            <div class="QuantityBoxForProduct">
+                                <button>-</button>
+                                <span class="quantity">${item.quantity}</span>
+                                <button>+</button>
+
+                                <a href="remove-from-cart?variantId=${item.variantId}" class="delProduct">Xóa </a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="ItemProductInshoppingCart">
-                    <label class="CheckboxItem">
-                        <input type="checkbox" class="item-checkbox">
-                    </label>
-                    <img src="https://supersports.com.vn/cdn/shop/products/BW-460-15KG-1.jpg?v=1703644838&width=1600" alt="Sản phẩm" class="ProductItemImage">
-                    <div class="ProductItemInfor">
-                        <div class="ProductItemName">Tên sản phẩm</div>
-                        <div class="ProductItemBrand">Thương hiệu</div>
-                        <div class="ProductItemBrand">Giá: 220.000đ</div>
-                    </div>
-                    <div class="ProductItemControl">
-                        <div class="QuantityBoxForProduct">
-                            <button>-</button>
-                            <span class="quantity">1</span>
-                            <button>+</button>
-                            <span class="delProduct">Xóa</span>
-                        </div>
-                    </div>
-                </div><div class="ItemProductInshoppingCart">
-                <label class="CheckboxItem">
-                    <input type="checkbox" class="item-checkbox">
-                </label>
-                <img src="https://supersports.com.vn/cdn/shop/products/BW-460-15KG-1.jpg?v=1703644838&width=1600" alt="Sản phẩm" class="ProductItemImage">
-                <div class="ProductItemInfor">
-                    <div class="ProductItemName">Tên sản phẩm</div>
-                    <div class="ProductItemBrand">Thương hiệu</div>
-                    <div class="ProductItemBrand">Giá: 220.000đ</div>
-                </div>
-                <div class="ProductItemControl">
-                    <div class="QuantityBoxForProduct">
-                        <button>-</button>
-                        <span class="quantity">1</span>
-                        <button>+</button>
-                        <span class="delProduct">Xóa</span>
-                    </div>
-                </div>
-            </div><div class="ItemProductInshoppingCart">
-                <label class="CheckboxItem">
-                    <input type="checkbox" class="item-checkbox">
-                </label>
-                <img src="https://supersports.com.vn/cdn/shop/products/BW-460-15KG-1.jpg?v=1703644838&width=1600" alt="Sản phẩm" class="ProductItemImage">
-                <div class="ProductItemInfor">
-                    <div class="ProductItemName">Tên sản phẩm</div>
-                    <div class="ProductItemBrand">Thương hiệu</div>
-                    <div class="ProductItemBrand">Giá: 220.000đ</div>
-                </div>
-                <div class="ProductItemControl">
-                    <div class="QuantityBoxForProduct">
-                        <button>-</button>
-                        <span class="quantity">1</span>
-                        <button>+</button>
-                        <span class="delProduct">Xóa</span>
-                    </div>
-                </div>
-            </div>
+                </c:forEach>
+                </c:if>
             </div>
 
             <div class="CartActionsFooter">
-                <button class="DeleteCartButton" id="deleteCartBtn">
-                    <i class="fa-solid fa-trash-can"></i>
+                <button type="button" class="DeleteCartButton" id="deleteCartBtn">
+                <i class="fa-solid fa-trash-can"></i>
                     <span> Xóa giỏ hàng</span>
                 </button>
             </div>
@@ -114,19 +79,16 @@
             <div class="OrderSumaryTitle">Tóm tắt đơn hàng</div>
             <div class="OrderSumaryDetail">
                 <div class="SummaryRow">
-                    <span>Đã chọn: 2 sản phẩm</span>
+                    <span id="selectedCount">Đã chọn: 0 sản phẩm</span>
                 </div>
                 <div class="SummaryRow">
-                    <span>Người nhận: Bùi Thanh Sang</span>
+                    <span>Người nhận: ${sessionScope.auth.accountName}</span>
                 </div>
                 <div class="SummaryRow">
-                    <span>Số điện thoại: 0829811312</span>
+                    <span>Số điện thoại: ${sessionScope.auth.phoneNumber}</span>
                 </div>
                 <div class="SummaryRow">
-                    <span>Địa chỉ nhận hàng:</span>
-                </div>
-                <div class="SummaryRow">
-                    <span>123 Lý Thường Kiệt, P.7, Q.10, TP.HCM</span>
+                    <span>Email: ${sessionScope.auth.accountEmail}</span>
                 </div>
                 <div class="SummaryRow">
                     <span>Mô tả thêm (nếu có): </span>
@@ -136,13 +98,12 @@
                               placeholder="Thời gian giao, địa điểm cụ thể..."
                               class="order-note"></textarea>
                 </div>
-                <div class="SummaryRow">
-                    <span>Tổng số tiền (2 sản phẩm): </span>
-                    <span>446.000đ</span>
+                <div class="SummaryRow">Tổng thành tiền:<span id="totalPrice">0 đ</span>
                 </div>
             </div>
             <div class="OrderButtons">
-                <button class="ContinueButton" id="placeOrderBtn">Đặt hàng</button>
+                <button type="button" class="ContinueButton" id="placeOrderBtn">
+                    Đặt hàng</button>
             </div>
         </div>
     </div>
@@ -173,11 +134,9 @@
 <jsp:include page="/Share/footer.jsp" />
 <script src="${pageContext.request.contextPath}/JS/Notification.js"></script>
 <script src="${pageContext.request.contextPath}/JS/PageShopping.js?v=<%=System.currentTimeMillis()%>"></script>
+<script src="${pageContext.request.contextPath}/JS/ProductMainPage.js?v=<%=System.currentTimeMillis()%>"></script>
 <script>
     const historyUrl = '<%= request.getContextPath() %>/HistorySale';
-</script>
-<script>
-    ProductQuantityHandlers();
 </script>
 </body>
 </html>

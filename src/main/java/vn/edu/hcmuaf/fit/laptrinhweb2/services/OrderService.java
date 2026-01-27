@@ -74,5 +74,8 @@ public class OrderService {
         return result;
     }
 
+    public void updateStatus(int orderId, String status) {
+        orderDao.updateStatus(orderId,status);
+    }
 }
 

@@ -97,7 +97,9 @@ public class addProduct extends HttpServlet {
                     real_size = -1;
                     break;
                 case "1":
-                    real_size = Integer.parseInt(raw_size);
+                    if (raw_size.equals("Nhỏ")) {real_size = 100;}
+                    if (raw_size.equals("Vừa")) {real_size = 200;}
+                    if (raw_size.equals("Lớn")) {real_size = 300;}
                     break;
             }
             variant.setSize(real_size);
