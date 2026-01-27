@@ -34,7 +34,6 @@ public class AddReviewController extends HttpServlet {
             return;
         }
 
-
         int productId = Integer.parseInt(request.getParameter("productId"));
         int rating = Integer.parseInt(request.getParameter("rating"));
         String reviewText = request.getParameter("reviewText");

@@ -222,9 +222,4 @@ document.addEventListener('change', function (e) {
     }
 });
 
-document.addEventListener("DOMContentLoaded", function () {
-    updateOrderSummary();
-});
-
-
 

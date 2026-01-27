@@ -45,7 +45,7 @@ function addToCartHandler() {
         return;
     }
 
-    // 🔥 LẤY ẢNH ĐANG HIỂN THỊ
+    // LẤY ẢNH ĐANG HIỂN THỊ
     let mainImage = document.getElementById("mainImage")?.src;
 
     if (!mainImage) {
@@ -71,6 +71,7 @@ function addToCartHandler() {
     })
         .then(res => res.text())
         .then(data => {
+            updateCartCount();
             alert("Đã thêm vào giỏ hàng");
         })
         .catch(err => {
@@ -78,8 +79,6 @@ function addToCartHandler() {
             alert("Lỗi khi thêm vào giỏ");
         });
 }
-
-
 
 // ====== QUANTITY ======
 function ProductQuantityHandlers() {
@@ -197,6 +196,16 @@ function renderSizesByColor(color) {
         if (index === 0) btn.click();
     });
 }
+
+function updateCartCount() {
+    fetch("cart-count")
+        .then(res => res.text())
+        .then(count => {
+            const cartEl = document.querySelector(".CartCount");
+            if (cartEl) cartEl.innerText = count;
+        });
+}
+
 
 
 

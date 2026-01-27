@@ -3,7 +3,7 @@
 
 <c:set var="root" value="${pageContext.request.contextPath}" />
 
-<link rel="stylesheet" href="${root}/CSS/style.css">
+<link rel="stylesheet" href="${root}/CSS/style.css?v=<%=System.currentTimeMillis()%>">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <nav class="MainMenuBar">
@@ -78,7 +78,20 @@
 
         <a href="${root}/Cart.jsp" class="IconBtn ShoppingCart" aria-label="Giỏ hàng">
             <i class="fa-solid fa-cart-shopping"></i>
+            <span class="CartIcon">
+                <span class="CartCount">
+        <c:choose>
+            <c:when test="${empty sessionScope.cart}">
+                0
+            </c:when>
+            <c:otherwise>
+                ${sessionScope.cart.totalQuantity}
+            </c:otherwise>
+        </c:choose>
+    </span>
+            </span>
         </a>
+
 
         <button class="IconBtn Announcement" aria-label="Thông báo">
             <i class="fa-regular fa-bell"></i>

@@ -426,7 +426,7 @@ ul {
     font-size: 18px;
     cursor: pointer;
     transition: all 0.22s ease;
-    overflow: hidden;
+    overflow: visible;
     line-height: normal;
 }
 .IconBtn:hover {
@@ -434,6 +434,33 @@ ul {
     color: #ffffff;
     transform: scale(1.08);
 }
+
+.CartIcon {
+    position: relative;
+}
+
+.CartIcon .CartCount {
+    position: absolute;
+    top: -17px;
+    right: 0px;
+
+    min-width: 16px;
+    height: 16px;
+    padding: 0 4px;
+
+    background: #F74F1B;
+    color: #fff;
+    font-size: 10px;
+    font-weight: bold;
+
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+}
+
 
 .UserWrap {
     position: relative;
