@@ -16,25 +16,37 @@
             <div class="NameOption">Quản lí người dùng</div>
         </a>
         <a href="page_add_product" class="OptionIcon">
-            <i class="fa-solid fa-box-open"></i>
+            <i class="fa-solid fa-shirt"></i>
             <div class="NameOption">Quản lí sản phẩm</div>
         </a>
-        <a href="servlet_getOrder?action=today" class="OptionIcon">
+        <a href="page_manageOrder?action=today" class="OptionIcon">
             <i class="fa-solid fa-box"></i>
             <div class="NameOption">Quản lí đơn hàng</div>
         </a>
-        <a href="getAllBanner" class="OptionIcon">
+        <a href="page_manageBanner" class="OptionIcon">
             <i class="fa-solid fa-eye"></i>
             <div class="NameOption">Quản lí giao diện</div>
         </a>
-        <a href="manageAnoun.jsp" class="OptionIcon">
+        <a href="page_manageAnoun" class="OptionIcon">
             <i class="fa-solid fa-bullhorn"></i>
             <div class="NameOption">Quản lí thông báo</div>
         </a>
-        <a href="page_manageImage" class="OptionIcon">
-            <i class="fa-solid fa-image"></i>
-            <div class="NameOption">Quản lí ảnh</div>
+        <a href="manageBrand" class="OptionIcon">
+            <i class="fa-solid fa-hurricane"></i>
+            <div class="NameOption">Quản lí thương hiệu </div>
         </a>
+        <a href="manageCollection" class="OptionIcon">
+            <i class="fa-solid fa-box-open"></i>
+            <div class="NameOption">Quản lí bộ sưu tập</div>
+        </a>
+        <a href="manageSport" class="OptionIcon">
+            <i class="fa-solid fa-futbol"></i>
+            <div class="NameOption">Quản lí môn thể thao</div>
+        </a>
+<%--        <a href="page_manageImage" class="OptionIcon">--%>
+<%--            <i class="fa-solid fa-image"></i>--%>
+<%--            <div class="NameOption">Quản lí ảnh</div>--%>
+<%--        </a>--%>
 
 <%--        <%--%>
 <%--            List<BreadcrumbItem> breadcrumb =--%>

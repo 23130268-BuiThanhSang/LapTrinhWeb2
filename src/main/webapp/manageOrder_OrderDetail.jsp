@@ -18,7 +18,7 @@
 
     <div class="OrderManagerUI">
         <div class="topRow">
-            <a class="turnBack" href="servlet_getOrder?action=all">Quay lại</a>
+            <a class="turnBack" href="page_manageOrder?action=all">Quay lại</a>
         </div>
 
         <div class="OrderManageContainer">

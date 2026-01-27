@@ -14,14 +14,14 @@
     <jsp:include page="/Share/admin_leftbar.jsp" />
     <div class="OrderManagerUI">
         <div class="topRow">
-            <a class = "turnBack" href = "servlet_getOrder?action=today">
+            <a class = "turnBack" href = "page_manageOrder?action=today">
                 Quay lại
             </a>
         </div>
         <div class="bottomBox">
             <p class = "BoxTitle">Lọc Đơn Hàng: </p>
             <form class="FilterBar"
-                  action="servlet_getOrder"
+                  action="page_manageOrder"
                   method="get">
                 <input type="hidden" name="action" value="filter">
                 <input class="day_input"

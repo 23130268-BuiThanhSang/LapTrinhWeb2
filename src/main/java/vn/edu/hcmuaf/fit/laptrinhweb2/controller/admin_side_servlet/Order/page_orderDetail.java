@@ -1,4 +1,4 @@
-package vn.edu.hcmuaf.fit.laptrinhweb2.controller.admin_side_servlet;
+package vn.edu.hcmuaf.fit.laptrinhweb2.controller.admin_side_servlet.Order;
 
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
@@ -12,6 +12,13 @@ import java.io.IOException;
 public class page_orderDetail extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession(false);
+        if ((session == null) || (!"ADMIN".equals(session.getAttribute("auth_role")))) {
+            System.out.println("not admin");
+            response.sendError(HttpServletResponse.SC_NOT_FOUND);
+            return;
+        }
+
         String idParam = request.getParameter("orderId");
 
         if (idParam == null) {
@@ -23,7 +30,7 @@ public class page_orderDetail extends HttpServlet {
         try {
             orderId = Integer.parseInt(idParam);
         } catch (NumberFormatException e) {
-            response.sendRedirect("servlet_getOrder?action=all");
+            response.sendRedirect("page_manageOrder?action=all");
             return;
         }
 
@@ -31,7 +38,7 @@ public class page_orderDetail extends HttpServlet {
         Order order = orderService.getOrder(orderId);
 
         if (order == null) {
-            response.sendRedirect("servlet_getOrder?action=all");
+            response.sendRedirect("page_manageOrder?action=all");
             return;
         }
 

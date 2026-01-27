@@ -17,7 +17,7 @@
         <div class="userHeader">
             <div id="mangeUserHeader">Quản Lí Người Dùng / Tất Cả</div>
             <div class="userHeaderActions">
-                <form action="searchUser" method="get">
+                <form action="searchAccount" method="get">
                     <input type="text" name="keyword" placeholder="Tìm tên / id user..." id="adminSearch">
                     <button class="TabButton" type="submit">
                         <i class="fa fa-search"></i>
@@ -33,8 +33,6 @@
                 <div id="userId">ID</div>
                 <div id="userMember">Thẻ thành viên</div>
                 <div id="userPay">Tổng chi tiêu</div>
-                <div id="userActivity">Hoạt động gần nhất</div>
-                <div id="userStatus">Trạng thái</div>
             </div>
             <div class="userInfo">
                 <c:forEach var="acc" items="${accounts}">
@@ -67,19 +65,6 @@
                             <div class="userTxt3">
                                     ${acc.totalSpent}
                             </div>
-
-                            <!-- Online / Offline (TEMP logic) -->
-                            <div class="userTxt5">
-                                <c:choose>
-                                    <c:when test="${acc.account.accountStatus == 1}">
-                                        Online
-                                    </c:when>
-                                    <c:otherwise>
-                                        Offline
-                                    </c:otherwise>
-                                </c:choose>
-                            </div>
-
                         </div>
                     </a>
                 </c:forEach>

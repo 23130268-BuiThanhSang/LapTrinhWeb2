@@ -1,4 +1,4 @@
-package vn.edu.hcmuaf.fit.laptrinhweb2.controller.admin_side_servlet;
+package vn.edu.hcmuaf.fit.laptrinhweb2.controller.admin_side_servlet.Account;
 
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
@@ -9,13 +9,20 @@ import vn.edu.hcmuaf.fit.laptrinhweb2.services.AccountAdminService;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "searchUser", value = "/searchUser")
-public class searchUser extends HttpServlet {
+@WebServlet(name = "getAllAccount", value = "/getAllAccount")
+public class getAllAccount extends HttpServlet {
     private final AccountAdminService accountService = new AccountAdminService();
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String searchInfo = request.getParameter("keyword");
-        List<AccountAdminView> accounts = accountService.searchUser(searchInfo);
+        HttpSession session = request.getSession(false);
+        if ((session == null) || (!"ADMIN".equals(session.getAttribute("auth_role")))) {
+            System.out.println("not admin");
+            response.sendError(HttpServletResponse.SC_NOT_FOUND);
+            return;
+        }
+
+        List<AccountAdminView> accounts = accountService.getAll();
+
         request.setAttribute("accounts", accounts);
 
         request.getRequestDispatcher("manageUser.jsp")

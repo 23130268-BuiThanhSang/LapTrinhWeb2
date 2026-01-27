@@ -91,7 +91,7 @@
                 <!-- ===== ACTIONS ===== -->
                 <label>Hành động</label>
                 <div class="banner-box">
-                    <a href="getAllBanner" class="add-banner-id-btn">
+                    <a href="page_manageBanner" class="add-banner-id-btn">
                         ← Back to List
                     </a>
                     <!-- UPDATE -->

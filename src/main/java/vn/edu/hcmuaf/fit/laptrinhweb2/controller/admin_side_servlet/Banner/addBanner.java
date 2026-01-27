@@ -1,15 +1,13 @@
-package vn.edu.hcmuaf.fit.laptrinhweb2.controller.admin_side_servlet;
+package vn.edu.hcmuaf.fit.laptrinhweb2.controller.admin_side_servlet.Banner;
 
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 import vn.edu.hcmuaf.fit.laptrinhweb2.model.Banner;
-import vn.edu.hcmuaf.fit.laptrinhweb2.model.ProductVariantImage;
 import vn.edu.hcmuaf.fit.laptrinhweb2.services.BannerService;
 import vn.edu.hcmuaf.fit.laptrinhweb2.services.ImageService;
 
 import java.io.IOException;
-import java.util.List;
 
 
 @WebServlet(name = "addBanner", value = "/addBanner")
@@ -31,6 +29,12 @@ public class addBanner extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws IOException, ServletException {
+        HttpSession session = request.getSession(false);
+        if ((session == null) || (!"ADMIN".equals(session.getAttribute("auth_role")))) {
+            System.out.println("not admin");
+            response.sendError(HttpServletResponse.SC_NOT_FOUND);
+            return;
+        }
 
         Banner banner = new Banner();
         banner.setTargetUrl(request.getParameter("target_url"));
@@ -51,6 +55,6 @@ public class addBanner extends HttpServlet {
         bannerService.addBanner(banner);
 
         // PRG pattern
-        response.sendRedirect(request.getContextPath() + "/getAllBanner");
+        response.sendRedirect(request.getContextPath() + "/page_manageBanner");
     }
 }

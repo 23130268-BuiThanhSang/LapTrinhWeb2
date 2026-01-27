@@ -64,4 +64,46 @@ public class AnnouncementDao extends BaseDao {
                         .list()
         );
     }
+
+    public void update(Announcement announcement) {
+
+        String sql = """
+            UPDATE announcements
+            SET customer_type = :customerType,
+                content = :content,
+                target_url = :targetUrl,
+                is_active = :isActive,
+                expires_at = :expiresAt
+            WHERE id = :id
+        """;
+
+        get().useHandle(handle ->
+                handle.createUpdate(sql)
+                        .bind("id", announcement.getId())
+                        .bind("customerType", announcement.getAccountStatus().toString())
+                        .bind("content", announcement.getContent())
+                        .bind("targetUrl", announcement.getTargetUrl())
+                        .bind("isActive", announcement.isActive())
+                        .bind(
+                                "expiresAt",
+                                announcement.getExpiresAt() == null
+                                        ? null
+                                        : Timestamp.valueOf(announcement.getExpiresAt())
+                        )
+                        .execute()
+        );
+    }
+
+    public void delete(int id) {
+        String sql = """
+            DELETE FROM announcements
+            WHERE id = :id
+        """;
+
+        get().useHandle(handle ->
+                handle.createUpdate(sql)
+                        .bind("id", id)
+                        .execute()
+        );
+    }
 }

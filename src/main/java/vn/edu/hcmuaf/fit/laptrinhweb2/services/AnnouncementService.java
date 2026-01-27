@@ -5,6 +5,7 @@ import vn.edu.hcmuaf.fit.laptrinhweb2.enum_macro.AccountStatus;
 import vn.edu.hcmuaf.fit.laptrinhweb2.model.Announcement;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class AnnouncementService {
 
@@ -40,5 +41,14 @@ public class AnnouncementService {
 
         announcementDao.insert(announcement);
     }
+    public List<Announcement> getAllAnnouncements() {
+        return announcementDao.getAll();
+    }
 
+    public void deleteAnnouncement(int id) {
+        announcementDao.delete(id);
+    }
+    public void updateAnnouncement(Announcement announcement) {
+        announcementDao.update(announcement);
+    }
 }

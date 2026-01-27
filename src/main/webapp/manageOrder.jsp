@@ -25,7 +25,7 @@
         </div>
         <div class="bottomBox">
             <p class = "BoxTitle">Đơn Hàng Trong Ngày</p>
-            <a class = "DetailPageLink" href="servlet_getOrder?action=all">Xem chi tiết</a>
+            <a class = "DetailPageLink" href="page_manageOrder?action=all">Xem chi tiết</a>
             <div class="OrdersDisplay">
                 <c:forEach var="o" items="${orders}">
                     <a href="page_orderDetail?orderId=${o.id}" class="OrderItem">

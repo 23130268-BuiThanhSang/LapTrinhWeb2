@@ -24,7 +24,7 @@ public class AccountService {
         baseAcc.setPhoneNumber(acc.getPhoneNumber());
         baseAcc.setAccountEmail(acc.getAccountEmail());
         baseAcc.setAccountStatus(acc.getAccountStatus());
-
+        baseAcc.setAvatarUrl(acc.getAvatarUrl());
         accountDao.update(baseAcc,skipPass);
     }
 
