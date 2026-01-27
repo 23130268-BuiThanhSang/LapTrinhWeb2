@@ -1,12 +1,10 @@
 package vn.edu.hcmuaf.fit.laptrinhweb2.services;
 
 import vn.edu.hcmuaf.fit.laptrinhweb2.dao.ProductDao;
+import vn.edu.hcmuaf.fit.laptrinhweb2.dao.ProductTypeDao;
 import vn.edu.hcmuaf.fit.laptrinhweb2.dao.ProductVariantDao;
 import vn.edu.hcmuaf.fit.laptrinhweb2.dao.ProductVariantImageDao;
-import vn.edu.hcmuaf.fit.laptrinhweb2.model.Product;
-import vn.edu.hcmuaf.fit.laptrinhweb2.model.ProductReview;
-import vn.edu.hcmuaf.fit.laptrinhweb2.model.ProductVariant;
-import vn.edu.hcmuaf.fit.laptrinhweb2.model.ProductVariantImage;
+import vn.edu.hcmuaf.fit.laptrinhweb2.model.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -16,15 +14,12 @@ import java.util.Map;
 public class ProductService {
     ProductDao productDao = new ProductDao();
     ProductVariantDao productVariantDao = new ProductVariantDao();
-
+    ProductVariantImageDao productVariantImageDao = new ProductVariantImageDao();
     public Product getProduct(int id) {
         return productDao.getProduct(id);
     }
 
     public boolean addProduct(Product product) {
-        ProductVariantDao productVariantDao = new ProductVariantDao();
-        ProductVariantImageDao productVariantImageDao = new ProductVariantImageDao();
-
             int product_id = productDao.insertProduct(product);
             List<ProductVariant> variants = product.getVariants();
             for (ProductVariant variant : variants) {
@@ -99,11 +94,35 @@ public class ProductService {
 
         return map;
     }
-
+    public void updateProduct(Product product) {
+        productDao.updateProduct(product);
+    }
     public ProductVariant getVariantById(int variantId) {
-        ProductVariantDao dao = new ProductVariantDao();
-        return dao.getById(variantId);
+        return productVariantDao.getById(variantId);
+    }
+    public void insertVariant(ProductVariant variant) {
+        int variant_id = productVariantDao.addProductVariant(variant);
+        System.out.println(variant_id);
+
+        List<ProductVariantImage> images = variant.getImages();
+        for (ProductVariantImage productVariantImage : images) {
+            System.out.println("insert image trigger");
+            productVariantImage.setVariantId(variant_id);
+            productVariantImageDao.insert(productVariantImage);
+        }
+    }
+    public void insertImage(ProductVariantImage productVariantImage) {
+        productVariantImageDao.insert(productVariantImage);
     }
 
-
+    public ProductType getProductType(int id) {
+        ProductTypeDao productTypeDao = new ProductTypeDao();
+        return productTypeDao.getById(id);
+    }
+    public void updateVariant(ProductVariant variant) {
+        productVariantDao.updateVariant(variant);
+    }
+    public void deleteVariantImage(List<Integer> ids) {
+        productVariantImageDao.deleteImages(ids);
+    }
 }

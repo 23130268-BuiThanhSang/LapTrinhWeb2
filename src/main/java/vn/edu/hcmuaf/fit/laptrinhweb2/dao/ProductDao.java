@@ -1007,5 +1007,33 @@ public class ProductDao extends BaseDao {
         );
     }
 
+    public void updateProduct(Product p) {
+        String sql = """
+        UPDATE product SET 
+            product_name = :name,
+            product_type_id = :typeId,
+            brand_id = :brandId,
+            collection_id = :collectionId,
+            product_infor = :info,
+            product_car_instruction = :care,
+            product_return_infor = :returnInfo,
+            product_gender = :gender
+        WHERE id = :id
+    """;
+
+        get().useHandle(handle ->
+                handle.createUpdate(sql)
+                        .bind("name", p.getName())
+                        .bind("typeId", p.getProductType().getId())
+                        .bind("brandId", p.getBrand().getId())
+                        .bind("collectionId", p.getCollection() != null ? p.getCollection().getId() : null)
+                        .bind("info", p.getProductInfor())
+                        .bind("care", p.getProductCareInstruction())
+                        .bind("returnInfo", p.getProductReturnInfor())
+                        .bind("gender", p.getProductGender())
+                        .bind("id", p.getId())
+                        .execute()
+        );
+    }
 
 }

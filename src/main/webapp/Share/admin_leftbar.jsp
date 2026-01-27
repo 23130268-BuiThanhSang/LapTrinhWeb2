@@ -13,62 +13,44 @@
     <div class="AccountLeftOption">
         <a href="getAllAccount" class="OptionIcon">
             <i class="fa-solid fa-user"></i>
-            <div class="NameOption">Quản lí người dùng</div>
+            <div class="NameOption">Quản lý người dùng</div>
         </a>
-        <a href="page_add_product" class="OptionIcon">
+        <a href="page_allProduct" class="OptionIcon">
             <i class="fa-solid fa-shirt"></i>
-            <div class="NameOption">Quản lí sản phẩm</div>
+            <div class="NameOption">Quản lý sản phẩm</div>
         </a>
         <a href="page_manageOrder?action=today" class="OptionIcon">
             <i class="fa-solid fa-box"></i>
-            <div class="NameOption">Quản lí đơn hàng</div>
+            <div class="NameOption">Quản lý đơn hàng</div>
+        </a>
+        <a href="page_manageHotdeal" class="OptionIcon">
+            <i class="fa-solid fa-percent"></i>
+            <div class="NameOption">Quản lý ưu đãi</div>
         </a>
         <a href="page_manageBanner" class="OptionIcon">
             <i class="fa-solid fa-eye"></i>
-            <div class="NameOption">Quản lí giao diện</div>
+            <div class="NameOption">Quản lý banner</div>
         </a>
+
         <a href="page_manageAnoun" class="OptionIcon">
             <i class="fa-solid fa-bullhorn"></i>
-            <div class="NameOption">Quản lí thông báo</div>
+            <div class="NameOption">Quản lý thông báo</div>
         </a>
+
         <a href="manageBrand" class="OptionIcon">
             <i class="fa-solid fa-hurricane"></i>
-            <div class="NameOption">Quản lí thương hiệu </div>
+            <div class="NameOption">Quản lý thương hiệu </div>
         </a>
         <a href="manageCollection" class="OptionIcon">
             <i class="fa-solid fa-box-open"></i>
-            <div class="NameOption">Quản lí bộ sưu tập</div>
+            <div class="NameOption">Quản lý bộ sưu tập</div>
         </a>
-        <a href="manageSport" class="OptionIcon">
-            <i class="fa-solid fa-futbol"></i>
-            <div class="NameOption">Quản lí môn thể thao</div>
-        </a>
-<%--        <a href="page_manageImage" class="OptionIcon">--%>
-<%--            <i class="fa-solid fa-image"></i>--%>
-<%--            <div class="NameOption">Quản lí ảnh</div>--%>
+<%--        <a href="manageSport" class="OptionIcon">--%>
+<%--            <i class="fa-solid fa-futbol"></i>--%>
+<%--            <div class="NameOption">Quản lý môn thể thao</div>--%>
 <%--        </a>--%>
-
-<%--        <%--%>
-<%--            List<BreadcrumbItem> breadcrumb =--%>
-<%--                    (List<BreadcrumbItem>) session.getAttribute("breadcrumb");--%>
-<%--        %>--%>
-
-<%--        <nav>--%>
-<%--            <%--%>
-<%--                if (breadcrumb != null) {--%>
-<%--                    for (int i = 0; i < breadcrumb.size(); i++) {--%>
-<%--                        BreadcrumbItem b = breadcrumb.get(i);--%>
-<%--            %>--%>
-<%--            <a href="<%= b.getUrl() %>"><%= b.getLabel() %></a>--%>
-<%--            <% if (i < breadcrumb.size() - 1) { %> &gt; <% } %>--%>
-<%--            <%--%>
-<%--                    }--%>
-<%--                }--%>
-<%--            %>--%>
-<%--        </nav>--%>
-
         <div class = "button_container">
-            <a href="login.jsp" class="sgoutAdmin">Đăng xuất</a>
+            <a href="Home" class="sgoutAdmin">Quay về web</a>
         </div>
     </div>
 </div>
