@@ -21,7 +21,7 @@
         </div>
 
         <!-- FORM START -->
-        <form action="addUser" method="post">
+        <form action="addAccount" method="post" enctype="multipart/form-data">>
 
             <!-- Hidden ID (important) -->
             <input type="hidden" name="id" value="${account.account.id}">
@@ -30,7 +30,7 @@
 
                 <!-- Avatar -->
                 <div class="userAvatarSection">
-                    <img src="#" alt="User Avatar" class="userAvatar">
+                    <img src="getImage?path=base_avatar.png" alt="User Avatar" class="userAvatar">
                 </div>
 
                 <!-- User Info -->
@@ -95,11 +95,13 @@
                     </div>
 
                     <div class="userField">
-                        <label>Avatar URL</label>
-                        <input type="text"
-                               placeholder="Not implemented yet"
-                               disabled>
+                        <label for="avatar">Avatar</label>
+                        <input type="file"
+                               id="avatar"
+                               name="avatar"
+                               accept="image/*">
                     </div>
+
 
                 </div>
             </div>

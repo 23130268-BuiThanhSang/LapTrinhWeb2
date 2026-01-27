@@ -1,16 +1,17 @@
-package vn.edu.hcmuaf.fit.laptrinhweb2.controller.admin_side_servlet;
+package vn.edu.hcmuaf.fit.laptrinhweb2.controller.admin_side_servlet.Annou;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import vn.edu.hcmuaf.fit.laptrinhweb2.enum_macro.AccountStatus;
 import vn.edu.hcmuaf.fit.laptrinhweb2.services.AnnouncementService;
 
 import java.io.IOException;
 
-@WebServlet(name = "addAnnouncementServlet", value = "/add-announcement")
+@WebServlet(name = "addAnnouncementServlet", value = "/addAnnouncement")
 public class addAnnouncement extends HttpServlet {
 
     @Override
@@ -19,14 +20,21 @@ public class addAnnouncement extends HttpServlet {
 
         request.setCharacterEncoding("UTF-8");
 
+        HttpSession session = request.getSession(false);
+        if ((session == null) || (!"ADMIN".equals(session.getAttribute("auth_role")))) {
+                System.out.println("not admin");
+                response.sendError(HttpServletResponse.SC_NOT_FOUND);
+                return;
+        }
+
         try {
             String customerType = request.getParameter("customer_type");
             String content = request.getParameter("content");
             String targetUrl = request.getParameter("target_url");
 
-            Integer expDay = parseInt(request.getParameter("exp_day"));
-            Integer expMonth = parseInt(request.getParameter("exp_month"));
-            Integer expYear = parseInt(request.getParameter("exp_year"));
+            Integer expDay = Integer.parseInt(request.getParameter("exp_day"));
+            Integer expMonth = Integer.parseInt(request.getParameter("exp_month"));
+            Integer expYear = Integer.parseInt(request.getParameter("exp_year"));
 
             AccountStatus accountStatus;
 
@@ -60,17 +68,6 @@ public class addAnnouncement extends HttpServlet {
         } catch (Exception e) {
             e.printStackTrace();
             response.sendRedirect("manageAnoun.jsp?error=server_error");
-        }
-    }
-
-    private Integer parseInt(String value) {
-        try {
-            if (value == null || value.isBlank()) {
-                return null;
-            }
-            return Integer.parseInt(value);
-        } catch (NumberFormatException e) {
-            return null;
         }
     }
 }

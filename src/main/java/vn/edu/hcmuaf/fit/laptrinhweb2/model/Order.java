@@ -1,29 +1,34 @@
 package vn.edu.hcmuaf.fit.laptrinhweb2.model;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 public class Order implements Serializable {
     private int id;
-    private int userId;
-    private Date orderDate;
-    private double totalPrice;
-    private String status;
+    private int user_id;
+    private LocalDateTime order_date;
+    private double price;
+    private String order_status;
+
+    private String address;
     private List<OrderItem> items = new ArrayList<>();
 
 
     public Order() {
     }
 
-    public Order(int id, int userId, Date orderDate,
-                 double totalPrice, String status) {
+    public Order(List<OrderItem> items, String address, String order_status, double price, LocalDateTime order_date, int user_id, int id) {
+        this.items = items;
+        this.address = address;
+        this.order_status = order_status;
+        this.price = price;
+        this.order_date = order_date;
+        this.user_id = user_id;
         this.id = id;
-        this.userId = userId;
-        this.orderDate = orderDate;
-        this.totalPrice = totalPrice;
-        this.status = status;
     }
 
     public void addItem(OrderItem item) {
@@ -41,22 +46,60 @@ public class Order implements Serializable {
         return total;
     }
 
-    public int getId() { return id; }
-    public void setId(int id) { this.id = id; }
+    public int getId() {
+        return id;
+    }
 
-    public int getUserId() { return userId; }
-    public void setUserId(int userId) { this.userId = userId; }
+    public void setId(int id) {
+        this.id = id;
+    }
 
-    public Date getOrderDate() { return orderDate; }
-    public void setOrderDate(Date orderDate) { this.orderDate = orderDate; }
+    public int getUser_id() {
+        return user_id;
+    }
 
-    public double getTotalPrice() { return totalPrice; }
-    public void setTotalPrice(double totalPrice) { this.totalPrice = totalPrice; }
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
+    }
 
-    public String getStatus() { return status; }
-    public void setStatus(String status) { this.status = status; }
+    public LocalDateTime getOrder_date() {
+        return order_date;
+    }
 
-    public List<OrderItem> getItems() { return items; }
-    public void setItems(List<OrderItem> items) { this.items = items; }
+    public void setOrder_date(LocalDateTime order_date) {
+        this.order_date = order_date;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public String getOrder_status() {
+        return order_status;
+    }
+
+    public void setOrder_status(String order_status) {
+        this.order_status = order_status;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public List<OrderItem> getItems() {
+        return items;
+    }
+
+    public void setItems(List<OrderItem> items) {
+        this.items = items;
+    }
 }
 

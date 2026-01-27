@@ -1,4 +1,4 @@
-package vn.edu.hcmuaf.fit.laptrinhweb2.controller.admin_side_servlet;
+package vn.edu.hcmuaf.fit.laptrinhweb2.controller.admin_side_servlet.Account;
 
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
@@ -13,6 +13,13 @@ public class getAccountDetail extends HttpServlet {
     private final AccountAdminService service = new AccountAdminService();
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession(false);
+        if ((session == null) || (!"ADMIN".equals(session.getAttribute("auth_role")))) {
+            System.out.println("not admin");
+            response.sendError(HttpServletResponse.SC_NOT_FOUND);
+            return;
+        }
+
         String idStr = request.getParameter("id");
         int id = Integer.parseInt(idStr);
 

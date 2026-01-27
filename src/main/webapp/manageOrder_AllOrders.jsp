@@ -14,14 +14,14 @@
     <jsp:include page="/Share/admin_leftbar.jsp" />
     <div class="OrderManagerUI">
         <div class="topRow">
-            <a class = "turnBack" href = "servlet_getOrder?action=today">
+            <a class = "turnBack" href = "page_manageOrder?action=today">
                 Quay lại
             </a>
         </div>
         <div class="bottomBox">
             <p class = "BoxTitle">Lọc Đơn Hàng: </p>
             <form class="FilterBar"
-                  action="servlet_getOrder"
+                  action="page_manageOrder"
                   method="get">
                 <input type="hidden" name="action" value="filter">
                 <input class="day_input"
@@ -72,28 +72,28 @@
 
                         <div class="OrderHeader">
                             <span class="OrderID">ID: ${o.id}</span>
-                            <span class="OrderDate">${o.orderDate}</span>
+                            <span class="OrderDate">${o.order_date}</span>
 
                             <span class="OrderStatus
                     <c:choose>
-                        <c:when test="${o.status == 'PENDING'}">status-pending</c:when>
-                        <c:when test="${o.status == 'PROCESSING'}">status-processing</c:when>
-                        <c:when test="${o.status == 'SHIPPED'}">status-shipped</c:when>
+                        <c:when test="${o.order_status == 'PENDING'}">status-pending</c:when>
+                        <c:when test="${o.order_status == 'PROCESSING'}">status-processing</c:when>
+                        <c:when test="${o.order_status == 'SHIPPED'}">status-shipped</c:when>
 <%--                        <c:when test="${o.status == 'DELIVERED'}">status-completed</c:when>--%>
-                        <c:when test="${o.status == 'CANCELLED'}">status-cancelled</c:when>
+                        <c:when test="${o.order_status == 'CANCELLED'}">status-cancelled</c:when>
                     </c:choose>
                 ">
-                                    ${o.status}
+                                    ${o.order_status}
                             </span>
                         </div>
 
                         <div class="OrderSummary">
                             <p class="CustomerName">
-                                User ID: <span>${o.userId}</span>
+                                User ID: <span>${o.user_id}</span>
                             </p>
 
                             <p class="OrderTotal">
-                                Total: <span>${o.totalPrice} VND</span>
+                                Total: <span>${o.price} VND</span>
                             </p>
 
                             <p class="ItemsCount">

@@ -20,7 +20,7 @@
         </div>
 
         <!-- FORM START -->
-        <form action="updateAccount" method="post">
+        <form action="updateAccount" method="post" enctype="multipart/form-data">>
 
             <!-- Hidden stuff -->
             <input type="hidden" name="id" value="${account.account.id}">
@@ -31,7 +31,7 @@
 
                 <!-- Avatar -->
                 <div class="userAvatarSection">
-                    <img src="#" alt="User Avatar" class="userAvatar">
+                    <img src="getImage?path=${account.account.avatarUrl}" alt="User Avatar" class="userAvatar">
                 </div>
 
                 <!-- User Info -->
@@ -100,12 +100,15 @@
                             </option>
                         </select>
                     </div>
-
+                    <input type="hidden"
+                           name="oldAvatarUrl"
+                           value="${account.account.avatarUrl}">
                     <div class="userField">
-                        <label>Avatar URL</label>
-                        <input type="text"
-                               placeholder="Not implemented yet"
-                               disabled>
+                        <label for="avatar">Avatar</label>
+                        <input type="file"
+                               id="avatar"
+                               name="avatar"
+                               accept="image/*">
                     </div>
 
                 </div>

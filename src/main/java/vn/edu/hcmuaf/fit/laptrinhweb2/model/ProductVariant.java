@@ -72,5 +72,20 @@ public class ProductVariant{
         this.images = images;
     }
 
-
+    public String getSizeString() {
+        int fake_size = size;
+        String real_size = String.valueOf(fake_size);
+        switch (fake_size) {
+            case -1: real_size = "Free Size"; break;
+            case 1: real_size = "S"; break;
+            case 2: real_size = "M"; break;
+            case 3: real_size = "L"; break;
+            case 4: real_size = "XL"; break;
+            case 5: real_size = "XXL"; break;
+            case 100: real_size = "Nhỏ"; break;
+            case 200: real_size = "Vừa"; break;
+            case 300: real_size = "Lớn"; break;
+        }
+        return real_size;
+    }
 }

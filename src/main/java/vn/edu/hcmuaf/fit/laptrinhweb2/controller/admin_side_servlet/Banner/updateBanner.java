@@ -1,4 +1,4 @@
-package vn.edu.hcmuaf.fit.laptrinhweb2.controller.admin_side_servlet;
+package vn.edu.hcmuaf.fit.laptrinhweb2.controller.admin_side_servlet.Banner;
 
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
@@ -7,9 +7,7 @@ import vn.edu.hcmuaf.fit.laptrinhweb2.model.Banner;
 import vn.edu.hcmuaf.fit.laptrinhweb2.services.BannerService;
 import vn.edu.hcmuaf.fit.laptrinhweb2.services.ImageService;
 
-import java.io.File;
 import java.io.IOException;
-import java.nio.file.Paths;
 
 @WebServlet(name = "updateBanner", value = "/updateBanner")
 @MultipartConfig(
@@ -26,6 +24,12 @@ public class updateBanner extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        HttpSession session = request.getSession(false);
+        if ((session == null) || (!"ADMIN".equals(session.getAttribute("auth_role")))) {
+            System.out.println("not admin");
+            response.sendError(HttpServletResponse.SC_NOT_FOUND);
+            return;
+        }
 
         String action = request.getParameter("action");
         int id = Integer.parseInt(request.getParameter("id"));
@@ -61,7 +65,7 @@ public class updateBanner extends HttpServlet {
 
         if ("delete".equals(action)) {
             bannerService.delete(id);
-            response.sendRedirect("getAllBanner");
+            response.sendRedirect("page_manageBanner");
         }
     }
 

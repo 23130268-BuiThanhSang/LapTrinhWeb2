@@ -18,7 +18,7 @@
 
     <div class="OrderManagerUI">
         <div class="topRow">
-            <a class="turnBack" href="servlet_getOrder?action=all">Quay lại</a>
+            <a class="turnBack" href="page_manageOrder?action=all">Quay lại</a>
         </div>
 
         <div class="OrderManageContainer">
@@ -33,19 +33,16 @@
                     </p>
 
                     <p class="OrderDate">
-                        Ngày tạo:
-                        <span>
-                            <fmt:formatDate value="${order.orderDate}" pattern="dd/MM/yyyy" />
-                        </span>
+                        Ngày tạo: <span>${order.order_date}</span>
                     </p>
 
                     <div class="OrderStatusBox">
                         <label>Trạng thái:</label>
                         <select id="orderStatus" class="StatusSelect" name="status">
-                            <option value="PROCESSING" ${order.status == 'PROCESSING' ? 'selected' : ''}>Đang Xử Lý</option>
-                            <option value="SHIPPED"  ${order.status == 'SHIPPED'  ? 'selected' : ''}>Đã Giao</option>
-                            <option value="PENDING"    ${order.status == 'PENDING'    ? 'selected' : ''}>Tạm Ngưng</option>
-                            <option value="CANCELLED"  ${order.status == 'CANCELLED'  ? 'selected' : ''}>Đã Hủy</option>
+                            <option value="PROCESSING" ${order.order_status == 'PROCESSING' ? 'selected' : ''}>Đang Xử Lý</option>
+                            <option value="SHIPPED"  ${order.order_status == 'SHIPPED'  ? 'selected' : ''}>Đã Giao</option>
+                            <option value="PENDING"    ${order.order_status == 'PENDING'    ? 'selected' : ''}>Tạm Ngưng</option>
+                            <option value="CANCELLED"  ${order.order_status == 'CANCELLED'  ? 'selected' : ''}>Đã Hủy</option>
                         </select>
                     </div>
                 </div>
@@ -60,8 +57,8 @@
                             <div class="OrderDetailItem">
                                 <span class="ItemName">
                                         ${item.product.name}<br>
-                                            Kích cỡ: ${item.size}<br>
-                                            Màu sắc: ${item.color}
+                                            Kích cỡ: ${item.variant.getSizeString()}<br>
+                                            Màu sắc: ${item.variant.color}
                                 </span>
 
                                 <span class="ItemQty">
@@ -84,7 +81,7 @@
                 <div class="OrderTotalBox">
                     <p class="FinalTotal">
                         <strong>Tổng cộng:</strong>
-                        <fmt:formatNumber value="${order.totalPrice}" type="number" groupingUsed="true"/> đ
+                        <fmt:formatNumber value="${order.price}" type="number" groupingUsed="true"/> đ
                     </p>
                 </div>
 

@@ -1,4 +1,4 @@
-package vn.edu.hcmuaf.fit.laptrinhweb2.controller.admin_side_servlet;
+package vn.edu.hcmuaf.fit.laptrinhweb2.controller.admin_side_servlet.Account;
 
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
@@ -7,13 +7,20 @@ import vn.edu.hcmuaf.fit.laptrinhweb2.Auth.AuthDao;
 import vn.edu.hcmuaf.fit.laptrinhweb2.Auth.PasswordUtils;
 import vn.edu.hcmuaf.fit.laptrinhweb2.model.Account;
 import vn.edu.hcmuaf.fit.laptrinhweb2.services.AccountService;
+import vn.edu.hcmuaf.fit.laptrinhweb2.services.ImageService;
 
 import java.io.IOException;
 
-@WebServlet(name = "addUser", value = "/addUser")
-public class addUser extends HttpServlet {
+@WebServlet(name = "addAccount", value = "/addAccount")
+@MultipartConfig(
+        fileSizeThreshold = 1024 * 1024,      // 1MB (kept in memory before writing to disk)
+        maxFileSize = 1024 * 1024 * 5,         // 5MB per file
+        maxRequestSize = 1024 * 1024 * 10      // 10MB total request
+)
+public class addAccount extends HttpServlet {
     private AccountService accountService = new AccountService();
     private AuthDao authDao = new AuthDao();
+    private ImageService imageService = new ImageService();
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -21,6 +28,12 @@ public class addUser extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession(false);
+        if ((session == null) || (!"ADMIN".equals(session.getAttribute("auth_role")))) {
+            System.out.println("not admin");
+            response.sendError(HttpServletResponse.SC_NOT_FOUND);
+            return;
+        }
 
         Account acc = new Account();
         acc.setRole(request.getParameter("accountRole"));
@@ -56,8 +69,14 @@ public class addUser extends HttpServlet {
         }
         acc.setPassword(password);
         acc.setAccountStatus(Integer.parseInt(request.getParameter("accountStatus")));
-        // acc.setAvatarUrl(request.getParameter("avatarUrl")); // placeholder ok
-
+        Part avatar = request.getPart("avatar");
+        String imageURL = "";
+        if (avatar != null && avatar.getSize() > 0) {
+            imageURL = imageService.uploadImage("", avatar);
+        } else {
+            imageURL = "base_avatar.png";
+        }
+        acc.setAvatarUrl(imageURL);
         accountService.add(acc);
 
         response.sendRedirect("manageUser_AddUser.jsp");

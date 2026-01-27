@@ -1,13 +1,11 @@
-package vn.edu.hcmuaf.fit.laptrinhweb2.controller.admin_side_servlet;
+package vn.edu.hcmuaf.fit.laptrinhweb2.controller.admin_side_servlet.Product;
 
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
-import vn.edu.hcmuaf.fit.laptrinhweb2.dao.ProductGroupDao;
 import vn.edu.hcmuaf.fit.laptrinhweb2.dao.ProductTypeDao;
 import vn.edu.hcmuaf.fit.laptrinhweb2.enum_macro.GroupType;
 import vn.edu.hcmuaf.fit.laptrinhweb2.model.Product;
-import vn.edu.hcmuaf.fit.laptrinhweb2.model.ProductType;
 import vn.edu.hcmuaf.fit.laptrinhweb2.model.ProductVariant;
 import vn.edu.hcmuaf.fit.laptrinhweb2.model.ProductVariantImage;
 import vn.edu.hcmuaf.fit.laptrinhweb2.services.ImageService;
@@ -32,6 +30,13 @@ public class addProduct extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession(false);
+        if ((session == null) || (!"ADMIN".equals(session.getAttribute("auth_role")))) {
+            System.out.println("not admin");
+            response.sendError(HttpServletResponse.SC_NOT_FOUND);
+            return;
+        }
+
         request.setCharacterEncoding("UTF-8");
 
         //raw product
@@ -144,6 +149,6 @@ public class addProduct extends HttpServlet {
         } else {
             System.out.println("wrong somewhere, database probably on fire now");
         }
-
+        response.sendRedirect("page_add_product");
     }
 }

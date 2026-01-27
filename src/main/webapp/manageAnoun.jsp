@@ -18,7 +18,7 @@
             <h1>Thông báo</h1>
 
             <!-- FORM START -->
-            <form method="post" action="add-announcement">
+            <form method="post" action="addAnnouncement">
 
                 <div class="form-group">
                     <label for="audience">Gửi đến:</label>

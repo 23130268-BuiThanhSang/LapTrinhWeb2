@@ -20,23 +20,7 @@ public class OrderService {
     }
 
     public List<Order> getToday() {
-        List<Order> orders = orderDao.getAll();
-        List<Order> result = new ArrayList<>();
-
-        Calendar today = Calendar.getInstance();
-
-        for (Order o : orders) {
-            Calendar orderCal = Calendar.getInstance();
-            orderCal.setTime(o.getOrderDate());
-
-            if (orderCal.get(Calendar.DAY_OF_MONTH) == today.get(Calendar.DAY_OF_MONTH)
-                    && orderCal.get(Calendar.MONTH) == today.get(Calendar.MONTH)
-                    && orderCal.get(Calendar.YEAR) == today.get(Calendar.YEAR)) {
-
-                result.add(o);
-            }
-        }
-        return result;
+        return orderDao.getToday();
     }
     public List<Order> getByFilter(
             Integer day,
@@ -44,38 +28,15 @@ public class OrderService {
             Integer year,
             String status
     ) {
-        List<Order> orders = orderDao.getAll();
-        List<Order> result = new ArrayList<>();
-
-        for (Order o : orders) {
-            Calendar cal = Calendar.getInstance();
-            cal.setTime(o.getOrderDate());
-
-            if (day != null && cal.get(Calendar.DAY_OF_MONTH) != day) {
-                continue;
-            }
-
-            if (month != null && cal.get(Calendar.MONTH) != (month - 1)) {
-                continue;
-            }
-
-            if (year != null && cal.get(Calendar.YEAR) != year) {
-                continue;
-            }
-
-            if (status != null && !"all".equals(status)
-                    && !status.equalsIgnoreCase(o.getStatus())) {
-                continue;
-            }
-
-            result.add(o);
-        }
-
-        return result;
+        return orderDao.getByFilter(day, month, year, status);
     }
 
     public void updateStatus(int orderId, String status) {
         orderDao.updateStatus(orderId,status);
+    }
+
+    public void addOrder(Order order) {
+        orderDao.addOrder(order);
     }
 }
 

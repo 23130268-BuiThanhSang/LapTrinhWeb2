@@ -356,7 +356,7 @@ body {
 /* ===== TABLE HEADER ROW ===== */
 .typeUser {
     display: grid;
-    grid-template-columns: 1.5fr 1fr 1.2fr 1.2fr 1.2fr 1fr;
+    grid-template-columns: 1.5fr 1fr 1.2fr 1.2fr;
     gap:  16px;
     padding: 16px 20px;
     background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
@@ -387,25 +387,33 @@ body {
     background: #fafbfc;
     border-bottom: 1px solid #e8ecf1;
     transition: all 0.2s ease;
+    text-decoration: none;
+    color: inherit;
 }
 
 .userBox:nth-child(even) {
     background:  white;
+    text-decoration: none;
+    color: inherit;
 }
 
 .userBox:hover {
     background: #f0f4ff;
     transform:  scale(1.002);
+    text-decoration: none;
+    color: inherit;
 }
 
 .userBox:last-child {
+    text-decoration: none;
     border-bottom: none;
+    color: inherit;
 }
 
 /* ===== USER GROUP - ROW CONTENT ===== */
 .userGroup {
     display: grid;
-    grid-template-columns: 1.5fr 1fr 1.2fr 1.2fr 1.2fr 1fr;
+    grid-template-columns: 1.5fr 1fr 1.2fr 1.2fr;
     gap: 16px;
     padding:  18px 20px;
     align-items: center;
@@ -419,6 +427,7 @@ body {
     display: flex;
     align-items: center;
     gap:  10px;
+    text-decoration: none;
 }
 
 .userTxt::before {
@@ -436,6 +445,7 @@ body {
 /* User ID */
 .userTxt1 {
     font-size: 14px;
+    text-decoration: none;
     color: #6b7280;
     font-family: 'Consolas', monospace;
 }
@@ -443,6 +453,7 @@ body {
 /* Membership Status */
 .userTxt2 {
     font-size: 12px;
+    text-decoration: none;
     font-weight: 700;
     padding:  6px 14px;
     border-radius: 20px;
@@ -466,6 +477,7 @@ body {
 /* Total Spending */
 .userTxt3 {
     font-size:  14px;
+    text-decoration: none;
     font-weight:  700;
     color:  #059669;
 }
@@ -563,7 +575,7 @@ body {
 @media (max-width: 1200px) {
     .typeUser,
     .userGroup {
-        grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr 0.8fr;
+        grid-template-columns: 1.5fr 1fr 1fr 1fr;
         gap: 12px;
     }
 }

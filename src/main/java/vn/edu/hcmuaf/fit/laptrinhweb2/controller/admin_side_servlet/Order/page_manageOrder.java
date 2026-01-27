@@ -1,4 +1,4 @@
-package vn.edu.hcmuaf.fit.laptrinhweb2.controller.admin_side_servlet;
+package vn.edu.hcmuaf.fit.laptrinhweb2.controller.admin_side_servlet.Order;
 
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
@@ -9,12 +9,18 @@ import vn.edu.hcmuaf.fit.laptrinhweb2.services.OrderService;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "servlet_getOrder", value = "/servlet_getOrder")
-public class getOrderList extends HttpServlet {
+@WebServlet(name = "servlet_getOrder", value = "/page_manageOrder")
+public class page_manageOrder extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        HttpSession session = request.getSession(false);
+        if ((session == null) || (!"ADMIN".equals(session.getAttribute("auth_role")))) {
+            System.out.println("not admin");
+            response.sendError(HttpServletResponse.SC_NOT_FOUND);
+            return;
+        }
 
         OrderService orderService = new OrderService();
         String action = request.getParameter("action");

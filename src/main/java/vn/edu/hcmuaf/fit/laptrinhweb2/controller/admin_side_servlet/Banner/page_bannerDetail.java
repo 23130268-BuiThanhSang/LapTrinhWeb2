@@ -1,4 +1,4 @@
-package vn.edu.hcmuaf.fit.laptrinhweb2.controller.admin_side_servlet;
+package vn.edu.hcmuaf.fit.laptrinhweb2.controller.admin_side_servlet.Banner;
 
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
@@ -17,6 +17,13 @@ import java.io.IOException;
 public class page_bannerDetail extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession(false);
+        if ((session == null) || (!"ADMIN".equals(session.getAttribute("auth_role")))) {
+            System.out.println("not admin");
+            response.sendError(HttpServletResponse.SC_NOT_FOUND);
+            return;
+        }
+
         String idParam = request.getParameter("id");
 
         if (idParam == null) {
@@ -41,7 +48,7 @@ public class page_bannerDetail extends HttpServlet {
         }
 
         request.setAttribute("banner", banner);
-        request.getRequestDispatcher("manageUI_BannerDetail.jsp").forward(request, response);
+        request.getRequestDispatcher("manageBanner_BannerDetail.jsp").forward(request, response);
     }
 
     @Override
