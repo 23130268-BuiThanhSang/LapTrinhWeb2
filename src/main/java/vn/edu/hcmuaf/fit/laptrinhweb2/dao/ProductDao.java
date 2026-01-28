@@ -1035,5 +1035,27 @@ public class ProductDao extends BaseDao {
                         .execute()
         );
     }
+    // 1. Remove Collection ID (Set to NULL)
+    public void removeCollectionFromProducts(int collectionId) {
+        String query = "UPDATE product SET collection_id = NULL WHERE collection_id = ?";
 
+        get().useHandle(handle -> {
+            int rows = handle.createUpdate(query)
+                    .bind(0, collectionId)
+                    .execute();
+            System.out.println("Detached collection ID " + collectionId + " from " + rows + " products.");
+        });
+    }
+
+    // 2. Remove Hot Deal ID (Set to NULL)
+    public void removeHotDealFromProducts(int hotDealId) {
+        String query = "UPDATE product SET hot_deal_id = NULL WHERE hot_deal_id = ?";
+
+        get().useHandle(handle -> {
+            int rows = handle.createUpdate(query)
+                    .bind(0, hotDealId)
+                    .execute();
+            System.out.println("Detached Hot Deal ID " + hotDealId + " from " + rows + " products.");
+        });
+    }
 }

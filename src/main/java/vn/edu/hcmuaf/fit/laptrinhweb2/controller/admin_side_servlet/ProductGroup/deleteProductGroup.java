@@ -8,6 +8,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import vn.edu.hcmuaf.fit.laptrinhweb2.enum_macro.GroupType;
 import vn.edu.hcmuaf.fit.laptrinhweb2.services.ProductGroupService;
+import vn.edu.hcmuaf.fit.laptrinhweb2.services.ProductService;
 
 import java.io.IOException;
 
@@ -15,7 +16,7 @@ import java.io.IOException;
 public class deleteProductGroup extends HttpServlet {
 
     private final ProductGroupService productGroupService = new ProductGroupService();
-
+    private final ProductService productService = new ProductService();
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -31,6 +32,9 @@ public class deleteProductGroup extends HttpServlet {
 
         try {
             int id = Integer.parseInt(request.getParameter("id"));
+            if (type == GroupType.COLLECTION) {
+                productService.removeCollectionFromProducts(id);
+            }
             productGroupService.deleteGroup(type, id);
         } catch (Exception e) {
             e.printStackTrace();
