@@ -45,5 +45,30 @@ public class Cart implements Serializable {
     public boolean isEmpty() {
         return items.isEmpty();
     }
+
+    /**
+     * Phương thức thực hiện lấy CartItem dựa trên variantId(key) từ Map items.
+     * Phương thức này hỗ trợ trong việc đánh dấu các sản phẩm được chọn để thanh toán trong quá trình checkout.
+     * @param variantId
+     * @return
+     */
+    public CartItem getItem(int variantId) {
+        return items.get(variantId);
+    }
+
+    /**
+     * Phương thức thực hiện tính tổng tiền của các CartItem được chọn (isSelected = true).
+     * phục vụ cho việc thanh toán những sản phẩm được chọn trong giỏ hàng.
+     * @return
+     */
+    public double getSelectedTotalPrice() {
+        double total = 0;
+        for (CartItem item : items.values()) {
+            if (item.isSelected()) {
+                total += item.getTotalPrice();
+            }
+        }
+        return total;
+    }
 }
 

@@ -1,4 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,148 +12,74 @@
 </head>
 <body>
 <div class="headerForPagePayment">
-    <a class="BackParent">
-        Quay lại
-    </a>
     <div class="TitleForPagePayment"> THANH TOÁN</div>
 </div>
 <div class="BodyForPagePayment">
     <div class="InforPayment">
-        <div class="ChooseTypePayment">
-            <div class="TitleChooseTypePayment"> Chọn Hình Thức Thanh Toán :</div>
-            <div class="TypePayment">
-                <label class="PaymentOption">
-                    <input type="radio" name="payment" value="cod" checked>
-                    <span>Thanh toán khi nhận hàng (COD)</span>
-                </label>
-                <label class="PaymentOption">
-                    <input type="radio" name="payment" value="bank">
-                    <span>Chuyển khoản ngân hàng</span>
-                </label>
-                <label class="PaymentOption">
-                    <input type="radio" name="payment" value="momo">
-                    <span>Ví MoMo / ZaloPay</span>
-                </label>
-            </div>
-        </div>
         <div class="InforCustomer">
             <div class="TitleInforCustomer">Thông Tin Khách Hàng :</div>
             <div class="IforUser">
-                <label>Họ Và Tên: <span class="InforCustomerDetail">Bùi Thanh Sang</span></label>
+                <label>Họ Và Tên: <span class="InforCustomerDetail">${sessionScope.auth.accountName}</span></label>
 
             </div>
             <div class="IforUser">
-                <label>Số điện thoại: <span class="InforCustomerDetail">0829811312</span></label>
+                <label>Số điện thoại: <span class="InforCustomerDetail">${sessionScope.auth.phoneNumber}</span></label>
 
             </div>
 
             <div class="IforUser">
-                <label>Email: <span class="InforCustomerDetail">23130268@st.hcmuaf.edu.vn</span> </label>
+                <label>Email: <span class="InforCustomerDetail">${sessionScope.auth.accountEmail}</span> </label>
             </div>
+            <form action="ConfirmPayment" method="post">
             <div class="AddAddess">
                 <label>Địa chỉ nhận hàng : </label>
                 <div class="DefaultAddress">
-                    <span class="DefaultAddressText">123 Lý Thường Kiệt, P.7, Q.10, TP.HCM</span>
+                        <input type="text" name="address"
+                               class="DefaultAddressText"
+                               placeholder="Hãy thêm địa chỉ nhận hàng ...">
                 </div>
-
-                <button class="ChangeAddress">+Thêm địa chỉ</button>
             </div>
+                <button type="submit" class="ConfirmPaymentButton">
+                    Xác Nhận
+                </button>
+    </form>
         </div>
 
     </div>
     <div class="InforProduct">
         <div class="InforProductTitle"> Tóm Tắt Đơn Hàng</div>
         <div class="InforItemProduct">
-            <div class="ProductItemInPayment">
-                <div class="InforImageProduct">
-                    <img src="https://supersports.com.vn/cdn/shop/products/BW-460-15KG-1.jpg?v=1703644838&width=1600">
-                </div>
-                <div class="InforMainforProduct">
-                    <div class="ProductItemName">Tạ Lục Giác 15Kg Body Sculpture - Đen</div>
-                    <div class="ProductItemBrand">BODY SCULPTURE</div>
-                    <div class="ProductItemDetail">
-                        <div class="ProductItemType">
-                            Phân loại: <span
-                                class="TypeProductInShoppingCart">Dụng Cụ Tập Gym-ĐEN</span>
-                        </div>
-                        <div class="ProductItemSize">
-                            Kích cỡ:<span class="sizeProductInShoppingCart">Một cỡ duy nhất</span>
-                        </div>
-                    </div>
-                    <div class="ProductItemPrice">
-                        Giá : <span>446.000đ</span>
-                    </div>
-                </div>
 
-            </div>
-            <div class="ProductItemInPayment">
-                <div class="InforImageProduct">
-                    <img src="https://supersports.com.vn/cdn/shop/products/BW-460-15KG-1.jpg?v=1703644838&width=1600">
-                </div>
-                <div class="InforMainforProduct">
-                    <div class="ProductItemName">Tạ Lục Giác 15Kg Body Sculpture - Đen</div>
-                    <div class="ProductItemBrand">BODY SCULPTURE</div>
-                    <div class="ProductItemDetail">
-                        <div class="ProductItemType">
-                            Phân loại: <span
-                                class="TypeProductInShoppingCart">Dụng Cụ Tập Gym-ĐEN</span>
-                        </div>
-                        <div class="ProductItemSize">
-                            Kích cỡ:<span class="sizeProductInShoppingCart">Một cỡ duy nhất</span>
+            <c:forEach var="item" items="${sessionScope.cart.items}">
+                <c:if test="${item.selected}">
+                    <div class="ProductItemInPayment">
+                        <img src="${item.image}">
+                        <div>
+                            <div>${item.productName}</div>
+                            <div>Màu: ${item.color}</div>
+                            <div>Size: ${item.size}</div>
+                            <fmt:formatNumber value="${item.price}" pattern="#,###"/>VNĐ
+                            <div>SL: ${item.quantity}</div>
                         </div>
                     </div>
-                    <div class="ProductItemPrice">
-                        Giá : <span>446.000đ</span>
-                    </div>
-                </div>
+                </c:if>
+            </c:forEach>
 
-            </div>
-            <div class="ProductItemInPayment">
-                <div class="InforImageProduct">
-                    <img src="https://supersports.com.vn/cdn/shop/products/BW-460-15KG-1.jpg?v=1703644838&width=1600">
-                </div>
-                <div class="InforMainforProduct">
-                    <div class="ProductItemName">Tạ Lục Giác 15Kg Body Sculpture - Đen</div>
-                    <div class="ProductItemBrand">BODY SCULPTURE</div>
-                    <div class="ProductItemDetail">
-                        <div class="ProductItemType">
-                            Phân loại: <span
-                                class="TypeProductInShoppingCart">Dụng Cụ Tập Gym-ĐEN</span>
-                        </div>
-                        <div class="ProductItemSize">
-                            Kích cỡ:<span class="sizeProductInShoppingCart">Một cỡ duy nhất</span>
-                        </div>
-                    </div>
-                    <div class="ProductItemPrice">
-                        Giá : <span>446.000đ</span>
-                    </div>
-                </div>
-
-            </div>
         </div>
         <div class="BottomOfPayment">
             <div class="TotalPaymentProduct">
-                <div class="TempTotalPriceForProduct">
-                    <span class="ToltalOTP">Tạm Tính : </span>
-                    <span>446.000đ</span>
-                </div>
-                <div class="ShippingFee">
-                    <span class="ToltalOTP">Phí vận chuyển : </span>
-                    <span>Miễn Phí</span>
-                </div>
+
                 <div class="TotalPrice">
                     <span class="ToltalOTP">Thành Tiền : </span>
-                    <span>446.000đ</span>
+                    <fmt:formatNumber value="${sessionScope.cart.selectedTotalPrice}" pattern="#,###"/>VNĐ
                 </div>
-            </div>
-            <div class="DisplayButtonConfirm">
-                <button class="ConfirmPaymentButton">Xác Nhận</button>
             </div>
         </div>
 
 
     </div>
 </div>
+
 <jsp:include page="/Share/footer.jsp" />
 
 </body>
