@@ -125,4 +125,10 @@ public class ProductService {
     public void deleteVariantImage(List<Integer> ids) {
         productVariantImageDao.deleteImages(ids);
     }
+    public void removeCollectionFromProducts(int id) {
+        productDao.removeCollectionFromProducts(id);
+    }
+    public void removeHotDealFromProducts(int id) {
+        productDao.removeHotDealFromProducts(id);
+    }
 }

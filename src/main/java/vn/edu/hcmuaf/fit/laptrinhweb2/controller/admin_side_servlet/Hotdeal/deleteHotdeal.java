@@ -4,6 +4,7 @@ import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 import vn.edu.hcmuaf.fit.laptrinhweb2.services.HotDealService;
+import vn.edu.hcmuaf.fit.laptrinhweb2.services.ProductService;
 
 import java.io.IOException;
 
@@ -18,9 +19,11 @@ public class deleteHotdeal extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String idParam = request.getParameter("id");
         HotDealService hotDealService = new HotDealService();
+        ProductService productService = new ProductService();
         if (idParam != null) {
             try {
                 int id = Integer.parseInt(idParam);
+                productService.removeHotDealFromProducts(id);
                 hotDealService.deleteHotDeal(id);
             } catch (NumberFormatException ignored) {
             }
