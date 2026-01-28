@@ -19,7 +19,7 @@
     <div class="headerShoppingCart">
         GIỎ HÀNG
     </div>
-    <div class="bodyShoppingCart">
+    <form class="bodyShoppingCart" action="CheckOut" method="post">
         <div class="ListProductInShoppingCart">
             <div class="ControlForAllItemsProductInShoppingCart">
                 <span class="ListTitle">Danh sách sản phẩm</span>
@@ -28,6 +28,7 @@
                     <input type="checkbox" id="selectAllCheckbox" onclick="toggleAllProducts()">
                 </label>
             </div>
+
             <div class="ListProductInnerScroll">
                 <c:if test="${empty sessionScope.cart || sessionScope.cart.items.size() == 0}">
                     <div id="emptyCartMessage" style="margin-left: 10px">
@@ -39,7 +40,12 @@
                     <div class="ItemProductInshoppingCart" data-price="${item.price}"
                          data-quantity="${item.quantity}">
                         <label class="CheckboxItem">
-                            <input type="checkbox" class="item-checkbox">
+                            <input type="checkbox"
+                                   class="item-checkbox"
+                                   name="selectedIds"
+                                   value="${item.variantId}"
+                                   <c:if test="${item.selected}">checked</c:if>>
+
                         </label>
 
                         <img src="${item.image}" class="ProductItemImage">
@@ -55,11 +61,11 @@
 
                         <div class="ProductItemControl">
                             <div class="QuantityBoxForProduct">
-                                <button>-</button>
+                                <button type="button">-</button>
                                 <span class="quantity">${item.quantity}</span>
-                                <button>+</button>
-
-                                <a href="remove-from-cart?variantId=${item.variantId}" class="delProduct">Xóa </a>
+                                <button type="button">+</button>
+                                <a href="remove-from-cart?variantId=${item.variantId}" class="delProduct" onclick="return confirm('Bạn có chắc chắn muốn xóa sản phẩm này?');">Xóa</a>
+<%--                                <a href="remove-from-cart?variantId=${item.variantId}" class="delProduct">Xóa </a>--%>
                             </div>
                         </div>
                     </div>
@@ -90,23 +96,24 @@
                 <div class="SummaryRow">
                     <span>Email: ${sessionScope.auth.accountEmail}</span>
                 </div>
-                <div class="SummaryRow">
-                    <span>Mô tả thêm (nếu có): </span>
-                </div>
-                <div class="SummaryRow">
-                    <textarea name="note" rows="7"
-                              placeholder="Thời gian giao, địa điểm cụ thể..."
-                              class="order-note"></textarea>
-                </div>
+<%--                <div class="SummaryRow">--%>
+<%--                    <span>Mô tả thêm (nếu có): </span>--%>
+<%--                </div>--%>
+<%--                <div class="SummaryRow">--%>
+<%--                    <textarea name="note" rows="7"--%>
+<%--                              placeholder="Thời gian giao, địa điểm cụ thể..."--%>
+<%--                              class="order-note"></textarea>--%>
+<%--                </div>--%>
                 <div class="SummaryRow">Tổng thành tiền:<span id="totalPrice">0 đ</span>
                 </div>
             </div>
             <div class="OrderButtons">
-                <button type="button" class="ContinueButton" id="placeOrderBtn">
+                <button type="submit" class="ContinueButton">
                     Đặt hàng</button>
+<%--                <button type="button" class="ContinueButton" id="placeOrderBtn">Đặt hàng</button>--%>
             </div>
         </div>
-    </div>
+    </form>
 </div>
 <!-- Xoa san pham -->
 <div id="deleteProductModal" class="modal-overlay" style="display: none;">
@@ -120,16 +127,16 @@
     </div>
 </div>
 <!-- Dat hang -->
-<div id="orderCompleteModal" class="modal-overlay" style="display:none;">
-    <div class="modal-confirm-box">
-        <div class="modal-title" id="orderModalTitle">Đặt hàng hoàn tất</div>
-        <div class="modal-message" id="orderModalMessage">Bạn đã đặt hàng hoàn tất, bạn muốn xem tiến độ đơn hàng không?</div>
-        <div class="modal-actions">
-            <button id="orderBackBtn" class="modal-btn cancel">Hủy</button>
-            <button id="orderViewBtn" class="modal-btn confirm" style="background: #1D539C ">Xác nhận</button>
-        </div>
-    </div>
-</div>
+<%--<div id="orderCompleteModal" class="modal-overlay" style="display:none;">--%>
+<%--    <div class="modal-confirm-box">--%>
+<%--        <div class="modal-title" id="orderModalTitle">Đặt hàng hoàn tất</div>--%>
+<%--        <div class="modal-message" id="orderModalMessage">Bạn đã đặt hàng hoàn tất, bạn muốn xem tiến độ đơn hàng không?</div>--%>
+<%--        <div class="modal-actions">--%>
+<%--            <button id="orderBackBtn" class="modal-btn cancel">Hủy</button>--%>
+<%--            <button id="orderViewBtn" class="modal-btn confirm" style="background: #1D539C ">Xác nhận</button>--%>
+<%--        </div>--%>
+<%--    </div>--%>
+<%--</div>--%>
 
 <jsp:include page="/Share/footer.jsp" />
 <script src="${pageContext.request.contextPath}/JS/Notification.js"></script>
