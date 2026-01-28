@@ -22,7 +22,6 @@ import java.util.List;
 public class ConfirmPaymentController extends HttpServlet {
     OrderService orderService = new OrderService();
     ProductService productService = new ProductService();
-    ProductVariantDao productdao = new ProductVariantDao();
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
