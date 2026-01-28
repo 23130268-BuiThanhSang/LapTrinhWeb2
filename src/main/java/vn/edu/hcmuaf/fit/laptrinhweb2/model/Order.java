@@ -41,7 +41,7 @@ public class Order implements Serializable {
 
         double total = 0;
         for (OrderItem item : items) {
-            total += item.getPrice() * item.getQuantity();
+            total += item.getPrice();
         }
         return total;
     }

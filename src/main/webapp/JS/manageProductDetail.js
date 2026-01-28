@@ -1,31 +1,102 @@
 document.addEventListener("DOMContentLoaded", function () {
     const variantContainer = document.getElementById("VariantContainer");
     const btnAddVariant = document.getElementById("btnAddVariant");
+    const productTypeSelect = document.querySelector("select[name='category']");
 
+    // --- 1. SIZE LOGIC CONFIGURATION ---
+    const SIZE_OPTIONS_BY_TYPE = {
+        4: [35, 36, 37, 38, 39, 40, 41, 42, 43], // Shoes
+        3: ["S", "M", "L", "XL", "XXL"],         // Clothes
+        2: ["Free Size"],                        // Accessories
+        1: ["Nhỏ", "Vừa", "Lớn"]                 // Gym Tools
+    };
+
+    // --- 2. INITIALIZATION ---
     // Count current variants to ensure unique names for new ones
-    // We start counting from the number of existing variants found in DOM
     let variantIndex = document.querySelectorAll('.VariantCard').length;
 
+    // Listener for Add Button
     if (btnAddVariant) {
         btnAddVariant.addEventListener("click", function () {
             addNewVariantCard();
         });
     }
 
-    // Initialize listeners for Existing Image Inputs (for the "New Images" field on existing variants)
+    // Listener for Existing Image Inputs
     document.querySelectorAll('.ImageInput').forEach(input => {
         setupImagePreview(input);
     });
 
-    // --- FUNCTION: Add New Variant (Same as Add Page) ---
+    // Listener for Category Change (Updates all size fields dynamically)
+    if (productTypeSelect) {
+        productTypeSelect.addEventListener("change", function () {
+            if (!variantContainer) return;
+
+            variantContainer.querySelectorAll(".VariantCard").forEach((card, i) => {
+
+                const sizeFieldContainer = card.querySelector(".VariantRow-Top .VariantField:nth-child(2)");
+                const existingInput = sizeFieldContainer.querySelector("input, select");
+                let currentIndex = i; // Fallback
+
+                if (existingInput) {
+                    const match = existingInput.name.match(/variants\[(\d+)\]/);
+                    if (match) currentIndex = match[1];
+                }
+
+                // Re-render the HTML
+                sizeFieldContainer.innerHTML = `
+                    <label>Kích cỡ:</label>
+                    ${buildSizeField(currentIndex)}
+                `;
+            });
+        });
+    }
+
+    // --- 3. HELPER FUNCTIONS ---
+
+    function getSizeOptions() {
+        if (!productTypeSelect) return null;
+        const type = productTypeSelect.value;
+        return SIZE_OPTIONS_BY_TYPE[type];
+    }
+
+    function buildSizeField(index, selectedValue = "") {
+        const sizes = getSizeOptions();
+
+        // Case A: No specific sizes defined (Input Text)
+        if (sizes == null) {
+            return `
+            <input type="text" 
+                   name="variants[${index}].size" 
+                   placeholder="Nhập size (VD: 40, XL)" 
+                   value="${selectedValue}"
+                   required>
+            `;
+        }
+
+        // Case B: Dropdown Select
+        let html = `
+        <select name="variants[${index}].size" required>
+            <option value="">-- Chọn size --</option>
+        `;
+
+        sizes.forEach(size => {
+            const selected = (String(size) === String(selectedValue)) ? "selected" : "";
+            html += `<option value="${size}" ${selected}>${size}</option>`;
+        });
+
+        html += `</select>`;
+        return html;
+    }
+
+    // --- 4. ADD NEW VARIANT FUNCTION ---
     function addNewVariantCard() {
         if (!variantContainer) return;
         const index = variantIndex++;
 
         const card = document.createElement("div");
-        card.className = "VariantCard NewVariant"; // Add class NewVariant to distinguish
+        card.className = "VariantCard NewVariant";
 
-        // HTML Structure
         card.innerHTML = `
             <div class="VariantHeader">
                 <span>Biến thể Mới #${index + 1}</span>
@@ -44,7 +115,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 
                 <div class="VariantField">
                     <label>Kích cỡ:</label>
-                    <input type="text" name="variants[${index}].size" placeholder="Nhập size (VD: 40, XL)" required>
+                    ${buildSizeField(index)}
                 </div>
 
                 <div class="VariantField">
@@ -67,7 +138,7 @@ document.addEventListener("DOMContentLoaded", function () {
             </div>
         `;
 
-        // Remove Button Logic (For NEW variants only)
+        // Remove Button Logic
         card.querySelector(".RemoveVariantBtn").addEventListener("click", function () {
             card.remove();
         });
@@ -78,10 +149,10 @@ document.addEventListener("DOMContentLoaded", function () {
         variantContainer.appendChild(card);
     }
 
-    // --- FUNCTION: Image Preview Helper ---
+    // --- 5. IMAGE PREVIEW HELPER ---
     function setupImagePreview(inputElement) {
+        if (!inputElement) return;
         inputElement.addEventListener("change", function(e) {
-            // Find the sibling preview box
             const previewBox = e.target.parentElement.querySelector(".ImagePreviewBox");
             if(!previewBox) return;
 
@@ -108,41 +179,14 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
-// --- GLOBAL FUNCTIONS (Called from HTML onclick) ---
-
-// 1. Mark Image for Deletion
 function markImageDelete(imageId, btnElement) {
     if(!confirm("Bạn có chắc muốn xóa ảnh này?")) return;
-
-    // Add ID to hidden input
     const input = document.getElementById("deletedImageIds");
     if(input.value) {
         input.value += "," + imageId;
     } else {
         input.value = imageId;
     }
-
-    // Hide the UI element
     const container = btnElement.parentElement;
     container.style.display = "none";
-}
-
-// 2. Mark Existing Variant for Deletion
-function markVariantDelete(variantId, btnElement) {
-    if(!confirm("Cảnh báo: Bạn sắp xóa một biến thể ĐÃ TỒN TẠI. Hành động này sẽ xóa vĩnh viễn sau khi Lưu. Tiếp tục?")) return;
-
-    // Add ID to hidden input
-    const input = document.getElementById("deletedVariantIds");
-    if(input.value) {
-        input.value += "," + variantId;
-    } else {
-        input.value = variantId;
-    }
-
-    // Hide the card
-    const card = btnElement.closest(".VariantCard");
-    card.style.display = "none";
-
-    // Disable inputs inside so they don't get submitted
-    card.querySelectorAll("input, select").forEach(field => field.disabled = true);
 }

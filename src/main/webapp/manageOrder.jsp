@@ -18,14 +18,15 @@
                 <p class = "BoxTitle">Tổng Doanh Thu / Đơn Hàng</p>
 <!--                <a class = "DetailPageLink" href="manageOrder_IncomeDetail.jsp">Xem chi tiết</a>-->
                 <div class="NumberContainer">
-                <div class="IncomeDisplay">203407600</div><span class = "CurrencyValue">(vnd) /</span>
-                    <div class="TotalOrderDisplay">1836</div><span class = "CurrencyValue">(đơn)</span>
+                <span class="IncomeDisplay">${total_income}</span><span class = "CurrencyValue">/</span>
+                    <span class="TotalOrderDisplay">${total_order}</span><span class = "CurrencyValue">(đơn)</span>
                 </div>
             </div>
         </div>
+        <a class = "DetailPageLink" href="page_manageOrder?action=all">Xem toàn bộ đơn hàng</a>
         <div class="bottomBox">
             <p class = "BoxTitle">Đơn Hàng Trong Ngày</p>
-            <a class = "DetailPageLink" href="page_manageOrder?action=all">Xem chi tiết</a>
+
             <div class="OrdersDisplay">
                 <c:forEach var="o" items="${orders}">
                     <a href="page_orderDetail?orderId=${o.id}" class="OrderItem">

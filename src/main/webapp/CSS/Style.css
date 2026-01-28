@@ -1574,4 +1574,30 @@ kết thúc */
     top: -10px;
 }
 
+.admin-gradient-btn {
+    /* Gradient Background */
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+
+    /* Text Styles */
+    color: white;
+    font-weight: 600;
+    text-decoration: none;
+
+    /* Shape & Spacing */
+    padding: 10px 20px;
+    border-radius: 30px; /* Rounded pill shape */
+    display: inline-flex;
+    align-items: center;
+    gap: 8px; /* Space between icon and text */
+
+    /* Shadow for depth */
+    box-shadow: 0 4px 15px rgba(118, 75, 162, 0.4);
+    transition: all 0.3s ease;
+}
+
+.admin-gradient-btn:hover {
+    transform: translateY(-2px); /* Moves up slightly */
+    box-shadow: 0 6px 20px rgba(118, 75, 162, 0.6);
+    color: white; /* Keep text white on hover */
+}
 

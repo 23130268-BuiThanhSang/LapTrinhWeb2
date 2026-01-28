@@ -88,10 +88,29 @@ public class updateProduct extends HttpServlet {
                 variant.setProduct_id(id);
                 variant.setColor(color);
 
-                // size, code convert size để đâu quên r
                 String raw_size = request.getParameter("variants[" + index + "].size");
                 int real_size = -1;
-                try { real_size = Integer.parseInt(raw_size); } catch (Exception e) { real_size = -1; }
+                switch (categoryId) {
+                    case "3":
+                        if (raw_size.equals("S")) {real_size = 1;}
+                        if (raw_size.equals("M")) {real_size = 2;}
+                        if (raw_size.equals("L")) {real_size = 3;}
+                        if (raw_size.equals("XL")) {real_size = 4;}
+                        if (raw_size.equals("XXL")) {real_size = 5;}
+                        break;
+                    case "4":
+                        real_size = Integer.parseInt(raw_size);
+                        break;
+                    case "2":
+                        real_size = -1;
+                        break;
+                    case "1":
+                        if (raw_size.equals("Nhỏ")) {real_size = 100;}
+                        if (raw_size.equals("Vừa")) {real_size = 200;}
+                        if (raw_size.equals("Lớn")) {real_size = 300;}
+                        break;
+                }
+
                 variant.setSize(real_size);
 
                 variant.setPrice(Double.parseDouble(request.getParameter("variants[" + index + "].price")));

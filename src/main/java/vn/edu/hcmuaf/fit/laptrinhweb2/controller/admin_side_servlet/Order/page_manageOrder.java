@@ -7,7 +7,9 @@ import vn.edu.hcmuaf.fit.laptrinhweb2.model.Order;
 import vn.edu.hcmuaf.fit.laptrinhweb2.services.OrderService;
 
 import java.io.IOException;
+import java.text.NumberFormat;
 import java.util.List;
+import java.util.Locale;
 
 @WebServlet(name = "servlet_getOrder", value = "/page_manageOrder")
 public class page_manageOrder extends HttpServlet {
@@ -31,7 +33,19 @@ public class page_manageOrder extends HttpServlet {
         if (action == null || action.equals("today")) {
 
             orders = orderService.getToday();
+            double income = 0;
+            for (Order order : orderService.getAll()) {
+                income += order.getPrice();
+            }
+            Locale vn = new Locale("vi", "VN");
+            NumberFormat formatter = NumberFormat.getCurrencyInstance(vn);
+            String total_income = formatter.format(income);
+
+            request.setAttribute("total_income", total_income);
+            String total_order = String.valueOf(orderService.getAll().size());
             request.setAttribute("orders", orders);
+            request.setAttribute("total_income", total_income);
+            request.setAttribute("total_order", total_order);
             request.getRequestDispatcher("manageOrder.jsp")
                     .forward(request, response);
             return;
