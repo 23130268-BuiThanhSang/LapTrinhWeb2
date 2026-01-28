@@ -48,6 +48,11 @@
     </ul>
 
     <div class="GroupRight">
+        <c:if test="${sessionScope.auth_role == 'ADMIN'}">
+            <a href="page_manageOrder" class="admin-gradient-btn">
+                <i class="fa-solid fa-users-gear"></i> ADMIN
+            </a>
+        </c:if>
         <form class="SearchBox" role="search" action="${root}/ListAllProduct" method="GET" id="searchForm">
             <input type="search" name="keyword" id="searchInput" placeholder="Tìm sản phẩm..." aria-label="Tìm kiếm" autocomplete="off">
             <button type="submit" aria-label="Tìm kiếm">

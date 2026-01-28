@@ -11,6 +11,10 @@
         </div>
     </div>
     <div class="AccountLeftOption">
+        <a href="page_manageOrder?action=today" class="OptionIcon">
+            <i class="fa-solid fa-box"></i>
+            <div class="NameOption">Quản lý đơn hàng</div>
+        </a>
         <a href="getAllAccount" class="OptionIcon">
             <i class="fa-solid fa-user"></i>
             <div class="NameOption">Quản lý người dùng</div>
@@ -19,10 +23,7 @@
             <i class="fa-solid fa-shirt"></i>
             <div class="NameOption">Quản lý sản phẩm</div>
         </a>
-        <a href="page_manageOrder?action=today" class="OptionIcon">
-            <i class="fa-solid fa-box"></i>
-            <div class="NameOption">Quản lý đơn hàng</div>
-        </a>
+
         <a href="page_manageHotdeal" class="OptionIcon">
             <i class="fa-solid fa-percent"></i>
             <div class="NameOption">Quản lý ưu đãi</div>

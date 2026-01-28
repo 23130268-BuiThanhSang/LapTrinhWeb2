@@ -75,26 +75,26 @@
             </form>
         </div>
 
-        <div class ="HighlightBox">
-            <div class="search-section">
-                <div class="search-row">
-                    <label for="searchType">Tra cứu bằng:</label>
-                    <select id="searchType">
-                        <option value="id">ID</option>
-                        <option value="name">Name</option>
-                    </select>
-                </div>
-                <div class="search-row input-row">
-                    <input
-                            type="text"
-                            id="searchInput"
-                            placeholder="Enter search value..."
-                    >
-                    <button id="searchButton">Dò Database</button>
-                </div>
-                <div id="searchResult" class="result-box"></div>
-            </div>
-        </div>
+<%--        <div class ="HighlightBox">--%>
+<%--            <div class="search-section">--%>
+<%--                <div class="search-row">--%>
+<%--                    <label for="searchType">Tra cứu bằng:</label>--%>
+<%--                    <select id="searchType">--%>
+<%--                        <option value="id">ID</option>--%>
+<%--                        <option value="name">Name</option>--%>
+<%--                    </select>--%>
+<%--                </div>--%>
+<%--                <div class="search-row input-row">--%>
+<%--                    <input--%>
+<%--                            type="text"--%>
+<%--                            id="searchInput"--%>
+<%--                            placeholder="Enter search value..."--%>
+<%--                    >--%>
+<%--                    <button id="searchButton">Dò Database</button>--%>
+<%--                </div>--%>
+<%--                <div id="searchResult" class="result-box"></div>--%>
+<%--            </div>--%>
+<%--        </div>--%>
         <div class = "HighlightBox">
             <div class="all-displaying-banner">
                 <label class="BoxTitle">Banner hiện tại:</label>

@@ -18,7 +18,7 @@
     <div class="OrderManagerUI">
 
         <div class="topRow">
-            <a href="manage_hotDeal" class="turnBack">Back to List</a>
+            <a href="page_manageHotdeal" class="turnBack">Back to List</a>
         </div>
 
         <div class="bottomBox">

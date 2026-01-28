@@ -22,7 +22,7 @@ public class AccountAdminService {
             List<Order> orders = orderDao.getByUserId(acc.getId());
             double totalSpent = 0;
             for (Order o : orders) {
-                totalSpent += o.calculateTotal();
+                totalSpent += o.getPrice();
             }
             result.add(new AccountAdminView(acc, totalSpent));
         }
@@ -39,7 +39,7 @@ public class AccountAdminService {
 
         double totalSpent = 0;
         for (Order o : orders) {
-            totalSpent += o.calculateTotal();
+            totalSpent += o.getPrice();
         }
 
         return new AccountAdminView(acc, totalSpent);
@@ -55,7 +55,7 @@ public class AccountAdminService {
 
         double totalSpent = 0;
         for (Order o : orders) {
-            totalSpent += o.calculateTotal();
+            totalSpent += o.getPrice();
         }
 
         return new AccountAdminView(acc, totalSpent);
@@ -108,7 +108,7 @@ public class AccountAdminService {
             double totalSpent = 0;
             List<Order> orders = orderDao.getByUserId(acc.getId());
             for (Order o : orders) {
-                totalSpent += o.calculateTotal();
+                totalSpent += o.getPrice();
             }
 
             result.add(new AccountAdminView(acc, totalSpent));
